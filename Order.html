@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<meta name ="viewport" content="width=device-width, initial-scale=1.0">
+<style>li{
+ display: inline;
+    margin: 5px;
+    padding: 5px;
+    }
+ .center{
+   text-align:center;
+    }
+    
+    body{
+    border:2px dashed;
+    margin:10px;
+    padding:10px;
+    }
+    .whirl{
+    border-top: 2px solid;
+    border-bottom:2px solid;
+    }</style>
+<script>
+	document.getElementById("checkbox2").onclick = function(){
+	
+    if(this.checked){
+    	document.getElementByID("1").innerHTML = "$20.98";
+    }
+    
+    
+}
+</script>
+<br>
+<title>ORDERING</title>
+<br>
+<div class="whirl"><nav>
+<li><a href="">HOME</a></li>
+<li><a href="">ORDERING</a></li>
+<li><a href="">LOGIN</a></li>
+<br>
+<br>
+</nav>
+<div class="center">
+<header role="banner"> ORDER HERE!</header>
+</div>
+</div>
+</head>
+
+
+<body>
+
+
+
+<section>
+	<table width = "100%">
+	<tr>
+		<th>Item Name</th>
+		<th>Description</th>
+		<th>Price</th>
+		<th>Buy</th>
+	</tr>
+	<th>Pizza<input id="checkbox" type ="checkbox"></th>
+	
+	<th>Pepperoni<input id="checkbox2" type ="checkbox"></th>
+	<p id ="1"><th>$25.67</th></p>
+	<th><a href="#">Add to Cart</a>
+	
+	</table>
+	
+
+
+</section>
+
+</body>
+
+</html>
