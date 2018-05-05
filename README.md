@@ -28,16 +28,15 @@ Training website for Syntel
 	2) "git pull origin master"
 		This will update your local repository with any of the changes made from others on the same project.
 
-		3) Make changes to your local project repository (new folders, new files, edit files, delete files, etc.)
+	3) Make changes to your local project repository (new folders, new files, edit files, delete files, etc.)
 
-		4) "git commit -m 'Some type of description of your changes here.'"
-			This will update your local repository's history with your current changes, always remember to add a commit message.
+	4) "git commit -m 'Some type of description of your changes here.'"
+		This will update your local repository's history with your current changes, always remember to add a commit message.
 
-		5) "git push origin master"
-			This will update the remote branch with your changes to be seen and pulled by everyone else on the project.
+	5) "git push origin master"
+		This will update the remote branch with your changes to be seen and pulled by everyone else on the project.
 
-		NOTE:  As long as you are within the project repo and have already done Step 1 (checkout), then anytime you make changes
-				you just have to repeat Steps 2 to 5.
+	NOTE:  As long as you are within the project repo and have already done Step 1 (checkout), then anytime you make changes you just have to repeat Steps 2 to 5.
 
 ### Pro Steps:
 	cd <path to workspace>
@@ -51,8 +50,10 @@ Training website for Syntel
 
 
 ## Github Desktop
+	
+	Download/Install Github Desktop: https://desktop.github.com/
 
 ### Clone
-	1) Click on the green button that is labeled "Clone or Download" and copy the link shown.
+	1) Launch Github Desktop. Click on the green button that is labeled "Clone or Download" and copy the link shown.
 	
 	2) Open Github Desktop on local machine. Go to File > Clone repository > URL tab

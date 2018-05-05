@@ -1,15 +1,9 @@
-.food {
-	width:100%;
-	margin: auto;
-	border: 3px solid green;
-	padding: 0px;
-}
-
 body {
 	background-color: #ccff99;
 }
 
 nav {
+	float: right;
 }
 
 ul {
@@ -37,10 +31,6 @@ li a:hover {
     background-color: #111;
 } 
 
-.active {
-	background-color: #4CAF50;
-}
-
 li {
 	border-right: 1px solid #bbb;
 }
@@ -48,3 +38,16 @@ li {
 li:last-child {
 	border-right: none;
 } 
+
+.food {
+	width:100%;
+	margin: auto;
+	border: 3px solid green;
+	padding: 0px;
+}
+
+.active {
+	background-color: #4CAF50;
+}
+
+
