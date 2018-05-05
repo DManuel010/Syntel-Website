@@ -67,8 +67,6 @@ Training website for Syntel
 
 	4) When you have new changes, fill out the "Summary" and "Description" of the changes you've made. Press the "Commit" button on the bottom when you're ready to commit the changes.
 
-	5) Press the "Push" button on the top of the application to upload your changes to the remote repository on github. Everyone else on the project should now be able to see and update with your changes.
+	5) Press the "Push origin" button on the top of the application to upload your changes to the remote repository on github. Everyone else on the project should now be able to see and update with your changes.
 
 
-
-	4) 
