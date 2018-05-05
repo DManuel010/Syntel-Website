@@ -68,6 +68,7 @@ Training website for Syntel
 
 	2) Click the "Fetch Origin" button. If the button changes to say "Pull Origin" at any point, press it again.  
 		This will update your local repository with the current changes.
+		If you have any uncommitted changes, then you'll have to commit them before you can pull (see Steps 4-5).
 
 	3) Make changes to your local project repository (new folders, new files, edit files, delete files, etc.).  
 		Any changes you make should appear on the left side in the "Changes" tab.  
