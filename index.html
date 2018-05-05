@@ -5,7 +5,29 @@
 		<title>Mummy's Restaurant - Home</title>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link type="text/css" rel="stylesheet" href="styles.css">
+		<link type="text/css" rel="stylesheet" href="stylesheets/styles.css">
+
+		<script>
+			function validateInput(username, password) {
+				if(username == "root" & password == "admin") {
+					writeOutput(username, password);
+				}
+				else if(username.length == 0 || password.length == 0) {
+					return false;
+				}
+				else {
+					alert("Invalid login.");
+				}
+			}
+
+			function writeOutput(username, password) {
+				var username_string = "Username: " + username;
+				var password_string = "Password: " + password;
+				document.write(username_string);
+				document.write("<br>");
+				document.write(password_string);
+			}
+		</script>
 	</head>
 
 	<body>
@@ -47,6 +69,16 @@
 				</tr>
 			</table>
 		</div>
+		<br><br>
+		
+		<form id="user_login">
+			Username: <input type="text" name="username" placeholder="Enter Username" required>
+			<br><br>
+			Password: <input type="password" name="psw" placeholder="Enter Password" required>
+			<br><br>
+			<input type="submit" value="Login" name="login" onclick="validateInput(form.username.value, form.psw.value)">
+
+		</form>
 
 	</body>
 
