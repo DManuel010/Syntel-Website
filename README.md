@@ -63,6 +63,8 @@ Training website for Syntel
 
 	3) Press "Clone" button.
 
+	NOTE:  This is a one-time setup.  Once you have the repo, you don't need to ever reclone it.
+
 ### Workflow
 	1) Start Github Desktop. Choose "master" in the "Current Branch" tab's dropdown menu.
 
