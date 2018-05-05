@@ -31,12 +31,14 @@ Training website for Syntel
 	3) Make changes to your local project repository (new folders, new files, edit files, delete files, etc.)
 
 	4) "git commit -m 'Some type of description of your changes here.'"
-		This will update your local repository's history with your current changes, always remember to add a commit message.
+		This will update your local repository's history with your current changes.
+		Always remember to add a commit message.
 
 	5) "git push origin master"
 		This will update the remote branch with your changes to be seen and pulled by everyone else on the project.
 
-	NOTE:  As long as you are within the project repo and have already done Step 1 (checkout), then anytime you make changes you just have to repeat Steps 2 to 5.
+	NOTE:  As long as you are within the project repo and have already done Step 1 (checkout).
+			Anytime you make changes you just have to repeat Steps 2 to 5.
 
 ### Pro Steps:
 	cd <path to workspace>
