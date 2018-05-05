@@ -54,6 +54,21 @@ Training website for Syntel
 	Download/Install Github Desktop: https://desktop.github.com/
 
 ### Clone
-	1) Launch Github Desktop. Click on the green button that is labeled "Clone or Download" and copy the link shown.
+	1) Click on the green button that is labeled "Clone or Download" and copy the link shown.
 	
-	2) Open Github Desktop on local machine. Go to File > Clone repository > URL tab
+	2) Start Github Desktop. Go to File > Clone repository > URL tab. Paste the link from Step 1 and set a target directory for the project.
+
+### Workflow
+	1) Start Github Desktop. Choose "master" in the "Current Branch" tab's dropdown menu.
+
+	2) Click the "Fetch Origin" button. If the button changes to say "Pull Origin" at any point, press it again.  This will update your local repository with the current changes.
+
+	3) Make changes to your local project repository (new folders, new files, edit files, delete files, etc.).  Any changes you make should appear on the left side in the "Changes" tab.  You can also view a history of the project's changes in the "History" tab.
+
+	4) When you have new changes, fill out the "Summary" and "Description" of the changes you've made. Press the "Commit" button on the bottom when you're ready to commit the changes.
+
+	5) Press the "Push" button on the top of the application to upload your changes to the remote repository on github. Everyone else on the project should now be able to see and update with your changes.
+
+
+
+	4) 
