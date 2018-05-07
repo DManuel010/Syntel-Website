@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+	body {background-color:yellow}
+	li{display: inline;
+		margin:100px;
+		padding:10px}
+		
+	.navbar {float: right;}
+	
+		
+</style>
+<meta charset="ISO-8859-1">
+<title>Login Page</title>
+
+
+
+</head>
+<body>
+
+	<nav>
+	<li><a href="" class = .navbar>LOGIN</a></li>
+	<li><a href="" class = .navbar>ORDERS</a></li>
+	<li><a href="" class = .navbar>HOME</a></li>
+	
+	</nav>
+
+	<p><b><FONT FACE="Arial">Log-in to place an order</FONT></b></p>
+
+	<form target="_blank">
+	<h1>Mummy's Restaurant</h1>
+	
+		<legend>Login Information</legend>
+		<p><label>Email: <input id = "user" type="email" name="user" required></label></p>
+		<p><label>Password: <input id = "pass" type="password" name="pass" required></label></p>
+		<input name="submit" type="button" value ="Login" onClick = "printInfo();">
+	
+	
+	
+	
+	
+	<!--<fieldset>
+	
+	
+	 <legend>New Users</legend>
+	<p><label>Enter Email: <input type="email" name="emailnew"></label></p>
+	<p><label>Choose Password: <input type="password" name="passwordnew"></label></p>
+	<p><label>Re-enter Password: <input type="password" name="passwordnew"></label></p>
+	<input type="submit" value="Register">
+	
+	</fieldset>-->
+	
+	</form>
+	
+<script>
+
+
+
+function printInfo() {
+	
+	var email1 = document.getElementById('user');
+	var pass1 = document.getElementById('pass');
+	
+	if (email1 != null) {
+		
+		document.write("Email: "+email1.value);
+	    document.write('<br/>');
+	    document.write("Password: "+pass1.value);
+		
+	}
+ 	
+}
+
+</script>
+
+</body>
+</html>
