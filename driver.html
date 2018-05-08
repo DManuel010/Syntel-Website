@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Delivery</title>
+    
+<style>
+
+h2,h3,p{
+text-align:center;
+}
+.jum{
+text-align:center;}
+li{
+display:inline;}
+    .logoutLblPos{
+
+   position:fixed;
+   right:10px;
+   top:5px;
+}
+    textarea{
+        display:inline;
+        text-align: center;
+        
+    }  
+    li{
+        display: inline;
+    }
+</style>
+    <script>
+    function function1(){
+        
+    }
+        function driverid(){
+            id = 101;
+         var drive =  document.getElementById("5");
+            drive.innerHTML = "101";
+        }
+        $(document).ready(function(){
+    $("p").dblclick(function(){
+        $(this).slideUp();
+    });
+});
+        
+    </script>
+<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<nav>
+<li><a href="">HOME</a></li>
+    <p>You are logged in as</p><p id="5"> Employee ID</p>
+
+<br> 
+    <button type="button" onclick="driverid()">Employee log</button>
+</nav>
+</head>
+<body>
+
+
+<br>
+<br>
+   
+<ul>
+  <li data-order-1="#">Meal Combo</li>
+    
+    <br>
+    <br>
+    <form action="orders.js" method="post">
+        Driver Name:
+        
+    <input type = "text" name="name">
+        <br>
+        Restaurant Location:
+        
+        <input type+"text" name="locaton">
+        <br><br>
+        <input type="submit" value="submit">
+    
+    
+    </form>
+    <br>
+  <li data-order-2="#">Burger</li>
+    <br>
+    <form action="orders.js" method="post">
+        Driver Name:
+        
+    <input type = "text" name="name">
+        <br>
+        Restaurant Location:
+        
+        <input type+"text" name="locaton">
+        <br><br>
+        <input type="submit" value="submit">
+    
+    
+    </form>
+    <br>
+    <br>
+  <li data-order-3="#">Tacos</li>
+    <br>
+    <form action="orders.js" method="post">
+        Driver Name:
+        
+    <input type = "text" name="name">
+        <br>
+        Restaurant Location:
+        
+        <input type+"text" name="locaton">
+        <br><br>
+        <input type="submit" value="submit">
+    
+    
+    </form>
+    <br>
+    <br>
+</ul>
+    
+    <form align="right" name="form1" method="post" action="log_out.php">
+  <label class="logoutLblPos">
+  <input name="submit2" type="submit" id="submit2" value="log out">
+  </label>
+</form>
+</body>
+</html>
