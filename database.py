@@ -63,14 +63,13 @@ def build_db():
 	##################
 
 	query_employee = '''CREATE TABLE Employee (
-						employeeID INT NOT NULL PRIMARY KEY,
-						firstName VARCHAR(255) NOT NULL,
-						lastName VARCHAR(255) NOT NULL,
-						hireDate DATETIME NOT NULL,
-						terminateDate DATETIME NOT NULL,
-						loginID 
-						);
-
+							employeeID INT NOT NULL PRIMARY KEY,
+							firstName VARCHAR(255) NOT NULL,
+							lastName VARCHAR(255) NOT NULL,
+							hireDate DATETIME NOT NULL,
+							terminateDate DATETIME NOT NULL,
+							loginID 
+						);'''
 
 
 
