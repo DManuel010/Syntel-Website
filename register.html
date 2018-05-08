@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+
+<body>
+<div class="logo">
+			<img src="images/logo.png" alt="logo">
+</div>
+
+<nav>
+	<ul>
+		<li><a href="index.html" class="active">Home</a></li>
+		<li><a href="order.html">Order</a></li>
+		<li><a href="contact.html">Contacts</a></li>
+		<li><a href="">About</a></li>
+		<li style="float:right"><a href="">Login</a></li>
+	</ul>
+</nav>
+<p><b><FONT FACE="Arial">Register Now</FONT></b></p>
+
+<form>
+	<fieldset>
+	
+	<legend>New Users</legend>
+	<p><label>First Name: <input type="text" name="first" required></label></p>
+	<p><label>Last Name: <input type="text" name="last" required></label></p>
+	<p><label>Enter Email: <input type="email" name="emailnew" required></label></p>
+	<p><label>Choose Password: <input id = "pass1" type="password" name="pass1" required></label></p>
+	<p><label>Re-enter Password: <input id = "pass2" type="password" name="pass2" required></label></p>
+	<input type="submit" value="Register" onclick="matchpass();">
+	
+	</fieldset>
+	
+</form>
+
+<label><strong>Existing Users</strong></label>
+<a href="Login.html">Login Here</a>
+	
+	<script>
+	var newpass = document.getElementById('pass1');
+	var newpass2 = document.getElementById('pass2');
+	
+	function matchpass()
+	{
+		if(newpass.value != newpass2.value)
+		{
+			document.writeln("Passwords do not match");
+		}else
+			{
+				document.writeln("Passwords match");
+			}
+	}
+	
+	
+	</script>
+
+</body>
+</html>
