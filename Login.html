@@ -1,61 +1,44 @@
 <!DOCTYPE html>
 <html>
 <head>
-<style>
-	body {background-color:yellow}
-	li{display: inline;
-		margin:100px;
-		padding:10px}
-		
-	.navbar {float: right;}
-	
-		
-</style>
+<link rel="stylesheet" type="text/css" href="styles.css">
 <meta charset="ISO-8859-1">
 <title>Login Page</title>
 
 
-
 </head>
 <body>
+<div class="logo">
+			<img src="images/logo.png" alt="logo">
+</div>
 
 	<nav>
-	<li><a href="login.html" class = .navbar>LOGIN</a></li>
-	<li><a href="order.html" class = .navbar>ORDERS</a></li>
-	<li><a href="index.html" class = .navbar>HOME</a></li>
-	
-	</nav>
+			<ul>
+				<li><a href="index.html" class="active">Home</a></li>
+				<li><a href="order.html">Order</a></li>
+				<li><a href="contact.html">Contacts</a></li>
+				<li><a href="">About</a></li>
+				<li style="float:right"><a href="">Login</a></li>
+			</ul>
+		</nav>
 
 	<p><b><FONT FACE="Arial">Log-in to place an order</FONT></b></p>
 
 	<form target="_blank">
-	<h1>Mummy's Restaurant</h1>
+	
+	<fieldset>
 	
 		<legend>Login Information</legend>
 		<p><label>Email: <input id = "user" type="email" name="user" required></label></p>
 		<p><label>Password: <input id = "pass" type="password" name="pass" required></label></p>
 		<input name="submit" type="button" value ="Login" onClick = "printInfo();">
-	
-	
-	
-	
-	
-	<!--<fieldset>
-	
-	
-	 <legend>New Users</legend>
-	<p><label>Enter Email: <input type="email" name="emailnew"></label></p>
-	<p><label>Choose Password: <input type="password" name="passwordnew"></label></p>
-	<p><label>Re-enter Password: <input type="password" name="passwordnew"></label></p>
-	<input type="submit" value="Register">
-	
-	</fieldset>-->
-	
+	</fieldset>
 	</form>
 	
+	<label><strong>New Users</strong></label>
+	<a href="register.html">Register Here</a>
+	
 <script>
-
-
 
 function printInfo() {
 	
