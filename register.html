@@ -1,12 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="styles.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+<link rel="stylesheet" type="text/css" href="stylesheets/styles.css">
+
+<script>
+	var newpass = document.getElementById('pass1');
+	var newpass2 = document.getElementById('pass2');
+	
+	function matchpass()
+	{
+		if(newpass.value != newpass2.value) {
+			document.writeln("Passwords do not match");
+		} else {
+			document.writeln("Passwords match");
+		}
+	}
+	
+	
+	</script>
+
 </head>
 
 <body>
 <div class="logo">
-			<img src="images/logo.png" alt="logo">
+			<img src="images/global/logo.png" alt="logo">
 </div>
 
 <nav>
@@ -20,17 +38,36 @@
 </nav>
 <p><b><FONT FACE="Arial">Register Now</FONT></b></p>
 
-<form>
+<form style="width:300px">
 	<fieldset>
 	
-	<legend>New Users</legend>
-	<p><label>First Name: <input type="text" name="first" required></label></p>
-	<p><label>Last Name: <input type="text" name="last" required></label></p>
-	<p><label>Enter Email: <input type="email" name="emailnew" required></label></p>
-	<p><label>Choose Password: <input id = "pass1" type="password" name="pass1" required></label></p>
-	<p><label>Re-enter Password: <input id = "pass2" type="password" name="pass2" required></label></p>
-	<input type="submit" value="Register" onclick="matchpass();">
-	
+		<legend>New Users</legend>
+		<div class="form-group">
+			<label for="firstName">First Name:</label>
+			<input type="text" class="form-control" id="firstName" name="first" placeholder="First Name" required>
+		</div>
+
+		<div class="form-group">
+			<label for="lastName">Last Name:</label>
+			<input type="text" class="form-control" id="lastName" name="last" placeholder="Last Name" required>
+		</div>
+
+		<div class="form-group">
+			<label for="email">Email:</label>
+			<input type="email" class="form-control" id="email" placeholder="Email" name="emailnew" required>
+		</div>
+
+		<div class="form-group">
+			<label for="pass1">Password:</label>
+			<input id="pass1" type="password" class="form-control" id="pass1" placeholder="Password" name="pass1" required>
+		</div>
+
+		<div class="form-group">
+			<label for="pass2">Re-enter Password:</label>
+			<input id = "pass2" type="password" id="pass2" class="form-control" placeholder="Re-enter Password" name="pass2" required>
+		</div>
+
+		<input type="submit" value="Register" class="btn btn-default" onclick="matchpass();">
 	</fieldset>
 	
 </form>
@@ -38,23 +75,7 @@
 <label><strong>Existing Users</strong></label>
 <a href="Login.html">Login Here</a>
 	
-	<script>
-	var newpass = document.getElementById('pass1');
-	var newpass2 = document.getElementById('pass2');
-	
-	function matchpass()
-	{
-		if(newpass.value != newpass2.value)
-		{
-			document.writeln("Passwords do not match");
-		}else
-			{
-				document.writeln("Passwords match");
-			}
-	}
-	
-	
-	</script>
+
 
 </body>
 </html>
