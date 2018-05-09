@@ -3,7 +3,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Delivery</title>
-    
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"> 
 <style>
 
 h2,h3,p{
@@ -37,11 +37,7 @@ display:inline;}
          var drive =  document.getElementById("5");
             drive.innerHTML = "101";
         }
-        $(document).ready(function(){
-    $("p").dblclick(function(){
-        $(this).slideUp();
-    });
-});
+       
         
     </script>
 <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
@@ -50,7 +46,7 @@ display:inline;}
     <p>You are logged in as</p><p id="5"> Employee ID</p>
 
 <br> 
-    <button type="button" onclick="driverid()">Employee log</button>
+    <button type="button" class="btn btn-danger" onclick="driverid()">Show Employee Logged in <span class="badge"></span></button>
 </nav>
 </head>
 <body>
@@ -119,5 +115,7 @@ display:inline;}
   <input name="submit2" type="submit" id="submit2" value="log out">
   </label>
 </form>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>  
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>  
 </body>
 </html>

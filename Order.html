@@ -19,11 +19,10 @@
   .center {
     text-align:center;
   }
-    
-  .whirl {
-    border-top: 2px solid;
-    border-bottom:2px solid;
-  }
+    .co{
+        float:right;
+    }
+  
 	
 	.badge-notify {
     background:red;
@@ -36,6 +35,49 @@
     position: fixed;
     z-index: 999;
   }
+    #cart_amount{
+        color:red;
+    }
+    .hidden{
+        display:none;
+    }
+    
+    .modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
 	</style>
 
 <link type="text/css" rel="stylesheet" href="stylesheets/styles.css">
@@ -43,196 +85,18 @@
 <script type='text/javascript' src="js/bootstrap.min.js"></script>
 <script type='text/javascript' src="js/jquery.mycart.js"></script>
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
-<script type="text/javascript">
-     $(function () {
-         $(".my-cart-btn").myCart(options);
-     });
-</script>
+
 
 <script>
-$(function () {
+ var clicks = 0;
+    function incrememntCount() {
+        clicks += 1;
+        document.getElementById("cart_amount").innerHTML = clicks;
+    };
 
-  var goToCartIcon = function($addTocartBtn){
-
-    var $cartIcon = $(".my-cart-icon");
-
-    var $image = $('<img width="30px" height="30px" src="' + $addTocartBtn.data("image") + '"/>').css({"position": "fixed", "z-index": "999"});
-
-    $addTocartBtn.prepend($image);
-
-    var position = $cartIcon.position();
-
-    $image.animate({
-
-      top: position.top,
-
-      left: position.left
-
-    }, 500 , "linear", function() {
-
-     $image.remove();
-
-    });
-
-  }
-
- 
-
-  $('.my-cart-btn').myCart({
-
-    classCartIcon: 'my-cart-icon',
-
-    classCartBadge: 'my-cart-badge',
-
-    affixCartIcon: true,
-
-    checkoutCart: function(products) {
-
-      $.each(products, function(){
-
-        console.log(this);
-
-      });
-
-    },
-
-    clickOnAddToCart: function($addTocart){
-
-      goToCartIcon($addTocart);
-
-    },
-
-    getDiscountPrice: function(products) {
-
-      var total = 0;
-
-      $.each(products, function(){
-
-        total += this.quantity * this.price;
-
-      });
-
-      return total * 0.5;
-
-    }
-
-  });
-
-});
+    
+    
 </script>
-
-<script>
-    $(function () {
-
-  var goToCartIcon = function($addTocartBtn){
-
-    var $cartIcon = $(".my-cart-icon");
-
-    var $image = $('<img width="30px" height="30px" src="' + $addTocartBtn.data("image") + '"/>').css({"position": "fixed", "z-index": "999"});
-
-    $addTocartBtn.prepend($image);
-
-    var position = $cartIcon.position();
-
-    $image.animate({
-
-      top: position.top,
-
-      left: position.left
-
-    }, 500 , "linear", function() {
-
-     $image.remove();
-
-    });
-
-  }
-
- 
-
-  $('.my-cart-btn').myCart({
-
-    classCartIcon: 'my-cart-icon',
-
-    classCartBadge: 'my-cart-badge',
-
-    affixCartIcon: true,
-
-    checkoutCart: function(products) {
-
-      $.each(products, function(){
-
-        console.log(this);
-
-      });
-
-    },
-
-    clickOnAddToCart: function($addTocart){
-
-      goToCartIcon($addTocart);
-
-    },
-
-    getDiscountPrice: function(products) {
-
-      var total = 0;
-
-      $.each(products, function(){
-
-        total += this.quantity * this.price;
-
-      });
-
-      return total * 0.5;
-
-    }
-
-  });
-
-});
-
-var options = {
-      currencySymbol: '$',
-      classCartIcon: 'my-cart-icon',
-      classCartBadge: 'my-cart-badge',
-      classProductQuantity: 'my-product-quantity',
-      classProductRemove: 'my-product-remove',
-      classCheckoutCart: 'my-cart-checkout',
-      affixCartIcon: true,
-      showCheckoutModal: true,
-      numberOfDecimals: 2,
-      cartItems: [
-        {id: 1, name: 'product 1', summary: 'summary 1', price: 10, quantity: 1, image: 'images/order/img_1.png'},
-        {id: 2, name: 'product 2', summary: 'summary 2', price: 20, quantity: 2, image: 'images/order/img_2.png'},
-        {id: 3, name: 'product 3', summary: 'summary 3', price: 30, quantity: 1, image: 'images/order/img_3.png'}
-      ],
-      clickOnAddToCart: function($addTocart){
-        goToCartIcon($addTocart);
-      },
-      afterAddOnCart: function(products, totalPrice, totalQuantity) {
-        console.log("afterAddOnCart", products, totalPrice, totalQuantity);
-      },
-      clickOnCartIcon: function($cartIcon, products, totalPrice, totalQuantity) {
-        console.log("cart icon clicked", $cartIcon, products, totalPrice, totalQuantity);
-      },
-      checkoutCart: function(products, totalPrice, totalQuantity) {
-        // return false, from this function 
-        // if precondition of checking out is invalid
-        // if(!willProceedToCheckout) return false;
-        var checkoutString = "Total Price: " + totalPrice + "\nTotal Quantity: " + totalQuantity;
-        checkoutString += "\n\n id \t name \t summary \t price \t quantity \t image path";
-        $.each(products, function(){
-          checkoutString += ("\n " + this.id + " \t " + this.name + " \t " + this.summary + " \t " + this.price + " \t " + this.quantity + " \t " + this.image);
-        });
-        alert(checkoutString)
-        console.log("checking out", products, totalPrice, totalQuantity);
-      },
-      getDiscountPrice: function(products, totalPrice, totalQuantity) {
-        console.log("calculating discount", products, totalPrice, totalQuantity);
-        return totalPrice * 0.5;
-      }
-};</script>
 
   <nav>
       <ul>
@@ -243,13 +107,47 @@ var options = {
         <li style="float:right"><a href="">Login</a></li>
       </ul>
     </nav>
+    
 <br><title>ORDERING</title><br>
 
-  <div class="whirl">   
+    
     <div class="center">
-      <header role="banner"> ORDER HERE!</header>
+        <header role="banner"> <h1>ORDER HERE!</h1></header>
+        <div class="container">
+         <div class="co">
+      
+   <a href="#" 
+   data-role="button"
+   
+   data-theme="d"
+   class="bu" id="10">
+</a><button id="myBtn"><img src="images/order/cart.png" width="100px" height="100px"></button><p id="cart_amount">0</p></div>
+            <br>
+             
+            </div>
     </div>
+    
+   <br>
+    
+    
+    
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <ul>
+      <li>Item 1</li>
+        <li>item 2</li>
+      </ul>
   </div>
+
+</div>
+    <br>
+   
+
 
 </head>
 
@@ -258,45 +156,73 @@ var options = {
     <span class="badge badge-notify my-cart-badge">
     </span>
   </span>
-
+ <br>
+    <br>
   <div class="row">
   
     <div class="col-md-3 text-center">
       <img src="images/order/img_1.png" width="150px" height="150px">
       <br><strong>$10</strong><br>
-      <button class="btn btn-danger my-cart-btn" data-id="1" data-name="product 1" data-summary="summary 1" data-price="10" data-quantity="1" data-image="images/order/img_1.png">Add to Cart</button>
+      <button class="btn btn-danger my-cart-btn" data-id="1" data-name="product 1" data-summary="summary 1" data-price="10" data-quantity="1" data-image="images/order/img_1.png" onclick="incrememntCount()">Add to Cart</button>
       <a href="#" class="btn btn-info">Details</a>
     </div>
 
     <div class="col-md-3 text-center">
       <img src="images/order/img_2.png" width="150px" height="150px">
       <br><strong>$20</strong><br>
-      <button class="btn btn-danger my-cart-btn" data-id="2" data-name="product 2" data-summary="summary 2" data-price="20" data-quantity="1" data-image="images/order/img_2.png">Add to Cart</button>
+      <button class="btn btn-danger my-cart-btn" data-id="2" data-name="product 2" data-summary="summary 2" data-price="20" data-quantity="1" data-image="images/order/img_2.png" onclick="incrememntCount()">Add to Cart</button>
       <a href="#" class="btn btn-info">Details</a>
     </div>
 
     <div class="col-md-3 text-center">
       <img src="images/order/img_3.png" width="150px" height="150px">
       <br><strong>$30</strong><br>
-      <button class="btn btn-danger my-cart-btn" data-id="3" data-name="product 3" data-summary="summary 3" data-price="30" data-quantity="1" data-image="images/order/img_3.png">Add to Cart</button>
+      <button class="btn btn-danger my-cart-btn" data-id="3" data-name="product 3" data-summary="summary 3" data-price="30" data-quantity="1" data-image="images/order/img_3.png" onclick="incrememntCount()">Add to Cart</button>
       <a href="#" class="btn btn-info">Details</a>
     </div>
 
     <div class="col-md-3 text-center">
       <img src="images/order/img_4.png" width="150px" height="150px">
       <br><strong>$40</strong><br>
-      <button class="btn btn-danger my-cart-btn" data-id="4" data-name="product 4" data-summary="summary 4" data-price="40" data-quantity="1" data-image="images/order/img_4.png">Add to Cart</button>
+      <button class="btn btn-danger my-cart-btn" data-id="4" data-name="product 4" data-summary="summary 4" data-price="40" data-quantity="1" data-image="images/order/img_4.png" onclick="incrememntCount()">Add to Cart</button>
       <a href="Order.html" class="btn btn-info">Details</a>
     </div>
 
     <div class="col-md-3 text-center">
       <img src="images/order/img_5.png" width="150px" height="150px">
       <br><strong>$50</strong><br>
-      <button class="btn btn-danger my-cart-btn" data-id="5" data-name="product 5" data-summary="summary 5" data-price="50" data-quantity="1" data-image="images/order/img_5.png">Add to Cart</button>
+      <button class="btn btn-danger my-cart-btn" data-id="5" data-name="product 5" data-summary="summary 5" data-price="50" data-quantity="1" data-image="images/order/img_5.png" onclick="incrememntCount()">Add to Cart</button>
       <a href="#" class="btn btn-info">Details</a>
     </div>
 
   </div>
 
+    <script>
+    // Get the modal
+var modal = document.getElementById('myModal');
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+    modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+    </script>
 </body>
 </html>
