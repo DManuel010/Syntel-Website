@@ -1,0 +1,139 @@
+{
+	"employees":
+	[
+		{
+			"firstName": "Barack",
+			"lastName": "Obama",
+			"email": "b.obama@mummys.com",
+			"hireDate": "2012-02-15 14:34:58",
+			"title": "President",
+			"loginID": 3,
+			"phoneNumber": "501-258-3449",
+			"workAddrID": 1,
+			"homeAddrID": 1,
+			"lastLogin": "2013-03-02 03:48:01"
+		},
+
+		{
+			"firstName": "Crazy",
+			"lastName": "Steve",
+			"email": "c.steve@mummys.com",
+			"hireDate": "2014-05-11 23:58:01",
+			"title": "Driver",
+			"loginID": 1,
+			"phoneNumber": "800-332-1185",
+			"workAddrID": 2,
+			"homeAddrID": 2,
+			"lastLogin": "2017-10-30 11:03:00"
+		},
+
+		{
+			"firstName": "Drew",
+			"lastName": "Manuel",
+			"email": "d.manuel@mummys.com",
+			"hireDate": "2018-05-20 10:33:40",
+			"title": "Manager",
+			"loginID": 2,
+			"phoneNumber": "413-505-3397",
+			"workAddrID": 2,
+			"homeAddrID": 3,
+			"lastLogin": "2018-05-22 20:23:49"
+		},
+
+		{
+			"firstName": "Peter",
+			"lastName": "Griffin",
+			"email": "p.griffin@mummys.com",
+			"hireDate": "2017-06-13 10:45:43",
+			"title": "Driver",
+			"loginID": 4,
+			"phoneNumber": "413-505-3397",
+			"workAddrID": 3,
+			"homeAddrID": 4,
+			"lastLogin": "2017-06-13 10:50:43"		
+		}
+	],
+
+	"cards": 
+	[
+		{
+			"name": "Glen Quagmire",
+			"cardNumber": 2135778935341208,
+			"expirationDate": "2020-12-03",
+			"cvv": 920,
+			"type": "Visa",
+			"billingAddrID": 5
+		},
+
+		{
+			"name": "Bruce Wayne",
+			"cardNumber": 7654998723421185,
+			"expirationDate": "2025-10-04",
+			"cvv": 255,
+			"type": "MasterCard",
+			"billingAddrID": 6
+		},
+
+		{
+			"name": "Peter Parker",
+			"cardNumber": 7765487622148891,
+			"expirationDate": "2020-12-03",
+			"cvv": 541,
+			"type": "Discovery",
+			"billingAddrID": 7
+		},
+
+		{
+			"name": "Drake Bell",
+			"cardNumber": 5021488232321093,
+			"expirationDate": "2025-04-20",
+			"cvv": 776,
+			"type": "Visa",
+			"billingAddrID": 8
+		}
+	],
+
+	"food":
+	[
+		{
+			"name": "apple",
+			"foodGroup": "fruit",
+			"price": 2.99,
+			"description": "Crisp, sweet, red",
+			"stock": 300
+		},
+
+		{
+			"name": "sour cream",
+			"foodGroup": "dairy",
+			"price": 5.39,
+			"description": "white, tart, creamy",
+			"stock": 129
+		},
+
+		{
+			"name": "cherry pie",
+			"foodGroup": "dessert",
+			"price": 12.00,
+			"description": "flaky crust, sweet, soft center",
+			"stock": 10
+		},
+
+		{
+			"name": "lettuc",
+			"foodGroup": "vegetable",
+			"price": 5.29,
+			"description": null,
+			"stock": 282
+		}
+	],
+
+	"locations":
+	[
+		{
+			
+		}
+	],
+
+
+}

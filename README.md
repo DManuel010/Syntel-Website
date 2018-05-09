@@ -84,3 +84,48 @@ Training website for Syntel
 		Everyone else on the project should now be able to see and update with your changes.
 
 
+######################
+#    REQUIREMENTS    #
+######################
+
+	- Python 3.6.X
+		* pip (9.0.1)
+		* mysql-connector-python (8.0.11)
+		* protobuf (3.5.2.post1)
+		* setuptools (28.8.0)
+		* six (1.11.0)
+
+	- MySQL 8.0.11
+
+
+########################
+#    DATABASE SETUP    #
+########################
+
+	1) Install MySQL and set a username and password for login
+
+	2) Install Python 3.6.X
+
+		NOTE: The following steps will assume Python 3.6.X is your default.  If not, use 'python3' instead of 'python' when running the Python commands and 'pip3' instead of 'pip' when installing Python requirements.
+
+	3) Navigate to ~/Syntel-Website/ and run the following command in terminal:
+		pip install -r requirements.txt
+
+		NOTE: Only 'mysql-connector-python' is listed in requirements.txt, pip will automatically install the other dependencies listed above. 
+
+	4) Run following command in terminal:
+		python ~/Syntel-Website/database/database.py <username> <password>
+
+		NOTE: <username> and <password> should be replaced with the login info from Step 1.
+
+	5) Verify that the database and tables were created correctly by launching mysql.
+		>mysql -u<username> -p<password>
+		mysql> show databases;
+		mysql> use restaurant;
+		mysql> show tables;
+
+		NOTE: Running each of these commands should yield the following results respectively: 
+			- start mysql with login info from Step 1 
+			- list all databases (look for 'restaurant') 
+			- use 'restaurant' as the current database
+			- list the tables contained in 'restaurant'
