@@ -107,7 +107,8 @@ Training website for Syntel
 	2) Install Python 3.6.X
 
 		NOTE: The following steps will assume Python 3.6.X is your default.
-			If not, use 'python3' instead of 'python' when running the Python commands and 'pip3' instead of 'pip' when installing Python requirements.
+			If not, use 'python3' instead of 'python' when running the Python commands 
+			and 'pip3' instead of 'pip' when installing Python requirements.
 
 	3) Navigate to ~/Syntel-Website/ and run the following command in terminal:
 		pip install -r requirements.txt
