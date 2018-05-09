@@ -2,9 +2,7 @@
 Training website for Syntel
 
 
-#############################
-#    GITHUB INSTRUCTIONS    #
-#############################
+#    GITHUB INSTRUCTIONS
 
 ## Command Line
 	
@@ -84,9 +82,7 @@ Training website for Syntel
 		Everyone else on the project should now be able to see and update with your changes.
 
 
-######################
-#    REQUIREMENTS    #
-######################
+#    REQUIREMENTS    
 
 	- Python 3.6.X
 		* pip (9.0.1)
@@ -98,9 +94,7 @@ Training website for Syntel
 	- MySQL 8.0.11
 
 
-########################
-#    DATABASE SETUP    #
-########################
+#    DATABASE SETUP
 
 	1) Install MySQL and set a username and password for login
 
@@ -134,9 +128,7 @@ Training website for Syntel
 			- list the tables contained in 'restaurant'
 
 
-###########################
-#    FILE DESCRIPTIONS    #
-###########################
+#    FILE DESCRIPTIONS
 
 ## Database
 	- database.py
