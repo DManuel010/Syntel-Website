@@ -129,3 +129,61 @@ Training website for Syntel
 			- list all databases (look for 'restaurant') 
 			- use 'restaurant' as the current database
 			- list the tables contained in 'restaurant'
+
+
+###########################
+#    FILE DESCRIPTIONS    #
+###########################
+
+## Database
+	- database.py
+		Python script for building the database schema.
+
+	- database.json
+		JSON file containing fake entries to populate database.
+	
+	- /current/
+		Directory holding design documents of our current database structure.
+	
+	- /old/
+		Directory holding first draft of our database structure.
+
+## Images
+	Contains all images for the web pages.
+
+## Javascript
+	Contains all external javascript files for web pages.
+
+## Stylesheets
+	Contains all external CSS files for web pages.
+
+## Requirements
+	Text file containing any additional requirements for setup of the environment.
+
+## README
+	You're already reading it!
+
+## HTML
+	- index.html
+		Home page with small sample menu and links to other pages on the website.
+	
+	- login.html
+		Login page for existing users.
+	
+	- register.html
+		Registration/sign-up page for new users. Provides form for user information.
+	
+	- order.html
+		Allows users to add items to their cart and checkout once logged in.
+	
+	- confirmation.html
+		Confirmation page shows successful order by user.
+	
+	- driver.html
+		Employee page for drivers that provide them with info about their current deliveries.
+	
+	- contact.html
+		Company contact page to be viewed by users.
+	
+	- admin.html
+		Employee page for administrators/managers that provide them with info about driver deliveries and allows for editing of those deliveries.		
