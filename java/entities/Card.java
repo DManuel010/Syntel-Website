@@ -2,42 +2,29 @@ package entities;
 
 import java.util.Date;
 
-public class Card 
-{
-	int cardID;
-	String name;
-	int number;
-	Date expirationDate;
-	int ccv;
-	String type;
-	Location billingAddr;
+public class Card {
+	private int cardID;
+	private String name;
+	private String number;
+	private Date expirationDate;
+	private int cvv;
+	private String type;
+	private Location billingAddr;
 	
-	static int cardCount;
+	private static int cardCount;
 
-	/**
-	 * @param cardID
-	 * @param name
-	 * @param number
-	 * @param expirationDate
-	 * @param ccv
-	 * @param type
-	 * @param billingAddr
-	 */
-	public Card(int cardID, String name, int number, Date expirationDate, int ccv, String type, Location billingAddr)
-	{
+	public Card(String name, String number, Date expirationDate, int cvv, String type, Location billingAddr) {
 		super();
-		this.cardID = cardID;
 		this.name = name;
 		this.number = number;
 		this.expirationDate = expirationDate;
-		this.ccv = ccv;
+		this.cvv = cvv;
 		this.type = type;
 		this.billingAddr = billingAddr;
 		cardCount++;
 	}
 
-	public Card() 
-	{
+	public Card() {
 		super();
 		cardCount++;
 	}
@@ -58,11 +45,11 @@ public class Card
 		this.name = name;
 	}
 
-	public int getNumber() {
+	public String getNumber() {
 		return number;
 	}
 
-	public void setNumber(int number) {
+	public void setNumber(String number) {
 		this.number = number;
 	}
 
@@ -74,12 +61,12 @@ public class Card
 		this.expirationDate = expirationDate;
 	}
 
-	public int getCcv() {
-		return ccv;
+	public int getcvv() {
+		return cvv;
 	}
 
-	public void setCcv(int ccv) {
-		this.ccv = ccv;
+	public void setcvv(int cvv) {
+		this.cvv = cvv;
 	}
 
 	public String getType() {
@@ -109,6 +96,6 @@ public class Card
 	@Override
 	public String toString() {
 		return "Card [cardID=" + cardID + ", name=" + name + ", number=" + number + ", expirationDate=" + expirationDate
-				+ ", ccv=" + ccv + ", type=" + type + ", billingAddr=" + billingAddr + "]";
+				+ ", cvv=" + cvv + ", type=" + type + ", billingAddr=" + billingAddr + "]";
 	}
 }

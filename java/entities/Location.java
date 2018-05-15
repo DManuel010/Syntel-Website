@@ -1,30 +1,18 @@
 package entities;
 
-public class Location 
-{
-	int locationID;
-	String country;
-	String state;
-	String city;
-	String street;
-	String room;
-	int zip;
+public class Location {
+	private int locationID;
+	private String country;
+	private String state;
+	private String city;
+	private String street;
+	private String room;
+	private String zip;
 	
-	static int locationCount;
+	private static int locationCount;
 
-	/**
-	 * @param locationID
-	 * @param country
-	 * @param state
-	 * @param city
-	 * @param street
-	 * @param room
-	 * @param zip
-	 */
-	public Location(int locationID, String country, String state, String city, String street, String room, int zip)
-	{
+	public Location(String country, String state, String city, String street, String room, String zip) {
 		super();
-		this.locationID = locationID;
 		this.country = country;
 		this.state = state;
 		this.city = city;
@@ -34,8 +22,7 @@ public class Location
 		locationCount++;
 	}
 
-	public Location() 
-	{
+	public Location() {
 		super();
 		locationCount++;
 	}
@@ -88,11 +75,11 @@ public class Location
 		this.room = room;
 	}
 
-	public int getZip() {
+	public String getZip() {
 		return zip;
 	}
 
-	public void setZip(int zip) {
+	public void setZip(String zip) {
 		this.zip = zip;
 	}
 

@@ -2,21 +2,15 @@ package entities;
 
 import java.util.Date;
 
-public class Payment 
-{
-	int paymentID;
-	float amount;
-	Date date;
+public class Payment {
+	private int paymentID;
+	private float amount;
+	private Date date;
 	
-	static int paymentCount;
+	private static int paymentCount;
 
-	/**
-	 * @param paymentID
-	 * @param amount
-	 * @param date
-	 */
-	public Payment(int paymentID, float amount, Date date) 
-	{
+	
+	public Payment(int paymentID, float amount, Date date) {
 		super();
 		this.paymentID = paymentID;
 		this.amount = amount;
@@ -24,8 +18,7 @@ public class Payment
 		paymentCount++;
 	}
 
-	public Payment() 
-	{
+	public Payment() {
 		super();
 		paymentCount++;
 	}
