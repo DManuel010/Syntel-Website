@@ -11,7 +11,7 @@
 <script type="text/javascript">
 function signup()
 {
-	
+	var validEmail = /^[A-Za-z0-9._]*\@[A-Za-z]*\.[A-Za-z]{2,5}$/;
 	var firstname = document.getElementById('firstname'),
 		lastname = document.getElementById('lastname'),
 		email = document.getElementById('emailaddress'),
@@ -27,11 +27,17 @@ function signup()
 	}
 	
 	else if(firstname.value == '' || lastname.value == '' || email.value == '' || password.value == '' || passwordre.value == '')
-	{
+	{ 
+		//no values should be empty
 		document.getElementById("errormsg").innerHTML = "Please fill out all fields";
 		return false;
 		
-	} else if(password.value==passwordre.value)
+	} else if (!validEmail.test(email.value)) 
+		{
+			//must be entering a valid email address
+			document.getElementById("errormsg").innerHTML = "Please enter a valid email address";
+			return false;
+		}else if(password.value==passwordre.value)
 	{
 		document.getElementById("errormsg").innerHTML = "";
 		alert("Successfully registered");
