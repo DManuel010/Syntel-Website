@@ -6,18 +6,17 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import entities.Location;
-import interfaces.Service;
 
-public class LocationService implements Service {
-	Connection conn;
+public class LocationService extends Service {
 
 	public LocationService(Connection conn) {
 		super();
-		this.conn = conn;
 	}
 	
 	@Override
-	public void insert(Location location) {
+	public void insert(Object obj) {
+		Location location = (Location) obj;
+		
 		// get location values
 		int locationID;
 		if(location.getLocationID() == 0) {
@@ -39,45 +38,21 @@ public class LocationService implements Service {
 		String query = String.format(
 					"INSERT INTO Location " + 
 					"(locationID, country, state, city, streetNum, roomNum, zip) " +
-					"VALUES('%d', '%s', '%s', '%s', '%s', '%s', '%s')",
+					"VALUES(%d, \"%s\", \"%s\", \"%s\", \"%s\", \"%s\", \"%s\")",
 					locationID, country, state, city, street, room, zip
 				);
-		
-		try {
-			Statement statement = this.conn.createStatement();						// build statement
-			statement.executeUpdate(query, Statement.RETURN_GENERATED_KEYS);	// execute query
-			System.out.println("Location inserted.");
-		} catch (SQLException e) {
-			System.out.println("Failed to insert location.");
-			e.printStackTrace();
-		}
-	}
-	
-	// increment the primary key for new insertion
-	private int getPK() {
-		int lastPK = 0;
-		int newPK = 0;
-		String query = "SELECT MAX(locationID) AS 'pk' FROM Location";
-		
+		System.out.println(query);
 		try {
 			Statement statement = this.conn.createStatement();
-			ResultSet result = statement.executeQuery(query);
-			
-			while(result.next()) {
-				lastPK = result.getInt("locationID");
-			}
-			
-			newPK = lastPK + 1;
-			
+			statement.execute(query);
+			System.out.println("LocationService:  Location insert successful.");	
 		} catch (SQLException e) {
-			System.out.println("Failed to connect to database.");
+			System.out.println("LocationService:  Failed to insert location.");
 			e.printStackTrace();
 		}
-		return newPK;
 	}
 	
 	
-	// Delete matching primary key
 	@Override
 	public void delete(int locationID) {	
 		String query = String.format(
@@ -89,10 +64,33 @@ public class LocationService implements Service {
 		try {
 			Statement statement = this.conn.createStatement();
 			statement.executeUpdate(query);
-			System.out.println("Location deleted.");
+			System.out.println("LocationService:  Location deleted.");
 		} catch (SQLException e) {
-			System.out.println("Failed to delete location.");
+			System.out.println("LocationService:  Failed to delete location.");
 			e.printStackTrace();
 		}
+	}
+	
+	
+	// increment the primary key for new insertion
+	private int getPK() {
+		int lastPK = 0;
+		String query = "SELECT MAX(locationID) AS pk " +
+						"FROM Location";
+		
+		try {
+			Statement statement = this.conn.createStatement();
+			ResultSet result = statement.executeQuery(query);
+			
+			if(result.next()) {
+				lastPK = result.getInt("pk");
+				lastPK++;
+			}
+			
+		} catch (SQLException e) {
+			System.out.println("LocationService:  Failed to get new Primary Key.");
+			e.printStackTrace();
+		}
+		return lastPK;
 	}
 }

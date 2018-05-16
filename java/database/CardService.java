@@ -8,15 +8,15 @@ import java.util.Date;
 
 import entities.Card;
 
-public class CardService {
-	Connection conn;
+public class CardService extends Service {
 	
 	public CardService(Connection conn) {
 		super();
-		this.conn = conn;
 	}
 	
-	public void insert(Card card) {
+	public void insert(Object obj) {
+		Card card = (Card) obj;
+		
 		// get card values
 		int cardID;
 		if(card.getCardID() == 0) {

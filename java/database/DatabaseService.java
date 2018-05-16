@@ -5,11 +5,11 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DatabaseService {
-	String username;
-	String password;
-	String server;
-	String port;
-	Connection conn;
+	private String username;
+	private String password;
+	private String server;
+	private String port;
+	private Connection conn;
 	
 	public DatabaseService(String username, String password, String server, String port) {
 		super();
@@ -28,9 +28,10 @@ public class DatabaseService {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			conn = DriverManager.getConnection(dbPath, this.username, this.password);
 			
-			System.out.println("Connection Successful");
-		} catch (Exception ex) {
-			System.out.println("Error: " + ex);
+			System.out.println("DatabaseService:  Connection Successful");
+		} catch (Exception e) {
+			System.out.println("DatabaseService:  Failed to connect to database.");
+			e.printStackTrace();
 		}
 		return conn;
 	}

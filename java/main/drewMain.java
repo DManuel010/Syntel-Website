@@ -38,7 +38,7 @@ public class Main {
 		String username = "restaurant";
 		String password = "mummy";
 		String server = "localhost";
-		String port = "3306";
+		String port = "1521";
 		
 		// connect to database
 		DatabaseService dbService = new DatabaseService(username, password, server, port);
