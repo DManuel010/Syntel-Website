@@ -64,7 +64,5 @@ public abstract class Employee extends User {
 	public String toString() {
 		return "Employee [empID=" + empID + ", hireDate=" + hireDate + ", title=" + title + ", workAddrID=" + workAddrID
 				+ ", toString()=" + super.toString() + "]";
-	}
-	
-	
+	}	
 }
