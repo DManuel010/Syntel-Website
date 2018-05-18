@@ -10,8 +10,9 @@ public abstract class Employee extends User {
 	private int workAddrID;
 	private static int employeeCount;
 	
-	public Employee(String email, String password, String firstName, String lastName, int loginID, String phoneNumber,
-			int homeAddrID, Date lastLogin, int empID, Date hireDate, String title, int workAddrID) {
+	public Employee(String email, String password, String firstName, String lastName, 
+					int loginID, String phoneNumber, int homeAddrID, Date lastLogin, 
+					int empID, Date hireDate, String title,int workAddrID) {
 		super(email, password, firstName, lastName, loginID, phoneNumber, homeAddrID, lastLogin);
 		this.empID = empID;
 		this.hireDate = hireDate;
@@ -64,5 +65,7 @@ public abstract class Employee extends User {
 	public String toString() {
 		return "Employee [empID=" + empID + ", hireDate=" + hireDate + ", title=" + title + ", workAddrID=" + workAddrID
 				+ ", toString()=" + super.toString() + "]";
-	}	
+	}
+	
+	
 }

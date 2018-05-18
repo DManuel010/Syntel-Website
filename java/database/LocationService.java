@@ -88,7 +88,7 @@ public class LocationService extends Service {
 				lastPK = result.getInt("pk");
 			}
 			
-			if(locationID < lastPK) {
+			if(locationID <= lastPK) {
 				newPK = lastPK + 1;
 			}
 			else {

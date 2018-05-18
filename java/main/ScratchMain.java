@@ -15,7 +15,6 @@ public class DrewMain {
 	public static void insertLocation(Connection conn, Location location) {
 		LocationService locationService = new LocationService(conn);
 		locationService.insert(location);
-		System.out.println(location.getLocationID());
 	}
 	
 	
@@ -35,9 +34,11 @@ public class DrewMain {
 	
 	public static void main(String[] args) {
 		// database credentials
-		String username = "restaurant";
-		String password = "mummy";
-		String server = "localhost";
+		//String username = "restaurant";
+		//String password = "mummy";
+		String username = "deus";
+		String password = "1234";
+		String server = "172.17.33.12";
 		String port = "1521";
 		
 		// connect to database
@@ -45,12 +46,13 @@ public class DrewMain {
 		Connection conn = dbService.getConnection();
 		
 		// Insert new location
-		Location location = new Location("USA", "Arizona", "Phoenix", "20827 N 27th Avenue", "Room 114", "85027");
+		Location location = new Location(0, "USA", "Arizona", "Phoenix", "20827 N 27th Avenue", "Room 115", "85027");
 		insertLocation(conn, location);
-
+		/*
 		// Insert new card
 		Date date = buildDate(2000, 2, 15);
 		Card card = new Card("Michael Jackson", "1123223433454456", date, 123, "Visa", location);
 		insertCard(conn, card, location, date);
+		*/
 	}
 }

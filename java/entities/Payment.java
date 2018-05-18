@@ -18,10 +18,6 @@ public class Payment {
 		paymentCount++;
 	}
 
-	public Payment() {
-		super();
-		paymentCount++;
-	}
 
 	public int getPaymentID() {
 		return paymentID;

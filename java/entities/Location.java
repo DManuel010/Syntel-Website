@@ -1,6 +1,7 @@
 package entities;
 
 public class Location {
+	
 	private int locationID;
 	private String country;
 	private String state;
@@ -11,8 +12,9 @@ public class Location {
 	
 	private static int locationCount;
 
-	public Location(String country, String state, String city, String street, String room, String zip) {
+	public Location(int locationID, String country, String state, String city, String street, String room, String zip) {
 		super();
+		this.locationID = locationID;
 		this.country = country;
 		this.state = state;
 		this.city = city;
@@ -21,11 +23,7 @@ public class Location {
 		this.zip = zip;
 		locationCount++;
 	}
-
-	public Location() {
-		super();
-		locationCount++;
-	}
+	
 
 	public int getLocationID() {
 		return locationID;

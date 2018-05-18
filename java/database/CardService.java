@@ -41,7 +41,7 @@ public class CardService extends Service {
 			statement.setInt(1, cardID);
 			statement.setString(2, cardName);
 			statement.setString(3, cardNumber);
-			statement.setDate(4, (java.sql.Date) expirationDate);
+			statement.setObject(4, expirationDate);
 			statement.setInt(5, cvv);
 			statement.setString(6, type);
 			statement.setInt(7, billingAddrID);
@@ -69,7 +69,7 @@ public class CardService extends Service {
 					lastPK = result.getInt("pk");
 				}
 				
-				if(cardID < lastPK) {
+				if(cardID <= lastPK) {
 					newPK = lastPK + 1;
 				}
 				else {

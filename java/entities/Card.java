@@ -13,8 +13,9 @@ public class Card {
 	
 	private static int cardCount;
 
-	public Card(String name, String number, Date expirationDate, int cvv, String type, Location billingAddr) {
+	public Card(int cardID, String name, String number, Date expirationDate, int cvv, String type, Location billingAddr) {
 		super();
+		this.cardID = cardID;
 		this.name = name;
 		this.number = number;
 		this.expirationDate = expirationDate;
@@ -24,11 +25,7 @@ public class Card {
 		cardCount++;
 	}
 
-	public Card() {
-		super();
-		cardCount++;
-	}
-
+	
 	public int getCardID() {
 		return cardID;
 	}
