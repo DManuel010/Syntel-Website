@@ -11,7 +11,7 @@ import database.LocationService;
 import entities.Card;
 import entities.Location;
 
-public class Main {
+public class DrewMain {
 	public static void insertLocation(Connection conn, Location location) {
 		LocationService locationService = new LocationService(conn);
 		locationService.insert(location);

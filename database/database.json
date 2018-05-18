@@ -32,7 +32,7 @@
 			"lastName": "Manuel",
 			"email": "d.manuel@mummys.com",
 			"hireDate": "2018-05-20 10:33:40",
-			"title": "Manager",
+			"title": "Admin",
 			"loginID": 2,
 			"phoneNumber": "413-505-3397",
 			"workAddrID": 2,
@@ -120,10 +120,10 @@
 		},
 
 		{
-			"name": "lettuc",
+			"name": "lettuce",
 			"foodGroup": "vegetable",
 			"price": 5.29,
-			"description": null,
+			"description": "leafy green",
 			"stock": 282
 		}
 	],

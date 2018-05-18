@@ -20,11 +20,11 @@ Training website for Syntel
 	NOTE:  This is a one-time setup.  Once you have the repo, you don't need to ever reclone it.
 
 ### Workflow:
-	1) "git checkout master"
-		This will put you on the 'master' branch of the repository.
+	1) "git checkout <branch>"
+		Create your own branch off of 'dev' if you don't already have one.
 
-	2) "git pull origin master"
-		This will update your local repository with any of the changes made from others on the same project.
+	2) "git pull origin dev"
+		This will update your local repository with any changes from 'dev'.
 
 	3) Make changes to your local project repository (new folders, new files, edit files, delete files, etc.)
 
@@ -32,8 +32,16 @@ Training website for Syntel
 		This will update your local repository's history with your current changes.
 		Always remember to add a commit message.
 
-	5) "git push origin master"
-		This will update the remote branch with your changes to be seen and pulled by everyone else on the project.
+	5) "git push origin <branch>"
+		This will update the remote branch with your changes.
+
+	6) Once you feel that your branch changes are working and substantial, go to the project on Github.com
+		and click the button labeled "new pull request". Set the base to 'master' and 'compare' to your branch.
+		
+	7) Review your changes, make sure there are no conflicts detected, and submit the Pull Request.
+
+	8) As the project owner, I will review the PR and will either accept it or make comments on it for further
+		changes.  After changes are made, the PR will be automatically updated, and then closed once completed.
 
 	NOTE:  As long as you are within the project repo and have already done Step 1 (checkout).
 			Anytime you make changes you just have to repeat Steps 2 to 5.
@@ -47,6 +55,7 @@ Training website for Syntel
 	// make some changes
 	git commit -m "this is what I changed..."
 	git push origin master
+	// make PR on github.com when ready
 
 
 ## Github Desktop
@@ -81,22 +90,30 @@ Training website for Syntel
 		This will upload your changes to the remote repository on github. 
 		Everyone else on the project should now be able to see and update with your changes.
 
+	6) Once you feel that your branch changes are working and substantial, click on the drop down tab labeled 
+		"Branch" and press the "Create Pull Request" option. 
+
+	7) Review your changes, make sure there are no conflicts detected, and submit the Pull Request.
+
+	8) As the project owner, I will review the PR and will either accept it or make comments on it for further
+		changes.  After changes are made, the PR will be automatically updated, and then closed once completed.
+
 
 #    REQUIREMENTS    
 
 	- Python 3.6.X
 		* pip (9.0.1)
-		* mysql-connector-python (8.0.11)
+		* cx-Oracle (3.6.1)
 		* protobuf (3.5.2.post1)
 		* setuptools (28.8.0)
 		* six (1.11.0)
 
-	- MySQL 8.0.11
+	- Oracle SQL
 
 
 #    DATABASE SETUP
 
-	1) Install MySQL and set a username and password for login
+	1) Install Oracle SQL and set a username and password for login
 
 	2) Install Python 3.6.X
 
@@ -107,7 +124,7 @@ Training website for Syntel
 	3) Navigate to ~/Syntel-Website/ and run the following command in terminal:
 		pip install -r requirements.txt
 
-		NOTE: Only 'mysql-connector-python' is listed in requirements.txt, 
+		NOTE: Only 'cx_Oracle' is listed in requirements.txt, 
 		pip will automatically install the other dependencies listed above. 
 
 	4) Run following command in terminal:
@@ -116,10 +133,10 @@ Training website for Syntel
 		NOTE: <username> and <password> should be replaced with the login info from Step 1.
 
 	5) Verify that the database and tables were created correctly by launching mysql.
-		>mysql -u<username> -p<password>
-		mysql> show databases;
-		mysql> use restaurant;
-		mysql> show tables;
+		>sql -u<username> -p<password>
+		sql> show databases;
+		sql> use restaurant;
+		sql> show tables;
 
 		NOTE: Running each of these commands should yield the following results respectively: 
 			- start mysql with login info from Step 1 

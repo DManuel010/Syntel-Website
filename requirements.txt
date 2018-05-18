@@ -1,1 +1,1 @@
-mysql-connector-python
+cx_Oracle==5.3

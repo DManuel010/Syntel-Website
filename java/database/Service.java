@@ -5,6 +5,11 @@ import java.sql.Connection;
 public abstract class Service {
 	protected Connection conn;
 	
+	public Service(Connection conn) {
+		super();
+		this.conn = conn;
+	}
+	
 	// inserts a given object into the appropriate table
 	public abstract void insert(Object obj);
 	
