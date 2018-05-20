@@ -1,103 +1,89 @@
 package database;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.Scanner;
-
-import CaseStudy.sqlConnection;
-import interfaces.Service;
 import entities.Login;
 
 public class LoginService {
 	
 		
 static Connection con;
+
+
+public LoginService(Connection con) {
+	super();
+	this.con=con;
+}
+
+public void insert(Login login)
+{
+
+	//INSERT INTO TABLE
+	System.out.println("Inserting a new user...");
+			
 	
-	
-	public static void main(String[] args) {
-	
-	try
-	{
-		Class.forName("oracle.jdbc.driver.OracleDriver");
-		
-		con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE","restaurant","restaurant");
-		
-		System.out.println("Connection Successful"); 
-		
-		//VIEW INFO FROM TABLE
-		System.out.println("You are viewing a user.");
-		Scanner scan = new Scanner(System.in);
-		System.out.println("Enter login ID to view: ");
-		int loginID=scan.nextInt();
-		
-		PreparedStatement oracleStmt = con.prepareStatement("select * from login where loginID=?");
-		
-		oracleStmt.setInt(1,loginID); 
-		oracleStmt.execute();
-		
-		ResultSet oracleRs = oracleStmt.getResultSet();
-		
-		
-		while(oracleRs.next())
-		{
-			System.out.println("Login ID: "+oracleRs.getInt(1)+" Username: "+oracleRs.getString(2)+" Password: "+oracleRs.getString(3));
-		}
-		
-		System.out.println("User Displayed.");
-		
-		//INSERT INTO TABLE
-		System.out.println("You are inserting a new user.");
-		System.out.println("Enter login ID: ");
-		int newloginID = scan.nextInt();
-		System.out.println("Enter username: ");
-		String newusername = scan.next();
-		System.out.println("Enter password: ");
-		String newpassword = scan.next();
-		
+	try {
 		PreparedStatement insertStmt = con.prepareStatement("insert into login values (?,?,?)");
-		
-		insertStmt.setInt(1,newloginID); 
-		insertStmt.setString(2,newusername); 
-		insertStmt.setString(3,newpassword); 
+		insertStmt.setInt(1,login.getLoginID()); 
+		insertStmt.setString(2,login.getUsername()); 
+		insertStmt.setString(3,login.getPassword()); 
 		insertStmt.execute();
-		
-		System.out.println("User Added.");
-		
-		
-		//DELETE FROM TABLE
-		
-		System.out.println("You are deleting a user.");
-		System.out.println("Enter login ID: ");
-		int delloginID = scan.nextInt();
-		scan.close(); 
-		
-		PreparedStatement deleteStmt = con.prepareStatement("delete from login where loginID=?");
-		
-		deleteStmt.setInt(1,delloginID); 
-		deleteStmt.execute();
-		
-		System.out.println("User Deleted.");
-		
-		
-		//CLOSE OUT
+		System.out.println();
+		System.out.println("User added with login ID "+login.getLoginID());
 		insertStmt.close();
-		
-		con.close();
-		
-		
-	}catch(SQLException e)
-	{
-		System.out.println("SQL Exception");
+	} catch (SQLException e) {
+		System.out.println("Error: SQL Exception.");
+		e.printStackTrace();
 	}
 	
+}
+
+public void delete(int loginID)
+{
+	//DELETE FROM TABLE
+	System.out.println("Deleting user with login ID "+loginID+"...");
 	
-	catch(Exception e)
-		{
-			e.getMessage();
+	try{
+		PreparedStatement deleteStmt = con.prepareStatement("delete from login where loginID=?");
+		deleteStmt.setInt(1,loginID); 
+		deleteStmt.execute();
+		System.out.println();
+		System.out.println("User deleted.");
+		deleteStmt.close();
+	}catch (SQLException e) {
+		System.out.println("Error: SQL Exception.");
+		e.printStackTrace();
+	}
+	
+}
+
+public void display()
+
+{
+	
+	//DISPLAY FROM TABLE
+		System.out.println("Displaying user...");
+		System.out.println("Login ID		Username		Password");
+		
+		try{
+			PreparedStatement oracleStmt = con.prepareStatement("select * from login");
+			oracleStmt.execute();
+			ResultSet oracleRs = oracleStmt.getResultSet();
+			
+			while(oracleRs.next())
+			{
+				System.out.println(oracleRs.getInt(1)+"		"+oracleRs.getString(2)+"		"+oracleRs.getString(3));
+			}
+			System.out.println();
+			System.out.println("Users Displayed.");
+			oracleStmt.close();
+		}catch (SQLException e) {
+			System.out.println("Error: SQL Exception.");
+			e.printStackTrace();
 		}
+
 	}
 }
