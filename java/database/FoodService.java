@@ -116,8 +116,9 @@ public class FoodService extends Service {
 		String query = "SELECT Food.price FROM Food WHERE Food.foodID = ?";
 		
 		try {
-			Statement statement = this.conn.createStatement();
-			ResultSet result = statement.executeQuery(query);
+			PreparedStatement statement = this.conn.prepareStatement(query);
+			statement.setInt(1, foodID);
+			ResultSet result = statement.executeQuery();
 			
 			if(result.next()) {
 				double price = result.getDouble(1);
