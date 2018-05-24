@@ -76,7 +76,7 @@ public class OrderService extends Service {
 	}
 	
 	// increment the primary key for new insertion
-	private int getPK(int orderID) {
+	public int getPK(int orderID) {
 		int lastPK = 0;
 		int newPK = 0;
 		String query = "SELECT MAX(orderID) AS pk " +

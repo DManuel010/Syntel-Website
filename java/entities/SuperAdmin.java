@@ -1,6 +1,8 @@
 package entities;
 
+import java.sql.Connection;
 import java.util.Date;
+import java.util.Scanner;
 
 public class SuperAdmin extends Admin {
 	
@@ -32,7 +34,7 @@ public class SuperAdmin extends Admin {
 
 
 	@Override
-	public void displayMenu() {
+	public void displayMenu(Scanner input, Connection conn) {
 		System.out.println("\n---- Super Admin Menu ----\n");
 		System.out.println("1)  View Orders");
 		System.out.println("2)  Add Orders");

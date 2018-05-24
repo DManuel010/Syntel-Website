@@ -60,8 +60,7 @@ public class LocationService extends Service {
 		try {
 			PreparedStatement statement = this.conn.prepareStatement(query);
 			statement.setInt(1, locationID);
-			statement.addBatch();
-			statement.executeBatch();
+			statement.executeUpdate();
 			System.out.println("LocationService:  Location deleted.");
 		} catch (SQLException e) {
 			System.out.println("LocationService:  Failed to delete location.");

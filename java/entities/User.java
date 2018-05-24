@@ -1,6 +1,8 @@
 package entities;
 
+import java.sql.Connection;
 import java.util.Date;
+import java.util.Scanner;
 
 public abstract class User {
 	
@@ -103,5 +105,5 @@ public abstract class User {
 				+ ", lastLogin=" + lastLogin + "]";
 	}
 
-	public abstract void displayMenu();
+	public abstract void displayMenu(Scanner input, Connection conn);
 }

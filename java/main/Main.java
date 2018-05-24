@@ -13,7 +13,7 @@ import entities.Customer;
 import entities.Driver;
 import entities.SuperAdmin;
 import entities.User;
-import menues.LoginMenu;
+import menus.LoginMenu;
 
 public class Main {
 	
@@ -176,6 +176,7 @@ public class Main {
 		
 		// User variables
 		boolean loggingIn;							// flag used for input validation while logging in
+		boolean stillWorking;						// flag used for menu display
 		String email = "";							// user login email
 		String password = "";						// user login password
 		int loginOption = 0;							// flag for type of user login (Employee, Customer)
@@ -243,10 +244,13 @@ public class Main {
 		
 		// display appropriate menu
 		User user = getUser(conn, loginID, userType);
-		System.out.println(user);
-		user.displayMenu();
+		
+		stillWorking = true;
+		while(stillWorking) {
+			user.displayMenu(input, conn);
+		}
 
 		input.close();
-		System.exit(1);
+		System.exit(0);
 	}
 }
