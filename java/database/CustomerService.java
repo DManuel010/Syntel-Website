@@ -5,6 +5,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.Date;
+
 import entities.Customer;
 
 public class CustomerService{
@@ -15,26 +18,60 @@ public class CustomerService{
 		super();
 		this.con=con;
 	}
+	
+	private int getPK() {
+		int lastPK = 0;
+		int newPK = 0;
+		String query = "SELECT MAX(customerID) FROM customer";
+		
+		try {
+			Statement statement = this.con.createStatement();
+			ResultSet result = statement.executeQuery(query);
+			
+			while(result.next()) {
+				lastPK = result.getInt("customerID");
+			}
+			newPK = lastPK + 1;
+		} catch (SQLException e) {
+			System.out.println("Failed to connect to database.");
+			e.printStackTrace();
+		}
+		return newPK;
+	}
 
 	public void insert(Customer customer)
 	{
 
 		//INSERT INTO TABLE
+		
+		int customerID;
+		if(customer.getCustomerID() == 0) {
+			customerID = getPK();
+			customer.setCustomerID(customerID);
+		}
+		else {
+			customerID = customer.getCustomerID();
+		}
+		
 		System.out.println("Inserting a new customer...");
 		
 		try {
-			PreparedStatement insertStmt = con.prepareStatement("insert into customer values (?,?,?,?,?,?,?,?,?,?)");
+			PreparedStatement insertStmt = con.prepareStatement("insert into customer values (?,?,?,?,?,?,?,?,?,?,?)");
 			
-			insertStmt.setInt(1,customer.getCustomerID()); 
+			
+			insertStmt.setString(1,customer.getEmail());
 			insertStmt.setString(2,customer.getFirstName()); 
 			insertStmt.setString(3,customer.getLastName()); 
-			insertStmt.setString(4,customer.getEmail()); 
-			insertStmt.setInt(5,customer.getLoginID());
-			insertStmt.setString(6,customer.getDateOfBirth()); 
-			insertStmt.setInt(7,customer.getHomeAddrID());
-			insertStmt.setInt(8,customer.getCardID()); 
-			insertStmt.setString(9,customer.getDateOfRegister()); 
-			insertStmt.setString(10,customer.getLastLogin()); 
+			insertStmt.setInt(4,customer.getLoginID());
+			insertStmt.setString(5,customer.getPhoneNumber());
+			insertStmt.setInt(6,customer.getHomeAddrID());
+			insertStmt.setObject(7,customer.getLastLogin());
+			insertStmt.setInt(8,customerID); 
+			insertStmt.setObject(9,customer.getDateOfBirth());
+			insertStmt.setInt(10,customer.getCardID());
+			insertStmt.setObject(11,customer.getDateOfRegister());
+
+			 
 			insertStmt.execute();
 			System.out.println("Customer Added.");
 			
