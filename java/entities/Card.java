@@ -1,19 +1,19 @@
 package entities;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Card {
 	private int cardID;
 	private String name;
 	private String number;
-	private Date expirationDate;
+	private LocalDate expirationDate;
 	private int cvv;
 	private String type;
 	private Location billingAddr;
 	
 	private static int cardCount;
 
-	public Card(int cardID, String name, String number, Date expirationDate, int cvv, String type, Location billingAddr) {
+	public Card(int cardID, String name, String number, LocalDate expirationDate, int cvv, String type, Location billingAddr) {
 		super();
 		this.cardID = cardID;
 		this.name = name;
@@ -50,11 +50,11 @@ public class Card {
 		this.number = number;
 	}
 
-	public Date getExpirationDate() {
+	public LocalDate getExpirationDate() {
 		return expirationDate;
 	}
 
-	public void setExpirationDate(Date expirationDate) {
+	public void setExpirationDate(LocalDate expirationDate) {
 		this.expirationDate = expirationDate;
 	}
 

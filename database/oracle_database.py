@@ -48,7 +48,7 @@ def build_db():
 	query_combo = '''CREATE TABLE Combo (
 						comboID INT NOT NULL PRIMARY KEY,
 						name VARCHAR(25),
-						price DECIMAL(10) NOT NULL,
+						price DECIMAL(10,3) NOT NULL,
 						description VARCHAR(25),
 						CONSTRAINT UC_Combo UNIQUE (name, price, description)
 					);'''
@@ -77,7 +77,7 @@ def build_db():
 	query_payment = '''CREATE TABLE Payment (
 							paymentID INT NOT NULL PRIMARY KEY,
 							type VARCHAR(25) NOT NULL,
-							amount DECIMAL(10) NOT NULL,
+							amount DECIMAL(10,3) NOT NULL,
 							datePaid DATE NOT NULL
 						);'''
 
@@ -145,6 +145,7 @@ def build_db():
 							firstName VARCHAR(25) NOT NULL,
 							lastName VARCHAR(25) NOT NULL,
 							email VARCHAR(25) NOT NULL,
+							phoneNumber VARCHAR(25) NOT NULL,
 							loginID INT NOT NULL UNIQUE REFERENCES Login(loginID),
 							dateOfBirth DATE NOT NULL,
 							homeAddrID INT NOT NULL REFERENCES Location(locationID),

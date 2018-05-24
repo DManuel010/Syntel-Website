@@ -11,9 +11,9 @@ public class Customer extends User {
 	private static int customerCount;
 	
 	
-	public Customer(String email, String password, String firstName, String lastName, int loginID, String phoneNumber,
+	public Customer(String email, String firstName, String lastName, int loginID, String phoneNumber,
 			int homeAddrID, Date lastLogin, int customerID, Date dateOfBirth, int cardID, Date dateOfRegister) {
-		super(email, password, firstName, lastName, loginID, phoneNumber, homeAddrID, lastLogin);
+		super(email, firstName, lastName, loginID, phoneNumber, homeAddrID, lastLogin);
 		this.customerID = customerID;
 		this.dateOfBirth = dateOfBirth;
 		this.cardID = cardID;
@@ -82,12 +82,12 @@ public class Customer extends User {
 	@Override
 	public void displayMenu() {
 		System.out.println("\n---- Customer Menu ----\n");
-		System.out.println("1) Make Order");
-		System.out.println("2) Edit Order");
-		System.out.println("3) Delete Order");
-		System.out.println("4) View Order");
-		System.out.println("5) Print Order");
-		System.out.println("6) View Menu");
-		System.out.println("7) Log Out\n");
+		System.out.println("1)  Make Order");
+		System.out.println("2)  Edit Order");
+		System.out.println("3)  Delete Order");
+		System.out.println("4)  View Order");
+		System.out.println("5)  Print Order");
+		System.out.println("6)  View Menu");
+		System.out.println("7)  Log Out\n");
 	}
 }

@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Date;
+import java.time.LocalDate;
 
 import entities.Card;
 
@@ -26,7 +26,7 @@ public class CardService extends Service {
 		
 		String cardName = card.getName();
 		String cardNumber = card.getNumber();
-		Date expirationDate = card.getExpirationDate();
+		LocalDate expirationDate = card.getExpirationDate();
 		int cvv = card.getcvv();
 		String type = card.getType();
 		int billingAddrID = card.getBillingAddr().getLocationID();
@@ -55,47 +55,44 @@ public class CardService extends Service {
 	
 	
 	// increment the primary key for new insertion
-		private int getPK(int cardID) {
-			int lastPK = 0;
-			int newPK = 0;
-			String query = "SELECT MAX(cardID) AS pk " +
-							"FROM Card";
+	private int getPK(int cardID) {
+		int lastPK = 0;
+		int newPK = 0;
+		String query = "SELECT MAX(cardID) AS pk " +
+						"FROM Card";
+		
+		try {
+			Statement statement = this.conn.createStatement();
+			ResultSet result = statement.executeQuery(query);
 			
-			try {
-				Statement statement = this.conn.createStatement();
-				ResultSet result = statement.executeQuery(query);
-				
-				if(result.next()) {
-					lastPK = result.getInt("pk");
-				}
-				
-				if(cardID <= lastPK) {
-					newPK = lastPK + 1;
-				}
-				else {
-					newPK = cardID;
-				}
-				
-			} catch (SQLException e) {
-				System.out.println("CardService:  Failed to get new Primary Key.");
-				e.printStackTrace();
+			if(result.next()) {
+				lastPK = result.getInt("pk");
 			}
-			return newPK;
+			
+			if(cardID <= lastPK) {
+				newPK = lastPK + 1;
+			}
+			else {
+				newPK = cardID;
+			}
+			
+		} catch (SQLException e) {
+			System.out.println("CardService:  Failed to get new Primary Key.");
+			e.printStackTrace();
 		}
+		return newPK;
+	}
 	
 	
 	@Override
 	public void delete(int cardID) {	
-		// format query
-		String query = String.format(
-					"DELETE FROM Card " +
-					"WHERE cardID = %d",
-					cardID
-				);
+		String query = "DELETE FROM Card WHERE cardID = ?";
 		
 		try {
-			Statement statement = this.conn.createStatement();
-			statement.executeUpdate(query);
+			PreparedStatement statement = this.conn.prepareStatement(query);
+			statement.setInt(1, cardID);
+			statement.addBatch();
+			statement.executeBatch();
 			System.out.println("Card deleted.");
 		} catch (SQLException e) {
 			System.out.println("Failed to delete card.");
