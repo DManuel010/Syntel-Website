@@ -1,7 +1,6 @@
 package database;
 
 import java.sql.Connection;
-
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -10,13 +9,10 @@ import java.util.Date;
 
 import entities.Customer;
 
-public class CustomerService{
-	
-	static Connection con;
+public class CustomerService extends Service {
 
-	public CustomerService(Connection con) {
-		super();
-		this.con=con;
+	public CustomerService(Connection conn) {
+		super(conn);
 	}
 	
 	private int getPK() {
@@ -39,9 +35,10 @@ public class CustomerService{
 		return newPK;
 	}
 
-	public void insert(Customer customer)
-	{
-
+	
+	public void insert(Object obj) {
+		Customer customer = (Customer) obj;
+		
 		//INSERT INTO TABLE
 		
 		int customerID;
@@ -56,9 +53,7 @@ public class CustomerService{
 		System.out.println("Inserting a new customer...");
 		
 		try {
-			PreparedStatement insertStmt = con.prepareStatement("insert into customer values (?,?,?,?,?,?,?,?,?,?,?)");
-			
-			
+			PreparedStatement insertStmt = conn.prepareStatement("INSERT INTO Customer VALUES (?, ?,?,?,?,?,?,?,?,?,?)");
 			insertStmt.setString(1,customer.getEmail());
 			insertStmt.setString(2,customer.getFirstName()); 
 			insertStmt.setString(3,customer.getLastName()); 
@@ -70,16 +65,12 @@ public class CustomerService{
 			insertStmt.setObject(9,customer.getDateOfBirth());
 			insertStmt.setInt(10,customer.getCardID());
 			insertStmt.setObject(11,customer.getDateOfRegister());
-
-			 
 			insertStmt.execute();
-			System.out.println("Customer Added.");
-			
+			System.out.println("CustomerService:  Customer Added.");
 		} catch (SQLException e) {
-			System.out.println("Error: SQL Exception.");
+			System.out.println("CustomerService:  Failed to insert Customer.");
 			e.printStackTrace();
 		}
-		
 	}
 
 	public void delete(int customerID)
@@ -87,25 +78,24 @@ public class CustomerService{
 		//DELETE FROM TABLE
 		System.out.println("Deleting customer with customer ID "+customerID+"...");
 		
-		
 		try{
 			//change to check for matching customer id in orders table
-			PreparedStatement testStmt = con.prepareStatement("select * from login where loginID= (select loginID from customer where customerID=?)");
+			PreparedStatement testStmt = conn.prepareStatement("select * from login where loginID= (select loginID from customer where customerID=?)");
 			testStmt.setInt(1,customerID);
 			testStmt.execute();
 			ResultSet testresult = testStmt.getResultSet();
 			
-			if(testresult.next()){
+			if(testresult.next()) {
 				System.out.println("Cannot delete this customer - matching loginID found in login table.");
-			}else{
-				try{
-					PreparedStatement deleteStmt = con.prepareStatement("delete from customer where customerID=?");
+			} else {
+				try {
+					PreparedStatement deleteStmt = conn.prepareStatement("delete from customer where customerID=?");
 					deleteStmt.setInt(1,customerID); 
 					deleteStmt.execute();
 					System.out.println();
 					System.out.println("Customer deleted.");
 					deleteStmt.close();
-				}catch (SQLException e) {
+				} catch (SQLException e) {
 					System.out.println("Error: SQL Exception.");
 					e.printStackTrace();
 				}
@@ -117,30 +107,26 @@ public class CustomerService{
 		
 	}
 
-	public void display()
-
-	{
+	public void display() {
+		//DISPLAY FROM TABLE
+		System.out.println("Displaying customer...");
+		System.out.println("Customer ID		First Name		Last Name");
 		
-			//DISPLAY FROM TABLE
-			System.out.println("Displaying customer...");
-			System.out.println("Customer ID		First Name		Last Name");
+		try {
+			PreparedStatement oracleStmt = conn.prepareStatement("select customerID, firstName, lastName from customer");
+			oracleStmt.execute();
+			ResultSet oracleRs = oracleStmt.getResultSet();
 			
-			try{
-				PreparedStatement oracleStmt = con.prepareStatement("select customerID, firstName, lastName from customer");
-				oracleStmt.execute();
-				ResultSet oracleRs = oracleStmt.getResultSet();
-				
-				while(oracleRs.next())
-				{
-					System.out.println(oracleRs.getInt(1)+"		"+oracleRs.getString(2)+"		"+oracleRs.getString(3));
-				}
-				System.out.println();
-				System.out.println("Customers Displayed.");
-				oracleStmt.close();
-			}catch (SQLException e) {
-				System.out.println("Error: SQL Exception.");
-				e.printStackTrace();
+			while(oracleRs.next()) {
+				System.out.println(oracleRs.getInt(1)+"		"+oracleRs.getString(2)+"		"+oracleRs.getString(3));
 			}
+			System.out.println();
+			System.out.println("Customers Displayed.");
+			oracleStmt.close();
+		} catch (SQLException e) {
+			System.out.println("Error: SQL Exception.");
+			e.printStackTrace();
+		}
 	}
 }
 		

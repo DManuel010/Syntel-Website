@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Date;
+import java.time.LocalDate;
 
 import entities.Payment;
 
@@ -25,7 +25,7 @@ public class PaymentService extends Service {
 		
 		String type = payment.getType();
 		float amount = payment.getAmount();
-		Date datePaid = payment.getDatePaid();
+		LocalDate datePaid = payment.getDatePaid();
 		
 		// format query
 		String query = "INSERT INTO Payment "
@@ -37,9 +37,8 @@ public class PaymentService extends Service {
 			statement.setInt(1, paymentID);
 			statement.setString(2, type);
 			statement.setFloat(3, amount);
-			statement.setDate(4, (java.sql.Date) datePaid);
-			statement.addBatch();
-			statement.executeBatch();
+			statement.setObject(4, datePaid);
+			statement.executeUpdate();
 			System.out.println("PaymentService:  Payment insert successful.");	
 		} catch (SQLException e) {
 			System.out.println("PaymentService:  Failed to insert payment.");
@@ -55,8 +54,7 @@ public class PaymentService extends Service {
 		try {
 			PreparedStatement statement = this.conn.prepareStatement(query);
 			statement.setInt(1, paymentID);
-			statement.addBatch();
-			statement.executeBatch();
+			statement.executeUpdate();
 			System.out.println("PaymentService:  Payment deleted.");
 		} catch (SQLException e) {
 			System.out.println("PaymentService:  Failed to delete payment.");

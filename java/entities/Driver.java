@@ -1,12 +1,12 @@
 package entities;
 
+import java.sql.Connection;
 import java.util.Date;
+import java.util.Scanner;
 
 public class Driver extends Employee {
 	
 	private static int driverCount;
-	
-	
 
 	public Driver(String email, String firstName, String lastName, int loginID, String phoneNumber,
 			int homeAddrID, Date lastLogin, int empID, Date hireDate, String title, int workAddrID) {
@@ -15,25 +15,21 @@ public class Driver extends Employee {
 		driverCount++;
 	}
 
-
 	public static int getDriverCount() {
 		return driverCount;
 	}
 
-
 	public static void setDriverCount(int driverCount) {
 		Driver.driverCount = driverCount;
 	}
-
 
 	@Override
 	public String toString() {
 		return "Driver [toString()=" + super.toString() + "]";
 	}
 
-
 	@Override
-	public void displayMenu() {
+	public void displayMenu(Scanner input, Connection conn) {
 		System.out.println("\n---- Driver Menu ----\n");
 		System.out.println("1) View Orders");
 		System.out.println("2) Complete Orders");

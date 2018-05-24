@@ -9,11 +9,11 @@ public class Card {
 	private LocalDate expirationDate;
 	private int cvv;
 	private String type;
-	private Location billingAddr;
+	private int billingAddrID;
 	
 	private static int cardCount;
 
-	public Card(int cardID, String name, String number, LocalDate expirationDate, int cvv, String type, Location billingAddr) {
+	public Card(int cardID, String name, String number, LocalDate expirationDate, int cvv, String type, int billingAddrID) {
 		super();
 		this.cardID = cardID;
 		this.name = name;
@@ -21,10 +21,14 @@ public class Card {
 		this.expirationDate = expirationDate;
 		this.cvv = cvv;
 		this.type = type;
-		this.billingAddr = billingAddr;
+		this.billingAddrID = billingAddrID;
 		cardCount++;
 	}
-
+	
+	public Card() {
+		super();
+		cardCount++;
+	}
 	
 	public int getCardID() {
 		return cardID;
@@ -74,12 +78,12 @@ public class Card {
 		this.type = type;
 	}
 
-	public Location getBillingAddr() {
-		return billingAddr;
+	public int getBillingAddrID() {
+		return billingAddrID;
 	}
 
-	public void setBillingAddr(Location billingAddr) {
-		this.billingAddr = billingAddr;
+	public void setBillingAddrID(int billingAddrID) {
+		this.billingAddrID = billingAddrID;
 	}
 
 	public static int getCardCount() {
@@ -93,6 +97,6 @@ public class Card {
 	@Override
 	public String toString() {
 		return "Card [cardID=" + cardID + ", name=" + name + ", number=" + number + ", expirationDate=" + expirationDate
-				+ ", cvv=" + cvv + ", type=" + type + ", billingAddr=" + billingAddr + "]";
+				+ ", cvv=" + cvv + ", type=" + type + ", billingAddrID=" + billingAddrID + "]";
 	}
 }

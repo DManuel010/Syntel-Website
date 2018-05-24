@@ -44,8 +44,7 @@ public class LocationService extends Service {
 			statement.setString(5, street);
 			statement.setString(6, room);
 			statement.setString(7, zip);
-			statement.addBatch();
-			statement.executeBatch();
+			statement.executeUpdate();
 			System.out.println("LocationService:  Location insert successful.");	
 		} catch (SQLException e) {
 			System.out.println("LocationService:  Failed to insert location.");
@@ -61,8 +60,7 @@ public class LocationService extends Service {
 		try {
 			PreparedStatement statement = this.conn.prepareStatement(query);
 			statement.setInt(1, locationID);
-			statement.addBatch();
-			statement.executeBatch();
+			statement.executeUpdate();
 			System.out.println("LocationService:  Location deleted.");
 		} catch (SQLException e) {
 			System.out.println("LocationService:  Failed to delete location.");

@@ -53,7 +53,7 @@ public class ScratchMain {
 
 		// Insert new card
 		LocalDate date = buildDate("04/02/2020");
-		Card card = new Card(0, "Michael Jackson", "1123223433454456", date, 123, "Visa", location);
+		Card card = new Card(0, "Michael Jackson", "1123223433454456", date, 123, "Visa", 0);
 		insertCard(conn, card, location, date);
 		
 		try {

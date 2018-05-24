@@ -8,6 +8,7 @@ public abstract class Employee extends User {
 	private Date hireDate;
 	private String title;
 	private int workAddrID;
+	
 	private static int employeeCount;
 	
 	public Employee(String email, String firstName, String lastName, 
@@ -18,6 +19,12 @@ public abstract class Employee extends User {
 		this.hireDate = hireDate;
 		this.title = title;
 		this.workAddrID = workAddrID;
+		employeeCount++;
+	}
+	
+	public Employee(String firstName, String lastName, String email, int loginID, String phoneNumber, int homeAddrID,
+			Date lastLogin) {
+		super(firstName, lastName, email, loginID, phoneNumber, homeAddrID, lastLogin);
 		employeeCount++;
 	}
 
