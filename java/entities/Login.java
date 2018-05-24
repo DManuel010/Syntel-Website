@@ -6,8 +6,11 @@ public class Login {
 	private String username;
 	private String password;
 	
+	private static int loginCount;
+	
 	public Login() {
 		super();
+		loginCount++;
 	}
 
 
@@ -16,6 +19,7 @@ public class Login {
 		this.loginID = loginID;
 		this.username = username;
 		this.password = password;
+		loginCount++;
 	}
 
 
@@ -47,6 +51,13 @@ public class Login {
 		this.password = password;
 	}
 
+	public static int getLoginCount() {
+		return loginCount;
+	}
+
+	public static void setLoginCount(int loginCount) {
+		Login.loginCount = loginCount;
+	}
 
 	@Override
 	public String toString() {

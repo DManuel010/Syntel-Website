@@ -11,6 +11,7 @@ public abstract class User {
 	private String phoneNumber;
 	private int homeAddrID;
 	private Date lastLogin;
+	
 	private static int userCount;
 	
 	public User(String firstName, String lastName, String email, int loginID, String phoneNumber,
@@ -23,6 +24,11 @@ public abstract class User {
 		this.phoneNumber = phoneNumber;
 		this.homeAddrID = homeAddrID;
 		this.lastLogin = lastLogin;
+		userCount++;
+	}
+	
+	public User() {
+		super();
 		userCount++;
 	}
 
@@ -80,6 +86,14 @@ public abstract class User {
 
 	public static void setUserCount(int userCount) {
 		User.userCount = userCount;
+	}
+	
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	@Override

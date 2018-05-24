@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -244,6 +243,7 @@ public class Main {
 		
 		// display appropriate menu
 		User user = getUser(conn, loginID, userType);
+		System.out.println(user);
 		user.displayMenu();
 
 		input.close();

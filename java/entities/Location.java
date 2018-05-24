@@ -23,7 +23,11 @@ public class Location {
 		this.zip = zip;
 		locationCount++;
 	}
-	
+
+	public Location() {
+		super();
+		locationCount++;
+	}
 
 	public int getLocationID() {
 		return locationID;
