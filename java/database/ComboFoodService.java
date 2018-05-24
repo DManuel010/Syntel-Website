@@ -35,27 +35,27 @@ public class ComboFoodService extends Service {
 			System.out.println("Error: SQL Exception.");
 			e.printStackTrace();
 		}
-  }
-
-private int getPK() {
-	int lastPK = 0;
-	int newPK = 0;
-	String query = "SELECT MAX(comboFoodID) FROM combofood";
-	
-	try {
-		Statement statement = this.con.createStatement();
-		ResultSet result = statement.executeQuery(query);
-		
-		while(result.next()) {
-			lastPK = result.getInt("comboFoodID");
-		}
-		newPK = lastPK + 1;
-	} catch (SQLException e) {
-		System.out.println("Failed to connect to database.");
-		e.printStackTrace();
 	}
-	return newPK;
-}
+
+	private int getPK() {
+		int lastPK = 0;
+		int newPK = 0;
+		String query = "SELECT MAX(comboFoodID) FROM combofood";
+	
+		try {
+			Statement statement = this.conn.createStatement();
+			ResultSet result = statement.executeQuery(query);
+		
+			while(result.next()) {
+				lastPK = result.getInt("comboFoodID");
+			}
+			newPK = lastPK + 1;
+		} catch (SQLException e) {
+			System.out.println("Failed to connect to database.");
+			e.printStackTrace();
+		}
+		return newPK;
+	}
 	
 	public void delete(int comboFoodID) {
 		//DELETE FROM TABLE
@@ -72,10 +72,10 @@ private int getPK() {
 			System.out.println("Error: SQL Exception.");
 			e.printStackTrace();
 		}
-  }
+	}
     
-  public void display() {
-    //DISPLAY FROM TABLE
+	public void display() {
+		//DISPLAY FROM TABLE
 		System.out.println("Displaying combo food...");
 		System.out.println("Combo Food ID		Food ID		Combo ID");
 			
@@ -92,7 +92,8 @@ private int getPK() {
 		} catch (SQLException e) {
 			System.out.println("Error: SQL Exception.");
 			e.printStackTrace();
-    }
-  }
+		}
+	}
 }
+
 	

@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Date;
 
 import entities.Customer;
 
@@ -21,7 +20,7 @@ public class CustomerService extends Service {
 		String query = "SELECT MAX(customerID) FROM customer";
 		
 		try {
-			Statement statement = this.con.createStatement();
+			Statement statement = this.conn.createStatement();
 			ResultSet result = statement.executeQuery(query);
 			
 			while(result.next()) {
