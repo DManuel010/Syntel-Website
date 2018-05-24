@@ -5,6 +5,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+
 import entities.ComboFood;
 
 public class ComboFoodService {
@@ -18,21 +20,52 @@ public ComboFoodService(Connection con) {
 	this.con=con;
 }
 
+private int getPK() {
+	int lastPK = 0;
+	int newPK = 0;
+	String query = "SELECT MAX(comboFoodID) FROM combofood";
+	
+	try {
+		Statement statement = this.con.createStatement();
+		ResultSet result = statement.executeQuery(query);
+		
+		while(result.next()) {
+			lastPK = result.getInt("comboFoodID");
+		}
+		newPK = lastPK + 1;
+	} catch (SQLException e) {
+		System.out.println("Failed to connect to database.");
+		e.printStackTrace();
+	}
+	return newPK;
+}
+
+
 public void insert(ComboFood combofood)
 {
 
 	//INSERT INTO TABLE
+	
+	int comboFoodID;
+	if(combofood.getComboFoodID() == 0) {
+		comboFoodID = getPK();
+		combofood.setComboFoodID(comboFoodID);
+	}
+	else {
+		comboFoodID = combofood.getComboFoodID();
+	}
+	
 	System.out.println("Inserting a new combo food...");
 			
 	
 	try {
 		PreparedStatement insertStmt = con.prepareStatement("insert into comboFood values (?,?,?)");
-		insertStmt.setInt(1,combofood.getComboFoodID()); 
+		insertStmt.setInt(1,comboFoodID); 
 		insertStmt.setInt(2,combofood.getFoodID()); 
 		insertStmt.setInt(3,combofood.getComboID()); 
 		insertStmt.execute();
 		System.out.println();
-		System.out.println("Combo food added with combo food ID "+combofood.getComboFoodID()+"...");
+		System.out.println("Combo food added with combo food ID "+comboFoodID+"...");
 		insertStmt.close();
 	} catch (SQLException e) {
 		System.out.println("Error: SQL Exception.");

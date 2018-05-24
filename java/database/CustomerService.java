@@ -5,6 +5,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+
 import entities.Customer;
 
 public class CustomerService{
@@ -15,17 +17,47 @@ public class CustomerService{
 		super();
 		this.con=con;
 	}
+	
+	private int getPK() {
+		int lastPK = 0;
+		int newPK = 0;
+		String query = "SELECT MAX(customerID) FROM customer";
+		
+		try {
+			Statement statement = this.con.createStatement();
+			ResultSet result = statement.executeQuery(query);
+			
+			while(result.next()) {
+				lastPK = result.getInt("customerID");
+			}
+			newPK = lastPK + 1;
+		} catch (SQLException e) {
+			System.out.println("Failed to connect to database.");
+			e.printStackTrace();
+		}
+		return newPK;
+	}
 
 	public void insert(Customer customer)
 	{
 
 		//INSERT INTO TABLE
+		
+		int customerID;
+		if(customer.getCustomerID() == 0) {
+			customerID = getPK();
+			customer.setCustomerID(customerID);
+		}
+		else {
+			customerID = customer.getCustomerID();
+		}
+		
 		System.out.println("Inserting a new customer...");
 		
 		try {
 			PreparedStatement insertStmt = con.prepareStatement("insert into customer values (?,?,?,?,?,?,?,?,?,?)");
 			
-			insertStmt.setInt(1,customer.getCustomerID()); 
+			insertStmt.setInt(1,customerID); 
 			insertStmt.setString(2,customer.getFirstName()); 
 			insertStmt.setString(3,customer.getLastName()); 
 			insertStmt.setString(4,customer.getEmail()); 
