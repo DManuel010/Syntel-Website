@@ -70,7 +70,7 @@ public class LocationService extends Service {
 	
 	
 	// increment the primary key for new insertion
-	private int getPK(int locationID) {
+	public int getPK(int locationID) {
 		int lastPK = 0;
 		int newPK = 0;
 		String query = "SELECT MAX(locationID) AS pk " +

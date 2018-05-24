@@ -167,7 +167,6 @@ public class Main {
 	
 	
 	public static void main(String[] args) {
-		
 		// Application objects
 		Scanner input = new Scanner(System.in);		// user input
 		LoginMenu loginMenu = new LoginMenu();		// initialize login menu
