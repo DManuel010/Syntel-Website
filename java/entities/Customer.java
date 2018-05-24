@@ -102,10 +102,8 @@ public class Customer extends User {
 				makeOrder(conn, input);
 			}
 			else if(choice == 2) {
-				
 			}
 			else if(choice == 3) {
-				
 			}
 			else if(choice == 4) {
 				
@@ -177,6 +175,7 @@ public class Customer extends User {
 					System.out.println("Completing order");
 					
 					//create order here
+					Order order = new Order();
 					//orderService.insert(order);
 					shopping = false;
 					completing = false;

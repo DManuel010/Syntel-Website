@@ -26,7 +26,13 @@
 
 <link type="text/css" rel="stylesheet" href="stylesheets/styles.css">
 
-  <nav>
+  
+    
+    <title>ORDERING</title>
+</head>
+
+<body>
+<nav>
       <ul>
         <li><a href="index.html" class="active">Home</a></li>
         <li><a href="order.html">Order</a></li>
@@ -36,47 +42,19 @@
       </ul>
     </nav>
     
-<br><title>ORDERING</title><br>
+    <!-- The Modal -->
+	<div id="myModal" class="modal">
 
-    
-    <div class="center">
-        <header role="banner"> <h1>ORDER HERE!</h1></header>
-        <div class="container">
-         <div class="co">
-      
-   <a href="#" 
-   data-role="button"
-   
-   data-theme="d"
-   class="bu" id="10">
-</a><button id="myBtn"><img src="images/order/cart.png" width="100px" height="100px"></button><p id="cart_amount">0</p></div>
-            <br>
-             
-            </div>
-    </div>
-    
-   <br>
+	  <!-- Modal content -->
+	  <div class="modal-content">
+	    <span class="close">&times;</span>
+	    <ul>
+	      <li>Item 1</li>
+	        <li>item 2</li>
+	      </ul>
+	  </div>
 
-<!-- The Modal -->
-<div id="myModal" class="modal">
-
-  <!-- Modal content -->
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <ul>
-      <li>Item 1</li>
-        <li>item 2</li>
-      </ul>
-  </div>
-
-</div>
-    <br>
-   
-
-
-</head>
-
-<body>
+	</div>
   <script>
     // Get the modal
 var modal = document.getElementById('myModal');
