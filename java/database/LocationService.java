@@ -56,15 +56,13 @@ public class LocationService extends Service {
 	
 	@Override
 	public void delete(int locationID) {	
-		String query = String.format(
-					"DELETE FROM Location " +
-					"WHERE cardID = %d",
-					locationID
-				);
+		String query = "DELETE FROM Location WHERE locationID = ?";
 		
 		try {
-			Statement statement = this.conn.createStatement();
-			statement.executeUpdate(query);
+			PreparedStatement statement = this.conn.prepareStatement(query);
+			statement.setInt(1, locationID);
+			statement.addBatch();
+			statement.executeBatch();
 			System.out.println("LocationService:  Location deleted.");
 		} catch (SQLException e) {
 			System.out.println("LocationService:  Failed to delete location.");
