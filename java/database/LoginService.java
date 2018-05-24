@@ -5,6 +5,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+
 import entities.Login;
 
 public class LoginService extends Service {
@@ -33,10 +35,29 @@ public class LoginService extends Service {
 			System.out.println("Error: SQL Exception.");
 			e.printStackTrace();
 		}
+
+private int getPK() {
+	int lastPK = 0;
+	int newPK = 0;
+	String query = "SELECT MAX(loginID) FROM login";
+	
+	try {
+		Statement statement = this.con.createStatement();
+		ResultSet result = statement.executeQuery(query);
 		
+		while(result.next()) {
+			lastPK = result.getInt("loginID");
+		}
+		newPK = lastPK + 1;
+	} catch (SQLException e) {
+		System.out.println("Failed to connect to database.");
+		e.printStackTrace();
+	}
+	return newPK;
+}
+
 	}
 
-	
 	public void delete(int loginID) {
 		//DELETE FROM TABLE
 		System.out.println("Deleting user with login ID "+loginID+"...");
@@ -52,7 +73,6 @@ public class LoginService extends Service {
 			System.out.println("Error: SQL Exception.");
 			e.printStackTrace();
 		}
-		
 	}
 
 	

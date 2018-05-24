@@ -5,6 +5,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+
 import entities.ComboFood;
 
 public class ComboFoodService extends Service {
@@ -33,15 +35,33 @@ public class ComboFoodService extends Service {
 			System.out.println("Error: SQL Exception.");
 			e.printStackTrace();
 		}
+  }
+
+private int getPK() {
+	int lastPK = 0;
+	int newPK = 0;
+	String query = "SELECT MAX(comboFoodID) FROM combofood";
+	
+	try {
+		Statement statement = this.con.createStatement();
+		ResultSet result = statement.executeQuery(query);
+		
+		while(result.next()) {
+			lastPK = result.getInt("comboFoodID");
+		}
+		newPK = lastPK + 1;
+	} catch (SQLException e) {
+		System.out.println("Failed to connect to database.");
+		e.printStackTrace();
 	}
+	return newPK;
+}
 	
-	
-	public void delete(int comboFoodID)
-	{
+	public void delete(int comboFoodID) {
 		//DELETE FROM TABLE
 		System.out.println("Deleting combo food with combo food ID "+comboFoodID+"...");
 		
-		try{
+		try {
 			PreparedStatement deleteStmt = conn.prepareStatement("delete from comboFood where comboFoodID=?");
 			deleteStmt.setInt(1,comboFoodID); 
 			deleteStmt.execute();
@@ -52,15 +72,14 @@ public class ComboFoodService extends Service {
 			System.out.println("Error: SQL Exception.");
 			e.printStackTrace();
 		}
-	}
-	
-	
-	public void display() {
-		//DISPLAY FROM TABLE
+  }
+    
+  public void display() {
+    //DISPLAY FROM TABLE
 		System.out.println("Displaying combo food...");
 		System.out.println("Combo Food ID		Food ID		Combo ID");
 			
-		try{
+		try {
 			PreparedStatement oracleStmt = conn.prepareStatement("select * from comboFood");
 			oracleStmt.execute();
 			ResultSet oracleRs = oracleStmt.getResultSet();
@@ -73,7 +92,7 @@ public class ComboFoodService extends Service {
 		} catch (SQLException e) {
 			System.out.println("Error: SQL Exception.");
 			e.printStackTrace();
-		}
-	}
+    }
+  }
 }
 	
