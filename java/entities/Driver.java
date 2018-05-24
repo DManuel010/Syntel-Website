@@ -8,9 +8,9 @@ public class Driver extends Employee {
 	
 	
 
-	public Driver(String email, String password, String firstName, String lastName, int loginID, String phoneNumber,
+	public Driver(String email, String firstName, String lastName, int loginID, String phoneNumber,
 			int homeAddrID, Date lastLogin, int empID, Date hireDate, String title, int workAddrID) {
-		super(email, password, firstName, lastName, loginID, phoneNumber, homeAddrID, lastLogin, empID, hireDate, title,
+		super(email, firstName, lastName, loginID, phoneNumber, homeAddrID, lastLogin, empID, hireDate, title,
 				workAddrID);
 		driverCount++;
 	}

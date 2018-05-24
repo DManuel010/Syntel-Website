@@ -10,10 +10,10 @@ public abstract class Employee extends User {
 	private int workAddrID;
 	private static int employeeCount;
 	
-	public Employee(String email, String password, String firstName, String lastName, 
+	public Employee(String email, String firstName, String lastName, 
 					int loginID, String phoneNumber, int homeAddrID, Date lastLogin, 
 					int empID, Date hireDate, String title,int workAddrID) {
-		super(email, password, firstName, lastName, loginID, phoneNumber, homeAddrID, lastLogin);
+		super(email, firstName, lastName, loginID, phoneNumber, homeAddrID, lastLogin);
 		this.empID = empID;
 		this.hireDate = hireDate;
 		this.title = title;

@@ -1,6 +1,6 @@
 package caseStudy;
 
-public class Combos {
+public class Combo {
 
 	
 	

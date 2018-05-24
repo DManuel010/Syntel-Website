@@ -4,20 +4,29 @@ import java.util.Date;
 
 public class Payment {
 	private int paymentID;
+	private String type;
 	private float amount;
-	private Date date;
+	private Date datePaid;
 	
 	private static int paymentCount;
 
 	
-	public Payment(int paymentID, float amount, Date date) {
+	public Payment(int paymentID, String type, float amount, Date datePaid) {
 		super();
 		this.paymentID = paymentID;
+		this.type = type;
 		this.amount = amount;
-		this.date = date;
+		this.datePaid = datePaid;
 		paymentCount++;
 	}
-
+	
+	public String getType() {
+		return type;
+	}
+	
+	public void setType(String type) {
+		this.type = type;
+	}
 
 	public int getPaymentID() {
 		return paymentID;
@@ -35,12 +44,12 @@ public class Payment {
 		this.amount = amount;
 	}
 
-	public Date getDate() {
-		return date;
+	public Date getDatePaid() {
+		return datePaid;
 	}
 
-	public void setDate(Date date) {
-		this.date = date;
+	public void setDatePaid(Date date) {
+		this.datePaid = date;
 	}
 
 	public static int getPaymentCount() {
@@ -53,6 +62,6 @@ public class Payment {
 
 	@Override
 	public String toString() {
-		return "Payment [paymentID=" + paymentID + ", amount=" + amount + ", date=" + date + "]";
+		return "Payment [paymentID=" + paymentID + ", type=" + type + ", amount=" + amount + ", date=" + datePaid + "]";
 	}
 }

@@ -145,6 +145,7 @@ def build_db():
 							firstName VARCHAR(25) NOT NULL,
 							lastName VARCHAR(25) NOT NULL,
 							email VARCHAR(25) NOT NULL,
+							phoneNumber VARCHAR(25) NOT NULL,
 							loginID INT NOT NULL UNIQUE REFERENCES Login(loginID),
 							dateOfBirth DATE NOT NULL,
 							homeAddrID INT NOT NULL REFERENCES Location(locationID),

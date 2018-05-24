@@ -35,15 +35,6 @@ public class DatabaseService {
 		}
 		return conn;
 	}
-	
-	public void closeConnection() {
-		try {
-			this.conn.close();
-			System.out.println("Connection terminated.");
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
 
 	public String getUsername() {
 		return username;
