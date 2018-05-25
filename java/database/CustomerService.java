@@ -19,29 +19,9 @@ public class CustomerService{
 		this.con=con;
 	}
 	
-	private int getPK() {
-		int lastPK = 0;
-		int newPK = 0;
-		String query = "SELECT MAX(customerID) FROM customer";
+	public void insert(Object obj) {
+		Customer customer = (Customer) obj;
 		
-		try {
-			Statement statement = this.con.createStatement();
-			ResultSet result = statement.executeQuery(query);
-			
-			while(result.next()) {
-				lastPK = result.getInt(1);
-			}
-			newPK = lastPK + 1;
-		} catch (SQLException e) {
-			System.out.println("Failed to connect to database.");
-			e.printStackTrace();
-		}
-		return newPK;
-	}
-
-	public void insert(Customer customer)
-	{
-
 		//INSERT INTO TABLE
 		
 		int customerID;
@@ -62,18 +42,16 @@ public class CustomerService{
 			
 			insertStmt.setInt(1,customerID);
 			insertStmt.setString(2,customer.getFirstName()); 
-			insertStmt.setString(3,customer.getLastName());
-			insertStmt.setString(4,customer.getEmail());
-			insertStmt.setInt(5,customer.getLoginID());
-			insertStmt.setObject(6,customer.getDateOfBirth());
-			insertStmt.setInt(7,customer.getHomeAddrID());
-			insertStmt.setInt(8,customer.getCardID());
-			insertStmt.setObject(9,customer.getDateOfRegister());
-			insertStmt.setObject(10, customer.getLastLogin());
-			insertStmt.setString(11,customer.getPhoneNumber());
-			
+			insertStmt.setString(3,customer.getLastName()); 
+			insertStmt.setInt(4,customer.getLoginID());
+			insertStmt.setString(5,customer.getPhoneNumber());
+			insertStmt.setInt(6,customer.getHomeAddrID());
+			insertStmt.setString(7,customer.getLastLogin());
+			insertStmt.setInt(8,customerID); 
+			insertStmt.setString(9,customer.getDateOfBirth());
+			insertStmt.setInt(10,customer.getCardID());
+			insertStmt.setString(11,customer.getDateOfRegister());
 
-			 
 			insertStmt.execute();
 			System.out.println("Customer Added.");
 			
@@ -119,9 +97,40 @@ public class CustomerService{
 		
 	}
 
-	public void display()
+	// increment the primary key for new insertion
+	public int getPK(int customerID) {
+		int lastPK = 0;
+		int newPK = 0;
+		String query = "SELECT MAX(customerID) AS pk " +
+						"FROM Customer";
+		
+		try {
+			Statement statement = this.conn.createStatement();
+			ResultSet result = statement.executeQuery(query);
+			
+			if(result.next()) {
+				lastPK = result.getInt("pk");
+			}
+			
+			if(orderID <= lastPK) {
+				newPK = lastPK + 1;
+			}
+			else {
+				newPK = customerID;
+			}
+			
+		} catch (SQLException e) {
+			System.out.println("CustomerService:  Failed to get new Primary Key.");
+			e.printStackTrace();
+		}
+		return newPK;
+	}
 
-	{
+
+	public void display() {
+		//DISPLAY FROM TABLE
+		System.out.println("Displaying customer...");
+		System.out.println("Customer ID		First Name		Last Name");
 		
 			//DISPLAY FROM TABLE
 			System.out.println("Displaying customer...");
@@ -145,11 +154,3 @@ public class CustomerService{
 			}
 	}
 }
-		
-		
-	
-		
-	
-
-	
-

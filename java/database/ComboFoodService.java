@@ -36,26 +36,6 @@ public class ComboFoodService extends Service {
 			e.printStackTrace();
 		}
 	}
-
-	private int getPK() {
-		int lastPK = 0;
-		int newPK = 0;
-		String query = "SELECT MAX(comboFoodID) FROM combofood";
-	
-		try {
-			Statement statement = this.conn.createStatement();
-			ResultSet result = statement.executeQuery(query);
-		
-			while(result.next()) {
-				lastPK = result.getInt("comboFoodID");
-			}
-			newPK = lastPK + 1;
-		} catch (SQLException e) {
-			System.out.println("Failed to connect to database.");
-			e.printStackTrace();
-		}
-		return newPK;
-	}
 	
 	public void delete(int comboFoodID) {
 		//DELETE FROM TABLE
@@ -74,6 +54,37 @@ public class ComboFoodService extends Service {
 		}
 	}
     
+
+	// increment the primary key for new insertion
+	public int getPK(int comboFoodID) {
+		int lastPK = 0;
+		int newPK = 0;
+		String query = "SELECT MAX(comboFoodID) AS pk " +
+						"FROM ComboFood";
+		
+		try {
+			Statement statement = this.conn.createStatement();
+			ResultSet result = statement.executeQuery(query);
+			
+			if(result.next()) {
+				lastPK = result.getInt("pk");
+			}
+			
+			if(orderID <= lastPK) {
+				newPK = lastPK + 1;
+			}
+			else {
+				newPK = comboFoodID;
+			}
+			
+		} catch (SQLException e) {
+			System.out.println("ComboFoodService:  Failed to get new Primary Key.");
+			e.printStackTrace();
+		}
+		return newPK;
+	}
+
+
 	public void display() {
 		//DISPLAY FROM TABLE
 		System.out.println("Displaying combo food...");

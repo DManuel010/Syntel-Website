@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.time.LocalDate;
 
 import entities.Card;
 
@@ -26,7 +25,7 @@ public class CardService extends Service {
 		
 		String cardName = card.getName();
 		String cardNumber = card.getNumber();
-		LocalDate expirationDate = card.getExpirationDate();
+		String expirationDate = card.getExpirationDate();
 		int cvv = card.getcvv();
 		String type = card.getType();
 		int billingAddrID = card.getBillingAddrID();
@@ -41,7 +40,7 @@ public class CardService extends Service {
 			statement.setInt(1, cardID);
 			statement.setString(2, cardName);
 			statement.setString(3, cardNumber);
-			statement.setObject(4, expirationDate);
+			statement.setString(4, expirationDate);
 			statement.setInt(5, cvv);
 			statement.setString(6, type);
 			statement.setInt(7, billingAddrID);

@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Date;
 import java.util.Scanner;
 
 import database.DatabaseService;
@@ -94,12 +93,12 @@ public class Main {
 					String firstName = rs.getString(2);
 					String lastName = rs.getString(3);
 					String email = rs.getString(4);
-					Date hireDate = rs.getDate(5);
+					String hireDate = rs.getString(5);
 					String title = rs.getString(6);
 					String phoneNumber = rs.getString(8);
 					int workAddrID = rs.getInt(9);
 					int homeAddrID = rs.getInt(10);
-					Date lastLogin = rs.getDate(11);
+					String lastLogin = rs.getString(11);
 					
 					if(userType.equals("Admin")) {
 						Admin admin = new Admin(email, firstName, lastName, 
@@ -144,11 +143,11 @@ public class Main {
 					String lastName = rs.getString(3);
 					String email = rs.getString(4);
 					String phoneNumber = rs.getString(5);
-					Date dateOfBirth = rs.getDate(7);
+					String dateOfBirth = rs.getString(7);
 					int homeAddrID = rs.getInt(8);
 					int cardID = rs.getInt(9);
-					Date dateOfRegister = rs.getDate(10);
-					Date lastLogin = rs.getDate(11);
+					String dateOfRegister = rs.getString(10);
+					String lastLogin = rs.getString(11);
 					
 					Customer customer = new Customer(email, firstName, lastName,
 													loginID, phoneNumber, homeAddrID,

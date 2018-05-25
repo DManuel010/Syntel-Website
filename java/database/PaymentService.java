@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.time.LocalDate;
 
 import entities.Payment;
 
@@ -24,20 +23,20 @@ public class PaymentService extends Service {
 		payment.setPaymentID(paymentID);
 		
 		String type = payment.getType();
-		float amount = payment.getAmount();
-		LocalDate datePaid = payment.getDatePaid();
+		double amount = payment.getAmount();
+		String datePaid = payment.getDatePaid();
 		
 		// format query
 		String query = "INSERT INTO Payment "
 					+ "(paymentID, type, amount, datePaid) " 
-					+ "VALUES(?, ?, ?, ?)";
+					+ "VALUES(?, ?, ?, TO_DATE(?, 'MM/DD/YYYY'))";
 		
 		try {
 			PreparedStatement statement = this.conn.prepareStatement(query);
 			statement.setInt(1, paymentID);
 			statement.setString(2, type);
-			statement.setFloat(3, amount);
-			statement.setObject(4, datePaid);
+			statement.setDouble(3, amount);
+			statement.setString(4, datePaid);
 			statement.executeUpdate();
 			System.out.println("PaymentService:  Payment insert successful.");	
 		} catch (SQLException e) {

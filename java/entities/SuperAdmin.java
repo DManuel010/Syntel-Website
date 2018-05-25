@@ -1,7 +1,6 @@
 package entities;
 
 import java.sql.Connection;
-import java.util.Date;
 import java.util.Scanner;
 
 public class SuperAdmin extends Admin {
@@ -10,7 +9,7 @@ public class SuperAdmin extends Admin {
 	
 	
 	public SuperAdmin(String email, String firstName, String lastName, int loginID, String phoneNumber,
-			int homeAddrID, Date lastLogin, int empID, Date hireDate, String title, int workAddrID) {
+			int homeAddrID, String lastLogin, int empID, String hireDate, String title, int workAddrID) {
 		super(email, firstName, lastName, loginID, phoneNumber, homeAddrID, lastLogin, empID, hireDate, title,
 				workAddrID);
 		superAdminCount++;
@@ -34,7 +33,7 @@ public class SuperAdmin extends Admin {
 
 
 	@Override
-	public void displayMenu(Scanner input, Connection conn) {
+	public boolean displayMenu(Scanner input, Connection conn) {
 		System.out.println("\n---- Super Admin Menu ----\n");
 		System.out.println("1)  View Orders");
 		System.out.println("2)  Add Orders");
@@ -48,5 +47,7 @@ public class SuperAdmin extends Admin {
 		System.out.println("10) View Customers");
 		System.out.println("11) Issue Refund");
 		System.out.println("12) Log Out\n");
+		
+		return false;
 	}
 }

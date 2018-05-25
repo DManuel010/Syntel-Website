@@ -91,7 +91,8 @@ def build_db():
 	query_login = '''CREATE TABLE Login (
 						loginID INT NOT NULL PRIMARY KEY,
 						username VARCHAR(25) NOT NULL UNIQUE,
-						password VARCHAR(25) NOT NULL
+						password VARCHAR(25) NOT NULL,
+						type VARCHAR(25) NOT NULL
 					);'''
 
 	queries.append(query_login)

@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.time.LocalDate;
 
 import entities.Order;
 
@@ -28,9 +27,9 @@ public class OrderService extends Service {
 		double cost = order.getCost();
 		int paymentID = order.getPaymentID();
 		int deliveryAddrID = order.getDeliveryAddrID();
-		LocalDate orderDate = order.getOrderDate();
-		LocalDate expectedDate = order.getExpectedDate();
-		LocalDate deliveryDate = order.getDeliveryDate();
+		String orderDate = order.getOrderDate();
+		String expectedDate = order.getExpectedDate();
+		String deliveryDate = order.getDeliveryDate();
 		String note = order.getNote();
 		
 		// format query
@@ -38,7 +37,11 @@ public class OrderService extends Service {
 						+ "orderID, employeeID, customerID, cost, "
 						+ "paymentID, deliveryAddrID, orderDate, "
 						+ "expectedDate, deliveryDate, note) "
-					+ "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+					+ "VALUES(?, ?, ?, ?, ?, ?, "
+							+ "TO_DATE(?, 'MM/DD/YYYY'), "
+							+ "TO_DATE(?, 'MM/DD/YYYY'), "
+							+ "TO_DATE(?, 'MM/DD/YYYY'),"
+							+ " ?)";
 		
 		try {
 			PreparedStatement statement = this.conn.prepareStatement(query);
@@ -48,9 +51,9 @@ public class OrderService extends Service {
 			statement.setDouble(4, cost);
 			statement.setInt(5, paymentID);
 			statement.setInt(6, deliveryAddrID);
-			statement.setObject(7, orderDate);
-			statement.setObject(8, expectedDate);
-			statement.setObject(9, deliveryDate);
+			statement.setString(7, orderDate);
+			statement.setString(8, expectedDate);
+			statement.setString(9, deliveryDate);
 			statement.setString(10, note);
 			statement.executeUpdate();
 			System.out.println("OrderService:  Order inserted.");

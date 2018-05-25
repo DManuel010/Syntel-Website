@@ -1,7 +1,6 @@
 package entities;
 
 import java.sql.Connection;
-import java.util.Date;
 import java.util.Scanner;
 
 public abstract class User {
@@ -12,12 +11,12 @@ public abstract class User {
 	private int loginID;
 	private String phoneNumber;
 	private int homeAddrID;
-	private Date lastLogin;
+	private String lastLogin;
 	
 	private static int userCount;
 	
 	public User(String firstName, String lastName, String email, int loginID, String phoneNumber,
-			int homeAddrID, Date lastLogin) {
+			int homeAddrID, String lastLogin) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -74,11 +73,11 @@ public abstract class User {
 		this.homeAddrID = homeAddrID;
 	}
 
-	public Date getLastLogin() {
+	public String getLastLogin() {
 		return lastLogin;
 	}
 
-	public void setLastLogin(Date lastLogin) {
+	public void setLastLogin(String lastLogin) {
 		this.lastLogin = lastLogin;
 	}
 
@@ -105,5 +104,5 @@ public abstract class User {
 				+ ", lastLogin=" + lastLogin + "]";
 	}
 
-	public abstract void displayMenu(Scanner input, Connection conn);
+	public abstract boolean displayMenu(Scanner input, Connection conn);
 }
