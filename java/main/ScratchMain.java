@@ -2,8 +2,6 @@ package main;
 
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 
 import database.CardService;
 import database.DatabaseService;
@@ -17,16 +15,7 @@ public class ScratchMain {
 		locationService.insert(location);
 	}
 	
-	
-	public static LocalDate buildDate(String date) {
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
-		LocalDate localDate = LocalDate.parse(date, formatter);
-		System.out.println(localDate);
-		return localDate;
-	}
-	
-	
-	public static void insertCard(Connection conn, Card card, Location location, LocalDate date) {
+	public static void insertCard(Connection conn, Card card, Location location, String date) {
 		CardService cardService = new CardService(conn);
 		cardService.insert(card);
 		System.out.println(card.getCardID());
@@ -45,14 +34,13 @@ public class ScratchMain {
 		// connect to database
 		DatabaseService dbService = new DatabaseService(username, password, server, port);
 		Connection conn = dbService.getConnection();
-		System.out.println(conn);
 		
 		// Insert new location
 		Location location = new Location(0, "USA", "Arizona", "Phoenix", "20827 N 27th Avenue", "Room 111", "85027");
 		insertLocation(conn, location);
 
 		// Insert new card
-		LocalDate date = buildDate("04/02/2020");
+		String date = "04/02/2020";
 		Card card = new Card(0, "Michael Jackson", "1123223433454456", date, 123, "Visa", 0);
 		insertCard(conn, card, location, date);
 		

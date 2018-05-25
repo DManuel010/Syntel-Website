@@ -4,8 +4,8 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Scanner;
 
 import database.FoodOrderService;
@@ -17,14 +17,14 @@ import database.PaymentService;
 public class Customer extends User {
 
 	private int customerID;
-	private Date dateOfBirth;
+	private String dateOfBirth;
 	private int cardID;
-	private Date dateOfRegister;
+	private String dateOfRegister;
 	
 	private static int customerCount;
 	
 	public Customer(String email, String firstName, String lastName, int loginID, String phoneNumber,
-			int homeAddrID, Date lastLogin, int customerID, Date dateOfBirth, int cardID, Date dateOfRegister) {
+			int homeAddrID, String lastLogin, int customerID, String dateOfBirth, int cardID, String dateOfRegister) {
 		super(email, firstName, lastName, loginID, phoneNumber, homeAddrID, lastLogin);
 		this.customerID = customerID;
 		this.dateOfBirth = dateOfBirth;
@@ -34,7 +34,7 @@ public class Customer extends User {
 	}
 
 	public Customer(String firstName, String lastName, String email, int loginID, String phoneNumber, int homeAddrID,
-			Date lastLogin) {
+			String lastLogin) {
 		super(firstName, lastName, email, loginID, phoneNumber, homeAddrID, lastLogin);
 		customerCount++;
 	}
@@ -47,11 +47,11 @@ public class Customer extends User {
 		this.customerID = customerID;
 	}
 
-	public Date getDateOfBirth() {
+	public String getDateOfBirth() {
 		return dateOfBirth;
 	}
 
-	public void setDateOfBirth(Date dateOfBirth) {
+	public void setDateOfBirth(String dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
 	}
 
@@ -63,11 +63,11 @@ public class Customer extends User {
 		this.cardID = cardID;
 	}
 
-	public Date getDateOfRegister() {
+	public String getDateOfRegister() {
 		return dateOfRegister;
 	}
 
-	public void setDateOfRegister(Date dateOfRegister) {
+	public void setDateOfRegister(String dateOfRegister) {
 		this.dateOfRegister = dateOfRegister;
 	}
 
@@ -86,7 +86,7 @@ public class Customer extends User {
 	}
 
 	@Override
-	public void displayMenu(Scanner input, Connection conn) {
+	public boolean displayMenu(Scanner input, Connection conn) {
 		System.out.println("\n---- Customer Menu ----\n");
 		System.out.println("1)  Make Order");
 		System.out.println("2)  Edit Order");
@@ -130,6 +130,7 @@ public class Customer extends User {
 				System.out.println("Not a valid option");
 			}
 		}
+		return false;
 	}
 	
 	
@@ -159,7 +160,7 @@ public class Customer extends User {
 		int orderID = orderService.getPK(0);
 		ArrayList<Integer> foodIDs = new ArrayList<Integer>();
 		ArrayList<Integer> quantities = new ArrayList<Integer>();
-		int total = 0;
+		double total = 0;
 		
 		boolean shopping = true;
 		while(shopping) {
@@ -192,8 +193,8 @@ public class Customer extends User {
 		int paymentID = makePayment(conn, input, total);
 		int deliveryAddrID = getDeliveryAddress(conn, input);
 		int employeeID = randomEmployee(conn);
-		LocalDate orderDate = currentDate();
-		LocalDate expectedDate = deliveryDate(orderDate);
+		String orderDate = currentDate();
+		String expectedDate = expectedDate();
 		
 		
 		Order order = new Order(orderID, employeeID, this.customerID, 
@@ -216,7 +217,7 @@ public class Customer extends User {
 	/*
 	 * Make a payment for the current working order
 	 */
-	private int makePayment(Connection conn, Scanner input, int amount) {
+	private int makePayment(Connection conn, Scanner input, double amount) {
 		PaymentService paymentService = new PaymentService(conn);
 		int paymentID = paymentService.getPK(0);
 		String paymentType = "";
@@ -241,7 +242,7 @@ public class Customer extends User {
 			}
 		}
 			
-		LocalDate datePaid = currentDate();
+		String datePaid = currentDate();
 		Payment payment = new Payment(paymentID, paymentType, amount, datePaid);
 			
 		paymentService.insert(payment);
@@ -268,11 +269,11 @@ public class Customer extends User {
 		System.out.print("City: ");
 		String city = input.next();
 		
-		System.out.print("Street Address: ");
-		String streetNum = input.next();
+		System.out.println("Street Address: ");
+		String streetNum = input.nextLine();
 		
-		System.out.print("Apt/Room # (can leave blank): ");
-		String roomNum = input.next();
+		System.out.println("Apt/Room # (can leave blank): ");
+		String roomNum = input.nextLine();
 		
 		System.out.print("Zip: ");
 		String zip = input.next();
@@ -288,15 +289,17 @@ public class Customer extends User {
 	 * TODO: Query database for an employeeID to return to fulfill order
 	 */
 	private int randomEmployee(Connection conn) {
-		return 1;
+		return 3;
 	}
 	
 	
 	/*
 	 * Get current date object
 	 */
-	private LocalDate currentDate() {
-		LocalDate today = LocalDate.now();
+	private String currentDate() {
+		LocalDate localDate = LocalDate.now();
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+		String today = localDate.format(formatter);
 		return today;
 	}
 	
@@ -304,8 +307,10 @@ public class Customer extends User {
 	/*
 	 * Get a delivery date within 2 days of orderDate
 	 */
-	private LocalDate deliveryDate(LocalDate orderDate) {
-		LocalDate deliveryDate = orderDate.plusDays(2);
+	private String expectedDate() {
+		LocalDate localDate = LocalDate.now().plusDays(2);
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+		String deliveryDate = localDate.format(formatter);
 		return deliveryDate;
 	}
 }

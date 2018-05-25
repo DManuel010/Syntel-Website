@@ -1,7 +1,6 @@
 package entities;
 
 import java.sql.Connection;
-import java.util.Date;
 import java.util.Scanner;
 
 public class Driver extends Employee {
@@ -9,7 +8,7 @@ public class Driver extends Employee {
 	private static int driverCount;
 
 	public Driver(String email, String firstName, String lastName, int loginID, String phoneNumber,
-			int homeAddrID, Date lastLogin, int empID, Date hireDate, String title, int workAddrID) {
+			int homeAddrID, String lastLogin, int empID, String hireDate, String title, int workAddrID) {
 		super(email, firstName, lastName, loginID, phoneNumber, homeAddrID, lastLogin, empID, hireDate, title,
 				workAddrID);
 		driverCount++;
@@ -29,10 +28,12 @@ public class Driver extends Employee {
 	}
 
 	@Override
-	public void displayMenu(Scanner input, Connection conn) {
+	public boolean displayMenu(Scanner input, Connection conn) {
 		System.out.println("\n---- Driver Menu ----\n");
 		System.out.println("1) View Orders");
 		System.out.println("2) Complete Orders");
 		System.out.println("3) Log Out\n");
+		
+		return false;
 	}
 }

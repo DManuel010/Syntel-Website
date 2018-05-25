@@ -1,17 +1,16 @@
 package entities;
 
-import java.time.LocalDate;
 
 public class Payment {
 	private int paymentID;
 	private String type;
-	private float amount;
-	private LocalDate datePaid;
+	private double amount;
+	private String datePaid;
 	
 	private static int paymentCount;
 
 	
-	public Payment(int paymentID, String type, float amount, LocalDate datePaid) {
+	public Payment(int paymentID, String type, double amount, String datePaid) {
 		super();
 		this.paymentID = paymentID;
 		this.type = type;
@@ -41,19 +40,19 @@ public class Payment {
 		this.paymentID = paymentID;
 	}
 
-	public float getAmount() {
+	public double getAmount() {
 		return amount;
 	}
 
-	public void setAmount(float amount) {
+	public void setAmount(double amount) {
 		this.amount = amount;
 	}
 
-	public LocalDate getDatePaid() {
+	public String getDatePaid() {
 		return datePaid;
 	}
 
-	public void setDatePaid(LocalDate date) {
+	public void setDatePaid(String date) {
 		this.datePaid = date;
 	}
 

@@ -37,21 +37,30 @@ public class LoginService extends Service {
 		}
 	}
 
-	private int getPK() {
+	// increment the primary key for new insertion
+	public int getPK(int loginID) {
 		int lastPK = 0;
 		int newPK = 0;
-		String query = "SELECT MAX(loginID) FROM login";
-	
+		String query = "SELECT MAX(loginID) AS pk " +
+						"FROM Login";
+		
 		try {
 			Statement statement = this.conn.createStatement();
 			ResultSet result = statement.executeQuery(query);
-		
-			while(result.next()) {
-				lastPK = result.getInt("loginID");
+			
+			if(result.next()) {
+				lastPK = result.getInt("pk");
 			}
-			newPK = lastPK + 1;
+			
+			if(orderID <= lastPK) {
+				newPK = lastPK + 1;
+			}
+			else {
+				newPK = loginID;
+			}
+			
 		} catch (SQLException e) {
-			System.out.println("Failed to connect to database.");
+			System.out.println("LoginService:  Failed to get new Primary Key.");
 			e.printStackTrace();
 		}
 		return newPK;

@@ -1,6 +1,5 @@
 package entities;
 
-import java.time.LocalDate;
 
 public class Order {
 	
@@ -10,15 +9,15 @@ public class Order {
 	private double cost;
 	private int paymentID;
 	private int deliveryAddrID;
-	private LocalDate orderDate;
-	private LocalDate expectedDate;
-	private LocalDate deliveryDate;
+	private String orderDate;
+	private String expectedDate;
+	private String deliveryDate;
 	private String note;
 	
 	private static int orderCount;
 	
 	public Order(int orderID, int employeeID, int customerID, double cost, int paymentID, int deliveryAddrID,
-			LocalDate orderDate, LocalDate expectedDate, LocalDate deliveryDate, String note) {
+			String orderDate, String expectedDate, String deliveryDate, String note) {
 		super();
 		this.orderID = orderID;
 		this.employeeID = employeeID;
@@ -86,27 +85,27 @@ public class Order {
 		this.deliveryAddrID = deliveryAddrID;
 	}
 
-	public LocalDate getOrderDate() {
+	public String getOrderDate() {
 		return orderDate;
 	}
 
-	public void setOrderDate(LocalDate orderDate) {
+	public void setOrderDate(String orderDate) {
 		this.orderDate = orderDate;
 	}
 
-	public LocalDate getExpectedDate() {
+	public String getExpectedDate() {
 		return expectedDate;
 	}
 
-	public void setExpectedDate(LocalDate expectedDate) {
+	public void setExpectedDate(String expectedDate) {
 		this.expectedDate = expectedDate;
 	}
 
-	public LocalDate getDeliveryDate() {
+	public String getDeliveryDate() {
 		return deliveryDate;
 	}
 
-	public void setDeliveryDate(LocalDate deliveryDate) {
+	public void setDeliveryDate(String deliveryDate) {
 		this.deliveryDate = deliveryDate;
 	}
 

@@ -1,19 +1,18 @@
 package entities;
 
-import java.util.Date;
 
 public abstract class Employee extends User {
 
 	private int empID;
-	private Date hireDate;
+	private String hireDate;
 	private String title;
 	private int workAddrID;
 	
 	private static int employeeCount;
 	
 	public Employee(String email, String firstName, String lastName, 
-					int loginID, String phoneNumber, int homeAddrID, Date lastLogin, 
-					int empID, Date hireDate, String title,int workAddrID) {
+					int loginID, String phoneNumber, int homeAddrID, String lastLogin, 
+					int empID, String hireDate, String title,int workAddrID) {
 		super(email, firstName, lastName, loginID, phoneNumber, homeAddrID, lastLogin);
 		this.empID = empID;
 		this.hireDate = hireDate;
@@ -23,7 +22,7 @@ public abstract class Employee extends User {
 	}
 	
 	public Employee(String firstName, String lastName, String email, int loginID, String phoneNumber, int homeAddrID,
-			Date lastLogin) {
+			String lastLogin) {
 		super(firstName, lastName, email, loginID, phoneNumber, homeAddrID, lastLogin);
 		employeeCount++;
 	}
@@ -36,11 +35,11 @@ public abstract class Employee extends User {
 		this.empID = empID;
 	}
 
-	public Date getHireDate() {
+	public String getHireDate() {
 		return hireDate;
 	}
 
-	public void setHireDate(Date hireDate) {
+	public void setHireDate(String hireDate) {
 		this.hireDate = hireDate;
 	}
 

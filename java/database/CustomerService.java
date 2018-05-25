@@ -14,27 +14,6 @@ public class CustomerService extends Service {
 		super(conn);
 	}
 	
-	private int getPK() {
-		int lastPK = 0;
-		int newPK = 0;
-		String query = "SELECT MAX(customerID) FROM customer";
-		
-		try {
-			Statement statement = this.conn.createStatement();
-			ResultSet result = statement.executeQuery(query);
-			
-			while(result.next()) {
-				lastPK = result.getInt("customerID");
-			}
-			newPK = lastPK + 1;
-		} catch (SQLException e) {
-			System.out.println("Failed to connect to database.");
-			e.printStackTrace();
-		}
-		return newPK;
-	}
-
-	
 	public void insert(Object obj) {
 		Customer customer = (Customer) obj;
 		
@@ -61,9 +40,9 @@ public class CustomerService extends Service {
 			insertStmt.setInt(6,customer.getHomeAddrID());
 			insertStmt.setObject(7,customer.getLastLogin());
 			insertStmt.setInt(8,customerID); 
-			insertStmt.setObject(9,customer.getDateOfBirth());
+			insertStmt.setString(9,customer.getDateOfBirth());
 			insertStmt.setInt(10,customer.getCardID());
-			insertStmt.setObject(11,customer.getDateOfRegister());
+			insertStmt.setString(11,customer.getDateOfRegister());
 			insertStmt.execute();
 			System.out.println("CustomerService:  Customer Added.");
 		} catch (SQLException e) {
@@ -105,6 +84,37 @@ public class CustomerService extends Service {
 		}
 		
 	}
+
+
+	// increment the primary key for new insertion
+	public int getPK(int customerID) {
+		int lastPK = 0;
+		int newPK = 0;
+		String query = "SELECT MAX(customerID) AS pk " +
+						"FROM Customer";
+		
+		try {
+			Statement statement = this.conn.createStatement();
+			ResultSet result = statement.executeQuery(query);
+			
+			if(result.next()) {
+				lastPK = result.getInt("pk");
+			}
+			
+			if(orderID <= lastPK) {
+				newPK = lastPK + 1;
+			}
+			else {
+				newPK = customerID;
+			}
+			
+		} catch (SQLException e) {
+			System.out.println("CustomerService:  Failed to get new Primary Key.");
+			e.printStackTrace();
+		}
+		return newPK;
+	}
+
 
 	public void display() {
 		//DISPLAY FROM TABLE

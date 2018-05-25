@@ -1,7 +1,6 @@
 package entities;
 
 import java.sql.Connection;
-import java.util.Date;
 import java.util.Scanner;
 
 public class Admin extends Employee {
@@ -9,7 +8,7 @@ public class Admin extends Employee {
 	private static int adminCount;
 
 	public Admin(String email, String firstName, String lastName, int loginID, String phoneNumber,
-			int homeAddrID, Date lastLogin, int empID, Date hireDate, String title, int workAddrID) {
+			int homeAddrID, String lastLogin, int empID, String hireDate, String title, int workAddrID) {
 		super(email, firstName, lastName, loginID, phoneNumber, homeAddrID, lastLogin, empID, hireDate, title,
 				workAddrID);
 		adminCount++;
@@ -29,7 +28,7 @@ public class Admin extends Employee {
 	}
 
 	@Override
-	public void displayMenu(Scanner input, Connection conn) {
+	public boolean displayMenu(Scanner input, Connection conn) {
 		System.out.println("\n---- Admin Menu ----\n");
 		System.out.println("1)  View Orders");
 		System.out.println("2)  Add Orders");
@@ -40,5 +39,7 @@ public class Admin extends Employee {
 		System.out.println("7)  View Customers");
 		System.out.println("8)  Issue Refund");
 		System.out.println("9)  Log Out\n");
+		
+		return false;
 	}
 }
