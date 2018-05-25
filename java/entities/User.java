@@ -1,47 +1,36 @@
 package entities;
 
-import java.util.Date;
+import java.sql.Connection;
+import java.util.Scanner;
 
 public abstract class User {
 	
-	private String email;
-	private String password;
 	private String firstName;
 	private String lastName;
+	private String email;
 	private int loginID;
 	private String phoneNumber;
 	private int homeAddrID;
-	private Date lastLogin;
+	private String lastLogin;
+	
 	private static int userCount;
 	
-	public User(String email, String password, String firstName, String lastName, int loginID, String phoneNumber,
-			int homeAddrID, Date lastLogin) {
+	public User(String firstName, String lastName, String email, int loginID, String phoneNumber,
+			int homeAddrID, String lastLogin) {
 		super();
-		this.email = email;
-		this.password = password;
 		this.firstName = firstName;
 		this.lastName = lastName;
+		this.email = email;
 		this.loginID = loginID;
 		this.phoneNumber = phoneNumber;
 		this.homeAddrID = homeAddrID;
 		this.lastLogin = lastLogin;
 		userCount++;
 	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
+	
+	public User() {
+		super();
+		userCount++;
 	}
 
 	public String getFirstName() {
@@ -84,11 +73,11 @@ public abstract class User {
 		this.homeAddrID = homeAddrID;
 	}
 
-	public Date getLastLogin() {
+	public String getLastLogin() {
 		return lastLogin;
 	}
 
-	public void setLastLogin(Date lastLogin) {
+	public void setLastLogin(String lastLogin) {
 		this.lastLogin = lastLogin;
 	}
 
@@ -99,13 +88,21 @@ public abstract class User {
 	public static void setUserCount(int userCount) {
 		User.userCount = userCount;
 	}
+	
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
 	@Override
 	public String toString() {
-		return "User [email=" + email + ", password=" + password + ", firstName=" + firstName + ", lastName=" + lastName
+		return "User [firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
 				+ ", loginID=" + loginID + ", phoneNumber=" + phoneNumber + ", homeAddrID=" + homeAddrID
 				+ ", lastLogin=" + lastLogin + "]";
 	}
 
-	public abstract void displayMenu();
+	public abstract boolean displayMenu(Scanner input, Connection conn);
 }

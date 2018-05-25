@@ -1,23 +1,36 @@
 package entities;
 
-import java.util.Date;
 
 public class Payment {
 	private int paymentID;
-	private float amount;
-	private Date date;
+	private String type;
+	private double amount;
+	private String datePaid;
 	
 	private static int paymentCount;
 
 	
-	public Payment(int paymentID, float amount, Date date) {
+	public Payment(int paymentID, String type, double amount, String datePaid) {
 		super();
 		this.paymentID = paymentID;
+		this.type = type;
 		this.amount = amount;
-		this.date = date;
+		this.datePaid = datePaid;
+		paymentCount++;
+	}
+	
+	public Payment() {
+		super();
 		paymentCount++;
 	}
 
+	public String getType() {
+		return type;
+	}
+	
+	public void setType(String type) {
+		this.type = type;
+	}
 
 	public int getPaymentID() {
 		return paymentID;
@@ -27,20 +40,20 @@ public class Payment {
 		this.paymentID = paymentID;
 	}
 
-	public float getAmount() {
+	public double getAmount() {
 		return amount;
 	}
 
-	public void setAmount(float amount) {
+	public void setAmount(double amount) {
 		this.amount = amount;
 	}
 
-	public Date getDate() {
-		return date;
+	public String getDatePaid() {
+		return datePaid;
 	}
 
-	public void setDate(Date date) {
-		this.date = date;
+	public void setDatePaid(String date) {
+		this.datePaid = date;
 	}
 
 	public static int getPaymentCount() {
@@ -53,6 +66,6 @@ public class Payment {
 
 	@Override
 	public String toString() {
-		return "Payment [paymentID=" + paymentID + ", amount=" + amount + ", date=" + date + "]";
+		return "Payment [paymentID=" + paymentID + ", type=" + type + ", amount=" + amount + ", date=" + datePaid + "]";
 	}
 }

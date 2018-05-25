@@ -44,8 +44,7 @@ public class LocationService extends Service {
 			statement.setString(5, street);
 			statement.setString(6, room);
 			statement.setString(7, zip);
-			statement.addBatch();
-			statement.executeBatch();
+			statement.executeUpdate();
 			System.out.println("LocationService:  Location insert successful.");	
 		} catch (SQLException e) {
 			System.out.println("LocationService:  Failed to insert location.");
@@ -56,15 +55,12 @@ public class LocationService extends Service {
 	
 	@Override
 	public void delete(int locationID) {	
-		String query = String.format(
-					"DELETE FROM Location " +
-					"WHERE cardID = %d",
-					locationID
-				);
+		String query = "DELETE FROM Location WHERE locationID = ?";
 		
 		try {
-			Statement statement = this.conn.createStatement();
-			statement.executeUpdate(query);
+			PreparedStatement statement = this.conn.prepareStatement(query);
+			statement.setInt(1, locationID);
+			statement.executeUpdate();
 			System.out.println("LocationService:  Location deleted.");
 		} catch (SQLException e) {
 			System.out.println("LocationService:  Failed to delete location.");
@@ -74,7 +70,7 @@ public class LocationService extends Service {
 	
 	
 	// increment the primary key for new insertion
-	private int getPK(int locationID) {
+	public int getPK(int locationID) {
 		int lastPK = 0;
 		int newPK = 0;
 		String query = "SELECT MAX(locationID) AS pk " +

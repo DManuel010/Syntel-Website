@@ -2,7 +2,6 @@ package database;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.SQLException;
 
 public class DatabaseService {
 	private String username;
@@ -34,15 +33,6 @@ public class DatabaseService {
 			e.printStackTrace();
 		}
 		return conn;
-	}
-	
-	public void closeConnection() {
-		try {
-			this.conn.close();
-			System.out.println("Connection terminated.");
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
 	}
 
 	public String getUsername() {

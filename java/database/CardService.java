@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Date;
 
 import entities.Card;
 
@@ -26,10 +25,10 @@ public class CardService extends Service {
 		
 		String cardName = card.getName();
 		String cardNumber = card.getNumber();
-		Date expirationDate = card.getExpirationDate();
+		String expirationDate = card.getExpirationDate();
 		int cvv = card.getcvv();
 		String type = card.getType();
-		int billingAddrID = card.getBillingAddr().getLocationID();
+		int billingAddrID = card.getBillingAddrID();
 		
 		// format query
 		String query = "INSERT INTO Card "
@@ -41,64 +40,60 @@ public class CardService extends Service {
 			statement.setInt(1, cardID);
 			statement.setString(2, cardName);
 			statement.setString(3, cardNumber);
-			statement.setObject(4, expirationDate);
+			statement.setString(4, expirationDate);
 			statement.setInt(5, cvv);
 			statement.setString(6, type);
 			statement.setInt(7, billingAddrID);
-			statement.execute(query);
-			System.out.println("Card inserted.");
+			statement.executeUpdate();
+			System.out.println("CardService:  Card inserted.");
 		} catch (SQLException e) {
-			System.out.println("Failed to insert card.");
+			System.out.println("CardService:  Failed to insert card.");
 			e.printStackTrace();
 		}
 	}
 	
 	
 	// increment the primary key for new insertion
-		private int getPK(int cardID) {
-			int lastPK = 0;
-			int newPK = 0;
-			String query = "SELECT MAX(cardID) AS pk " +
-							"FROM Card";
+	private int getPK(int cardID) {
+		int lastPK = 0;
+		int newPK = 0;
+		String query = "SELECT MAX(cardID) AS pk " +
+						"FROM Card";
+		
+		try {
+			Statement statement = this.conn.createStatement();
+			ResultSet result = statement.executeQuery(query);
 			
-			try {
-				Statement statement = this.conn.createStatement();
-				ResultSet result = statement.executeQuery(query);
-				
-				if(result.next()) {
-					lastPK = result.getInt("pk");
-				}
-				
-				if(cardID <= lastPK) {
-					newPK = lastPK + 1;
-				}
-				else {
-					newPK = cardID;
-				}
-				
-			} catch (SQLException e) {
-				System.out.println("CardService:  Failed to get new Primary Key.");
-				e.printStackTrace();
+			if(result.next()) {
+				lastPK = result.getInt("pk");
 			}
-			return newPK;
+			
+			if(cardID <= lastPK) {
+				newPK = lastPK + 1;
+			}
+			else {
+				newPK = cardID;
+			}
+			
+		} catch (SQLException e) {
+			System.out.println("CardService:  Failed to get new Primary Key.");
+			e.printStackTrace();
 		}
+		return newPK;
+	}
 	
 	
 	@Override
 	public void delete(int cardID) {	
-		// format query
-		String query = String.format(
-					"DELETE FROM Card " +
-					"WHERE cardID = %d",
-					cardID
-				);
+		String query = "DELETE FROM Card WHERE cardID = ?";
 		
 		try {
-			Statement statement = this.conn.createStatement();
-			statement.executeUpdate(query);
-			System.out.println("Card deleted.");
+			PreparedStatement statement = this.conn.prepareStatement(query);
+			statement.setInt(1, cardID);
+			statement.executeUpdate();
+			System.out.println("CardService:  Card deleted.");
 		} catch (SQLException e) {
-			System.out.println("Failed to delete card.");
+			System.out.println("CardService:  Failed to delete card.");
 			e.printStackTrace();
 		}
 	}

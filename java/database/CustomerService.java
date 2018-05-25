@@ -5,6 +5,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.Date;
+
 import entities.Customer;
 
 public class CustomerService{
@@ -15,26 +18,40 @@ public class CustomerService{
 		super();
 		this.con=con;
 	}
-
-	public void insert(Customer customer)
-	{
-
+	
+	public void insert(Object obj) {
+		Customer customer = (Customer) obj;
+		
 		//INSERT INTO TABLE
+		
+		int customerID;
+		if(customer.getCustomerID() == 0) {
+			customerID = getPK();
+			customer.setCustomerID(customerID);
+		}
+		else {
+			customerID = customer.getCustomerID();
+		}
+		
+		
+		
 		System.out.println("Inserting a new customer...");
 		
 		try {
-			PreparedStatement insertStmt = con.prepareStatement("insert into customer values (?,?,?,?,?,?,?,?,?,?)");
+			PreparedStatement insertStmt = con.prepareStatement("insert into customer values (?,?,?,?,?,?,?,?,?,?,?)");
 			
-			insertStmt.setInt(1,customer.getCustomerID()); 
+			insertStmt.setInt(1,customerID);
 			insertStmt.setString(2,customer.getFirstName()); 
 			insertStmt.setString(3,customer.getLastName()); 
-			insertStmt.setString(4,customer.getEmail()); 
-			insertStmt.setInt(5,customer.getLoginID());
-			insertStmt.setString(6,customer.getDateOfBirth()); 
-			insertStmt.setInt(7,customer.getHomeAddrID());
-			insertStmt.setInt(8,customer.getCardID()); 
-			insertStmt.setString(9,customer.getDateOfRegister()); 
-			insertStmt.setString(10,customer.getLastLogin()); 
+			insertStmt.setInt(4,customer.getLoginID());
+			insertStmt.setString(5,customer.getPhoneNumber());
+			insertStmt.setInt(6,customer.getHomeAddrID());
+			insertStmt.setString(7,customer.getLastLogin());
+			insertStmt.setInt(8,customerID); 
+			insertStmt.setString(9,customer.getDateOfBirth());
+			insertStmt.setInt(10,customer.getCardID());
+			insertStmt.setString(11,customer.getDateOfRegister());
+
 			insertStmt.execute();
 			System.out.println("Customer Added.");
 			
@@ -80,9 +97,40 @@ public class CustomerService{
 		
 	}
 
-	public void display()
+	// increment the primary key for new insertion
+	public int getPK(int customerID) {
+		int lastPK = 0;
+		int newPK = 0;
+		String query = "SELECT MAX(customerID) AS pk " +
+						"FROM Customer";
+		
+		try {
+			Statement statement = this.conn.createStatement();
+			ResultSet result = statement.executeQuery(query);
+			
+			if(result.next()) {
+				lastPK = result.getInt("pk");
+			}
+			
+			if(orderID <= lastPK) {
+				newPK = lastPK + 1;
+			}
+			else {
+				newPK = customerID;
+			}
+			
+		} catch (SQLException e) {
+			System.out.println("CustomerService:  Failed to get new Primary Key.");
+			e.printStackTrace();
+		}
+		return newPK;
+	}
 
-	{
+
+	public void display() {
+		//DISPLAY FROM TABLE
+		System.out.println("Displaying customer...");
+		System.out.println("Customer ID		First Name		Last Name");
 		
 			//DISPLAY FROM TABLE
 			System.out.println("Displaying customer...");
@@ -106,11 +154,3 @@ public class CustomerService{
 			}
 	}
 }
-		
-		
-	
-		
-	
-
-	
-

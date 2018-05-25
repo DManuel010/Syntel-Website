@@ -1,19 +1,18 @@
 package entities;
 
-import java.util.Date;
 
 public class Card {
 	private int cardID;
 	private String name;
 	private String number;
-	private Date expirationDate;
+	private String expirationDate;
 	private int cvv;
 	private String type;
-	private Location billingAddr;
+	private int billingAddrID;
 	
 	private static int cardCount;
 
-	public Card(int cardID, String name, String number, Date expirationDate, int cvv, String type, Location billingAddr) {
+	public Card(int cardID, String name, String number, String expirationDate, int cvv, String type, int billingAddrID) {
 		super();
 		this.cardID = cardID;
 		this.name = name;
@@ -21,10 +20,14 @@ public class Card {
 		this.expirationDate = expirationDate;
 		this.cvv = cvv;
 		this.type = type;
-		this.billingAddr = billingAddr;
+		this.billingAddrID = billingAddrID;
 		cardCount++;
 	}
-
+	
+	public Card() {
+		super();
+		cardCount++;
+	}
 	
 	public int getCardID() {
 		return cardID;
@@ -50,11 +53,11 @@ public class Card {
 		this.number = number;
 	}
 
-	public Date getExpirationDate() {
+	public String getExpirationDate() {
 		return expirationDate;
 	}
 
-	public void setExpirationDate(Date expirationDate) {
+	public void setExpirationDate(String expirationDate) {
 		this.expirationDate = expirationDate;
 	}
 
@@ -74,12 +77,12 @@ public class Card {
 		this.type = type;
 	}
 
-	public Location getBillingAddr() {
-		return billingAddr;
+	public int getBillingAddrID() {
+		return billingAddrID;
 	}
 
-	public void setBillingAddr(Location billingAddr) {
-		this.billingAddr = billingAddr;
+	public void setBillingAddrID(int billingAddrID) {
+		this.billingAddrID = billingAddrID;
 	}
 
 	public static int getCardCount() {
@@ -93,6 +96,6 @@ public class Card {
 	@Override
 	public String toString() {
 		return "Card [cardID=" + cardID + ", name=" + name + ", number=" + number + ", expirationDate=" + expirationDate
-				+ ", cvv=" + cvv + ", type=" + type + ", billingAddr=" + billingAddr + "]";
+				+ ", cvv=" + cvv + ", type=" + type + ", billingAddrID=" + billingAddrID + "]";
 	}
 }
