@@ -1,15 +1,10 @@
 package entities;
 
 import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.time.LocalDate;
-import java.util.Date;
 import java.util.Scanner;
 
 import database.CustomerService;
 import database.EmployeeService;
-import database.FoodService;
 import database.OrderService;
 
 public class Admin extends Employee {
@@ -38,19 +33,19 @@ public class Admin extends Employee {
 
 	@Override
 	public boolean displayMenu(Scanner input, Connection conn) {
-		System.out.println("\n---- Admin Menu ----\n");
-		System.out.println("1)  View Orders");
-		System.out.println("2)  Add Orders");
-		System.out.println("3)  Edit Orders");
-		System.out.println("4)  Complete Orders");
-		System.out.println("5)  Delete Orders");
-		System.out.println("6)  View Employees");
-		System.out.println("7)  View Customers");
-		System.out.println("8)  Issue Refund");
-		System.out.println("9)  Log Out\n");
-		
 		boolean choosing = true;
 		while(choosing) {
+			System.out.println("\n---- Admin Menu ----\n");
+			System.out.println("1)  View Orders");
+			System.out.println("2)  Add Orders");
+			System.out.println("3)  Edit Orders");
+			System.out.println("4)  Complete Orders");
+			System.out.println("5)  Delete Orders");
+			System.out.println("6)  View Employees");
+			System.out.println("7)  View Customers");
+			System.out.println("8)  Issue Refund");
+			System.out.println("9)  Log Out\n");
+		
 			System.out.print("Choose option: ");
 			int choice = input.nextInt();
 			
@@ -58,39 +53,42 @@ public class Admin extends Employee {
 				viewOrders(conn);
 			}
 			else if(choice == 2) {
-				addOrders(conn);
+				addOrders(conn, input);
 			}
 			else if(choice == 3) {
+				viewOrders(conn);
 				editOrders(conn);
 			}
 			else if(choice == 4) {
-				completeOrders(conn);
+				viewOrders(conn);
+				completeOrders(conn, input);
 			}
 			else if(choice == 5) {
-				deleteOrders(conn);
+				viewOrders(conn);
+				deleteOrders(conn, input);
 			}
 			else if(choice == 6) {
 				viewEmployees(conn);
 			}
 			else if(choice == 7) {
-
 				viewCustomers(conn);
 			}
 			else if(choice == 8){
-				issueRefund(conn);
+				viewOrders(conn);
+				issueRefund(conn, input);
 			}
 			else if(choice == 9){
-				System.exit(0);
+				choosing = false;
 			}
 			else {
 				System.out.println("Not a valid option");
 			}
 		}
+		return choosing;
 	}
 		
-	public void addOrders(Connection conn) {
+	public void addOrders(Connection conn, Scanner scan) {
 		OrderService orderService = new OrderService(conn);
-		Scanner scan = new Scanner(System.in);
 		
 		System.out.println("Enter employee ID: ");
 		int employeeID = scan.nextInt();
@@ -108,37 +106,24 @@ public class Admin extends Employee {
 		int deliveryAddrID = scan.nextInt();
 		
 		System.out.println("Enter order date: ");
-		String dateString = scan.next();
-		LocalDate orderDate = LocalDate.parse(dateString);
+		String orderDate = scan.next();
 		
 		System.out.println("Enter expected date: ");
-		String dateString2 = scan.next();
-		LocalDate expectedDate = LocalDate.parse(dateString2);
+		String expectedDate = scan.next();
 		
-		scan.close();
-		
-		Order newOrder = new Order();
-		
-		newOrder.setOrderID(0);
-		newOrder.setCost(cost);
-		newOrder.setCustomerID(customerID);
-		newOrder.setDeliveryAddrID(deliveryAddrID);
-		newOrder.setEmployeeID(employeeID);
-		newOrder.setExpectedDate(expectedDate);
-		newOrder.setOrderDate(orderDate);
-		newOrder.setPaymentID(paymentID);
+		Order newOrder = new Order(0, employeeID, customerID,
+									cost, paymentID, deliveryAddrID, 
+									orderDate, expectedDate, null, null);
 		
 		orderService.insert(newOrder);
 	}
 		
-	public void deleteOrders(Connection conn){
+	public void deleteOrders(Connection conn, Scanner scan){
 		OrderService orderService = new OrderService(conn);
-		Scanner scan = new Scanner(System.in);
 		System.out.println("Enter the order ID to delete: ");
 		int orderID = scan.nextInt();
 		
 		orderService.delete(orderID);
-		scan.close();
 	}
 	
 	public void viewEmployees(Connection conn){
@@ -152,24 +137,22 @@ public class Admin extends Employee {
 		
 	}
 	
-	public void completeOrders(Connection conn){
+	public void completeOrders(Connection conn, Scanner scan){
 		OrderService orderService = new OrderService(conn);
-		Scanner scan = new Scanner(System.in);
 		System.out.println("Enter order ID to complete: ");
 		int orderID = scan.nextInt();
-		System.out.println("Enter delivery date: ");
-		String date = scan.next();
-		LocalDate deliveryDate = LocalDate.parse(date);
-		System.out.println("Would you like to add a note? y/n");
-		String addnote = scan.next();
+		System.out.println("Enter delivery date (MM/DD/YYY): ");
+		String deliveryDate = scan.next();
+		System.out.println("Would you like to add a note? (Y/N): ");
+		String addnote = scan.next().toUpperCase();
 		String note = "";
 		
-		if(addnote=="y"||addnote=="Y"){
+		if(addnote.equals("Y")){
+			scan.nextLine();
 			System.out.println("Enter note: ");
 			note = scan.nextLine();
 			
-		}else if(addnote=="n"||addnote=="N"){
-			
+		}else if(addnote.equals("N")){
 			note=null;
 		}else{
 			System.out.println("Not a valid option.");
@@ -177,7 +160,6 @@ public class Admin extends Employee {
 		
 		
 		orderService.complete(orderID, deliveryDate, note);
-		scan.close();
 	}
 	
 	public void viewOrders(Connection conn){
@@ -187,15 +169,13 @@ public class Admin extends Employee {
 	}
 	
 	public void editOrders(Connection conn){
-		
+		System.out.println("Coming soon...");
 	}
 	
-	public void issueRefund(Connection conn){
+	public void issueRefund(Connection conn, Scanner scan){
 		OrderService orderService = new OrderService(conn);
-		Scanner scan = new Scanner(System.in);
 		System.out.println("Enter order ID to refund: ");
 		int orderID = scan.nextInt();
 		orderService.refund(orderID);
-		scan.close();
 	}
 }
