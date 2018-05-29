@@ -155,12 +155,14 @@ public class Customer extends User {
 	private void cancelOrder(Connection conn, Scanner input) {
 		OrderService orderService = new OrderService(conn);
 		PaymentService paymentService = new PaymentService(conn);
+		FoodOrderService foodOrderService = new FoodOrderService(conn);
 		
 		System.out.print("Select the ID of order to cancel: ");
 		int orderID = input.nextInt();
 		int paymentID = orderService.getPaymentID(orderID);
-		paymentService.delete(paymentID);
+		foodOrderService.deleteOrder(orderID);
 		orderService.delete(orderID);
+		paymentService.delete(paymentID);
 	}
 	
 	private void printOrder(Connection conn, Scanner input) {
@@ -287,11 +289,16 @@ public class Customer extends User {
 		System.out.print("City: ");
 		String city = input.next();
 		
+		input.nextLine();
 		System.out.print("Street Address: ");
-		String streetNum = input.next();
+		String streetNum = input.nextLine();
 		
-		System.out.print("Apt/Room # (can leave blank): ");
+		System.out.print("Apt/Room # (or 'n/a'): ");
 		String roomNum = input.next();
+		
+		if(roomNum.equals("n/a")) {
+			roomNum = null;
+		}
 		
 		System.out.print("Zip: ");
 		String zip = input.next();

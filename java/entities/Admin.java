@@ -56,12 +56,15 @@ public class Admin extends Employee {
 				addOrders(conn, input);
 			}
 			else if(choice == 3) {
+				viewOrders(conn);
 				editOrders(conn);
 			}
 			else if(choice == 4) {
+				viewOrders(conn);
 				completeOrders(conn, input);
 			}
 			else if(choice == 5) {
+				viewOrders(conn);
 				deleteOrders(conn, input);
 			}
 			else if(choice == 6) {
@@ -71,6 +74,7 @@ public class Admin extends Employee {
 				viewCustomers(conn);
 			}
 			else if(choice == 8){
+				viewOrders(conn);
 				issueRefund(conn, input);
 			}
 			else if(choice == 9){
@@ -107,16 +111,9 @@ public class Admin extends Employee {
 		System.out.println("Enter expected date: ");
 		String expectedDate = scan.next();
 		
-		Order newOrder = new Order();
-		
-		newOrder.setOrderID(0);
-		newOrder.setCost(cost);
-		newOrder.setCustomerID(customerID);
-		newOrder.setDeliveryAddrID(deliveryAddrID);
-		newOrder.setEmployeeID(employeeID);
-		newOrder.setExpectedDate(expectedDate);
-		newOrder.setOrderDate(orderDate);
-		newOrder.setPaymentID(paymentID);
+		Order newOrder = new Order(0, employeeID, customerID,
+									cost, paymentID, deliveryAddrID, 
+									orderDate, expectedDate, null, null);
 		
 		orderService.insert(newOrder);
 	}
@@ -144,17 +141,18 @@ public class Admin extends Employee {
 		OrderService orderService = new OrderService(conn);
 		System.out.println("Enter order ID to complete: ");
 		int orderID = scan.nextInt();
-		System.out.println("Enter delivery date: ");
+		System.out.println("Enter delivery date (MM/DD/YYY): ");
 		String deliveryDate = scan.next();
-		System.out.println("Would you like to add a note? y/n");
-		String addnote = scan.next();
+		System.out.println("Would you like to add a note? (Y/N): ");
+		String addnote = scan.next().toUpperCase();
 		String note = "";
 		
-		if(addnote=="y"||addnote=="Y"){
+		if(addnote.equals("Y")){
+			scan.nextLine();
 			System.out.println("Enter note: ");
 			note = scan.nextLine();
 			
-		}else if(addnote=="n"||addnote=="N"){
+		}else if(addnote.equals("N")){
 			note=null;
 		}else{
 			System.out.println("Not a valid option.");

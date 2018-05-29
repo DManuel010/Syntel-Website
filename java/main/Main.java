@@ -6,10 +6,17 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Scanner;
 
+import database.CardService;
+import database.CustomerService;
 import database.DatabaseService;
+import database.LocationService;
+import database.LoginService;
 import entities.Admin;
+import entities.Card;
 import entities.Customer;
 import entities.Driver;
+import entities.Location;
+import entities.Login;
 import entities.SuperAdmin;
 import entities.User;
 import menus.LoginMenu;
@@ -165,33 +172,191 @@ public class Main {
 	}
 	
 	
-	public static void main(String[] args) {
-		// Application objects
-		Scanner input = new Scanner(System.in);		// user input
-		LoginMenu loginMenu = new LoginMenu();		// initialize login menu
-		DatabaseService dbService;					// initialize database service to establish connection
-		Connection conn;							// initialize connection to database
-		
-		// User variables
-		boolean loggingIn;							// flag used for input validation while logging in
-		boolean stillWorking;						// flag used for menu display
+	/*
+	 * Register a new customer
+	 */
+	public static void register(Connection conn, Scanner input) {
+		// Registration variables
+		boolean registering;						// flag used for input validation while registering
+		String userType;							// user type (Admin, SuperAdmin, Driver, Customer)
 		String email = "";							// user login email
 		String password = "";						// user login password
-		int loginOption = 0;							// flag for type of user login (Employee, Customer)
-		String userType;							// user type (Admin, SuperAdmin, Driver, Customer)
-		int loginID;								// primaryKey for user login table
+		String confirmPassword = null;				// used for password matching confirmation
+		String country;								// user home country
+		String state;								// user home state
+		String city;								// user home city/town
+		String streetNum;							// user home street address
+		String roomNum;								// user home room number if applicable
+		String zipCode;								// user home zip code
+		String cardName;							// user full name on card
+		String expirationDate;						// user expiration date on card
+		String cardType;							// user type of card
+		String cardNumber;							// user card number
+		int cvv;									// user security (CVV) number on card
+		int billingAddrID;							// pk of billing address for customer insertion
+		int cardID;									// pk of card for customer insertion
+		int loginID;								// pk of login for customer insertion
+		int homeAddrID;								// pk of home address for customer insertion
+		String firstName;							// user first name
+		String lastName;							// user last name
+		String phoneNumber;							// user phone number
+		String dateOfBirth;							// user date of birth
+		String dateOfRegister;						// user date of registration (current date)
+		String lastLogin;							// user date of last login (current date)
 		
-		// Database variables
-		final String DB_USERNAME = "restaurant";	// database user
-		final String DB_PASSWORD = "mummy";			// database password
-		final String DB_SERVER = "localhost";		// database server
-		final String DB_PORT = "1521";				// database port number
+		// Database Services
+		LoginService loginService = new LoginService(conn);
+		LocationService locationService = new LocationService(conn);
+		CardService cardService = new CardService(conn);
+		CustomerService customerService = new CustomerService(conn);
 		
-		
-		// establish connection to database
-		dbService = new DatabaseService(DB_USERNAME, DB_PASSWORD, DB_SERVER, DB_PORT);
-		conn = dbService.getConnection();
-		
+		registering = true;
+		while(registering) {
+			//Populate Login Table
+			System.out.print("Enter your email: ");
+			email = input.next();
+			
+			while(!password.equals(confirmPassword)) {
+				System.out.print("Enter your password: ");
+				password = input.next();
+			
+				System.out.print("Confirm password: ");
+				confirmPassword = input.next();
+			
+				if(!password.equals(confirmPassword)) {
+					System.out.println("Passwords do not match");
+				}
+			}
+			userType = "customer";
+			
+			Login login = new Login(0, email, password, userType);
+			loginService.insert(login);
+			loginID = login.getLoginID();
+			
+			//Populate Location Table
+			System.out.print("Enter your country: ");
+			country = input.next();
+			
+			System.out.print("Enter your state: ");
+			state = input.next();
+			
+			System.out.print("Enter your city/town: ");
+			city = input.next();
+			
+			input.nextLine();
+			System.out.print("Enter your street address: ");
+			streetNum = input.nextLine();
+			
+			System.out.print("Enter your Apt/room # (or 'n/a'): ");
+			roomNum = input.next();
+			
+			if(roomNum.equals("n/a")) {
+				roomNum = null;
+			}
+			
+			System.out.print("Enter your zip code: ");
+			zipCode = input.next();
+			
+			Location homeAddr = new Location(0, country, state, city, streetNum, roomNum, zipCode);
+			locationService.insert(homeAddr);
+			homeAddrID = homeAddr.getLocationID();
+			
+			// Populate Card Table
+			input.nextLine();
+			System.out.print("Enter full name on credit card: ");
+			cardName = input.nextLine();
+			
+			System.out.print("Enter card number (no spaces): ");
+			cardNumber = input.next();
+			
+			System.out.print("Enter expiration date (MM/DD/YYYY): ");
+			expirationDate = input.next();
+			
+			System.out.print("Enter the CVV: ");
+			cvv = input.nextInt();
+			
+			System.out.print("Enter card type: ");
+			cardType = input.next();
+			
+			System.out.print("Would you like to use your home address as your billing address? (Y/N): ");
+			String addrChoice = input.next().toUpperCase();
+			
+			if(!addrChoice.equals("Y")) {
+				System.out.print("Enter your country: ");
+				country = input.next();
+				
+				System.out.print("Enter your state: ");
+				state = input.next();
+				
+				System.out.print("Enter your city/town: ");
+				city = input.next();
+				
+				input.nextLine();
+				System.out.print("Enter your street address: ");
+				streetNum = input.nextLine();
+				
+				System.out.print("Enter your Apt/room # (or 'n/a'): ");
+				roomNum = input.next();
+				
+				if(roomNum.equals("n/a")) {
+					roomNum = null;
+				}
+				
+				System.out.print("Enter your zip code: ");
+				zipCode = input.next();
+				
+				Location billingAddr = new Location(0, country, state, city, streetNum, roomNum, zipCode);
+				locationService.insert(billingAddr);
+				billingAddrID = billingAddr.getLocationID();
+			}
+			else {
+				billingAddrID = homeAddr.getLocationID();
+			}
+			
+			Card card = new Card(0, cardName, cardNumber, expirationDate, cvv, cardType, billingAddrID);
+			cardService.insert(card);
+			cardID = card.getCardID();
+			
+			// Populate Customer Table
+			System.out.print("Enter your first name: ");
+			firstName = input.next();
+			
+			System.out.print("Enter your last name: ");
+			lastName = input.next();
+			
+			System.out.print("Enter your phone number: ");
+			phoneNumber = input.next();
+			
+			System.out.print("Enter your date of birth (MM/DD/YYYY): ");
+			dateOfBirth = input.next();
+			
+			dateOfRegister = "05-MAY-2018";
+			
+			lastLogin = dateOfRegister;
+			
+			Customer customer = new Customer(email, firstName, lastName, loginID,
+											phoneNumber, homeAddrID, lastLogin, 0, dateOfBirth,
+											cardID, dateOfRegister);
+			customerService.insert(customer);
+			System.out.println("Registration Successful!\n");
+			
+			registering = false;
+		}
+	}
+	
+	
+	/*
+	 * Login to existing employee or customer account
+	 */
+	public static void login(Connection conn, Scanner input) {
+		boolean loggingIn;							// flag used for input validation while logging in
+		boolean stillWorking;						// flag used for menu display
+		int loginOption = 0;						// flag for type of user login (Employee, Customer)
+		LoginMenu loginMenu = new LoginMenu();		// initialize login menu
+		String email = "";							// user email for login
+		String password = "";						// user password for login
+		int loginID;								// pk for user login table
+		String userType;							// type of user (Admin, SuperAdmin, Driver, Customer)
 		
 		// choose initial login option (Employee or Customer)
 		loggingIn = true;
@@ -207,7 +372,6 @@ public class Main {
 				loggingIn = false;
 			}
 		}
-		
 		
 		// Enter login credentials (email and password)
 		loggingIn = true;
@@ -235,7 +399,6 @@ public class Main {
 			}
 		}
 		
-		
 		// determine user type and ID
 		loginID = getUserLoginID(conn, email, password);
 		userType = getUserTitle(conn, loginOption, loginID);
@@ -247,7 +410,49 @@ public class Main {
 		while(stillWorking) {
 			stillWorking = user.displayMenu(input, conn);
 		}
+	}
+	
+	
+	public static void main(String[] args) {
+		// Application objects
+		Scanner input = new Scanner(System.in);		// user input
+		DatabaseService dbService;					// initialize database service to establish connection
+		Connection conn;							// initialize connection to database
+		
+		// Database variables
+		final String DB_USERNAME = "restaurant";	// database user
+		final String DB_PASSWORD = "mummy";			// database password
+		final String DB_SERVER = "localhost";		// database server
+		final String DB_PORT = "1521";				// database port number
+		
+		
+		// establish connection to database
+		dbService = new DatabaseService(DB_USERNAME, DB_PASSWORD, DB_SERVER, DB_PORT);
+		conn = dbService.getConnection();
+		
+		boolean stillWorking = true;
+		while(stillWorking) {
+			System.out.println("1)  Login");
+			System.out.println("2)  Register");
+			System.out.println("3)  Exit");
+			System.out.print("Enter your choice: ");
+			int choice = input.nextInt();
+			
+			if(choice == 1) {
+				login(conn, input);
+			}
+			else if(choice == 2) {
+				register(conn, input);
+			}
+			else if(choice == 3) {
+				stillWorking = false;
+			}
+			else {
+				System.out.println("Not a valid option");
+			}
+		}
 
+		System.out.println("Quitting...");
 		input.close();
 		System.exit(0);
 	}
