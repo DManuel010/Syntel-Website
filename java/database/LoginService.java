@@ -9,23 +9,26 @@ import java.sql.Statement;
 
 import entities.Login;
 
-public class LoginService {
+public class LoginService extends Service {
 	
 		
 static Connection con;
 
 
-public LoginService(Connection con) {
-	super();
-	this.con=con;
+	public LoginService(Connection conn) {
+		super(conn);
+	}
 
-
-	public void insert(Login login)
-	{
+	
+	@Override
+	public void insert(Object obj) {
+		
+		Login login = (Login) obj;
+		
 		//INSERT INTO TABLE
 		int loginID;
 		if(login.getLoginID() == 0) {
-			loginID = getPK();
+			loginID = getPK(0);
 			login.setLoginID(loginID);
 		}
 		else {
@@ -111,7 +114,7 @@ public LoginService(Connection con) {
 				lastPK = result.getInt("pk");
 			}
 			
-			if(orderID <= lastPK) {
+			if(loginID <= lastPK) {
 				newPK = lastPK + 1;
 			}
 			else {
