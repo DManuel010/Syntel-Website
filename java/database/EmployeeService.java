@@ -29,21 +29,32 @@ public class EmployeeService extends Service {
 			employeeID = employee.getEmpID();
 		}
 		
-		System.out.println("Inserting a new employee...");
+		String query = "INSERT INTO Employee "
+					+ "(employeeID, firstName, lastName, email, "
+					+ "		hireDate, title, loginID, phoneNumber, "
+					+ "		workAddrID, homeAddrID, lastLogin) "
+					+ "VALUES(?, ?, ?, ?, TO_DATE(?, 'MM/DD/YYYY'), "
+					+ "			?, ?, ?, ?, ?, SYSDATE)";
 				
-		
+		System.out.println("Inserting a new employee...");
 		try {
-			PreparedStatement insertStmt = this.conn.prepareStatement("insert into employee values (?,?,?,?)");
+			PreparedStatement insertStmt = this.conn.prepareStatement(query);
 			insertStmt.setInt(1,employeeID); 
-			insertStmt.setObject(2,employee.getHireDate()); 
-			insertStmt.setString(3,employee.getTitle()); 
-			insertStmt.setInt(4,employee.getWorkAddrID()); 
+			insertStmt.setString(2, employee.getFirstName());
+			insertStmt.setString(3, employee.getLastName());
+			insertStmt.setString(4, employee.getEmail());
+			insertStmt.setString(5, employee.getHireDate());
+			insertStmt.setString(6, employee.getTitle());
+			insertStmt.setInt(7, employee.getLoginID());
+			insertStmt.setString(8, employee.getPhoneNumber());
+			insertStmt.setInt(9, employee.getWorkAddrID());
+			insertStmt.setInt(10, employee.getHomeAddrID());
 			insertStmt.execute();
 			System.out.println();
-			System.out.println("User added with employee ID "+employeeID);
+			System.out.println("EmployeeService:  Employee added with employee ID "+employeeID);
 			insertStmt.close();
 		} catch (SQLException e) {
-			System.out.println("Error: SQL Exception.");
+			System.out.println("EmployeeService:  Failed to insert employee");
 			e.printStackTrace();
 		}
 		
@@ -60,10 +71,10 @@ public class EmployeeService extends Service {
 			deleteStmt.setInt(1,employeeID); 
 			deleteStmt.execute();
 			System.out.println();
-			System.out.println("Employee deleted.");
+			System.out.println("EmployeeService:  Employee deleted.");
 			deleteStmt.close();
 		}catch (SQLException e) {
-			System.out.println("Error: SQL Exception.");
+			System.out.println("EmployeeService:  Failed to delete employee");
 			e.printStackTrace();
 		}
 		
@@ -130,5 +141,24 @@ public class EmployeeService extends Service {
 			System.out.println("EmployeeService:  Failed to display employees");
 			e.printStackTrace();
 		}
+	}
+
+	public int getLoginID(int empID) {
+		String query = "SELECT Employee.loginID FROM Employee WHERE Employee.employeeID = ?";
+		
+		try {
+			PreparedStatement statement = this.conn.prepareStatement(query);
+			statement.setInt(1, empID);
+			ResultSet rs = statement.executeQuery();
+			
+			if(rs.next()) {
+				int loginID = rs.getInt(1);
+				return loginID;
+			}
+		} catch (SQLException e) {
+			System.out.println("EmployeeService:  Failed to get loginID from employee");
+			e.printStackTrace();
+		}
+		return 0;
 	}
 }
