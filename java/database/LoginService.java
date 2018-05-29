@@ -70,20 +70,17 @@ public class LoginService extends Service{
 	
 	
 	@Override
-	public void delete(int loginID)
-	{
+	public void delete(int loginID) {
 		//DELETE FROM TABLE
 		System.out.println("Deleting user with login ID "+loginID+"...");
-		
 		try{
-			PreparedStatement deleteStmt = conn.prepareStatement("delete from login where loginID=?");
+			PreparedStatement deleteStmt = conn.prepareStatement("DELETE FROM Login WHERE loginID = ?");
 			deleteStmt.setInt(1,loginID); 
-			deleteStmt.execute();
-			System.out.println();
-			System.out.println("User deleted.");
+			deleteStmt.executeUpdate();
+			System.out.println("LoginService:  Login deleted");
 			deleteStmt.close();
 		} catch (SQLException e) {
-			System.out.println("Error: SQL Exception.");
+			System.out.println("LoginService:  Failed to delete login");
 			e.printStackTrace();
 		}
 	}
@@ -120,7 +117,7 @@ public class LoginService extends Service{
 		boolean exists = false;
 		
 		try{
-			PreparedStatement oracleStmt = conn.prepareStatement(query);
+			PreparedStatement oracleStmt = this.conn.prepareStatement(query);
 			oracleStmt.setString(1, username);
 			ResultSet oracleRs = oracleStmt.executeQuery();
 			
