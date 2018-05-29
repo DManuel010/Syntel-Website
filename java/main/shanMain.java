@@ -1,6 +1,8 @@
 package main;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -21,56 +23,71 @@ import entities.User;
 
 public class shanMain {
 
-	
+	public static Scanner scan = new Scanner(System.in);
 	
 	public static void main(String[] args){
 		
 		
-		int choice = displayMainMenu();
+		displayMainMenu();
 		
-		switch (choice){
 		
-			case 1: 
-				displayLoginMenu();
-				break;
-			case 2:
-				displayRegisterMenu();
-				break;
-			default: System.out.println("Invalid input");
-			displayMainMenu();
-			
-		}
 	}
 	
-	public static int displayMainMenu(){
+	public static void displayMainMenu(){
+		boolean choosing = true;
+		int choice=0;
 		
-		Scanner scan = new Scanner(System.in);
-		System.out.println("-----Menu-----");
-		System.out.println("1. Login");
-		System.out.println("2. Register");
-		System.out.println("3. View menu");
-		int choice = scan.nextInt();
-		scan.close();
+		while(choosing){
+			System.out.println("-----Menu-----");
+			System.out.println("1. Login");
+			System.out.println("2. Register");
+			choice = scan.nextInt();
+			
+			if(choice==1||choice==2){
+				choosing=false;
+			}else{
+				System.out.println("Invalid input. Please choose from the menu.");
+			}
+		}
+
+		switch (choice){
 		
-		return choice;
+		case 1: 
+			displayLoginMenu();
+			break;
+		case 2:
+			displayRegisterMenu();
+			break;
+	}
 	}
 	
 	public static void displayLoginMenu(){
-		Scanner scan = new Scanner(System.in);
+		DatabaseService dbService = new DatabaseService("restaurant", "restaurant", "localhost", "1521");
+		Connection conn = dbService.getConnection();
+		
 		System.out.println("Enter email:");
 		String email = scan.next();
 		System.out.println("Enter password:");
 		String password = scan.next();
-		scan.close();
-		System.out.println("Login Successful.");
+		
+		
+		LoginService loginService = new LoginService(conn);
+		
+		boolean exists = loginService.view(email);
+		
+		if(exists){
+			System.out.println("Login successful");
+			
+		}else{
+			System.out.println("Email not found in database. Try again or register.");
+			displayMainMenu();
+		}
 	}
 	
 	public static void displayRegisterMenu(){
 		DatabaseService dbService = new DatabaseService("restaurant", "restaurant", "localhost", "1521");
 		Connection conn = dbService.getConnection();
-		
-		
-		Scanner scan = new Scanner(System.in);
+
 
 		System.out.println("Enter email:");
 		String email = scan.next();
@@ -104,8 +121,6 @@ public class shanMain {
 		int cvv = scan.nextInt();
 		System.out.println("Enter card type:");
 		String type = scan.next();
-		
-		scan.close();
 
 
 		//INSERT THEIR ADDRESS IN LOCATION TABLE
