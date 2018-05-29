@@ -190,7 +190,7 @@ public class Main {
 		
 		// Database variables
 		final String DB_USERNAME = "restaurant";	// database user
-		final String DB_PASSWORD = "mummy";			// database password
+		final String DB_PASSWORD = "restaurant";			// database password
 		final String DB_SERVER = "localhost";		// database server
 		final String DB_PORT = "1521";				// database port number
 		
@@ -290,7 +290,7 @@ public class Main {
 			int cvv = input.nextInt();
 			System.out.println("Enter card type:");
 			String type = input.next();
-			input.close();
+			
 
 			//INSERT THEIR ADDRESS IN LOCATION TABLE
 			Location address = new Location(0, country, state, city, streetnum, "", zip);
@@ -332,7 +332,7 @@ public class Main {
 			System.out.println("Password: "+newUser.getPassword());
 		}
 
-		
+		input.close();
 		System.exit(0);
 	}
 }
