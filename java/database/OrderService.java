@@ -23,7 +23,7 @@ public class OrderService extends Service {
 		int orderID = getPK(order.getOrderID());
 		order.setOrderID(orderID);
 		
-		int employeeID = order.getOrderID();
+		int employeeID = order.getEmployeeID();
 		int customerID = order.getCustomerID();
 		double cost = order.getCost();
 		int paymentID = order.getPaymentID();
@@ -159,7 +159,7 @@ public class OrderService extends Service {
 	
 	public void complete(int orderID, String deliveryDate, String note) {
 		String query = "UPDATE Orders "
-					+ "SET Orders.deliveryDate = ?, Orders.note = ? "
+					+ "SET deliveryDate = TO_DATE(?, 'MM/DD/YYYY'), note = ? "
 					+ "WHERE Orders.orderID = ?";
 		try {
 			PreparedStatement statement = this.conn.prepareStatement(query);
@@ -213,7 +213,7 @@ public class OrderService extends Service {
 
 
 	public void refund(int orderID) {
-		System.out.println("Refun issued for Order "+orderID);
+		System.out.println("OrderService:  Refund issued for Order "+orderID);
 		//TODO: Give this actual functionality to refund the amount of the order to the customer
 	}
 

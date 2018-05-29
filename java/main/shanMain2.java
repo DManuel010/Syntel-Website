@@ -1,6 +1,13 @@
 package main;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 import java.util.Scanner;
 
 import database.CardService;
@@ -12,8 +19,9 @@ import entities.Card;
 import entities.Customer;
 import entities.Location;
 import entities.Login;
+import entities.User;
 
-public class shanMain {
+public class shanMain2 {
 
 	public static Scanner scan = new Scanner(System.in);
 	
@@ -50,7 +58,7 @@ public class shanMain {
 	}
 	
 	public static void displayLoginMenu(){
-		DatabaseService dbService = new DatabaseService("restaurant", "restaurant", "localhost", "1521");
+		DatabaseService dbService = new DatabaseService("restaurant", "mummy", "localhost", "1521");
 		Connection conn = dbService.getConnection();
 		
 		System.out.println("Enter email:");
@@ -73,7 +81,7 @@ public class shanMain {
 	}
 	
 	public static void displayRegisterMenu(){
-		DatabaseService dbService = new DatabaseService("restaurant", "restaurant", "localhost", "1521");
+		DatabaseService dbService = new DatabaseService("restaurant", "mummy", "localhost", "1521");
 		Connection conn = dbService.getConnection();
 
 

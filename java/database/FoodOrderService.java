@@ -21,7 +21,7 @@ public class FoodOrderService extends Service {
 		
 		// get food values
 		int foodOrderID = getPK(foodOrder.getFoodOrderID());
-		foodOrder.setFoodID(foodOrderID);
+		foodOrder.setFoodOrderID(foodOrderID);
 		
 		int orderID = foodOrder.getOrderID();
 		int foodID = foodOrder.getFoodID();
@@ -90,5 +90,20 @@ public class FoodOrderService extends Service {
 			e.printStackTrace();
 		}
 		return newPK;
+	}
+
+
+	public void deleteOrder(int orderID) {
+		String query = "DELETE FROM FoodOrder WHERE FoodOrder.orderID = ?";
+		
+		try {
+			PreparedStatement statement = this.conn.prepareStatement(query);
+			statement.setInt(1, orderID);
+			statement.executeUpdate();
+			System.out.println("FoodOrderService:  Food orders deleted");
+		} catch (SQLException e) {
+			System.out.println("FoodOrderService:  Failed to delete food orders");
+			e.printStackTrace();
+		}
 	}
 }
