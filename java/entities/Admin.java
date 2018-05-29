@@ -1,15 +1,10 @@
 package entities;
 
 import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.time.LocalDate;
-import java.util.Date;
 import java.util.Scanner;
 
 import database.CustomerService;
 import database.EmployeeService;
-import database.FoodService;
 import database.OrderService;
 
 public class Admin extends Employee {
@@ -56,36 +51,45 @@ public class Admin extends Employee {
 			
 			if(choice == 1) {	
 				viewOrders(conn);
+				choosing = false;
 			}
 			else if(choice == 2) {
 				addOrders(conn);
+				choosing = false;
 			}
 			else if(choice == 3) {
 				editOrders(conn);
+				choosing = false;
 			}
 			else if(choice == 4) {
 				completeOrders(conn);
+				choosing = false;
 			}
 			else if(choice == 5) {
 				deleteOrders(conn);
+				choosing = false;
 			}
 			else if(choice == 6) {
 				viewEmployees(conn);
+				choosing = false;
 			}
 			else if(choice == 7) {
-
 				viewCustomers(conn);
+				choosing = false;
 			}
 			else if(choice == 8){
 				issueRefund(conn);
+				choosing = false;
 			}
 			else if(choice == 9){
 				System.exit(0);
+				choosing = false;
 			}
 			else {
 				System.out.println("Not a valid option");
 			}
 		}
+		return false;
 	}
 		
 	public void addOrders(Connection conn) {
@@ -108,12 +112,10 @@ public class Admin extends Employee {
 		int deliveryAddrID = scan.nextInt();
 		
 		System.out.println("Enter order date: ");
-		String dateString = scan.next();
-		LocalDate orderDate = LocalDate.parse(dateString);
+		String orderDate = scan.next();
 		
 		System.out.println("Enter expected date: ");
-		String dateString2 = scan.next();
-		LocalDate expectedDate = LocalDate.parse(dateString2);
+		String expectedDate = scan.next();
 		
 		scan.close();
 		
@@ -158,8 +160,7 @@ public class Admin extends Employee {
 		System.out.println("Enter order ID to complete: ");
 		int orderID = scan.nextInt();
 		System.out.println("Enter delivery date: ");
-		String date = scan.next();
-		LocalDate deliveryDate = LocalDate.parse(date);
+		String deliveryDate = scan.next();
 		System.out.println("Would you like to add a note? y/n");
 		String addnote = scan.next();
 		String note = "";
@@ -169,7 +170,6 @@ public class Admin extends Employee {
 			note = scan.nextLine();
 			
 		}else if(addnote=="n"||addnote=="N"){
-			
 			note=null;
 		}else{
 			System.out.println("Not a valid option.");

@@ -89,12 +89,11 @@ public class Customer extends User {
 	public boolean displayMenu(Scanner input, Connection conn) {
 		System.out.println("\n---- Customer Menu ----\n");
 		System.out.println("1)  Make Order");
-		System.out.println("2)  Edit Order");
-		System.out.println("3)  Delete Order");
-		System.out.println("4)  View Order");
-		System.out.println("5)  Print Order");
-		System.out.println("6)  View Menu");
-		System.out.println("7)  Log Out\n");
+		System.out.println("2)  Delete Order");
+		System.out.println("3)  View Orders");
+		System.out.println("4)  Print Order");
+		System.out.println("5)  View Menu");
+		System.out.println("6)  Log Out\n");
 		
 		boolean choosing = true;
 		while(choosing) {
@@ -107,22 +106,24 @@ public class Customer extends User {
 				choosing = false;
 			}
 			else if(choice == 2) {
+				viewOrders(conn);
+				cancelOrder(conn, input);
 				choosing = false;
 			}
 			else if(choice == 3) {
+				viewOrders(conn);
 				choosing = false;
 			}
 			else if(choice == 4) {
+				viewOrders(conn);
+				printOrder(conn, input);
 				choosing = false;
 			}
 			else if(choice == 5) {
-				choosing = false;
-			}
-			else if(choice == 6) {
 				viewMenu(conn);
 				choosing = false;
 			}
-			else if(choice == 7) {
+			else if(choice == 6) {
 				choosing = false;
 				System.exit(0);
 			}
@@ -151,6 +152,25 @@ public class Customer extends User {
 		}
 	}
 	
+	
+	private void viewOrders(Connection conn) {
+		OrderService orderService = new OrderService(conn);
+		orderService.viewCustomerOrders(this.customerID);
+	}
+	
+	private void cancelOrder(Connection conn, Scanner input) {
+		OrderService orderService = new OrderService(conn);
+		System.out.print("Select the ID of order to cancel: ");
+		int orderID = input.nextInt();
+		orderService.delete(orderID);
+	}
+	
+	private void printOrder(Connection conn, Scanner input) {
+		OrderService orderService = new OrderService(conn);
+		System.out.println("Select the ID of order to print: ");
+		int orderID = input.nextInt();
+		orderService.print(orderID);
+	}
 	
 	private void makeOrder(Connection conn, Scanner input) {
 		OrderService orderService = new OrderService(conn);
@@ -272,8 +292,8 @@ public class Customer extends User {
 		System.out.println("Street Address: ");
 		String streetNum = input.nextLine();
 		
-		System.out.println("Apt/Room # (can leave blank): ");
-		String roomNum = input.nextLine();
+		System.out.print("Apt/Room # (can leave blank): ");
+		String roomNum = input.next();
 		
 		System.out.print("Zip: ");
 		String zip = input.next();
