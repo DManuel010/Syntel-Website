@@ -33,7 +33,7 @@ public class CardService extends Service {
 		// format query
 		String query = "INSERT INTO Card "
 					+ "(cardID, name, cardNumber, expirationDate, cvv, type, billingAddrID) " 
-					+ "VALUES(?, ?, ?, ?, ?, ?, ?)";
+					+ "VALUES(?, ?, ?, TO_DATE(?, 'MM/DD/YYYY'), ?, ?, ?)";
 		
 		try {
 			PreparedStatement statement = this.conn.prepareStatement(query);	// build statement
