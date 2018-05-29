@@ -6,10 +6,17 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Scanner;
 
+import database.CardService;
+import database.CustomerService;
 import database.DatabaseService;
+import database.LocationService;
+import database.LoginService;
 import entities.Admin;
+import entities.Card;
 import entities.Customer;
 import entities.Driver;
+import entities.Location;
+import entities.Login;
 import entities.SuperAdmin;
 import entities.User;
 import menus.LoginMenu;
@@ -199,7 +206,7 @@ public class Main {
 			loginMenu.display();
 			loginOption = input.nextInt();
 			
-			if(loginOption > 2 || loginOption < 1) {
+			if(loginOption > 3 || loginOption < 1) {
 				System.out.println("Not a valid login option.");
 				System.out.println("Please select a choice from the following menu...");
 			}
@@ -208,6 +215,8 @@ public class Main {
 			}
 		}
 		
+		if(loginOption==1||loginOption==2){
+			
 		
 		// Enter login credentials (email and password)
 		loggingIn = true;
@@ -235,7 +244,6 @@ public class Main {
 			}
 		}
 		
-		
 		// determine user type and ID
 		loginID = getUserLoginID(conn, email, password);
 		userType = getUserTitle(conn, loginOption, loginID);
@@ -247,8 +255,84 @@ public class Main {
 		while(stillWorking) {
 			stillWorking = user.displayMenu(input, conn);
 		}
+		}
+		
+		if(loginOption==3){
+			System.out.println("Enter email:");
+			String newemail = input.next();
+			System.out.println("Enter password:");
+			String newpassword = input.next();
+			System.out.println("Enter first name:");
+			String firstname = input.next();
+			System.out.println("Enter lastname:");
+			String lastname = input.next();
+			System.out.println("Enter date of birth dd-MMM-yy:");
+			String dateOfBirth = input.next();
+			System.out.println("Enter country:");
+			String country = input.next();
+			System.out.println("Enter state:");
+			String state = input.next();
+			System.out.println("Enter city:");
+			String city = input.next();
+			System.out.println("Enter street number:");
+			String streetnum = input.next();
+			System.out.println("Enter zip code:");
+			String zip = input.next();
+			System.out.println("Enter phone number:");
+			String phoneNumber = input.next();
+			System.out.println("Enter name on card:");
+			String cardName = input.next();
+			System.out.println("Enter card number:");
+			String cardNumber = input.next();
+			System.out.println("Enter expiration date:");
+			String expDate = input.next();
+			System.out.println("Enter CVV:");
+			int cvv = input.nextInt();
+			System.out.println("Enter card type:");
+			String type = input.next();
+			input.close();
 
-		input.close();
+			//INSERT THEIR ADDRESS IN LOCATION TABLE
+			Location address = new Location(0, country, state, city, streetnum, "", zip);
+			
+			LocationService locationService = new LocationService(conn);
+			locationService.insert(address);
+			System.out.println();
+			
+			//INSERT THEIR CARD INFO INTO CARD TABLE
+			Card card = new Card(0, cardName, cardNumber, expDate, cvv, type, address);
+			
+			CardService cardService = new CardService(conn);
+			cardService.insert(card);
+			System.out.println();
+
+			//INSERT THEM INTO LOGIN TABLE
+			Login newUser = new Login();
+			
+			newUser.setPassword(newpassword);
+			newUser.setUsername(newemail);
+			newUser.setLoginID(0);
+			
+			LoginService loginService = new LoginService(conn);
+			CustomerService customerService = new CustomerService(conn);
+			
+			loginService.insert(newUser);
+			System.out.println();
+			
+			Customer customer = new Customer(firstname, lastname, newemail, newUser.getLoginID(), phoneNumber, address.getLocationID(), "24-MAY-18");
+			
+			customer.setDateOfBirth(dateOfBirth);
+			customer.setDateOfRegister("24-MAY-18");
+			customer.setCustomerID(0);
+			customer.setCardID(card.getCardID());
+			
+			
+			customerService.insert(customer);
+			System.out.println("You have been registered. Username: "+newUser.getUsername());
+			System.out.println("Password: "+newUser.getPassword());
+		}
+
+		
 		System.exit(0);
 	}
 }
