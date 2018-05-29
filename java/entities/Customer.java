@@ -87,51 +87,45 @@ public class Customer extends User {
 
 	@Override
 	public boolean displayMenu(Scanner input, Connection conn) {
-		System.out.println("\n---- Customer Menu ----\n");
-		System.out.println("1)  Make Order");
-		System.out.println("2)  Delete Order");
-		System.out.println("3)  View Orders");
-		System.out.println("4)  Print Order");
-		System.out.println("5)  View Menu");
-		System.out.println("6)  Log Out\n");
-		
 		boolean choosing = true;
 		while(choosing) {
-			System.out.print("Choose option: ");
+			System.out.println("\n---- Customer Menu ----\n");
+			System.out.println("1)  Make Order");
+			System.out.println("2)  Cancel Order");
+			System.out.println("3)  View Orders");
+			System.out.println("4)  Print Order");
+			System.out.println("5)  View Menu");
+			System.out.println("6)  Log Out\n");
+		
+			System.out.print("\nChoose option: ");
 			int choice = input.nextInt();
 			
 			if(choice == 1) {
 				viewMenu(conn);
 				makeOrder(conn, input);
-				choosing = false;
 			}
 			else if(choice == 2) {
 				viewOrders(conn);
 				cancelOrder(conn, input);
-				choosing = false;
 			}
 			else if(choice == 3) {
 				viewOrders(conn);
-				choosing = false;
 			}
 			else if(choice == 4) {
 				viewOrders(conn);
 				printOrder(conn, input);
-				choosing = false;
 			}
 			else if(choice == 5) {
 				viewMenu(conn);
-				choosing = false;
 			}
 			else if(choice == 6) {
 				choosing = false;
-				System.exit(0);
 			}
 			else {
 				System.out.println("Not a valid option");
 			}
 		}
-		return false;
+		return choosing;
 	}
 	
 	
@@ -160,8 +154,12 @@ public class Customer extends User {
 	
 	private void cancelOrder(Connection conn, Scanner input) {
 		OrderService orderService = new OrderService(conn);
+		PaymentService paymentService = new PaymentService(conn);
+		
 		System.out.print("Select the ID of order to cancel: ");
 		int orderID = input.nextInt();
+		int paymentID = orderService.getPaymentID(orderID);
+		paymentService.delete(paymentID);
 		orderService.delete(orderID);
 	}
 	
@@ -289,8 +287,8 @@ public class Customer extends User {
 		System.out.print("City: ");
 		String city = input.next();
 		
-		System.out.println("Street Address: ");
-		String streetNum = input.nextLine();
+		System.out.print("Street Address: ");
+		String streetNum = input.next();
 		
 		System.out.print("Apt/Room # (can leave blank): ");
 		String roomNum = input.next();

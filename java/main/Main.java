@@ -245,7 +245,7 @@ public class Main {
 		
 		stillWorking = true;
 		while(stillWorking) {
-			user.displayMenu(input, conn);
+			stillWorking = user.displayMenu(input, conn);
 		}
 
 		input.close();
