@@ -6,27 +6,23 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Date;
 
 import entities.Customer;
 
-public class CustomerService{
-	
-	static Connection con;
+public class CustomerService extends Service {
 
-	public CustomerService(Connection con) {
-		super();
-		this.con=con;
+	public CustomerService(Connection conn) {
+		super(conn);
 	}
 	
+	@Override
 	public void insert(Object obj) {
 		Customer customer = (Customer) obj;
 		
 		//INSERT INTO TABLE
-		
 		int customerID;
 		if(customer.getCustomerID() == 0) {
-			customerID = getPK();
+			customerID = getPK(customer.getCustomerID());
 			customer.setCustomerID(customerID);
 		}
 		else {
@@ -38,30 +34,31 @@ public class CustomerService{
 		System.out.println("Inserting a new customer...");
 		
 		try {
-			PreparedStatement insertStmt = con.prepareStatement("insert into customer values (?,?,?,?,?,?,?,?,?,?,?)");
+			PreparedStatement insertStmt = this.conn.prepareStatement("INSERT INTO Customer"
+																	+ "(customerID, firstName, lastName, email, phoneNumber, "
+																	+ " loginID, dateOfBirth, homeAddrID, cardID, dateOfRegister, lastLogin) "
+																	+ " VALUES(?, ?, ?, ?, ?, ?, TO_DATE(?, 'MM/DD/YYYY'), "
+																	+ "			?, ?, SYSDATE, SYSDATE)");
 			
 			insertStmt.setInt(1,customerID);
-			insertStmt.setString(2,customer.getFirstName()); 
-			insertStmt.setString(3,customer.getLastName()); 
-			insertStmt.setInt(4,customer.getLoginID());
-			insertStmt.setString(5,customer.getPhoneNumber());
-			insertStmt.setInt(6,customer.getHomeAddrID());
-			insertStmt.setString(7,customer.getLastLogin());
-			insertStmt.setInt(8,customerID); 
-			insertStmt.setString(9,customer.getDateOfBirth());
-			insertStmt.setInt(10,customer.getCardID());
-			insertStmt.setString(11,customer.getDateOfRegister());
-
-			insertStmt.execute();
-			System.out.println("Customer Added.");
-			
+			insertStmt.setString(2, customer.getFirstName());
+			insertStmt.setString(3, customer.getLastName());
+			insertStmt.setString(4, customer.getEmail());
+			insertStmt.setString(5, customer.getPhoneNumber());
+			insertStmt.setInt(6, customer.getLoginID());
+			insertStmt.setString(7, customer.getDateOfBirth());
+			insertStmt.setInt(8, customer.getHomeAddrID());
+			insertStmt.setInt(9, customer.getCardID());
+			insertStmt.executeUpdate();
+			System.out.println("CustomerService:  Customer Added.");
 		} catch (SQLException e) {
-			System.out.println("Error: SQL Exception.");
+			System.out.println("CustomerService:  Failed to insert customer");
 			e.printStackTrace();
 		}
 		
 	}
 
+	@Override
 	public void delete(int customerID)
 	{
 		//DELETE FROM TABLE
@@ -70,7 +67,7 @@ public class CustomerService{
 		
 		try{
 			//change to check for matching customer id in orders table
-			PreparedStatement testStmt = con.prepareStatement("select * from login where loginID= (select loginID from customer where customerID=?)");
+			PreparedStatement testStmt = this.conn.prepareStatement("select * from login where loginID= (select loginID from customer where customerID=?)");
 			testStmt.setInt(1,customerID);
 			testStmt.execute();
 			ResultSet testresult = testStmt.getResultSet();
@@ -79,7 +76,7 @@ public class CustomerService{
 				System.out.println("Cannot delete this customer - matching loginID found in login table.");
 			}else{
 				try{
-					PreparedStatement deleteStmt = con.prepareStatement("delete from customer where customerID=?");
+					PreparedStatement deleteStmt = this.conn.prepareStatement("delete from customer where customerID=?");
 					deleteStmt.setInt(1,customerID); 
 					deleteStmt.execute();
 					System.out.println();
@@ -112,7 +109,7 @@ public class CustomerService{
 				lastPK = result.getInt("pk");
 			}
 			
-			if(orderID <= lastPK) {
+			if(customerID <= lastPK) {
 				newPK = lastPK + 1;
 			}
 			else {
@@ -137,7 +134,7 @@ public class CustomerService{
 			System.out.println("Customer ID		First Name		Last Name");
 			
 			try{
-				PreparedStatement oracleStmt = con.prepareStatement("select customerID, firstName, lastName from customer");
+				PreparedStatement oracleStmt = this.conn.prepareStatement("select customerID, firstName, lastName from customer");
 				oracleStmt.execute();
 				ResultSet oracleRs = oracleStmt.getResultSet();
 				

@@ -70,7 +70,7 @@ public class ComboFoodService extends Service {
 				lastPK = result.getInt("pk");
 			}
 			
-			if(orderID <= lastPK) {
+			if(comboFoodID <= lastPK) {
 				newPK = lastPK + 1;
 			}
 			else {
