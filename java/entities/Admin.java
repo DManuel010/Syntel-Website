@@ -33,68 +33,58 @@ public class Admin extends Employee {
 
 	@Override
 	public boolean displayMenu(Scanner input, Connection conn) {
-		System.out.println("\n---- Admin Menu ----\n");
-		System.out.println("1)  View Orders");
-		System.out.println("2)  Add Orders");
-		System.out.println("3)  Edit Orders");
-		System.out.println("4)  Complete Orders");
-		System.out.println("5)  Delete Orders");
-		System.out.println("6)  View Employees");
-		System.out.println("7)  View Customers");
-		System.out.println("8)  Issue Refund");
-		System.out.println("9)  Log Out\n");
-		
 		boolean choosing = true;
 		while(choosing) {
+			System.out.println("\n---- Admin Menu ----\n");
+			System.out.println("1)  View Orders");
+			System.out.println("2)  Add Orders");
+			System.out.println("3)  Edit Orders");
+			System.out.println("4)  Complete Orders");
+			System.out.println("5)  Delete Orders");
+			System.out.println("6)  View Employees");
+			System.out.println("7)  View Customers");
+			System.out.println("8)  Issue Refund");
+			System.out.println("9)  Log Out\n");
+		
 			System.out.print("Choose option: ");
 			int choice = input.nextInt();
 			
 			if(choice == 1) {	
 				viewOrders(conn);
-				choosing = false;
 			}
 			else if(choice == 2) {
-				addOrders(conn);
-				choosing = false;
+				addOrders(conn, input);
 			}
 			else if(choice == 3) {
 				editOrders(conn);
-				choosing = false;
 			}
 			else if(choice == 4) {
-				completeOrders(conn);
-				choosing = false;
+				completeOrders(conn, input);
 			}
 			else if(choice == 5) {
-				deleteOrders(conn);
-				choosing = false;
+				deleteOrders(conn, input);
 			}
 			else if(choice == 6) {
 				viewEmployees(conn);
-				choosing = false;
 			}
 			else if(choice == 7) {
 				viewCustomers(conn);
-				choosing = false;
 			}
 			else if(choice == 8){
-				issueRefund(conn);
-				choosing = false;
+				issueRefund(conn, input);
 			}
 			else if(choice == 9){
-				System.exit(0);
 				choosing = false;
 			}
 			else {
 				System.out.println("Not a valid option");
 			}
 		}
-		return false;
+		return choosing;
 	}
 		
-	public void addOrders(Connection conn) {
+	public void addOrders(Connection conn, Scanner scan) {
 		OrderService orderService = new OrderService(conn);
-		Scanner scan = new Scanner(System.in);
 		
 		System.out.println("Enter employee ID: ");
 		int employeeID = scan.nextInt();
@@ -117,8 +107,6 @@ public class Admin extends Employee {
 		System.out.println("Enter expected date: ");
 		String expectedDate = scan.next();
 		
-		scan.close();
-		
 		Order newOrder = new Order();
 		
 		newOrder.setOrderID(0);
@@ -133,14 +121,12 @@ public class Admin extends Employee {
 		orderService.insert(newOrder);
 	}
 		
-	public void deleteOrders(Connection conn){
+	public void deleteOrders(Connection conn, Scanner scan){
 		OrderService orderService = new OrderService(conn);
-		Scanner scan = new Scanner(System.in);
 		System.out.println("Enter the order ID to delete: ");
 		int orderID = scan.nextInt();
 		
 		orderService.delete(orderID);
-		scan.close();
 	}
 	
 	public void viewEmployees(Connection conn){
@@ -154,9 +140,8 @@ public class Admin extends Employee {
 		
 	}
 	
-	public void completeOrders(Connection conn){
+	public void completeOrders(Connection conn, Scanner scan){
 		OrderService orderService = new OrderService(conn);
-		Scanner scan = new Scanner(System.in);
 		System.out.println("Enter order ID to complete: ");
 		int orderID = scan.nextInt();
 		System.out.println("Enter delivery date: ");
@@ -177,7 +162,6 @@ public class Admin extends Employee {
 		
 		
 		orderService.complete(orderID, deliveryDate, note);
-		scan.close();
 	}
 	
 	public void viewOrders(Connection conn){
@@ -187,15 +171,13 @@ public class Admin extends Employee {
 	}
 	
 	public void editOrders(Connection conn){
-		
+		System.out.println("Coming soon...");
 	}
 	
-	public void issueRefund(Connection conn){
+	public void issueRefund(Connection conn, Scanner scan){
 		OrderService orderService = new OrderService(conn);
-		Scanner scan = new Scanner(System.in);
 		System.out.println("Enter order ID to refund: ");
 		int orderID = scan.nextInt();
 		orderService.refund(orderID);
-		scan.close();
 	}
 }

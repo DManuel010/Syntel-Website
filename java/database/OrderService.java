@@ -206,6 +206,28 @@ public class OrderService extends Service {
 		System.out.println("Your order is being printed...");
 		//TODO: make some print function to print a customer's order
 	}
+
+	public int getPaymentID(int orderID) {
+		int paymentID = 0;
+		String query = "SELECT Orders.paymentID "
+					+ "FROM Orders "
+					+ "WHERE Orders.paymentID = ?";
+		
+		PreparedStatement statement;
+		try {
+			statement = this.conn.prepareStatement(query);
+			statement.setInt(1, orderID);
+			ResultSet rs = statement.executeQuery();
+		
+			if(rs.next()) {
+				paymentID = rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			System.out.println("OrderService:  Failed to find paymentID");
+			e.printStackTrace();
+		}
+		return paymentID;
+	}
 }
 	
 

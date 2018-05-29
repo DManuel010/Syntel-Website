@@ -100,22 +100,34 @@ public class EmployeeService extends Service {
 
 	
 	public void display() {
+		String query = "SELECT * FROM Employee";
 		//DISPLAY FROM TABLE
 		System.out.println("Displaying employees...");
 		try{
-			PreparedStatement oracleStmt = this.conn.prepareStatement("select * from employee");
-			oracleStmt.execute();
-			ResultSet oracleRs = oracleStmt.getResultSet();
+			Statement oracleStmt = this.conn.createStatement();
+			ResultSet oracleRs = oracleStmt.executeQuery(query);
 			
-			while(oracleRs.next())
-			{
-				System.out.println(oracleRs.getInt(1)+"		"+oracleRs.getObject(2)+"		"+oracleRs.getString(3)+"		"+oracleRs.getInt(4));
+			System.out.println("EmployeeID\tFirstName\tLastName\t"
+							+ "Email\tHireDate\tTitle\tPhoneNumber\t"
+							+ "LastLogin");
+			
+			while(oracleRs.next()) {
+				int employeeID = oracleRs.getInt(1);
+				String firstName = oracleRs.getString(2);
+				String lastName = oracleRs.getString(3);
+				String email = oracleRs.getString(4);
+				String hireDate = oracleRs.getString(5);
+				String title = oracleRs.getString(6);
+				String phoneNumber = oracleRs.getString(8);
+				String lastLogin = oracleRs.getString(11);
+				
+				System.out.println(employeeID + "\t" + firstName + "\t" +
+									lastName + "\t" + email + "\t" +
+									hireDate + "\t" + title + "\t" +
+									phoneNumber + "\t" + lastLogin);
 			}
-			System.out.println();
-			System.out.println("Employees Displayed.");
-			oracleStmt.close();
-		}catch (SQLException e) {
-			System.out.println("Error: SQL Exception.");
+		} catch (SQLException e) {
+			System.out.println("EmployeeService:  Failed to display employees");
 			e.printStackTrace();
 		}
 	}

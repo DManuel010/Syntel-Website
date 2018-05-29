@@ -26,11 +26,7 @@ public class shanMain {
 	public static Scanner scan = new Scanner(System.in);
 	
 	public static void main(String[] args){
-		
-		
 		displayMainMenu();
-		
-		
 	}
 	
 	public static void displayMainMenu(){
@@ -58,7 +54,7 @@ public class shanMain {
 		case 2:
 			displayRegisterMenu();
 			break;
-	}
+		}
 	}
 	
 	public static void displayLoginMenu(){
@@ -125,13 +121,14 @@ public class shanMain {
 
 		//INSERT THEIR ADDRESS IN LOCATION TABLE
 		Location address = new Location(0, country, state, city, streetnum, null, zip);
+		int addrID = address.getLocationID();
 		
 		LocationService locationService = new LocationService(conn);
 		locationService.insert(address);
 		System.out.println();
 		
 		//INSERT THEIR CARD INFO INTO CARD TABLE
-		Card card = new Card(0, cardName, cardNumber, expDate, cvv, type, address);
+		Card card = new Card(0, cardName, cardNumber, expDate, cvv, type, addrID);
 		
 		CardService cardService = new CardService(conn);
 		cardService.insert(card);
