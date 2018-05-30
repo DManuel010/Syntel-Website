@@ -17,7 +17,7 @@ public class CustomerController
 	{
 		Customer customer = new Customer();
 		model.addAttribute("customer",customer);
-		return "placeholder";
+		return "customer_registration";
 	}
 	
 	@RequestMapping(value="/registration", method=RequestMethod.POST)

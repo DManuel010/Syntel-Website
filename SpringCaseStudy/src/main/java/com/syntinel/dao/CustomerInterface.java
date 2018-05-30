@@ -1,6 +1,8 @@
 package com.syntinel.dao;
 
-public class CustomerInterface 
+import com.syntinel.model.Customer;
+
+public interface CustomerInterface 
 {
-	
+	public void create(Customer customer);
 }

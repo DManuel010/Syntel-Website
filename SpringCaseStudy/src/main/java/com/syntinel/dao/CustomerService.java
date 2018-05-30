@@ -1,6 +1,15 @@
 package com.syntinel.dao;
 
-public class CustomerService 
+import com.syntinel.model.Customer;
+
+public class CustomerService implements CustomerInterface
 {
+
+	@Override
+	public void create(Customer customer) 
+	{
+		//will insert into the database
+		
+	}
 	
 }
