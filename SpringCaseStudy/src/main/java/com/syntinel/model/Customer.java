@@ -1,5 +1,7 @@
 package com.syntinel.model;
 
+import org.springframework.stereotype.Component;
+
 public class Customer
 {
 	private String first_name;

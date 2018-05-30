@@ -56,6 +56,11 @@
     <artifactId>tomcat-embed-jasper</artifactId>
     <version>9.0.8</version>
 </dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-configuration-processor</artifactId>
+			<optional>true</optional>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -64,11 +69,13 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			
+		<!-- 	
 			<plugin>
   				<groupId>org.eclipse.jetty</groupId>
   				<artifactId>jetty-maven-plugin</artifactId>
   				<version>9.3.24-SNAPSHOT</version>
-			</plugin>
+			</plugin>  -->
 		</plugins>
 	</build>
 </project>

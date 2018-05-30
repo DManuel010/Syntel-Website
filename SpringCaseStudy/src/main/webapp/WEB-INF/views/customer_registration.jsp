@@ -11,7 +11,7 @@
 
 <h1>Customer Registration</h1>
 
-<form method="POST" modelAttribute="customer" action="/customer/registration/">
+<form method="POST" modelAttribute="customer" action="/customer/register">
 
 	<!-- Customer First Name -->
 	<label for="customer_first_name">First Name:</label>
@@ -55,8 +55,7 @@
 	<br/>
 	<input type="submit" value="Register" />
 	<input type="reset" value="Clear Form" />
-	
-
 </form>
+
 </body>
 </html>
