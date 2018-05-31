@@ -18,7 +18,6 @@ public class CustomerController
 	@Autowired
 	CustomerService customerServ;
 	
-	
 	@RequestMapping(value="/registration", method=RequestMethod.GET)
 	public String loadCustomerForm(ModelMap model)
 	{
