@@ -1,10 +1,22 @@
 package com.syntinel.model;
 
+import javax.validation.constraints.*;
+
 public class Customer
 {
+	@Size(min=3, max=50)
+	@NotEmpty
 	private String first_name;
+	
+	@Size(min=3, max=50)
+	@NotEmpty
 	private String last_name;
+	
+	@Email
+	@NotEmpty
 	private String email;
+	
+	
 	private String password;
 	private String confirm_password;
 	private String dob;
