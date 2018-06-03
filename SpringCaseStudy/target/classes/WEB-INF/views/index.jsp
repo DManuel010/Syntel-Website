@@ -9,5 +9,6 @@
 <body>
 <h1>Hellolo</h1>
 <a href="/customer/registration">Register</a>
+<a href="/customer/login">Login</a>
 </body>
 </html>
