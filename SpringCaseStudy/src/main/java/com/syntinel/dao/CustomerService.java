@@ -1,8 +1,6 @@
 package com.syntinel.dao;
 
 import javax.annotation.Resource;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
@@ -10,7 +8,7 @@ import com.syntinel.model.Customer;
 
 
 @Service
-public class CustomerService implements CustomerInterface
+public class CustomerService implements ServiceInterface<Customer>
 {
 	@Resource(name="jdbcTemplate")
 	private JdbcTemplate jdbcTemplate;
