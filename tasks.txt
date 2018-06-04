@@ -5,11 +5,11 @@ Tuesday:
 
 
 	Shannon:
-		food/item DAO
-		order DAO
+		food/item DAO ✓
+		order DAO 
 
 	Eric:
-		add css to jsp files
+		add css to jsp files ✓
 		order view
 		index view
 		login and registration
