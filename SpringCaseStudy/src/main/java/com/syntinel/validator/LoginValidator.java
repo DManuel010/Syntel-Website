@@ -1,6 +1,5 @@
 package com.syntinel.validator;
 
-import org.apache.jasper.tagplugins.jstl.core.Out;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;

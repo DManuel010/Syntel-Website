@@ -27,7 +27,6 @@ public class RegistrationValidator implements Validator
 				error.rejectValue("password", "customer.password.mismatch");
 		}
 		
-		
 	}
 	 
 	    

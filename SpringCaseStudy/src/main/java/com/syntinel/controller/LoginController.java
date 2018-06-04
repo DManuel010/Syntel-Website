@@ -1,12 +1,10 @@
 package com.syntinel.controller;
 
-import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -47,7 +45,7 @@ public class LoginController
 	@RequestMapping(value="/login", method=RequestMethod.POST)
 	public ModelAndView customerLogin(@ModelAttribute("customer") Customer customer, BindingResult result, Model model)
 	{
-		customer = customerServ.getID(customer);
+		customer = customerServ.getObject(customer);
 		loginValidator.validate(customer, result);
 		
 		if(result.hasErrors())

@@ -48,7 +48,7 @@ public class CustomerService implements ServiceInterface<Customer>
 	}
 
 
-	public Customer getID(Customer customer)
+	public Customer getObject(Customer customer)
 	{ 
 		try
 		{
