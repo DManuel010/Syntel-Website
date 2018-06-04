@@ -1,0 +1,58 @@
+Tuesday:
+
+	David:
+		food/item controller
+
+
+	Shannon:
+		food/item DAO
+		order DAO
+
+	Eric:
+		add css to jsp files
+		order view
+		index view
+		login and registration
+		order controller
+
+
+Later:
+	crud addresses
+	optional: add order status
+
+	admin:
+		crud items
+		crud stores
+		crud locations
+		crud orders
+		crud users
+
+	add regular expressions to the validators
+	optional: switch jdbc template
+
+	controller:
+		edit account
+		menu page
+		home page
+		order 
+		check out
+		order tracking
+
+
+	DAO:
+		edit account
+		menu page
+		home page
+		order 
+		check out
+		order tracking
+
+	view
+		edit account
+		menu page
+		home page
+		registration and login
+		order 
+		check out
+		order tracking
+			based on delivery date
