@@ -9,20 +9,26 @@
 </head>
 <body>
 
-<h1>Food List</h1>
-<table>
+	<h1>Food List</h1>
 	
-	<c:forEach items="${foodItems}" var="foodItem">
-    <tr>      
-        <td>${foodItem}</td>
-    </tr>
-</c:forEach>
+	<table>
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Group</th>
+				<th>Description</th>
+				<th>Price</th>
+			</tr>
+		</thead>
+		<c:forEach items="${foodItems}" var="foodItem">
+	    <tr>      
+	        <td>${foodItem.name}</td>
+	        <td>${foodItem.foodGroup}</td>
+	        <td>${foodItem.description}</td>
+	        <td>${foodItem.price}</td>
+	    </tr>
+		</c:forEach>
+	</table>
 
-</table>
-
-
-<!-- <td>${foodItem.location}</td>
-        <td>${foodItem.startDate}</td>
-        <td>${foodItem.endDate}</td> -->
 </body>
 </html>

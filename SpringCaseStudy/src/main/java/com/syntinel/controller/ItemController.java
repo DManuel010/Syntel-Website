@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.syntinel.dao.FoodService;
 import com.syntinel.model.Food;
@@ -19,10 +20,12 @@ public class ItemController
 	FoodService foodServ;
 	
 	@RequestMapping(value="/food",method=RequestMethod.GET)
-	public String getFoodItems(Model model)
+	public ModelAndView getFoodItems(Model model)
 	{
 		List<Food> foodItems = foodServ.viewAll();
-		model.addAttribute(foodItems);
-		return "food_list";
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("foodItems", foodItems);
+		modelAndView.setViewName("food_list");
+		return modelAndView;
 	}
 }

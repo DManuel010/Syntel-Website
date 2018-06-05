@@ -1,4 +1,4 @@
-package com.syntinel.dao;
+package org.syntinel.mappers;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
