@@ -9,3 +9,43 @@ BEGIN
     VALUES(CUST_ID,F_NAME,L_NAME,EMAIL,PHONE,TO_DATE(DOB,'dd-MM-yyyy'),SYSTIMESTAMP,SYSTIMESTAMP,
     PASS, MOBILE);
 END;
+
+-- INSERT NEW ORDERS 
+
+CREATE OR REPLACE PROCEDURE SP_INSERT_NEW_ORDER(orderid varchar2, employeeid number, customerid number, 
+price number, paymentid number, deliveryaddrid number, orderdate varchar2, expecteddate varchar2, 
+deliverydate varchar2, note varchar2)
+AS
+BEGIN
+INSERT INTO ORDERS
+VALUES (orderid, employeeid, customerid, price, paymentid, deliveryaddrid, orderdate, 
+expecteddate, deliverydate, note);
+END;
+
+-- DELETE ORDER
+
+CREATE OR REPLACE PROCEDURE SP_DELETE_ORDER(orderid number)
+AS
+BEGIN
+DELETE FROM ORDERS
+WHERE ORDERID = orderid;
+END;
+
+-- INSERT NEW FOOD
+
+CREATE OR REPLACE PROCEDURE SP_INSERT_NEW_FOOD(foodid varchar2, foodname varchar2, 
+foodgroup varchar2, price number, description varchar2, stock number)
+AS
+BEGIN
+INSERT INTO FOOD
+VALUES (foodid, foodname, foodgroup, price, description, stock);
+END;
+
+-- DELETE FOOD
+
+CREATE OR REPLACE PROCEDURE SP_DELETE_FOOD(foodid number)
+AS
+BEGIN
+DELETE FROM FOOD
+WHERE FOODID = foodid;
+END;
