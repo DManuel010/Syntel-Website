@@ -1,16 +1,15 @@
 package com.syntinel.dao;
 
-<<<<<<< Updated upstream
+
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
-=======
+
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
->>>>>>> Stashed changes
 
 import javax.annotation.Resource;
 
@@ -25,7 +24,6 @@ import com.syntinel.dao.FoodRowMapper;
 public class FoodService implements ServiceInterface<Food>
 {
 
-<<<<<<< Updated upstream
 	@Resource(name="jdbcTemplate")
 	private JdbcTemplate jdbcTemplate;
 	
@@ -63,53 +61,42 @@ public class FoodService implements ServiceInterface<Food>
 		}
 	}
 	
-	public List viewAll() {
+	public List<Food> viewAll() {
 		
 		String sql = "SELECT * FROM FOOD";
 		return jdbcTemplate.query(sql, new FoodRowMapper());
-=======
-	
-	@Resource(name="jdbcTemplate")
-	private JdbcTemplate jdbcTemplate;
-	
-	
-	@Override
-	public void create(Food food) 
-	{
-		
 	}
 	
-	public ArrayList<Food> getFoodList()
-	{
-	
-		//not the right way of doing this using, but for now it works
-		ArrayList<Food> foodItems = new ArrayList<Food>();
-		Food food = new Food();
-		
-		try
-		{
-			Connection con = jdbcTemplate.getDataSource().getConnection();
-			Statement statement = con.createStatement();
-			ResultSet result = statement.executeQuery("SELECT * FROM FOOD");
-			while(result.next())
-			{
-				food.setName(result.getString(1));
-				food.setFoodGroup(result.getString(2));
-				food.setPrice(result.getDouble(3));
-				food.setDescription(result.getString(4));
-				foodItems.add(food);
-			}
-		
-		}catch(Exception e)
-		{
-			e.printStackTrace();
-		}
-		
-		return foodItems;
-		
->>>>>>> Stashed changes
-	}
-	
+
+//	public ArrayList<Food> getFoodList()
+//	{
+//	
+//		//not the right way of doing this using, but for now it works
+//		ArrayList<Food> foodItems = new ArrayList<Food>();
+//		Food food = new Food();
+//		
+//		try
+//		{
+//			Connection con = jdbcTemplate.getDataSource().getConnection();
+//			Statement statement = con.createStatement();
+//			ResultSet result = statement.executeQuery("SELECT * FROM FOOD");
+//			while(result.next())
+//			{
+//				food.setName(result.getString(1));
+//				food.setFoodGroup(result.getString(2));
+//				food.setPrice(result.getDouble(3));
+//				food.setDescription(result.getString(4));
+//				foodItems.add(food);
+//			}
+//		
+//		}catch(Exception e)
+//		{
+//			e.printStackTrace();
+//		}
+//		
+//		return foodItems;
+//			
+//	}
 	
 
 }

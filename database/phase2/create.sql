@@ -34,7 +34,6 @@ CREATE TABLE ComboFood (
 	CONSTRAINT UC_ComboFood UNIQUE (foodID, comboID)
 );
 
-
 CREATE TABLE Payment (
 	paymentID INT NOT NULL PRIMARY KEY,
 	type VARCHAR(25) NOT NULL,
@@ -42,14 +41,12 @@ CREATE TABLE Payment (
 	datePaid DATE NOT NULL
 );
 
-
-CREATE TABLE Login (
-	loginID INT NOT NULL PRIMARY KEY,
-	username VARCHAR(25) NOT NULL UNIQUE,
-	password VARCHAR(25) NOT NULL,
-	type VARCHAR(25) NOT NULL
-);
-
+-- CREATE TABLE Login (
+	-- loginID INT NOT NULL PRIMARY KEY,
+	-- username VARCHAR(25) NOT NULL UNIQUE,
+	-- password VARCHAR(25) NOT NULL,
+	-- type VARCHAR(25) NOT NULL
+-- );
 
 CREATE TABLE Employee (
 	employeeID INT NOT NULL PRIMARY KEY,
@@ -58,13 +55,11 @@ CREATE TABLE Employee (
 	email VARCHAR(25) NOT NULL UNIQUE,
 	hireDate DATE NOT NULL,
 	title VARCHAR(25) NOT NULL,
-	loginID INT NOT NULL UNIQUE REFERENCES Login(loginID),
 	phoneNumber VARCHAR(25) NOT NULL,
 	workAddrID INT NOT NULL REFERENCES Location(locationID),
 	homeAddrID INT NOT NULL REFERENCES Location(locationID),
 	lastLogin DATE NOT NULL
 );
-
 
 CREATE TABLE Customer (
 	customerID INT NOT NULL PRIMARY KEY,
@@ -72,11 +67,11 @@ CREATE TABLE Customer (
 	lastName VARCHAR(25) NOT NULL,
 	email VARCHAR(25) NOT NULL,
 	phoneNumber VARCHAR(25) NOT NULL,
-	loginID INT NOT NULL UNIQUE REFERENCES Login(loginID),
 	dateOfBirth DATE NOT NULL,
-	homeAddrID INT NOT NULL REFERENCES Location(locationID),
-	dateOfRegister DATE NOT NULL,
-	lastLogin DATE NOT NULL
+	dateOfRegister TIMESTAMP NOT NULL,
+	lastLogin TIMESTAMP NOT NULL,
+	PASS VARCHAR2(4000),
+	MOBILE_NUMBER VARCHAR2(25)
 );
 
 CREATE TABLE Orders (

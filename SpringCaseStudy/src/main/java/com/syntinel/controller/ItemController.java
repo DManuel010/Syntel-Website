@@ -1,6 +1,6 @@
 package com.syntinel.controller;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,7 +21,7 @@ public class ItemController
 	@RequestMapping(value="/food",method=RequestMethod.GET)
 	public String getFoodItems(Model model)
 	{
-		ArrayList<Food> foodItems = foodServ.getFoodList();
+		List<Food> foodItems = foodServ.viewAll();
 		model.addAttribute(foodItems);
 		return "food_list";
 	}

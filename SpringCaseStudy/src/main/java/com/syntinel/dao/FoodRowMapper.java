@@ -7,10 +7,10 @@ import org.springframework.jdbc.core.RowMapper;
 
 import com.syntinel.model.Food;
 
-public class FoodRowMapper  implements RowMapper{
+public class FoodRowMapper  implements RowMapper<Food>{
 
 	@Override
-	public Object mapRow(ResultSet rs, int index) throws SQLException {
+	public Food mapRow(ResultSet rs, int index) throws SQLException {
 		Food food = new Food();
 		food.setFoodId(rs.getInt(1));
 		food.setName(rs.getString(2));
