@@ -14,7 +14,7 @@ Tuesday:
 		index view
 		login and registration
 		order controller
-
+		insert sql
 
 Later:
 	crud addresses
