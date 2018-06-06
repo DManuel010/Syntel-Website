@@ -3,7 +3,10 @@ package com.syntinel.dao;
 
 import java.sql.CallableStatement;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -59,6 +62,39 @@ public class FoodService implements ServiceInterface<Food>
 		
 		String sql = "SELECT FOODID, NAME, FOODGROUP, PRICE, DESCRIPTION FROM FOOD";
 		return jdbcTemplate.query(sql, new FoodRowMapper());
+	}
+
+	public List<Food> getSelectedItems(String[] ids)
+	{
+		List<Food> foodList = new ArrayList<Food>();
+		
+		for(String id : ids)
+		{
+			try {
+				Connection con = jdbcTemplate.getDataSource().getConnection();
+				PreparedStatement preparedStatement = con.prepareStatement("SELECT FOODID, NAME, "
+						+ "FOODGROUP, PRICE, DESCRIPTION FROM FOOD WHERE FOODID = ?");
+				preparedStatement.setString(1, id);
+				
+				ResultSet result = preparedStatement.executeQuery();
+				while(result.next())
+				{
+					Food food = new Food();
+					food.setFoodId(result.getInt("FOODID"));
+					food.setName(result.getString("NAME"));
+					food.setFoodGroup(result.getString("FOODGROUP"));
+					food.setPrice(result.getDouble("PRICE"));
+					food.setDescription(result.getString("DESCRIPTION"));
+					foodList.add(food);
+				}
+				
+			}catch(SQLException e)
+			{
+				e.printStackTrace();
+			}
+		}
+		
+		return foodList;
 	}	
 
 }
