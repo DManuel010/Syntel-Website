@@ -4,6 +4,8 @@ import javax.validation.constraints.*;
 
 public class Location 
 {
+	private int locationId;
+	
 	@Size(min=3, max=15)
 	@NotEmpty
 	private String country;
@@ -31,7 +33,9 @@ public class Location
 	public Location(){}
 	
 	//Getters
+	
 	public String getCountry() 			{return country;}
+	public int getLocationId() 			{return locationId;}
 	public String getState() 			{return state;}
 	public String getCity() 			{return city;}
 	public String getStreet_number() 	{return street_number;}
@@ -40,6 +44,9 @@ public class Location
 	
 	
 	//Setters
+	public void setLocationId(int locationId) {
+		this.locationId = locationId;
+	}
 	public void setCountry(String country) {
 		this.country = country;
 	}

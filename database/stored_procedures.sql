@@ -49,3 +49,22 @@ BEGIN
 DELETE FROM FOOD
 WHERE FOODID = foodid;
 END;
+
+--INSERT NEW LOCATION
+
+CREATE OR REPLACE PROCEDURE SP_INSERT_NEW_LOCATION(locationid number, country varchar2, 
+states varchar2, city varchar2, street varchar2, room varchar2, zip varchar2)
+AS
+BEGIN
+INSERT INTO LOCATION
+VALUES (locationid, country, states, city, street, room, zip);
+END;
+
+--DELETE LOCATION
+
+CREATE OR REPLACE PROCEDURE SP_DELETE_LOCATION(locationid number)
+AS
+BEGIN
+DELETE FROM LOCATION
+WHERE LOCATIONID = locationid;
+END;

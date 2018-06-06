@@ -38,6 +38,7 @@ public class FoodService implements ServiceInterface<Food>
 			callableStatement.setString(5, food.getDescription());
 			callableStatement.setInt(6, food.getStock());
 			callableStatement.execute();
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
