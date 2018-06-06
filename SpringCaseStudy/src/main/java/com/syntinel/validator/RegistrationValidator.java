@@ -1,5 +1,7 @@
 package com.syntinel.validator;
 
+import java.util.regex.Pattern;
+
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
@@ -26,6 +28,9 @@ public class RegistrationValidator implements Validator
 			if(!customer.getPassword().equals(customer.getConfirm_password()))
 				error.rejectValue("password", "customer.password.mismatch");
 		}
+		
+		if (Pattern.matches(".+@.+\\..+",customer.getEmail()))
+			error.rejectValue("email", "customer.email.bad");
 		
 	}
 	 
