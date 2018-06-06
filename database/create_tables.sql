@@ -30,8 +30,7 @@ CREATE TABLE Combo (
 CREATE TABLE ComboFood (
 	comboFoodID INT NOT NULL PRIMARY KEY,
 	foodID INT NOT NULL REFERENCES Food(foodID),
-	comboID INT NOT NULL REFERENCES Combo(comboID),
-	CONSTRAINT UC_ComboFood UNIQUE (foodID, comboID)
+	comboID INT NOT NULL REFERENCES Combo(comboID)
 );
 
 CREATE TABLE Payment (

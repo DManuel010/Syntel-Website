@@ -24,13 +24,13 @@ insert into combofood
 insert into combofood
 	values (1,1,0);
 insert into combofood
-	values (1,1,1);
+	values (2,1,1);
 insert into combofood
-	values (2,2,0);
+	values (3,2,0);
 insert into combofood
-	values (2,2,1);
+	values (4,2,1);
 insert into combofood
-	values (2,2,2);
+	values (5,2,2);
 
 
 insert into payment
