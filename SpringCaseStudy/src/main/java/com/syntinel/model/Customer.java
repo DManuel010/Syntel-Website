@@ -1,5 +1,7 @@
 package com.syntinel.model;
 
+import java.util.List;
+
 import javax.validation.constraints.*;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -44,7 +46,17 @@ public class Customer
 	private String last_login;
 	private String register_date;
 	
+	private List<Food> items;
 	
+	
+	public List<Food> getItems() {
+		return items;
+	}
+
+	public void setItems(List<Food> items) {
+		this.items = items;
+	}
+
 	//Default constructor
 	public Customer() 
 	{
@@ -102,12 +114,13 @@ public class Customer
 
 	@Override
 	public String toString() {
-		return "Customer [first_name=" + first_name + ", last_name=" + last_name + ", email=" + email + ", password="
-				+ password + ", confirm_password=" + confirm_password + ", dob=" + dob + ", home_number=" + home_number
-				+ ", mobile_number=" + mobile_number + ", last_login=" + last_login + ", register_date=" + register_date
-				+ "]";
+		return "Customer [id=" + id + ", first_name=" + first_name + ", last_name=" + last_name + ", email=" + email
+				+ ", password=" + password + ", confirm_password=" + confirm_password + ", dob=" + dob
+				+ ", home_number=" + home_number + ", mobile_number=" + mobile_number + ", last_login=" + last_login
+				+ ", register_date=" + register_date + ", items=" + items + "]";
 	}
 
+	
 
 	
 }

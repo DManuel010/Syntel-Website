@@ -22,10 +22,6 @@
 		<form:input path="customer.password" placeholder="Enter a password"/>
 		
 		
-		<!-- Customer password -->
-		<label for="customer_id">id:</label>
-		<form:input path="customer.id"/>
-		<br/>
 		<input type="submit" value="Log In" />
 		<input type="reset" value="Clear Form" />
 	</form>
