@@ -29,9 +29,6 @@ public class RegistrationValidator implements Validator
 				error.rejectValue("password", "customer.password.mismatch");
 		}
 		
-		if (Pattern.matches(".+@.+\\..+",customer.getEmail()))
-			error.rejectValue("email", "customer.email.bad");
-		
 	}
 	 
 	    

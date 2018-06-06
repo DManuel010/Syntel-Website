@@ -32,7 +32,7 @@ public class LoginValidator implements Validator
 		
 		if(!customer.getEmail().isEmpty() && !customer.getPassword().isEmpty())
 		{
-			if(customer.getId() != 0)
+			if(customer.getId() == 0)
 				error.rejectValue("email", "customer.id.empty");
 		}
 	}

@@ -20,7 +20,8 @@
 		<!-- Customer password -->
 		<label for="customer_password">Password:</label>
 		<form:input path="customer.password" placeholder="Enter a password"/>
-		
+		<form:errors path="customer.password"/>
+		<br/>
 		
 		<input type="submit" value="Log In" />
 		<input type="reset" value="Clear Form" />
