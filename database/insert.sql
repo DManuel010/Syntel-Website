@@ -43,9 +43,6 @@ insert into payment
 insert into employee
 	values (0,'Eric', 'Karnis', 'eric@karnis.com','07-jan-18','Œ?˜ä6',1234567890,0,0,'07-may-18');
 
-insert into customer
-	values (0,'Cire', 'Sinrak', 'e@k.com',1234567890,'07-feb-1994','01-jan-13 03:14:07','01-jan-13 03:14:07', 'Œ?˜ä6',0123456789);
-
 insert into orders
 	values (0,0,0,30.0,0,0,'07-jan-18','07-jan-18','07-jan-18','make it good ok');
 
