@@ -64,7 +64,7 @@ public class CustomerService implements ServiceInterface<Customer>
 				customer.setFirst_name(resultSet.getString(2));
 				customer.setLast_name(resultSet.getString(3));
 				customer.setLast_login(resultSet.getString(4));
-				customer.setPassword("");
+				
 			}
 			
 		} catch (SQLException e) 
