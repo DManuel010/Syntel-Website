@@ -3,6 +3,7 @@ package com.syntinel.validator;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
+import java.util.regex.Pattern;
 
 import com.syntinel.model.Customer;
 
@@ -22,6 +23,9 @@ public class LoginValidator implements Validator
 		
 		if(customer.getEmail().isEmpty())
 			error.rejectValue("email", "customer.email.empty");
+		
+		if (Pattern.matches(".+@.+\\..+",customer.getEmail()))
+			error.rejectValue("email", "customer.email.bad");
 		
 		if(customer.getEmail().isEmpty())
 			error.rejectValue("email", "customer.password.empty");
