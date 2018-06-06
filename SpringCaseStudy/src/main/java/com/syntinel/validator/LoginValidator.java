@@ -24,15 +24,15 @@ public class LoginValidator implements Validator
 		if(customer.getEmail().isEmpty())
 			error.rejectValue("email", "customer.email.empty");
 		
-		if (Pattern.matches(".+@.+\\..+",customer.getEmail()))
+		if (!Pattern.matches(".+@.+\\..+",customer.getEmail()))
 			error.rejectValue("email", "customer.email.bad");
 		
-		if(customer.getEmail().isEmpty())
-			error.rejectValue("email", "customer.password.empty");
+		if(customer.getPassword().isEmpty())
+			error.rejectValue("password", "customer.password.empty");
 		
-		if(!customer.getEmail().isEmpty() && !customer.getEmail().isEmpty())
+		if(!customer.getEmail().isEmpty() && !customer.getPassword().isEmpty())
 		{
-			if(customer.getId().length() <= 0)
+			if(customer.getId() != 0)
 				error.rejectValue("email", "customer.id.empty");
 		}
 	}

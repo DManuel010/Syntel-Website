@@ -14,7 +14,7 @@
 
 <h1>In Checkout</h1>
 
-<form action="/order/submit/" method="POST">
+<form action="/location/addnew/" method="POST">
 	<table>
 		<thead>
 			<tr>

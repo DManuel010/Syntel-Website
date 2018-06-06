@@ -9,7 +9,7 @@ import org.syntinel.utilities.Utilities;
 
 public class Customer
 {
-	private String id = null;
+	private int id = 0;
 	
 	@Size(min=3, max=50)
 	@NotEmpty
@@ -65,7 +65,7 @@ public class Customer
 	}
 	
 	//Getters
-	public String getId() 				{return id;}
+	public int getId() 				    {return id;}
 	public String getFirst_name() 		{return first_name;}
 	public String getLast_name() 	 	{return last_name;}
 	public String getEmail() 			{return email;}
@@ -79,7 +79,7 @@ public class Customer
 	
 	//Setters
 	
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

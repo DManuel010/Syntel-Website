@@ -60,7 +60,7 @@ public class CustomerService implements ServiceInterface<Customer>
 			ResultSet resultSet = preparedStatement.executeQuery();
 			while(resultSet.next())
 			{
-				customer.setId(resultSet.getString(1));
+				customer.setId(resultSet.getInt(1));
 				customer.setFirst_name(resultSet.getString(2));
 				customer.setLast_name(resultSet.getString(3));
 				customer.setLast_login(resultSet.getString(4));

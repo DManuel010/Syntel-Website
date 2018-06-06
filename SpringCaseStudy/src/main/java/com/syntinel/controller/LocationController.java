@@ -9,6 +9,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.syntinel.dao.LocationService;
 import com.syntinel.model.Location;
@@ -34,7 +35,5 @@ public class LocationController {
 		locationServ.create(location);
 		return "location";
 	}
-	
-	
-	
+		
 }

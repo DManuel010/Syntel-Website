@@ -4,8 +4,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -40,13 +38,10 @@ public class ItemController
 	
 	public ModelAndView checkout(@SessionAttribute("customer") Customer customer, @RequestParam(value="foodItemChkbx") String[] foodItemChkbx)
 	{
-//		List<Food> selectedItems = null;
-//		selectedItems = foodServ.getSelectedItems(foodItemChkbx);
-		
+
 		customer.setItems(foodServ.getSelectedItems(foodItemChkbx));
 
 		ModelAndView modelAndView = new ModelAndView();
-		//modelAndView.addObject("selectedItems", selectedItems);
 		modelAndView.addObject("selectedItems", customer.getItems());
 		modelAndView.setViewName("checkout");
 		return modelAndView;
