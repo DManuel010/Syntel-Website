@@ -4,11 +4,13 @@ Friday:
 		send email receipt
 		add quantity to order
 		logout
+		hide summary not signed in
 
 
 	Shannon:
 		View pending order
 			find by delivery date not null
+		contact and about page
 
 	Eric:
 		View and edit account
@@ -16,6 +18,8 @@ Friday:
 		make nav bar work better
 		View and edit addresses
 		paypal stub
+		investigate when url doesn't change after login
+
 
 Later:
 	add customer id to location table as foreign key

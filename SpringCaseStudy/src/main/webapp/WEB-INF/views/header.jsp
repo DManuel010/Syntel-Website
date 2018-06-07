@@ -20,9 +20,9 @@
 	<nav>
 		<ul>
 			<li><a href="${context}/" class="active">Home</a></li>
-			<li><a href="${context}/menu">Menu</a></li>
+			<li><a href="${context}/order/food">Menu</a></li>
 			<li><a href="${context}/order">Order</a></li>
-			<li><a href="${context}/contact">Contacts</a></li>
+			<li><a href="${context}/contact">Contact</a></li>
 			<li><a href="${context}/about">About</a></li>
 			<li><a href="${context}/customer/registration">Register</a></li>
 			<li><a href="${context}/customer/login">Login</a></li>
