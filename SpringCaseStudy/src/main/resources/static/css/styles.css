@@ -1,7 +1,9 @@
 body {
 	background-color: #ccff99;
 }
-
+#content{
+	padding: 5vw;
+}
 nav {
 	float: right;
 }

@@ -6,11 +6,11 @@ insert into food
 	values (2, 'Steak', 'Dinner', 9.0, 'wow', 999);
 
 insert into location 
-	values (0, 'Canada', 'Ontario', 'Toronto', '1 Bloor', ' ', 'a1b2c3');
+	values (0, 0, 'Canada', 'Ontario', 'Toronto', '1 Bloor', ' ', 'a1b2c3');
 insert into location 
-	values (1, 'Canada', 'Quebec', 'Montreal', '1 Rue', ' ', 'd4e5f6');
+	values (1, 0, 'Canada', 'Quebec', 'Montreal', '1 Rue', ' ', 'd4e5f6');
 insert into location 
-	values (2, 'USA', 'Arizona', 'Phoenix', '1 Deer Valley', ' ', '12345');
+	values (2, 0, 'USA', 'Arizona', 'Phoenix', '1 Deer Valley', ' ', '12345');
 
 insert into combo 
 	values (0, 'small combo', 5.0, 'eggs and sandwich');

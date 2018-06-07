@@ -10,6 +10,7 @@ CREATE TABLE Food (
 		
 CREATE TABLE Location (
 	locationID INT NOT NULL PRIMARY KEY,
+	customerID INT NOT NULL REFERENCES Customer(customerID),
 	country VARCHAR(25) NOT NULL,
 	state VARCHAR(25) NOT NULL,
 	city VARCHAR(25) NOT NULL,
