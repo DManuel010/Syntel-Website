@@ -1,15 +1,4 @@
-Tuesday:
-
-	
-
-	View and edit addresses
-
-	
-
-	paypal stub
-
-	logout
-
+Friday:
 
 	David:
 		send email receipt
@@ -25,6 +14,8 @@ Tuesday:
 		View and edit account
 		style all pages
 		make nav bar work better
+		View and edit addresses
+		paypal stub
 
 Later:
 	add customer id to location table as foreign key
