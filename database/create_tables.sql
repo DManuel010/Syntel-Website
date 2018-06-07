@@ -76,7 +76,6 @@ CREATE TABLE Employee (
 
 CREATE TABLE Orders (
 	orderID INT NOT NULL PRIMARY KEY,
-	employeeID INT NOT NULL REFERENCES Employee(employeeID),
 	customerID INT NOT NULL REFERENCES Customer(customerID),
 	cost DECIMAL(10,3) NOT NULL,
 	paymentID INT NOT NULL REFERENCES Payment(paymentID),

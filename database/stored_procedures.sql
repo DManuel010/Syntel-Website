@@ -12,13 +12,13 @@ END;
 
 -- INSERT NEW ORDERS 
 
-CREATE OR REPLACE PROCEDURE SP_INSERT_NEW_ORDER(orderid varchar2, employeeid number, customerid number, 
+CREATE OR REPLACE PROCEDURE SP_INSERT_NEW_ORDER(orderid varchar2, customerid number, 
 price number, paymentid number, deliveryaddrid number, orderdate varchar2, expecteddate varchar2, 
 deliverydate varchar2, note varchar2)
 AS
 BEGIN
 INSERT INTO ORDERS
-VALUES (orderid, employeeid, customerid, price, paymentid, deliveryaddrid, 
+VALUES (orderid, customerid, price, paymentid, deliveryaddrid, 
 TO_DATE(orderdate,'dd-MM-yyyy'), 
 expecteddate, deliverydate, note);
 END;
