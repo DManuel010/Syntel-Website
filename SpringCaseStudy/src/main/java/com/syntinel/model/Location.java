@@ -6,6 +6,8 @@ public class Location
 {
 	private int locationId;
 	
+	private int customerId;
+	
 	@Size(min=3, max=15)
 	@NotEmpty
 	private String country;
@@ -34,6 +36,7 @@ public class Location
 	//Getters
 	
 	public String getCountry() 			{return country;}
+	public int getCustomerId() {return customerId;}
 	public int getLocationId() 			{return locationId;}
 	public String getState() 			{return state;}
 	public String getCity() 			{return city;}
@@ -45,6 +48,9 @@ public class Location
 	//Setters
 	public void setLocationId(int locationId) {
 		this.locationId = locationId;
+	}
+	public void setCustomerId(int customerId) {
+		this.customerId = customerId;
 	}
 	public void setCountry(String country) {
 		this.country = country;

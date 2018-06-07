@@ -34,14 +34,15 @@ public class LocationService implements ServiceInterface<Location>
 	{
 		try {
 			Connection con = jdbcTemplate.getDataSource().getConnection();
-			CallableStatement callableStatement = con.prepareCall("{call SP_INSERT_NEW_LOCATION(?,?,?,?,?,?,?)}");
+			CallableStatement callableStatement = con.prepareCall("{call SP_INSERT_NEW_LOCATION(?,?,?,?,?,?,?,?)}");
 			callableStatement.setString(1, Utilities.createUniqueId());
-			callableStatement.setString(2, location.getCountry());
-			callableStatement.setString(3, location.getState());
-			callableStatement.setString(4, location.getCity());
-			callableStatement.setString(5, location.getStreet_number());
-			callableStatement.setString(6, location.getRoom_number());
-			callableStatement.setString(7, location.getZip_code());
+			callableStatement.setInt(2, location.getCustomerId());
+			callableStatement.setString(3, location.getCountry());
+			callableStatement.setString(4, location.getState());
+			callableStatement.setString(5, location.getCity());
+			callableStatement.setString(6, location.getStreet_number());
+			callableStatement.setString(7, location.getRoom_number());
+			callableStatement.setString(8, location.getZip_code());
 			callableStatement.execute();
 			
 		} catch (SQLException e) {
