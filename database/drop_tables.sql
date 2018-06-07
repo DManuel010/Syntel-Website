@@ -1,9 +1,9 @@
 DROP TABLE FoodOrder;
 DROP TABLE Orders;
-DROP TABLE Customer;
 DROP TABLE Employee;
 DROP TABLE Payment;
 DROP TABLE ComboFood;
 DROP TABLE Combo;
 DROP TABLE Location;
+DROP TABLE Customer;
 DROP TABLE Food;

@@ -1,9 +1,9 @@
 delete FoodOrder;
 delete Orders;
-delete Customer;
 delete Employee;
 delete Payment;
 delete ComboFood;
 delete Combo;
 delete Location;
+delete Customer;
 delete Food;

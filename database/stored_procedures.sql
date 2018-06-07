@@ -53,12 +53,12 @@ END;
 
 --INSERT NEW LOCATION
 
-CREATE OR REPLACE PROCEDURE SP_INSERT_NEW_LOCATION(locationid number, country varchar2, 
+CREATE OR REPLACE PROCEDURE SP_INSERT_NEW_LOCATION(locationid number, customerid number, country varchar2, 
 states varchar2, city varchar2, street varchar2, room varchar2, zip varchar2)
 AS
 BEGIN
 INSERT INTO LOCATION
-VALUES (locationid, country, states, city, street, room, zip);
+VALUES (locationid, customerid, country, states, city, street, room, zip);
 END;
 
 --DELETE LOCATION

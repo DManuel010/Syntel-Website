@@ -7,6 +7,19 @@ CREATE TABLE Food (
 		stock INT NOT NULL,
 		CONSTRAINT UC_Food UNIQUE (name, foodGroup, price)
 );
+
+CREATE TABLE Customer (
+	customerID INT NOT NULL PRIMARY KEY,
+	firstName VARCHAR(25) NOT NULL,
+	lastName VARCHAR(25) NOT NULL,
+	email VARCHAR(25) NOT NULL,
+	phoneNumber VARCHAR(25) NOT NULL,
+	dateOfBirth DATE NOT NULL,
+	dateOfRegister TIMESTAMP NOT NULL,
+	lastLogin TIMESTAMP NOT NULL,
+	PASS VARCHAR2(4000),
+	MOBILE_NUMBER VARCHAR2(25)
+);
 		
 CREATE TABLE Location (
 	locationID INT NOT NULL PRIMARY KEY,
@@ -61,19 +74,6 @@ CREATE TABLE Employee (
 	lastLogin DATE NOT NULL
 );
 
-CREATE TABLE Customer (
-	customerID INT NOT NULL PRIMARY KEY,
-	firstName VARCHAR(25) NOT NULL,
-	lastName VARCHAR(25) NOT NULL,
-	email VARCHAR(25) NOT NULL,
-	phoneNumber VARCHAR(25) NOT NULL,
-	dateOfBirth DATE NOT NULL,
-	dateOfRegister TIMESTAMP NOT NULL,
-	lastLogin TIMESTAMP NOT NULL,
-	PASS VARCHAR2(4000),
-	MOBILE_NUMBER VARCHAR2(25)
-);
-
 CREATE TABLE Orders (
 	orderID INT NOT NULL PRIMARY KEY,
 	employeeID INT NOT NULL REFERENCES Employee(employeeID),
@@ -84,7 +84,7 @@ CREATE TABLE Orders (
 	orderDate DATE NOT NULL,
 	expectedDate DATE NOT NULL,
 	deliveryDate DATE,
-	note VARCHAR(25)
+	note VARCHAR(250)
 );
 
 CREATE TABLE FoodOrder (
