@@ -47,74 +47,29 @@ public class Customer
 	private String register_date;
 	
 	//unrelated fields to Customer class
-		//but it is used to insert an order
+	//but it is used to insert an order
 	private List<Food> items;
+	private double running_total;
+	private String instructions;
+	private Location location;
+	private String paymentType;
+	private String expectedDate;
+	private int orderId;
 		
-		private double running_total;
-		private String instructions;
-		
-		private Location location;
-		private String paymentType;
-		
-		private String expectedDate;
-		private int orderId;
-		
-		public int getOrderId() {
-			return orderId;
-		}
+	public int getOrderId() {return orderId;}
+	public void setOrderId(int orderId) {this.orderId = orderId;}
+	public String getExpectedDate() {return expectedDate;}
+	public void setExpectedDate(String expectedDate) {this.expectedDate = expectedDate;}
+	public String getPaymentType() {return paymentType;}
+	public void setPaymentType(String paymentType) {this.paymentType = paymentType;}
+	public Location getLocation() {return location;}
+	public void setLocation(Location location) {this.location = location;}
+	public double getRunning_total() {return running_total;}
+	public void setRunning_total(double running_total) {this.running_total = running_total;}
+	public String getInstructions() {return instructions;}
+	public List<Food> getItems() {return items;}
 
-		public void setOrderId(int orderId) {
-			this.orderId = orderId;
-		}
-
-		public String getExpectedDate() {
-			return expectedDate;
-		}
-
-		public void setExpectedDate(String expectedDate) {
-			this.expectedDate = expectedDate;
-		}
-
-		public String getPaymentType() {
-			return paymentType;
-		}
-
-		public void setPaymentType(String paymentType) {
-			this.paymentType = paymentType;
-		}
-
-		public Location getLocation() {
-			return location;
-		}
-
-		public void setLocation(Location location) {
-			this.location = location;
-		}
-
-		public double getRunning_total() {
-			return running_total;
-		}
-
-		public void setRunning_total(double running_total) {
-			this.running_total = running_total;
-		}
-
-		public String getInstructions() {
-			return instructions;
-		}
-
-		public void setInstructions(String instructions) {
-			this.instructions = instructions;
-		}
 	
-	
-	public List<Food> getItems() {
-		return items;
-	}
-
-	public void setItems(List<Food> items) {
-		this.items = items;
-	}
 
 	//Default constructor
 	public Customer() 
@@ -137,39 +92,19 @@ public class Customer
 	public String getMobile_number() 	{return mobile_number;}
 	
 	//Setters
-	
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public void setFirst_name(String first_name) {
-		this.first_name = first_name;
-	}
-	public void setLast_name(String last_name) {
-		this.last_name = last_name;
-	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
-	public void setPassword(String password) {
-		this.password = password;
-	}
-	public void setConfirm_password(String confirm_password) {
-		this.confirm_password = confirm_password;
-	}
-	public void setDob(String dob) {
-		this.dob = dob;
-	}
-	
-	public void setHome_number(String home_number) {
-		this.home_number = home_number;
-	}
-	public void setMobile_number(String mobile_number) {
-		this.mobile_number = mobile_number;
-	}
-	
-	public void setLast_login(String last_login) 		{this.last_login = last_login;}
-	private void setRegister_date(String register_date) {this.register_date = register_date;}
+	public void setId(int id) 					 			 {this.id = id;}
+	public void setFirst_name(String first_name) 			 {this.first_name = first_name;}
+	public void setLast_name(String last_name) 	 			 {this.last_name = last_name;}
+	public void setEmail(String email) 			 			 {this.email = email;}
+	public void setPassword(String password) 				 {this.password = password;}
+	public void setConfirm_password(String confirm_password) {this.confirm_password = confirm_password;}
+	public void setDob(String dob) 							 {this.dob = dob;}
+	public void setHome_number(String home_number) 			 {this.home_number = home_number;}
+	public void setMobile_number(String mobile_number) 		 {this.mobile_number = mobile_number;}
+	public void setLast_login(String last_login) 			 {this.last_login = last_login;}
+	public void setInstructions(String instructions) 		 {this.instructions = instructions;}
+	private void setRegister_date(String register_date) 	 {this.register_date = register_date;}
+	public void setItems(List<Food> items) {this.items = items;}
 
 	@Override
 	public String toString() {

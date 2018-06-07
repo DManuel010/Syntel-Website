@@ -73,7 +73,9 @@ public class ItemController
 	public ModelAndView submitOrder(@SessionAttribute("customer") Customer customer,  @Validated Location location)
 	{
 		ModelAndView modelAndView = new ModelAndView();
+		location.setCustomerId(customer.getId());
 		customer.setLocation(location);
+	
 		
 		//insert a new location
 		locationServ.create(location);
@@ -81,16 +83,14 @@ public class ItemController
 		//get the id of the newly inserted location
 		customer.getLocation().setLocationId(locationServ.getLatestLocation());
 		
+		
 		//calculate total price
 		double runningTotal=0.0;
 		for(Food item : customer.getItems())
-		{
 			runningTotal += item.getPrice();
-		}
 		
 		//instantiating a new order
 		order.setCustomerId(customer.getId());
-		order.setEmployeeId(0); //hardcoded, in reality employee id should not exist in orders table
 		order.setDeliveryAddrId(customer.getLocation().getLocationId());
 		order.setCost(runningTotal);
 		order.setOrderDate(Utilities.getToday());
@@ -109,9 +109,10 @@ public class ItemController
 		{
 			foodOrder.setFoodId(item.getFoodId());
 			foodOrder.setOrderId(customer.getOrderId());
-			foodOrder.setQuantity(1); //hardcoded for now
 			foodOrderServ.create(foodOrder);
 		}
+		
+		Utilities.sendMail(customer);
 		
 		
 		modelAndView.setViewName("order_placed");

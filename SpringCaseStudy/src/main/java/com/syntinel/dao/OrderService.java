@@ -31,17 +31,16 @@ public class OrderService implements ServiceInterface<Order>{
 		try {
 			Connection con = jdbcTemplate.getDataSource().getConnection();
 			CallableStatement callableStatement = con.prepareCall("{call SP_INSERT_NEW_ORDER(?,?,?,?,?"
-					+ ",?,?,?,?,?)}");
+					+ ",?,?,?,?)}");
 			callableStatement.setString(1, Utilities.createUniqueId());
-			callableStatement.setInt(2, order.getEmployeeId());
-			callableStatement.setInt(3, order.getCustomerId());
-			callableStatement.setDouble(4, order.getCost());
-			callableStatement.setInt(5, order.getPaymentId());
-			callableStatement.setInt(6, order.getDeliveryAddrId());
-			callableStatement.setString(7, order.getOrderDate());
-			callableStatement.setString(8, order.getExpectedDate());
-			callableStatement.setString(9, order.getDeliveryDate());
-			callableStatement.setString(10, order.getNote());
+			callableStatement.setInt(2, order.getCustomerId());
+			callableStatement.setDouble(3, order.getCost());
+			callableStatement.setInt(4, order.getPaymentId());
+			callableStatement.setInt(5, order.getDeliveryAddrId());
+			callableStatement.setString(6, order.getOrderDate());
+			callableStatement.setString(7, order.getExpectedDate());
+			callableStatement.setString(8, order.getDeliveryDate());
+			callableStatement.setString(9, order.getNote());
 			callableStatement.execute();
 	
 			

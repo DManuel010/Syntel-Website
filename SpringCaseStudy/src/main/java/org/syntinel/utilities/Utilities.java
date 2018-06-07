@@ -6,6 +6,8 @@ import java.util.Properties;
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
 import com.syntinel.model.Customer;
+import com.syntinel.model.Food;
+
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.PasswordAuthentication;
@@ -83,9 +85,29 @@ abstract public class Utilities
 		
 			if(customer.getItems() != null)
 			{
-				//change subject value and 
-				//build message content with ordered items
-				//then send to the recipient
+				String buildOrderMessage = "";
+				subject = "Your Order Receipt";
+				message.setSubject(subject);
+				
+				buildOrderMessage += "<h1>Hello " + customer.getFirst_name() + "</h1><br>";
+				buildOrderMessage += "We've place your order<br><hr><br>";
+				buildOrderMessage += "order #: " + customer.getOrderId() + "<br>";
+				buildOrderMessage += "Expected date: " + customer.getExpectedDate() + "<br><hr>";
+				buildOrderMessage += "<table>";
+				for(Food item : customer.getItems())
+				{
+					buildOrderMessage += "<tr>";
+					buildOrderMessage += "<td>"+ item.getName() +"</td>";
+					buildOrderMessage += "<td>"+ item.getDescription() +"</td>";
+					buildOrderMessage += "<td>"+ item.getFoodGroup() +"</td>";
+					buildOrderMessage += "<td>"+ item.getPrice() +"</td>";
+					buildOrderMessage += "</tr>";
+				}
+				buildOrderMessage += "</table><br>";
+				buildOrderMessage += "<p><b>Total: </b></>" + customer.getRunning_total() + "<br>";
+				buildOrderMessage += "<h2>Thank You</h2>";
+				
+				message.setContent(buildOrderMessage,"text/html");
 			}
 			else
 			{
@@ -96,9 +118,8 @@ abstract public class Utilities
 						+ "<p>We want to welcome you Mummy's Restaurant&nbsp;we "
 						+ "hope you find our meal selection exquisite.</p>",
 			             "text/html");
+				
 			}
-			
-			
 			
 			Transport.send(message);
 		}catch(MessagingException e)
