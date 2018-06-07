@@ -4,12 +4,9 @@ package org.syntinel.utilities;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Properties;
-
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
-
 import com.syntinel.model.Customer;
-
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.PasswordAuthentication;
