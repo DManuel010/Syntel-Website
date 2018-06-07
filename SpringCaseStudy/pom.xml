@@ -62,10 +62,6 @@
 		    <artifactId>tomcat-embed-jasper</artifactId>
 		    <version>9.0.8</version><!--$NO-MVN-MAN-VER$-->
 		</dependency>
-		<dependency>
-		    <groupId>org.springframework.boot</groupId>
-		    <artifactId>spring-boot-devtools</artifactId>
-		</dependency>
 	</dependencies>
 
 	<build>
