@@ -40,5 +40,7 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="C:/jars/ojdbc6-11.2.0.3.jar"/>
+	<classpathentry kind="lib" path="C:/jars/javaee.jar"/>
+	<classpathentry kind="lib" path="C:/jars/mail.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

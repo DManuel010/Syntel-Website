@@ -13,7 +13,7 @@
 
 	<h1>Food List</h1>
 	
-	<form action="/order/checkout/" method="POST">
+	<form action="/order/summary" method="POST">
 		<table>
 			<thead>
 				<tr>
@@ -39,7 +39,7 @@
 			</c:forEach>
 		</table>
 		
-		<input type="submit" value="Checkout"/>
+		<input type="submit" value="Summary"/>
 	</form>
 
 </body>

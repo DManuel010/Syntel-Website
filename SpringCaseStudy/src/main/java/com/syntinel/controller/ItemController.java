@@ -34,7 +34,7 @@ public class ItemController
 		return modelAndView;
 	}
 	
-	@RequestMapping(value="/checkout",method=RequestMethod.POST)
+	@RequestMapping(value="/summary",method=RequestMethod.POST)
 	
 	public ModelAndView checkout(@SessionAttribute("customer") Customer customer, @RequestParam(value="foodItemChkbx") String[] foodItemChkbx)
 	{
@@ -43,7 +43,7 @@ public class ItemController
 
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("selectedItems", customer.getItems());
-		modelAndView.setViewName("checkout");
+		modelAndView.setViewName("summary");
 		return modelAndView;
 	}
 	

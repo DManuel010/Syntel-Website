@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.syntinel.utilities.Utilities;
 
 import com.syntinel.dao.CustomerService;
 import com.syntinel.model.Customer;
@@ -50,7 +51,7 @@ public class RegistrationController
 		else
 		{
 			customerServ.create(customer);
-			
+			Utilities.sendMail(customer);
 			return "redirect:login";
 		}
 	}

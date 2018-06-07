@@ -14,7 +14,7 @@
 
 <h1>In Checkout</h1>
 
-<form action="/location/addnew/" method="POST">
+<form action="/location/delivery">
 	<table>
 		<thead>
 			<tr>
@@ -36,7 +36,7 @@
 		</c:forEach>
 	</table>
 	
-	<input type="submit" value="Place Order"/>
+	<input type="submit" value="Continue"/>
 </form>
 </body>
 </html>	

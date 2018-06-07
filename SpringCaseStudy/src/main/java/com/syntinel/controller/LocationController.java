@@ -9,9 +9,11 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.syntinel.dao.LocationService;
+import com.syntinel.model.Customer;
 import com.syntinel.model.Location;
 
 @Controller
@@ -24,7 +26,6 @@ public class LocationController {
 	@RequestMapping(value="/addnew", method=RequestMethod.GET)
 	public String loadAddressForm(ModelMap model) {
 		Location location = new Location();
-		location.setLocationId(0);
 		model.addAttribute("location", location);
 		return "location";
 	}
@@ -34,6 +35,14 @@ public class LocationController {
 		
 		locationServ.create(location);
 		return "location";
+	}
+	
+	@RequestMapping(value="/delivery", method=RequestMethod.POST)
+	public ModelAndView delivery(@SessionAttribute("customer") Customer customer)
+	{
+		 ModelAndView modelAndView = new ModelAndView();
+		 modelAndView.setViewName("delivery_location");
+		 return modelAndView;
 	}
 		
 }
