@@ -14,7 +14,7 @@ public class Location
 	@NotEmpty
 	private String state;
 	
-	@Size(min=5, max=15)
+	@Size(min=4, max=15)
 	@NotEmpty
 	private String city;
 	
@@ -22,9 +22,6 @@ public class Location
 	@NotEmpty
 	private String street_number;
 	
-	
-	//TODO: remove constraint because it can be null
-	@Size(min=3, max=5)
 	private String room_number;
 	
 	@Size(min=5, max=10)
