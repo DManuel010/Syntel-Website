@@ -30,7 +30,6 @@ CREATE TABLE Location (
 	streetNum VARCHAR(25) NOT NULL,
 	roomNum VARCHAR(25),
 	zip VARCHAR(25) NOT NULL,
-	CONSTRAINT UC_Location UNIQUE (country, state, city, streetNum, roomNum, zip)
 );
 
 CREATE TABLE Combo (
