@@ -1,20 +1,30 @@
 Tuesday:
 
+	
+
+	View and edit addresses
+
+	
+
+	paypal stub
+
+	logout
+
+
 	David:
-		food/item controller
+		send email receipt
+		add quantity to order
+		logout
 
 
 	Shannon:
-		food/item DAO ✓
-		order DAO 
+		View pending order
+			find by delivery date not null
 
 	Eric:
-		add css to jsp files ✓
-		order view
-		index view
-		login and registration
-		order controller
-		insert sql
+		View and edit account
+		style all pages
+		make nav bar work better
 
 Later:
 	add customer id to location table as foreign key
