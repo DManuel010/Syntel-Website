@@ -90,7 +90,7 @@ abstract public class Utilities
 				message.setSubject(subject);
 				
 				buildOrderMessage += "<h1>Hello " + customer.getFirst_name() + "</h1><br>";
-				buildOrderMessage += "We've place your order<br><hr><br>";
+				buildOrderMessage += "We've place your order<br><hr>";
 				buildOrderMessage += "order #: " + customer.getOrderId() + "<br>";
 				buildOrderMessage += "Expected date: " + customer.getExpectedDate() + "<br><hr>";
 				buildOrderMessage += "<table>";
@@ -103,8 +103,21 @@ abstract public class Utilities
 					buildOrderMessage += "<td>"+ item.getPrice() +"</td>";
 					buildOrderMessage += "</tr>";
 				}
-				buildOrderMessage += "</table><br>";
-				buildOrderMessage += "<p><b>Total: </b></>" + customer.getRunning_total() + "<br>";
+				buildOrderMessage += "</table>";
+				buildOrderMessage += "<hr><p><b>Instructions:</b>&nbsp;" + customer.getInstructions() + "</p>";
+				switch(customer.getPaymentType())
+				{
+					case "0":
+						buildOrderMessage += "<p>Paid with PayPal</p>";
+						break;
+					case "1":
+						buildOrderMessage += "<p>Paid with Credit</p>";
+						break;
+					case "2":
+						buildOrderMessage += "<p>Paid with Cash</p>";
+						break;
+				}
+				buildOrderMessage += "<p><b>Total: " + customer.getRunning_total() + "</b></p><br>";
 				buildOrderMessage += "<h2>Thank You</h2>";
 				
 				message.setContent(buildOrderMessage,"text/html");

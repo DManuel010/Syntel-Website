@@ -89,6 +89,9 @@ public class ItemController
 		for(Food item : customer.getItems())
 			runningTotal += item.getPrice();
 		
+		//saving running total to customer
+		customer.setRunning_total(runningTotal);
+		
 		//instantiating a new order
 		order.setCustomerId(customer.getId());
 		order.setDeliveryAddrId(customer.getLocation().getLocationId());
