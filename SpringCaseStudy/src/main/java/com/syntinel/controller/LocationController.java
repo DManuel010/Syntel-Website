@@ -32,8 +32,9 @@ public class LocationController {
 	}
 	
 	@RequestMapping(value="/added", method=RequestMethod.POST)
-	public String addLocation(@ModelAttribute("location") @Validated Location location, BindingResult result, Model model) {
-		
+	public String addLocation(@SessionAttribute("customer") Customer customer, @ModelAttribute("location") @Validated Location location, 
+			BindingResult result, Model model) {
+		location.setCustomerId(customer.getId());
 		locationServ.create(location);
 		return "location";
 	}
