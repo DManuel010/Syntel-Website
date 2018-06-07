@@ -1,5 +1,8 @@
 package com.syntinel.model;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class Order {
 
 	private int orderId;
@@ -16,7 +19,6 @@ public class Order {
 	public Order() {
 		
 	}
-
 	
 	public int getOrderId() {
 		return orderId;

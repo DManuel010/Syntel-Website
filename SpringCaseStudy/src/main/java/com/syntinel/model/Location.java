@@ -22,6 +22,8 @@ public class Location
 	@NotEmpty
 	private String street_number;
 	
+	
+	//TODO: remove constraint because it can be null
 	@Size(min=3, max=5)
 	private String room_number;
 	
@@ -65,11 +67,14 @@ public class Location
 	public void setZip_code(String zip_code) {
 		this.zip_code = zip_code;
 	}
-	
+
 	@Override
 	public String toString() {
-		return "Location [country=" + country + ", state=" + state + ", city=" + city + ", street_number="
-				+ street_number + ", room_number=" + room_number + ", zip_code=" + zip_code + "]";
+		return "Location [locationId=" + locationId + ", country=" + country + ", state=" + state + ", city=" + city
+				+ ", street_number=" + street_number + ", room_number=" + room_number + ", zip_code=" + zip_code + "]";
 	}
+	
+
+	
 	
 }

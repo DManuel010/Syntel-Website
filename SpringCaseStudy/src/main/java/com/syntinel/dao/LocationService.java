@@ -2,6 +2,8 @@ package com.syntinel.dao;
 
 import java.sql.CallableStatement;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -65,6 +67,27 @@ public class LocationService implements ServiceInterface<Location>
 		
 		String sql = "SELECT LOCATIONID, COUNTRY, STATE, CITY, STREETNUM, ROOMNUM, ZIP FROM FOOD";
 		return jdbcTemplate.query(sql, new LocationRowMapper());
+	}
+
+	public int getLatestLocation() 
+	{
+		//query will be changed once the location 
+		//table has a customer id associated with the address
+		try 
+		{
+			Connection con = jdbcTemplate.getDataSource().getConnection();
+			PreparedStatement preparedStatement = con.prepareStatement("SELECT TEMP.LOCATIONID FROM (SELECT L.*, ROW_NUMBER() " + 
+					"OVER (ORDER BY L.LOCATIONID DESC) R FROM LOCATION L) TEMP WHERE R=1");
+			ResultSet result = preparedStatement.executeQuery();
+			while(result.next())
+				return result.getInt(1);
+
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+		
+		return 0;
 	}	
 
 	

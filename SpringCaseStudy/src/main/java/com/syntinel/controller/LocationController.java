@@ -9,6 +9,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -38,11 +39,18 @@ public class LocationController {
 	}
 	
 	@RequestMapping(value="/delivery", method=RequestMethod.POST)
-	public ModelAndView delivery(@SessionAttribute("customer") Customer customer)
+	public ModelAndView delivery(@SessionAttribute("customer") Customer customer,
+			@RequestParam(value="instructions") String instructions, @RequestParam(value="paymentType") String paymentType,
+			@RequestParam(value="expectedDate") String expectedDate)
 	{
-		 ModelAndView modelAndView = new ModelAndView();
-		 modelAndView.setViewName("delivery_location");
-		 return modelAndView;
+		customer.setExpectedDate(expectedDate);
+		customer.setPaymentType(paymentType);
+		customer.setInstructions(instructions);
+		ModelAndView modelAndView = new ModelAndView();
+		Location location = new Location();
+		modelAndView.addObject("location", location);
+		modelAndView.setViewName("delivery_location");
+		return modelAndView;
 	}
 		
 }

@@ -8,6 +8,7 @@
 <title>Testing Location Services</title>
 </head>
 <body>
+
 <h1>Insert your address</h1>
 
 <form method="POST" modelAttribute="location" action="/location/added">

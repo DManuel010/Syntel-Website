@@ -18,7 +18,8 @@ deliverydate varchar2, note varchar2)
 AS
 BEGIN
 INSERT INTO ORDERS
-VALUES (orderid, employeeid, customerid, price, paymentid, deliveryaddrid, orderdate, 
+VALUES (orderid, employeeid, customerid, price, paymentid, deliveryaddrid, 
+TO_DATE(orderdate,'dd-MM-yyyy'), 
 expecteddate, deliverydate, note);
 END;
 
@@ -67,4 +68,12 @@ AS
 BEGIN
 DELETE FROM LOCATION
 WHERE LOCATIONID = locationid;
+END;
+
+-- INSERT NEW FOOD ORDER
+CREATE OR REPLACE PROCEDURE SP_INSERT_NEW_FOOD_ORDER(FOOD_ORDER_ID NUMBER, 
+ORDER_ID NUMBER, FOOD_ID NUMBER, QTY NUMBER) AS
+BEGIN
+  INSERT INTO FOODORDER(FOODORDERID,ORDERID,FOODID,QUANTITY)
+  VALUES(FOOD_ORDER_ID,ORDER_ID,FOOD_ID,QTY);
 END;

@@ -2,6 +2,9 @@ package com.syntinel.model;
 
 import javax.validation.constraints.Size;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class FoodOrder {
 
 	private int foodOrderId;

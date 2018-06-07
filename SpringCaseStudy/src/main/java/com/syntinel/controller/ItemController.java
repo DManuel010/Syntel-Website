@@ -4,16 +4,24 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
+import org.syntinel.utilities.Utilities;
 
+import com.syntinel.dao.FoodOrderService;
 import com.syntinel.dao.FoodService;
+import com.syntinel.dao.LocationService;
+import com.syntinel.dao.OrderService;
 import com.syntinel.model.Customer;
 import com.syntinel.model.Food;
+import com.syntinel.model.FoodOrder;
+import com.syntinel.model.Location;
+import com.syntinel.model.Order;
 
 @Controller
 @RequestMapping("/order")
@@ -22,6 +30,21 @@ public class ItemController
 {
 	@Autowired
 	FoodService foodServ;
+	
+	@Autowired
+	LocationService locationServ;
+	
+	@Autowired
+	OrderService orderServ;
+	
+	@Autowired
+	FoodOrderService foodOrderServ;
+	
+	@Autowired
+	Order order;
+	
+	@Autowired
+	FoodOrder foodOrder;
 	
 	@RequestMapping(value="/food",method=RequestMethod.GET)
 	public ModelAndView getFoodItems()
@@ -34,16 +57,64 @@ public class ItemController
 		return modelAndView;
 	}
 	
-	@RequestMapping(value="/summary",method=RequestMethod.POST)
-	
-	public ModelAndView checkout(@SessionAttribute("customer") Customer customer, @RequestParam(value="foodItemChkbx") String[] foodItemChkbx)
+	@RequestMapping(value="/summary", method=RequestMethod.POST)
+	public ModelAndView checkout(@SessionAttribute("customer") Customer customer, 
+			@RequestParam(value="foodItemChkbx") String[] foodItemChkbx)
 	{
-
-		customer.setItems(foodServ.getSelectedItems(foodItemChkbx));
-
 		ModelAndView modelAndView = new ModelAndView();
+		
+		customer.setItems(foodServ.getSelectedItems(foodItemChkbx));
 		modelAndView.addObject("selectedItems", customer.getItems());
 		modelAndView.setViewName("summary");
+		return modelAndView;
+	}
+	
+	@RequestMapping(value="/submit", method=RequestMethod.POST)
+	public ModelAndView submitOrder(@SessionAttribute("customer") Customer customer,  @Validated Location location)
+	{
+		ModelAndView modelAndView = new ModelAndView();
+		customer.setLocation(location);
+		
+		//insert a new location
+		locationServ.create(location);
+		
+		//get the id of the newly inserted location
+		customer.getLocation().setLocationId(locationServ.getLatestLocation());
+		
+		//calculate total price
+		double runningTotal=0.0;
+		for(Food item : customer.getItems())
+		{
+			runningTotal += item.getPrice();
+		}
+		
+		//instantiating a new order
+		order.setCustomerId(customer.getId());
+		order.setEmployeeId(0); //hardcoded, in reality employee id should not exist in orders table
+		order.setDeliveryAddrId(customer.getLocation().getLocationId());
+		order.setCost(runningTotal);
+		order.setOrderDate(Utilities.getToday());
+		order.setExpectedDate(customer.getExpectedDate());
+		order.setPaymentId(Integer.parseInt(customer.getPaymentType()));
+		order.setNote(customer.getInstructions());
+		
+		//inserting a new order
+		orderServ.create(order);
+		
+		//get the id of the newly inserted order
+		customer.setOrderId(orderServ.getLatestOrder(customer.getId()));
+		
+		//insert order ids and meal ids into foodorder
+		for(Food item : customer.getItems())
+		{
+			foodOrder.setFoodId(item.getFoodId());
+			foodOrder.setOrderId(customer.getOrderId());
+			foodOrder.setQuantity(1); //hardcoded for now
+			foodOrderServ.create(foodOrder);
+		}
+		
+		
+		modelAndView.setViewName("order_placed");
 		return modelAndView;
 	}
 	

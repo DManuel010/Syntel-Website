@@ -2,6 +2,8 @@ package com.syntinel.dao;
 
 import java.sql.CallableStatement;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -74,6 +76,28 @@ public class OrderService implements ServiceInterface<Order>{
 	public void changeDate(int orderId, String newDate) {
 		String sql = "UPDATE ORDERS SET EXPECTEDDATE=? WHERE ORDERID=?";
 		jdbcTemplate.update(sql, newDate, orderId);
+	}
+	
+	//TODO: Will attempt to change this method to only use jdbcTemplate
+	
+	public int getLatestOrder(int id)
+	{
+		try 
+		{
+			Connection con = jdbcTemplate.getDataSource().getConnection();
+			PreparedStatement preparedStatement = con.prepareStatement("SELECT TEMP.ORDERID FROM (SELECT O.*, ROW_NUMBER() " + 
+					"OVER (ORDER BY O.ORDERID DESC) R FROM ORDERS O) TEMP WHERE R=1 AND CUSTOMERID = ?");
+			preparedStatement.setInt(1, id);
+			ResultSet result = preparedStatement.executeQuery();
+			while(result.next())
+				return result.getInt(1);
+
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+		
+		return 0;
 	}
 	
 }

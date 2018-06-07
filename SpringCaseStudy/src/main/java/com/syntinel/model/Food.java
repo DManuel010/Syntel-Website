@@ -9,27 +9,7 @@ public class Food {
 	private String description;
 	private int stock;
 	
-	//unrelated fields to Food class
-	//but it is used to insert an order
 	
-	private double running_total;
-	private String instructions;
-	
-	public double getRunning_total() {
-		return running_total;
-	}
-
-	public void setRunning_total(double running_total) {
-		this.running_total = running_total;
-	}
-
-	public String getInstructions() {
-		return instructions;
-	}
-
-	public void setInstructions(String instructions) {
-		this.instructions = instructions;
-	}
 
 	public Food() {
 		
@@ -86,8 +66,7 @@ public class Food {
 	@Override
 	public String toString() {
 		return "Food [foodId=" + foodId + ", name=" + name + ", foodGroup=" + foodGroup + ", price=" + price
-				+ ", description=" + description + ", stock=" + stock + ", running_total=" + running_total
-				+ ", instructions=" + instructions + "]";
+				+ ", description=" + description + ", stock=" + stock + "]";
 	}
 	
 	

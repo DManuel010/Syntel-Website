@@ -17,6 +17,9 @@ Tuesday:
 		insert sql
 
 Later:
+	add customer id to location table as foreign key
+	remove employee id from orders
+	
 	crud addresses
 	optional: add order status
 

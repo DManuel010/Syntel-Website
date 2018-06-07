@@ -1,6 +1,5 @@
 package org.syntinel.utilities;
 
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Properties;
@@ -30,6 +29,7 @@ abstract public class Utilities
 		return today;
 	}
 	
+	//TODO: change to return an int instead of string
 	public final static String createUniqueId()
 	{
 		int randomID = (int) Math.round((Math.random() * System.nanoTime()));
@@ -83,6 +83,7 @@ abstract public class Utilities
 		
 			if(customer.getItems() != null)
 			{
+				//change subject value and 
 				//build message content with ordered items
 				//then send to the recipient
 			}
@@ -92,8 +93,8 @@ abstract public class Utilities
 				message.setContent(""
 						+ "<h1>Mummy's Restaurant</h1>"
 						+ "<h2>Hello: "+ customer.getFirst_name() +"</h2>"
-						+ "<p>We want to welcome you Mummy's Restaurant&nbsp;we"
-						+ "hope you find our meal selection exquisite</p>",
+						+ "<p>We want to welcome you Mummy's Restaurant&nbsp;we "
+						+ "hope you find our meal selection exquisite.</p>",
 			             "text/html");
 			}
 			

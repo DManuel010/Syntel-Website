@@ -46,7 +46,66 @@ public class Customer
 	private String last_login;
 	private String register_date;
 	
+	//unrelated fields to Customer class
+		//but it is used to insert an order
 	private List<Food> items;
+		
+		private double running_total;
+		private String instructions;
+		
+		private Location location;
+		private String paymentType;
+		
+		private String expectedDate;
+		private int orderId;
+		
+		public int getOrderId() {
+			return orderId;
+		}
+
+		public void setOrderId(int orderId) {
+			this.orderId = orderId;
+		}
+
+		public String getExpectedDate() {
+			return expectedDate;
+		}
+
+		public void setExpectedDate(String expectedDate) {
+			this.expectedDate = expectedDate;
+		}
+
+		public String getPaymentType() {
+			return paymentType;
+		}
+
+		public void setPaymentType(String paymentType) {
+			this.paymentType = paymentType;
+		}
+
+		public Location getLocation() {
+			return location;
+		}
+
+		public void setLocation(Location location) {
+			this.location = location;
+		}
+
+		public double getRunning_total() {
+			return running_total;
+		}
+
+		public void setRunning_total(double running_total) {
+			this.running_total = running_total;
+		}
+
+		public String getInstructions() {
+			return instructions;
+		}
+
+		public void setInstructions(String instructions) {
+			this.instructions = instructions;
+		}
 	
 	
 	public List<Food> getItems() {
@@ -117,10 +176,11 @@ public class Customer
 		return "Customer [id=" + id + ", first_name=" + first_name + ", last_name=" + last_name + ", email=" + email
 				+ ", password=" + password + ", confirm_password=" + confirm_password + ", dob=" + dob
 				+ ", home_number=" + home_number + ", mobile_number=" + mobile_number + ", last_login=" + last_login
-				+ ", register_date=" + register_date + ", items=" + items + "]";
+				+ ", register_date=" + register_date + ", items=" + items + ", running_total=" + running_total
+				+ ", instructions=" + instructions + ", location=" + location + ", paymentType=" + paymentType
+				+ ", expectedDate=" + expectedDate + ", orderId=" + orderId + "]";
 	}
 
-	
 
 	
 }
