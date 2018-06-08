@@ -7,10 +7,10 @@ import org.springframework.jdbc.core.RowMapper;
 
 import com.syntinel.model.Order;
 
-public class OrderRowMapper implements RowMapper {
+public class OrderRowMapper implements RowMapper<Order> {
 
 	@Override
-	public Object mapRow(ResultSet rs, int index) throws SQLException {
+	public Order mapRow(ResultSet rs, int index) throws SQLException {
 		Order order = new Order();
 		order.setOrderId(rs.getInt(1));
 		order.setEmployeeId(rs.getInt(2));

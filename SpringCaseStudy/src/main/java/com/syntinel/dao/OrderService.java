@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -13,7 +14,8 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 import org.syntinel.mappers.OrderRowMapper;
 import org.syntinel.utilities.Utilities;
- 
+
+import com.syntinel.model.Food;
 import com.syntinel.model.Order;
 
 @Service
@@ -62,14 +64,62 @@ public class OrderService implements ServiceInterface<Order>{
 		}
 	}
 
-	public List viewAll() {
+	public List<Order> viewAll() {
 		String sql = "SELECT * FROM ORDERS";
 		return jdbcTemplate.query(sql, new OrderRowMapper());
 	}
 	
-	public List viewMyOrders(int customerId) {
-		String sql = "SELECT * FROM ORDERS WHERE CUSTOMERID=?";
-		return jdbcTemplate.query(sql, new Object [] {customerId}, new OrderRowMapper());
+	/*public int[] getFoodIds(int customerId) {
+		
+		int[] foodIds = new int[1];
+		
+		try {
+			Connection con = jdbcTemplate.getDataSource().getConnection();
+			String sql ="SELECT FOODID FROM FOODORDER WHERE ORDERID=(SELECT ORDERID FROM ORDERS WHERE CUSTOMERID=?)";
+			PreparedStatement preparedStatement = con.prepareStatement(sql);
+			preparedStatement.setInt(1, customerId);
+			
+			ResultSet result = preparedStatement.executeQuery();
+			int i=0;
+			while(result.next()) {
+				foodIds[i]=result.getInt(i+1);
+				i++;
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return foodIds;
+	}*/
+	
+	public List<Order> viewMyOrders(int customerId) {
+		
+		List<Order> orderList = new ArrayList<Order>();
+		
+		try {
+			Connection con = jdbcTemplate.getDataSource().getConnection();
+			PreparedStatement preparedStatement = con.prepareStatement("SELECT COST, ORDERDATE, EXPECTEDDATE, "
+					+ "DELIVERYDATE FROM ORDERS WHERE CUSTOMERID=?");
+			preparedStatement.setInt(1, customerId);
+			
+			ResultSet result = preparedStatement.executeQuery();
+			
+			while(result.next()) {
+				Order order = new Order();
+				order.setCost(result.getDouble("COST"));
+				order.setOrderDate(result.getString("ORDERDATE"));
+				order.setExpectedDate(result.getString("EXPECTEDDATE"));
+				order.setDeliveryDate(result.getString("DELIVERYDATE"));
+				orderList.add(order);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return orderList;
+		
 	}
 	
 	public void changeDate(int orderId, String newDate) {

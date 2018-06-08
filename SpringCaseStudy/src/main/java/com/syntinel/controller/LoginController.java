@@ -1,6 +1,8 @@
 package com.syntinel.controller;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,7 +16,11 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.syntinel.dao.CustomerService;
+import com.syntinel.dao.FoodService;
+import com.syntinel.dao.OrderService;
 import com.syntinel.model.Customer;
+import com.syntinel.model.Food;
+import com.syntinel.model.Order;
 import com.syntinel.validator.LoginValidator;
 
 @Controller
@@ -24,6 +30,9 @@ public class LoginController
 {
 	@Autowired
 	CustomerService customerServ;
+	
+	@Autowired
+	OrderService orderServ;
 	
 	@Autowired
 	LoginValidator loginValidator;
@@ -48,12 +57,17 @@ public class LoginController
 		customer = customerServ.getObject(customer);
 		loginValidator.validate(customer, result);
 		
+		
+		List<Order> orders = orderServ.viewMyOrders(customer.getId());
+		
+		
 		if(result.hasErrors())
 			return new ModelAndView("customer_login");
 		else
 		{
 			 ModelAndView modelAndView = new ModelAndView();
 			 modelAndView.addObject("customer", customer);
+			 modelAndView.addObject("orders", orders);
 			 modelAndView.setViewName("temp");
 			 return modelAndView;
 		}

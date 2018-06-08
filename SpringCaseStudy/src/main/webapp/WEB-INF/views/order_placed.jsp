@@ -7,6 +7,8 @@
 
 		<c:out value="${sessionScope.customer}"/>
 			<h1>You have now successfully placed an order</h1>
+			
+			<a href="/customer/login">Go to dashboard</a>
 	</div>
 </body>
 </html>

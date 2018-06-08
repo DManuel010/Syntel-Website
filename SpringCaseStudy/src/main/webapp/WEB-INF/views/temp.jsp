@@ -9,6 +9,29 @@
 		<c:out value="${sessionScope.customer}"/>
 		
 		<a href="/order/food">Order Food</a>
+		
+		<br>
+		<h2>My current orders</h2>
+		
+		<table>
+		<tr>
+		<td>Cost	</td>
+		<td>Order date	</td>
+		<td>Expected Date	</td>
+		<td>Status	</td>
+		</tr>
+		<c:forEach items="${orders}" var="orders">
+		<tr>
+			<td>${orders.cost}</td>
+			<td>${orders.orderDate}</td>
+			<td>${orders.expectedDate}</td>
+			<td>Pending</td>
+		</tr>
+		
+		</c:forEach>
+		</table>
+		
+		
 	</div>
 </body>
 </html>
