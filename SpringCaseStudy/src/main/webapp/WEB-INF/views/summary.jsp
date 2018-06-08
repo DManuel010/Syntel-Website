@@ -41,8 +41,8 @@
 					<label for="paymentType"></label>
 					<select name="paymentType">
 						<option value="0">Paypal</option>
-						<option value="1">Card</option>
-						<option value="2">Cash</option>
+						<option value="1">Card at door</option>
+						<option value="2">Cash at door</option>
 					</select>
 				</fieldset>
 			<input type="submit" value="Continue"/>

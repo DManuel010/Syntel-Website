@@ -1,20 +1,15 @@
 Friday:
 
 	David:
-		send email receipt
 		add quantity to order
-		logout
-		hide summary not signed in
 
 
 	Shannon:
 		View pending order
 			find by delivery date not null
-		contact and about page
 
 	Eric:
 		View and edit account
-		style all pages
 		make nav bar work better
 		View and edit addresses
 		paypal stub
