@@ -83,4 +83,10 @@ public class LoginController
 			 return modelAndView;
 		}
 	}
+	
+	@RequestMapping(value="/logout")
+	public String customerLogout()
+	{
+		return "customer_logout";
+	}
 }

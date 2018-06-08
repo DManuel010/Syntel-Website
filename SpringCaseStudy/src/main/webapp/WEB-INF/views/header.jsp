@@ -30,6 +30,7 @@
 			<li><a href="${context}/order/food">Menu</a></li>
 			<c:if test="${sessionScope.customer != null}">
 				<li><a href="${context}/customer/dashboard">Order</a></li>
+				<li><a href="${context}/customer/logout">Log Out</a></li>
 			</c:if>
 			<li><a href="${context}/info/contact">Contact</a></li>
 			<li><a href="${context}/info/about">About</a></li>
