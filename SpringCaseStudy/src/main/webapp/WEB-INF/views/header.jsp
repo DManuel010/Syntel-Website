@@ -31,8 +31,8 @@
 			<c:if test="${sessionScope.customer != null}">
 				<li><a href="${context}/customer/dashboard">Order</a></li>
 			</c:if>
-			<li><a href="${context}/contact">Contact</a></li>
-			<li><a href="${context}/about">About</a></li>
+			<li><a href="${context}/info/contact">Contact</a></li>
+			<li><a href="${context}/info/about">About</a></li>
 			<c:if test="${sessionScope.customer.id == null}">
 				<li><a href="${context}/customer/registration">Register</a></li>
 				<li><a href="${context}/customer/login">Login</a></li>
