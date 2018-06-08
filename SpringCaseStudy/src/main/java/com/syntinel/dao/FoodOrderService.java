@@ -2,7 +2,11 @@ package com.syntinel.dao;
 
 import java.sql.CallableStatement;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.annotation.Resource;
 
@@ -34,6 +38,41 @@ public class FoodOrderService implements ServiceInterface<FoodOrder>
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	
+	public List<FoodOrder> viewMyOrder(int customerId) {
+	
+		List<FoodOrder> foodOrders = new ArrayList<FoodOrder>();
+		
+		try {
+			Connection con = jdbcTemplate.getDataSource().getConnection();
+			
+			PreparedStatement preparedStatement = con.prepareStatement("SELECT F.NAME, FO.QUANTITY, O.COST, O.EXPECTEDDATE, "
+					+ "O.ORDERDATE FROM FOOD F, FOODORDER FO, ORDERS O WHERE "
+					+ "O.ORDERID=FO.ORDERID AND F.FOODID=FO.FOODID AND O.CUSTOMERID = ?");
+			preparedStatement.setInt(1, customerId);
+			ResultSet result = preparedStatement.executeQuery();
+			
+			while(result.next()) {
+				FoodOrder myOrder = new FoodOrder();
+				myOrder.setName(result.getString(1));
+				myOrder.setQuantity(result.getInt(2));
+				myOrder.setCost(result.getDouble(3));
+				myOrder.setExpecteddate(result.getString(4));
+				myOrder.setOrderdate(result.getString(5));
+				myOrder.setStatus("Pending");
+				foodOrders.add(myOrder);
+			}
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return foodOrders;
+		
+		
 	}
 	
 	

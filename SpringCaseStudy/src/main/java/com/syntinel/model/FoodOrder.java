@@ -10,12 +10,62 @@ public class FoodOrder {
 	private int foodOrderId;
 	private int orderId;
 	private int foodId;
+	private String name;
+	private double cost;
+	private String orderdate;
+	private String expecteddate;
+	private String status;
 	
 	@Size(min=0)
 	private int quantity;
 
 	public FoodOrder() {
 		
+	}
+
+	
+	public double getCost() {
+		return cost;
+	}
+
+
+
+	public void setCost(double cost) {
+		this.cost = cost;
+	}
+
+
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getOrderdate() {
+		return orderdate;
+	}
+
+	public void setOrderdate(String orderdate) {
+		this.orderdate = orderdate;
+	}
+
+	public String getExpecteddate() {
+		return expecteddate;
+	}
+
+	public void setExpecteddate(String expecteddate) {
+		this.expecteddate = expecteddate;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 	public int getFoodOrderId() {
