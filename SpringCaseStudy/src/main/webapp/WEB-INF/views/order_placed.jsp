@@ -7,7 +7,7 @@
 
 		<h1>You have now successfully placed an order</h1>
 		
-		<a href="/customer/Dashboard">Go to dashboard</a>
+		<a href="/customer/dashboard">Go to dashboard</a>
 	</div>
 </body>
 </html>
