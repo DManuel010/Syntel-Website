@@ -70,10 +70,10 @@ public class Customer
 	public List<Food> getItems() {return items;}
 
 	
-
 	//Default constructor
 	public Customer() 
 	{
+		this.setId(0);
 		this.setRegister_date(Utilities.getToday());
 		this.setLast_login(Utilities.getToday());
 	}

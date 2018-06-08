@@ -1,7 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-    
+<%@page import="com.syntinel.model.Customer" %>
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,13 +31,13 @@
 		</c:if>	
 			<li><a href="${context}/" class="active">Home</a></li>
 			<li><a href="${context}/order/food">Menu</a></li>
-			<c:if test="${sessionScope.customer != null}">
+			<c:if test="${sessionScope.customer != null && sessionScope.customer.id != 0}">
 				<li><a href="${context}/customer/dashboard">Order</a></li>
 				<li><a href="${context}/customer/logout">Log Out</a></li>
 			</c:if>
 			<li><a href="${context}/info/contact">Contact</a></li>
 			<li><a href="${context}/info/about">About</a></li>
-			<c:if test="${sessionScope.customer.id == null}">
+			<c:if test="${sessionScope.customer == null || sessionScope.customer.id == 0}">
 				<li><a href="${context}/customer/registration">Register</a></li>
 				<li><a href="${context}/customer/login">Login</a></li>
 			</c:if>
