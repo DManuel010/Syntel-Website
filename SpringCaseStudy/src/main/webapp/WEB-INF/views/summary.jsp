@@ -4,7 +4,6 @@
 <%@ page session="true" %>
 <%@include file="header.jsp" %>
 	<div id="content">
-		<c:out value="${sessionScope.customer}"/>
 		
 		<h1>In Checkout</h1>
 		

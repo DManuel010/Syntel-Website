@@ -2,6 +2,23 @@
     pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@include file="header.jsp" %>
+<script>
+function displayButton() {
+	  var checkBoxes = document.getElementsByClassName("chkbx");
+	  var text = document.getElementById("summary");
+	  var count = 0;
+	  for (var i = 0, len = checkBoxes.length; i < len; i++) {
+		  if (checkBoxes[i].checked == true){
+			    text.style.display = "block";
+			   	count++;
+			  }
+		}
+	  if(count == 0){
+		  text.style.display = "none";
+	  }
+	 
+	}
+</script>
 	<div id="content">
 
 		<h1>Food List</h1>
@@ -22,7 +39,7 @@
 				
 			    <tr> 
 			    	<td>
-			    		<input name="foodItemChkbx" type="checkbox" value="${foodItem.foodId}" />
+			    		<input class="chkbx" name="foodItemChkbx" type="checkbox" value="${foodItem.foodId}" onClick="displayButton()")/>
 			    	</td>   
 			        <td>${foodItem.name}</td>
 			        <td>${foodItem.foodGroup}</td>
@@ -31,8 +48,9 @@
 			    </tr>
 				</c:forEach>
 			</table>
-			
-			<input type="submit" value="Summary"/>
+			<c:if test="${sessionScope.customer != null}">
+				<input id="summary" type="submit" value="Summary" style="display:none"/>
+			</c:if>
 		</form>
 	</div>
 </body>

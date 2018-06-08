@@ -1,9 +1,11 @@
 body {
-	background-color: #ccff99;
+	background-color: #80FF84;
 	margin: 2vw;
 }
 #content{
 	padding: 5vw;
+	background-color: white;
+	min-height: 70vh;
 }
 nav {
 	float: right;
@@ -15,7 +17,7 @@ ul {
 	padding: 0;
 	overflow: hidden;
 	background-color: #333;
-	width: 40vw;
+	width: 33vw;
 }
 
 li {
@@ -32,7 +34,9 @@ li a {
 }
 
 li a:hover {
-    background-color: #111;
+	background-color: #80FF84;
+	text-decoration: none;
+	color: black;	
 } 
 
 li:last-child {
@@ -46,8 +50,15 @@ li:last-child {
 	padding: 0px;
 }
 
-.active {
-	background-color: #4CAF50;
+
+td{
+	padding: 1vw;
 }
 
-
+tr:hover {
+	background-color: #80FF84;
+}
+thead{
+}
+table{
+}

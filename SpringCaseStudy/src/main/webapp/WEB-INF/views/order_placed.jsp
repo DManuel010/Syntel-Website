@@ -5,10 +5,9 @@
 <%@include file="header.jsp" %>
 	<div id="content">
 
-		<c:out value="${sessionScope.customer}"/>
-			<h1>You have now successfully placed an order</h1>
-			
-			<a href="/customer/login">Go to dashboard</a>
+		<h1>You have now successfully placed an order</h1>
+		
+		<a href="/customer/login">Go to dashboard</a>
 	</div>
 </body>
 </html>

@@ -3,13 +3,8 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@include file="header.jsp" %>
 	<div id="content">
-		<h1>Login successfully</h1>
-		<h2>hello ${customer.first_name}</h2>
-		
-		<c:out value="${sessionScope.customer}"/>
-		
-		<a href="/order/food">Order Food</a>
-		
+		<h1>Hello ${customer.first_name}</h1 	>
+						
 		<br>
 		<h2>My current orders</h2>
 		

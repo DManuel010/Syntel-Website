@@ -5,7 +5,6 @@
 	<div id="content">
 
 
-		<c:out value="${sessionScope.customer}"/>
 		<h1>Insert your address</h1>
 		
 		<form method="POST" modelAttribute="location" action="/order/submit">
