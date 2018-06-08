@@ -21,7 +21,7 @@ function displayButton() {
 </script>
 	<div id="content">
 
-		<h1>Food List</h1>
+		<h1>Menu</h1>
 		
 		<form action="/order/summary" method="POST">
 			<table>

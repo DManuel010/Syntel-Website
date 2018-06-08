@@ -51,6 +51,15 @@ public class LoginController
 		return "customer_login";
 	}
 	
+	@RequestMapping(value="/Dashboard", method=RequestMethod.POST)
+	public ModelAndView customerDashboard()
+	{
+		
+		 ModelAndView modelAndView = new ModelAndView();
+		 modelAndView.setViewName("temp");
+		 return modelAndView;
+	}
+	
 	@RequestMapping(value="/login", method=RequestMethod.POST)
 	public ModelAndView customerLogin(@ModelAttribute("customer") Customer customer, BindingResult result, Model model)
 	{

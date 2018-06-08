@@ -64,3 +64,6 @@ Later:
 		check out
 		order tracking
 			based on delivery date
+
+		handle exceptions like page not found, connection timed out
+		check if email already exists
