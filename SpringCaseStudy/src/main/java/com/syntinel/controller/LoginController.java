@@ -19,12 +19,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.syntinel.dao.CustomerService;
 import com.syntinel.dao.FoodOrderService;
-import com.syntinel.dao.FoodService;
-import com.syntinel.dao.OrderService;
 import com.syntinel.model.Customer;
-import com.syntinel.model.Food;
 import com.syntinel.model.FoodOrder;
-import com.syntinel.model.Order;
 import com.syntinel.validator.LoginValidator;
 
 @Controller
@@ -58,7 +54,7 @@ public class LoginController
 	@RequestMapping(value="/dashboard")
 	public ModelAndView customerDashboard(@SessionAttribute("customer") Customer customer)
 	{
-		 List<Order> orders = orderServ.viewMyOrders(customer.getId());
+		 List<FoodOrder> orders = foodOrderServ.viewMyOrder(customer.getId());
 		 ModelAndView modelAndView = new ModelAndView();
 		 modelAndView.addObject("orders", orders);
 		 modelAndView.setViewName("temp");
