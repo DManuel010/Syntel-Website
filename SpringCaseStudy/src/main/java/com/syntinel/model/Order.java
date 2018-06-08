@@ -101,4 +101,13 @@ public class Order {
 	public void setNote(String note) {
 		this.note = note;
 	}
+
+	@Override
+	public String toString() {
+		return "Order [orderId=" + orderId + ", employeeId=" + employeeId + ", customerId=" + customerId + ", cost="
+				+ cost + ", paymentId=" + paymentId + ", deliveryAddrId=" + deliveryAddrId + ", orderDate=" + orderDate
+				+ ", expectedDate=" + expectedDate + ", deliveryDate=" + deliveryDate + ", note=" + note + "]";
+	}
+	
+	
 }

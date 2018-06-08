@@ -1,6 +1,7 @@
 package com.syntinel.controller;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,11 +18,9 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.syntinel.dao.CustomerService;
-import com.syntinel.dao.FoodService;
-import com.syntinel.dao.OrderService;
+import com.syntinel.dao.FoodOrderService;
 import com.syntinel.model.Customer;
-import com.syntinel.model.Food;
-import com.syntinel.model.Order;
+import com.syntinel.model.FoodOrder;
 import com.syntinel.validator.LoginValidator;
 
 @Controller
@@ -33,7 +32,7 @@ public class LoginController
 	CustomerService customerServ;
 	
 	@Autowired
-	OrderService orderServ;
+	FoodOrderService foodOrderServ;
 	
 	@Autowired
 	LoginValidator loginValidator;
@@ -55,7 +54,7 @@ public class LoginController
 	@RequestMapping(value="/dashboard")
 	public ModelAndView customerDashboard(@SessionAttribute("customer") Customer customer)
 	{
-		 List<Order> orders = orderServ.viewMyOrders(customer.getId());
+		 List<FoodOrder> orders = foodOrderServ.viewMyOrder(customer.getId());
 		 ModelAndView modelAndView = new ModelAndView();
 		 modelAndView.addObject("orders", orders);
 		 modelAndView.setViewName("temp");
@@ -68,8 +67,7 @@ public class LoginController
 		customer = customerServ.getObject(customer);
 		loginValidator.validate(customer, result);
 		
-		
-		List<Order> orders = orderServ.viewMyOrders(customer.getId());
+		List<FoodOrder> myOrders = foodOrderServ.viewMyOrder(customer.getId());
 		
 		
 		if(result.hasErrors())
@@ -78,7 +76,7 @@ public class LoginController
 		{
 			 ModelAndView modelAndView = new ModelAndView();
 			 modelAndView.addObject("customer", customer);
-			 modelAndView.addObject("orders", orders);
+			 modelAndView.addObject("orders", myOrders);
 			 modelAndView.setViewName("temp");
 			 return modelAndView;
 		}
