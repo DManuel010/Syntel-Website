@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -51,11 +52,12 @@ public class LoginController
 		return "customer_login";
 	}
 	
-	@RequestMapping(value="/Dashboard", method=RequestMethod.POST)
-	public ModelAndView customerDashboard()
+	@RequestMapping(value="/dashboard")
+	public ModelAndView customerDashboard(@SessionAttribute("customer") Customer customer)
 	{
-		
+		 List<Order> orders = orderServ.viewMyOrders(customer.getId());
 		 ModelAndView modelAndView = new ModelAndView();
+		 modelAndView.addObject("orders", orders);
 		 modelAndView.setViewName("temp");
 		 return modelAndView;
 	}
