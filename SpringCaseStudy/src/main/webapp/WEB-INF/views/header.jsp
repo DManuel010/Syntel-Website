@@ -29,14 +29,14 @@
 			<li><a href="${context}/" class="active">Home</a></li>
 			<li><a href="${context}/order/food">Menu</a></li>
 			<c:if test="${sessionScope.customer != null}">
-				<li><a href="${context}/Dashboard">Order</a></li>
+				<li><a href="${context}/customer/dashboard">Order</a></li>
+				<li><a href="${context}/customer/logout">Log Out</a></li>
 			</c:if>
-			<li><a href="${context}/contact">Contact</a></li>
-			<li><a href="${context}/about">About</a></li>
+			<li><a href="${context}/info/contact">Contact</a></li>
+			<li><a href="${context}/info/about">About</a></li>
 			<c:if test="${sessionScope.customer.id == null}">
 				<li><a href="${context}/customer/registration">Register</a></li>
 				<li><a href="${context}/customer/login">Login</a></li>
 			</c:if>
 		</ul>
-		<c:out value="${sessionScope.customer.id}"></c:out>
 	</nav>
