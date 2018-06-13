@@ -67,6 +67,7 @@ public class ItemController
 		modelAndView.addObject("selectedItems", customer.getItems());
 		modelAndView.setViewName("summary");
 		return modelAndView;
+		
 	}
 	
 	@RequestMapping(value="/submit", method=RequestMethod.POST)

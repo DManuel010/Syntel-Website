@@ -1,64 +1,35 @@
-Friday:
 
-	David:
-		add quantity to order
+Team 1
+	Super admin
+		Chandler, Eric
 
+	Webservice
+		Shannon, Carlos
 
-	Shannon:
-		View pending order
-			find by delivery date not null
+	Test admin and super admin
 
-	Eric:
-		View and edit account
-		make nav bar work better
-		View and edit addresses
-		paypal stub
-		investigate when url doesn't change after login
+	Update css
+		Eric
 
+	Add quantity to orders
+		Chandler
 
-Later:
-	add customer id to location table as foreign key
-	remove employee id from orders
+	Optional: add order status
+		find pending by delivery date not null
+		Chandler
+
+	check if email already exists
+		Eric
+
 	
-	crud addresses
-	optional: add order status
+	Team 2
+		Admin
 
-	admin:
-		crud items
-		crud stores
-		crud locations
-		crud orders
-		crud users
+		Add account editing
 
-	add regular expressions to the validators
-	optional: switch jdbc template
+		Handle exceptions like page not found, connection timed out
 
-	controller:
-		edit account
-		menu page
-		home page
-		order 
-		check out
-		order tracking
-
-
-	DAO:
-		edit account
-		menu page
-		home page
-		order 
-		check out
-		order tracking
-
-	view
-		edit account
-		menu page
-		home page
-		registration and login
-		order 
-		check out
-		order tracking
-			based on delivery date
-
-		handle exceptions like page not found, connection timed out
-		check if email already exists
+		Admin log in
+			David
+		Admin viewing orders
+			David
