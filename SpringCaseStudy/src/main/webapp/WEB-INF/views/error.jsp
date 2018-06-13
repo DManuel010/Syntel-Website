@@ -5,18 +5,8 @@
 	<div id="content" style="font-size:2.5vh; padding: 0 10vw;
 	">
 
-		<h1>About</h1>
-		<p>
-			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque magna turpis, interdum ut erat et, finibus lacinia ante. Pellentesque egestas dui ac ante semper bibendum. Curabitur in hendrerit lacus, eu gravida nunc. Fusce odio purus, egestas at elit sed, consequat gravida ipsum. Phasellus convallis fringilla nisl vel efficitur. Suspendisse a ornare sem. Duis sed sagittis nisl, sit amet pharetra ante. Mauris eleifend, leo sed viverra ornare, nulla mi rutrum massa, ac porttitor orci tortor sit amet enim.
-
-		</p>
+		<h1>Our Bad</h1>
+		<p>Please send an email to chollacasestudy@gmail.com describing the problem and what you were doing immediately before it occurred. We'll work hard to ensure it doesn't happen again.</p>
 		
-		<h2>Hours</h2>		
-		<div style="display:flex;flex-flow:row;justify-content:center;">
-			<ul class="list-group-flush" style="display:flex;flex-flow: column;justify-content: center;width:30vw;">
-			  <li class="list-group-item">Monday-Friday: 6am - 10pm</li>
-			  <li class="list-group-item">Friday-Sunday: 8am - 1am</li>
-			</ul>
-		</div>
 	</div>
 <%@include file="footer.jsp" %>
