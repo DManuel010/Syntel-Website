@@ -41,7 +41,7 @@ nav ul li a {
     text-decoration: none;
 }
 
-nav ul li:hover { 
+nav ul li a:hover { 
 	COLOR: white; TEXT-DECORATION: none; font-weight: none; 
 	font-weight: 900;
 	transition: 0.1s;
