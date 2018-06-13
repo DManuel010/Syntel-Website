@@ -20,6 +20,16 @@ public class AdminController
 	@Autowired
 	EmployeeService employeeServ;
 	
+	@RequestMapping(method=RequestMethod.GET)
+	public ModelAndView adminIndex(Model model) // should expect employee object from login in the session/model and be blocked by a session
+	{
+		//Employee employee = new Employee();
+		//model.addAttribute("employee", employee);
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("admin_index");
+		return modelAndView;
+	}
+	
 	@RequestMapping(value="/login", method=RequestMethod.GET)
 	public ModelAndView viewAdminLogin(Model model)
 	{
@@ -34,19 +44,15 @@ public class AdminController
 	public ModelAndView adminLogin(@ModelAttribute("employee") Employee employee)
 	{
 		employee = employeeServ.getObject(employee);
+		
+		// need to do basic login validation here?
+		
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("employee", employee);
-		modelAndView.setViewName("#");
+		modelAndView.setViewName("admin_index");
 		return modelAndView;
 	}
 	
-	@RequestMapping(value="/food", method=RequestMethod.GET)
-	public ModelAndView viewAdminFood()
-	{
-		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("admin_food");
-		return modelAndView;
-	}
 	
 
 }

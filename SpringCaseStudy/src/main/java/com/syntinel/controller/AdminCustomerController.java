@@ -11,44 +11,28 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.syntinel.dao.CustomerService;
 import com.syntinel.dao.FoodService;
+import com.syntinel.model.Customer;
 import com.syntinel.model.Food;
 
 @Controller
 @RequestMapping("/admin")
 @SessionAttributes("employee")
-public class AdminFoodController 
+public class AdminCustomerController 
 {
 	@Autowired
-	FoodService foodService;
+	CustomerService custService;
 	
-	@RequestMapping(value="/food", method=RequestMethod.GET)
-	public ModelAndView viewFood(Model model)
+	@RequestMapping(value="/customers",method=RequestMethod.GET)
+	public ModelAndView getFoodItems()
 	{
-		//TODO: make this actually work, DOH!
-		//List<Food> foodItems = foodService.viewAll();
+		List<Customer> customers = custService.viewAll();
 		
 		ModelAndView modelAndView = new ModelAndView();
-		//model.addAttribute("food", )
-		//modelAndView
-		modelAndView.setViewName("admin_food");
+		modelAndView.addObject("customers", customers);
+		modelAndView.setViewName("admin_customers");
 		return modelAndView;
 	}
 	
-	@RequestMapping(value="/food/add", method=RequestMethod.POST)
-	public String addFood(@ModelAttribute("food") Food food)
-	{
-		foodService.create(food);
-		
-		return "admin_food";
-	}
-	
-	@RequestMapping(value="/food/delete", method=RequestMethod.POST)
-	public String deleteFood(@ModelAttribute("food") Food food)
-	{
-		int foodID = food.getFoodId();
-		foodService.delete(foodID);
-		
-		return "admin_food";
-	}
 }
