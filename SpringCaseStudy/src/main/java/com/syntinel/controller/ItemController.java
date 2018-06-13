@@ -1,10 +1,13 @@
 package com.syntinel.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,6 +20,7 @@ import com.syntinel.dao.FoodOrderService;
 import com.syntinel.dao.FoodService;
 import com.syntinel.dao.LocationService;
 import com.syntinel.dao.OrderService;
+import com.syntinel.dto.MenuOrder;
 import com.syntinel.model.Customer;
 import com.syntinel.model.Food;
 import com.syntinel.model.FoodOrder;
@@ -47,23 +51,26 @@ public class ItemController
 	FoodOrder foodOrder;
 	
 	@RequestMapping(value="/food",method=RequestMethod.GET)
-	public ModelAndView getFoodItems()
+	public ModelAndView getFoodItems(@ModelAttribute ("menuOrder") MenuOrder menuOrder)
 	{
 		List<Food> foodItems = foodServ.viewAll();
 		
-		ModelAndView modelAndView = new ModelAndView();
+		//MenuOrder menuOrder = new MenuOrder();
+		//model.addAttribute("menuOrder", menuOrder);
+		
+		ModelAndView modelAndView = new ModelAndView();		
+		
 		modelAndView.addObject("foodItems", foodItems);
 		modelAndView.setViewName("food_list");
 		return modelAndView;
 	}
 	
 	@RequestMapping(value="/summary", method=RequestMethod.POST)
-	public ModelAndView checkout(@SessionAttribute("customer") Customer customer, 
-			@RequestParam(value="foodItemChkbx") String[] foodItemChkbx)
+	public ModelAndView checkout(@SessionAttribute("customer") Customer customer)
 	{
 		ModelAndView modelAndView = new ModelAndView();
 		
-		customer.setItems(foodServ.getSelectedItems(foodItemChkbx));
+		//customer.setItems(foodServ.getSelectedItems(foodItemChkbx));
 		modelAndView.addObject("selectedItems", customer.getItems());
 		modelAndView.setViewName("summary");
 		return modelAndView;

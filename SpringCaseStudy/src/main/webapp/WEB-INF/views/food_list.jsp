@@ -4,11 +4,11 @@
 <%@include file="header.jsp" %>
 <script>
 function displayButton() {
-	  var checkBoxes = document.getElementsByClassName("chkbx");
+	  var checkBoxes = document.getElementsByClassName("numCount");
 	  var text = document.getElementById("summary");
 	  var count = 0;
 	  for (var i = 0, len = checkBoxes.length; i < len; i++) {
-		  if (checkBoxes[i].checked == true){
+		  if (checkBoxes[i].value != "0"){
 			    text.style.display = "block";
 			   	count++;
 			  }
@@ -23,7 +23,7 @@ function displayButton() {
 
 		<h1>Menu</h1>
 		
-		<form action="/order/summary" method="POST">
+		<form:form action="/order/summary" modelAttribute="menuOrder" method="POST">
 			<table>
 				<thead>
 					<tr>
@@ -35,11 +35,14 @@ function displayButton() {
 					</tr>
 				</thead>
 					
-				<c:forEach items="${foodItems}" var="foodItem">
+				<c:forEach items="${foodItems}" var="foodItem" varStatus="i">
 				
 			    <tr> 
 			    	<td>
-			    		<input class="chkbx" name="foodItemChkbx" type="checkbox" value="${foodItem.foodId}" onClick="displayButton()")/>
+			    		
+			    		<form:input path="itemCounts[${i.index}]" class="numCount" type="number" max="10" value='0' style="width: 3em"/>
+                        <form:errors path="itemCounts[${i.index}]" cssClass="error"/></td>
+			    		
 			    	</td>   
 			        <td>${foodItem.name}</td>
 			        <td>${foodItem.foodGroup}</td>
@@ -53,6 +56,6 @@ function displayButton() {
 			<c:if test="${sessionScope.customer != null}">
 				<input id="summary" type="submit" value="Checkout" style="display:none"/>
 			</c:if>
-		</form>
+		</form:form>
 	</div>
 <%@include file="footer.jsp" %>
