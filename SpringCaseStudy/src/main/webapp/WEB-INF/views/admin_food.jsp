@@ -2,11 +2,20 @@
     pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@include file="header.jsp" %>
+<style>
+<!--
+table{
+   overflow-y:scroll;
+   height:300px;
+   display:block;
+}
+-->
+</style>
 	<div id="content">
 		<h1>Food Menu</h1>
 		
 		<form action="/order/summary" method="POST">
-			<table cellpadding="10px">
+			<table>
 				<thead>
 					<tr>
 						<th>Food ID</th>
@@ -30,7 +39,7 @@
 			    </tr>
 				</c:forEach>
 			</table>
-			
+			<br>
 		
 		<form method="POST" modelAttribute="food" action="admin/food/add">
 			<label for="addFood">Add Food</label>

@@ -29,7 +29,6 @@ public class AdminFoodController {
 		Food food = new Food();
 		model.addAttribute("food", food);
 		List<Food> foodItems = foodService.viewAll();
-		System.out.println(foodItems);
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("foodItems", foodItems);
 		modelAndView.setViewName("admin_food");
