@@ -46,9 +46,8 @@ public class EmployeeService implements ServiceInterface<Employee>{
 		try
 		{
 			Connection con = jdbcTemplate.getDataSource().getConnection();
-			PreparedStatement preparedStatement = con.prepareStatement("SELECT "
-					+ " FIRSTNAME, LASTNAME, HIREDATE, TITLE, PHONENUMBER,"
-					+ " WORKADDRID, HOMEADDRID, LASTLOGIN FROM EMPLOYEE WHERE EMAIL = ? AND EMPLOYEEID = ?");
+			PreparedStatement preparedStatement = con.prepareStatement("SELECT FIRSTNAME, LASTNAME, HIREDATE, TITLE,"
+					+ " PHONENUMBER, WORKADDRID, HOMEADDRID, LASTLOGIN FROM EMPLOYEE WHERE EMAIL = ? AND EMPLOYEEID = ?");
 			preparedStatement.setString(1, employee.getEmail());
 			preparedStatement.setString(2, employee.getEmployeeId());
 			ResultSet resultSet = preparedStatement.executeQuery();
