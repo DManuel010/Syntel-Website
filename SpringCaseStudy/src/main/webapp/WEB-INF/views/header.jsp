@@ -24,6 +24,7 @@
 	
 	<nav>
 		<c:if test="${sessionScope.customer != null}">
+		<ul style="width: 35vw">	
 		</c:if>	
 		<c:if test="${sessionScope.customer == null}">
 		<ul>	
