@@ -21,6 +21,8 @@ Team 1
 	check if email already exists
 		Eric
 
+	Make a controller and page for /error
+
 	
 	Team 2
 		Admin
