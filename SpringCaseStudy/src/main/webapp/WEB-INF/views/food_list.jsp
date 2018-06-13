@@ -40,7 +40,7 @@ function displayButton() {
 			    <tr> 
 			    	<td>
 			    		
-			    		<form:input path="itemCounts[${i.index}]" class="numCount" type="number" max="10" value='0' style="width: 3em"/>
+			    		<form:input path="itemCounts[${i.index}]" onClick="displayButton()" class="numCount" type="number" max="10" value='0' style="width: 3em"/>
                         <form:errors path="itemCounts[${i.index}]" cssClass="error"/></td>
 			    		
 			    	</td>   
