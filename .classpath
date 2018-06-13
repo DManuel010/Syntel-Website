@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="java"/>
+	<classpathentry kind="lib" path="C:/Examples/Jar Files/jars/hamcrest-core-1.2.jar"/>
+	<classpathentry kind="lib" path="C:/Examples/Jar Files/jars/javaee.jar"/>
+	<classpathentry kind="lib" path="C:/Examples/Jar Files/jars/junit-4.11.jar"/>
+	<classpathentry kind="lib" path="C:/Examples/Jar Files/jars/mail.jar"/>
+	<classpathentry kind="lib" path="C:/Examples/Jar Files/jars/ojdbc6-11.2.0.3.jar"/>
+	<classpathentry kind="lib" path="C:/Examples/Jar Files/jars/ojdbc14.jar"/>
+	<classpathentry kind="lib" path="C:/Examples/Jar Files/jars/ojdbc14_g.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
