@@ -1,12 +1,24 @@
 package com.syntinel.model;
 
+import javax.validation.constraints.NotEmpty;
+
 public class Food {
 
+	@NotEmpty
 	private int foodId;
+	
+	@NotEmpty
 	private String name;
+	
+	@NotEmpty
 	private String foodGroup;
+	
+	@NotEmpty
 	private double price;
+	
 	private String description;
+	
+	@NotEmpty
 	private int stock;
 	
 	

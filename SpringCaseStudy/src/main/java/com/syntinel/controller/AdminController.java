@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.syntinel.dao.EmployeeService;
-import com.syntinel.model.Customer;
 import com.syntinel.model.Employee;
 import com.syntinel.validator.AdminValidator;
 import com.syntinel.validator.LoginValidator;
@@ -64,14 +63,4 @@ public class AdminController
 		
 		
 	}
-	
-	@RequestMapping(value="/food", method=RequestMethod.GET)
-	public ModelAndView viewAdminFood()
-	{
-		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("admin_food");
-		return modelAndView;
-	}
-	
-
 }

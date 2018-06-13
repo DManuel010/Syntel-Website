@@ -32,8 +32,7 @@ public class FoodService implements ServiceInterface<Food>
 	public void create(Food food) {
 		try {
 			Connection con = jdbcTemplate.getDataSource().getConnection();
-			CallableStatement callableStatement = con.prepareCall("{call SP_INSERT_NEW_FOOD(?,?,?,"
-					+ "?,?,?)}");
+			CallableStatement callableStatement = con.prepareCall("{call SP_INSERT_NEW_FOOD(?,?,?,?,?,?)}");
 			callableStatement.setString(1, Utilities.createUniqueId());
 			callableStatement.setString(2, food.getName());
 			callableStatement.setString(3, food.getFoodGroup());
@@ -74,7 +73,7 @@ public class FoodService implements ServiceInterface<Food>
 			try {
 				Connection con = jdbcTemplate.getDataSource().getConnection();
 				PreparedStatement preparedStatement = con.prepareStatement("SELECT FOODID, NAME, "
-						+ "FOODGROUP, PRICE, DESCRIPTION FROM FOOD WHERE FOODID = ?");
+						+ "FOODGROUP, PRICE, DESCRIPTION, STOCK FROM FOOD WHERE FOODID = ?");
 				preparedStatement.setString(1, id);
 				
 				ResultSet result = preparedStatement.executeQuery();
