@@ -15,5 +15,4 @@
 		<p>chollacasestudy@gmail.com</p>
 		
 	</div>
-</body>
-</html>
+<%@include file="footer.jsp" %>

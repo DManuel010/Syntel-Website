@@ -50,5 +50,4 @@
 		<input type="reset" value="Clear Form" />
 	</form>
 </div>
-</body>
-</html>
+<%@include file="footer.jsp" %>

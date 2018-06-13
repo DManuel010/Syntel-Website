@@ -55,5 +55,4 @@ function displayButton() {
 			</c:if>
 		</form>
 	</div>
-</body>
-</html>
+<%@include file="footer.jsp" %>

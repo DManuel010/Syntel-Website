@@ -39,3 +39,5 @@
 			<div id="spacer"></div>
 		</div>
 	</nav>
+	<div id="main_container">
+	

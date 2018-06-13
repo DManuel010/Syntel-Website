@@ -12,5 +12,4 @@ Duis sit amet cursus massa. Duis non purus sit amet orci ultrices pellentesque n
 		</p>
 		
 	</div>
-</body>
-</html>
+<%@include file="footer.jsp" %>
