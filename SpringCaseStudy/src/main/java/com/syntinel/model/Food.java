@@ -8,6 +8,7 @@ public class Food {
 	private double price;
 	private String description;
 	private int stock;
+	private String image;
 	
 	
 
@@ -63,11 +64,18 @@ public class Food {
 		this.stock = stock;
 	}
 
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
 	@Override
 	public String toString() {
 		return "Food [foodId=" + foodId + ", name=" + name + ", foodGroup=" + foodGroup + ", price=" + price
-				+ ", description=" + description + ", stock=" + stock + "]";
+				+ ", description=" + description + ", stock=" + stock + ", image=" + image + "]";
 	}
-	
 	
 }
