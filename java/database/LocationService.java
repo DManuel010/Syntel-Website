@@ -31,9 +31,7 @@ public class LocationService extends Service {
 		String zip = location.getZip();
 		
 		// format query
-		String query = "INSERT INTO Location "
-					+ "(locationID, country, state, city, streetNum, roomNum, zip) " 
-					+ "VALUES(?, ?, ?, ?, ?, ?, ?)";
+		String query = "INSERT INTO Location (locationID, country, state, city, streetNum, roomNum, zip) VALUES(?, ?, ?, ?, ?, ?, ?)";
 		
 		try {
 			PreparedStatement statement = this.conn.prepareStatement(query);
@@ -44,8 +42,11 @@ public class LocationService extends Service {
 			statement.setString(5, street);
 			statement.setString(6, room);
 			statement.setString(7, zip);
-			statement.executeUpdate();
+			statement.execute();
+			
 			System.out.println("LocationService:  Location insert successful.");	
+			statement.close();
+			
 		} catch (SQLException e) {
 			System.out.println("LocationService:  Failed to insert location.");
 			e.printStackTrace();
@@ -62,6 +63,7 @@ public class LocationService extends Service {
 			statement.setInt(1, locationID);
 			statement.executeUpdate();
 			System.out.println("LocationService:  Location deleted.");
+			statement.close();
 		} catch (SQLException e) {
 			System.out.println("LocationService:  Failed to delete location.");
 			e.printStackTrace();

@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 
 import entities.Card;
 
@@ -28,7 +29,7 @@ public class CardService extends Service {
 		String expirationDate = card.getExpirationDate();
 		int cvv = card.getcvv();
 		String type = card.getType();
-		int billingAddrID = card.getBillingAddrID();
+		int billingAddrID = card.getBillingAddr().getLocationID();
 		
 		// format query
 		String query = "INSERT INTO Card "
@@ -44,10 +45,12 @@ public class CardService extends Service {
 			statement.setInt(5, cvv);
 			statement.setString(6, type);
 			statement.setInt(7, billingAddrID);
-			statement.executeUpdate();
-			System.out.println("CardService:  Card inserted.");
+			statement.execute();
+			
+			System.out.println("Card inserted.");
+			statement.close();
 		} catch (SQLException e) {
-			System.out.println("CardService:  Failed to insert card.");
+			System.out.println("Failed to insert card.");
 			e.printStackTrace();
 		}
 	}
@@ -90,10 +93,11 @@ public class CardService extends Service {
 		try {
 			PreparedStatement statement = this.conn.prepareStatement(query);
 			statement.setInt(1, cardID);
-			statement.executeUpdate();
-			System.out.println("CardService:  Card deleted.");
+			statement.addBatch();
+			statement.executeBatch();
+			System.out.println("Card deleted.");
 		} catch (SQLException e) {
-			System.out.println("CardService:  Failed to delete card.");
+			System.out.println("Failed to delete card.");
 			e.printStackTrace();
 		}
 	}
