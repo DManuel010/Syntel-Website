@@ -34,6 +34,8 @@
 		</div>
 	</nav>
 	
+	<c:out value="${sessionScope.employee}"></c:out>
+
 	<div id="main_container">
 		<div id="spacer"></div>
 		<div id="jumbotron">
