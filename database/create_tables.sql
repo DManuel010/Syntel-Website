@@ -5,6 +5,7 @@ CREATE TABLE Food (
 		price DECIMAL(10,3) NOT NULL,
 		description VARCHAR(50),
 		stock INT NOT NULL,
+		image VARCHAR(300) NOT NULL,
 		CONSTRAINT UC_Food UNIQUE (name, foodGroup, price)
 );
 

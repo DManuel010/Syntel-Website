@@ -13,7 +13,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="${context}/static/libraries/bootstrap.min.css">
 	<c:set var="context"  value="${pageContext.request.contextPath}" />
-	<link type="text/css" rel="stylesheet" href="${context}/static/css/styles.css">
+	<link type="text/css" rel="stylesheet" href="${context}/static/css/universal.css">
 </head>
 <body>
 	<div class="logo">
