@@ -3,7 +3,6 @@ package com.syntinel.validator;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
-import java.util.regex.Pattern;
 
 import com.syntinel.model.Customer;
 import com.syntinel.model.Food;
@@ -25,7 +24,7 @@ public class AdminFoodValidator implements Validator
 		if(food.getName().isEmpty()) {
 			error.rejectValue("email", "customer.email.empty");
 		}
-		
+		/*
 		if(food.getPrice().isEmpty()) {
 			error.rejectValue("email", "customer.email.bad");
 		}
@@ -38,6 +37,7 @@ public class AdminFoodValidator implements Validator
 			if(customer.getId() == 0)
 				error.rejectValue("email", "customer.id.empty");
 		}
+		*/
 	}
 
 }

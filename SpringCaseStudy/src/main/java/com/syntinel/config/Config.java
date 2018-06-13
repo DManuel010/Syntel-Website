@@ -80,4 +80,6 @@ public class Config extends WebMvcConfigurerAdapter
 	     messageSource.setBasename("/WEB-INF/messages/messages");
 	     return messageSource;
 	}
+	
+	
 }
