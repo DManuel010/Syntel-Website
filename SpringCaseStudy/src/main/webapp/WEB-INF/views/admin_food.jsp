@@ -4,6 +4,7 @@
 <%@include file="header.jsp" %>
 	<div id="content">
 		<h1>Food Menu</h1>
+		<title>Food Menu</title>
 		
 		<form method="POST" modelAttribute="food" action="admin/food/add">
 			<label for="addFood">Add Food</label>
