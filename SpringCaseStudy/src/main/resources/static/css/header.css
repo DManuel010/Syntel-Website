@@ -1,0 +1,54 @@
+#logo{
+	height: 10vh;
+	width:auto;	
+}
+
+nav {
+	display: flex;
+	justify-content: space-between;
+	background-color: #DD2C00;
+	color: white;
+	left:0;
+	right: 0;
+	top: 0;
+	width: 100vw;
+	height: 10vh;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#nav_container {
+	display: flex;
+	justify-content: space-between;
+}
+ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+}
+li {
+	display: flex;
+	justify-content: center;
+	flex-flow: column;
+    float: left;
+    height: 10vh;
+}
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+
+nav a {
+	color: white;
+	text-decoration: none;
+	font-size: 3vh;
+    line-height: 100%;
+}
+
+#spacer {
+	width: 3vw;
+}
