@@ -4,11 +4,11 @@
 <%@include file="header.jsp" %>
 <script>
 function displayButton() {
-	  var checkBoxes = document.getElementsByClassName("numCount");
+	  var numBoxes = document.getElementsByClassName("numCount");
 	  var text = document.getElementById("summary");
 	  var count = 0;
-	  for (var i = 0, len = checkBoxes.length; i < len; i++) {
-		  if (checkBoxes[i].value != "0"){
+	  for (var i = 0, len = numBoxes.length; i < len; i++) {
+		  if (numBoxes[i].value != "0"){
 			    text.style.display = "block";
 			   	count++;
 			  }
@@ -27,7 +27,17 @@ function displayButton() {
 			<table>
 				<thead>
 					<tr>
-						<th>Add</th>
+						<c:choose>
+						    <c:when test="${sessionScope.customer != null && sessionScope.customer.id != 0}">
+						        <th>Add</th> 
+						        <br />
+						    </c:when>    
+						    <c:otherwise>
+						        <th></th> 
+						        <br />
+						    </c:otherwise>
+						</c:choose>
+						
 						<th>Name</th>
 						<th>Group</th>
 						<th>Description</th>
@@ -39,9 +49,11 @@ function displayButton() {
 				
 			    <tr> 
 			    	<td>
-			    		
-			    		<form:input path="itemCounts[${i.index}]" onClick="displayButton()" class="numCount" type="number" max="10" value='0' style="width: 3em"/>
+			    		<c:if test="${sessionScope.customer != null && sessionScope.customer.id != 0}">
+			    		<form:input path="itemCounts[${i.index}]" onClick="displayButton()" class="numCount" 
+			    		style="width: 3em" type="number" max="10" min='0' value='0'/>
                         <form:errors path="itemCounts[${i.index}]" cssClass="error"/></td>
+                        </c:if>
 			    		
 			    	</td>   
 			        <td>${foodItem.name}</td>
@@ -54,7 +66,7 @@ function displayButton() {
 				</c:forEach>
 			</table>
 			<c:if test="${sessionScope.customer != null && sessionScope.customer.id != 0}">
-				<input id="summary" type="submit" value="Checkout" class="btn btn-danger btn-lg btn-block" style="display:none"/>
+				<input id="summary" type="submit" value="Checkout" style="display:none"/>
 				<div id="spacer"></div>
 			</c:if>
 		</form:form>
