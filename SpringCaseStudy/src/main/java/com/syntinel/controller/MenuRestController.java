@@ -20,9 +20,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 
-
+//the rest controller declares this is a webservice controller
 @RestController
 public class MenuRestController {
+	
 	
 	@Resource(name="jdbcTemplate")
 	private JdbcTemplate jdbcTemplate;
@@ -30,9 +31,10 @@ public class MenuRestController {
 @RequestMapping(value = "/menu", method = RequestMethod.GET,headers="Accept=application/json")
 public @ResponseBody List<Food> listMenu() {
 		
-		
+		//prints the menu in array list form
 		List<Food> menu = new ArrayList<Food>();
 		
+		//getting the connection and selecting all of the food items from the database
 		Connection con;
 		try {
 			con = jdbcTemplate.getDataSource().getConnection();
