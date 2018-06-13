@@ -50,7 +50,7 @@ function displayButton() {
 			    </tr>
 				</c:forEach>
 			</table>
-			<c:if test="${sessionScope.customer != null}">
+			<c:if test="${sessionScope.customer != null && sessionScope.customer.id != 0}">
 				<input id="summary" type="submit" value="Checkout" style="display:none"/>
 			</c:if>
 		</form>

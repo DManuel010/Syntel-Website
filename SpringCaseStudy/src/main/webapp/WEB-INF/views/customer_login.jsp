@@ -20,4 +20,5 @@
 			<input type="submit" value="Log In" />
 			<input type="reset" value="Clear Form" />
 		</form>
+	</div>
 <%@include file="footer.jsp" %>
