@@ -6,13 +6,13 @@
 		<h1>Customer Login</h1>
 		<form method="POST" modelAttribute="customer" action="/customer/login">
 			<!-- Customer Email -->
-			<label for="customer_email">Email:</label>
+			<label for="customer_email">Email</label>
 			<form:input path="customer.email" placeholder="Enter your email address"/>
 			<form:errors path="customer.email"/>
 			<br/>
 			
 			<!-- Customer password -->
-			<label for="customer_password">Password:</label>
+			<label for="customer_password">Password</label>
 			<form:input path="customer.password" placeholder="Enter a password"/>
 			<form:errors path="customer.password"/>
 			<br/>
