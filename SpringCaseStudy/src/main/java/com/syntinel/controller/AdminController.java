@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.syntinel.dao.EmployeeService;
-import com.syntinel.model.Customer;
 import com.syntinel.model.Employee;
 
 @Controller
