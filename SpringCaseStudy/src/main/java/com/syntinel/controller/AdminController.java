@@ -65,11 +65,4 @@ public class AdminController
 		
 	}
 	
-	@RequestMapping(value="/food", method=RequestMethod.GET)
-	public ModelAndView viewAdminFood()
-	{
-		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("admin_food");
-		return modelAndView;
-	}
 }
