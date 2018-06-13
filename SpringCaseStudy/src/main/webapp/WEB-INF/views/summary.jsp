@@ -31,21 +31,21 @@
 			
 			<label for="instructions">Instructions:</label>
 			<br>
-			<textarea name="instructions" rows="10" cols="20"></textarea>
+			<textarea name="instructions" class="form-control" rows="5" cols="60"></textarea>
 			<br>
 			<label for="expectedDate">Expected Date:</label>
-			<input name="expectedDate" type="text" />
+			<input class="form-control" name="expectedDate" type="text" />
 			<br>
 			<fieldset>
-					<legend>Payment</legend>
-					<label for="paymentType"></label>
-					<select name="paymentType">
-						<option value="0">Paypal</option>
-						<option value="1">Card at door</option>
-						<option value="2">Cash at door</option>
-					</select>
-				</fieldset>
-			<input type="submit" value="Continue"/>
+				<label for="paymentType"></label>
+				<select name="paymentType">
+					<option value="0">Paypal</option>
+					<option value="1">Card at door</option>
+					<option value="2">Cash at door</option>
+				</select>
+			</fieldset>
+			<div id="spacer"></div>
+			<input class="btn btn-danger btn-lg btn-block" type="submit" value="Continue"/>
 		</form>
 	</div>
 <%@include file="footer.jsp" %>
