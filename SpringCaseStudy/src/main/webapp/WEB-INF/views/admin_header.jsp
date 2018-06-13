@@ -27,6 +27,9 @@
 				<li><a href="${context}/admin/food">Menu</a></li>
 				<li><a href="${context}/admin/customers">Customers</a></li>
 				<li><a href="${context}/#">Orders</a></li>
+				<c:if test="${sessionScope.employee != null}">
+					<li><a href="${context}/customer/logout">Log Out</a></li> <!-- admin should probably have its own logout page/controller mapping but the functionality works the same  -->
+				</c:if>
 			</ul>
 			<div id="spacer"></div>
 		</div>

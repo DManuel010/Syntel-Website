@@ -46,12 +46,14 @@ public class RegistrationController
 	public String registerCustomer(@ModelAttribute("customer") @Validated Customer customer, BindingResult result, Model model)
 	{
 		
+		System.out.println(customer);
+		
 		if(result.hasErrors())
 			return "customer_registration";
 		else
 		{
 			customerServ.create(customer);
-			Utilities.sendMail(customer);
+			//Utilities.sendMail(customer);
 			return "redirect:login";
 		}
 	}
