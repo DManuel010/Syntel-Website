@@ -20,20 +20,20 @@ nav {
 	display: flex;
 	justify-content: space-between;
 }
-ul {
+nav ul {
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
 	overflow: hidden;
 }
-li {
+nav ul li {
 	display: flex;
 	justify-content: center;
 	flex-flow: column;
     float: left;
     height: 10vh;
 }
-li a {
+nav ul li a {
     display: block;
     color: white;
     text-align: center;
@@ -41,7 +41,7 @@ li a {
     text-decoration: none;
 }
 
-A:hover { 
+nav ul li:hover { 
 	COLOR: white; TEXT-DECORATION: none; font-weight: none; 
 	font-weight: 900;
 	transition: 0.1s;

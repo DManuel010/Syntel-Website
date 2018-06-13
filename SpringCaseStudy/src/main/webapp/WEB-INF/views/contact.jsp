@@ -3,16 +3,16 @@
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@include file="header.jsp" %>
 	<div id="content" style="text-align:center;">
-		<div style="font-size:3vh;">
+		<div style="font-size:2.5vh;">
 		
 			<h1>Contact</h1>
-			<p>Give us a call!</p>
+			<h3>Give us a call!</h3>
 			<p>123-456-7890</p>
 			
-			<p>Give us a visit!</p>
-			<p>123 Example st, Phoenix, Arizona</p>
+			<h3>Give us a visit!</h3>
+			<p>123 Example St, Phoenix, Arizona, USA</p>
 			
-			<p>Send us an email!</p>
+			<h3>Send us an email!</h3>
 			<p>chollacasestudy@gmail.com</p>
 			
 		</div>

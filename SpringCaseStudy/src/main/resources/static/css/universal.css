@@ -22,7 +22,6 @@ body {
 #content{
 	display: flex;
 	flex-direction: column;
-	
 }
 
 table, td, th{
@@ -62,3 +61,4 @@ h3 {
 	height: 3vh;
 	width: 100%;
 }
+
