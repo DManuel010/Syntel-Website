@@ -30,7 +30,6 @@
 			    </tr>
 				</c:forEach>
 			</table>
-			
 		
 		<form method="POST" modelAttribute="food" action="admin/food/add">
 			<label for="addFood">Add Food</label>
@@ -49,6 +48,9 @@
 			
 			<form:input path="food.stock" placeholder="stock" />
 			<form:errors path="food.stock" />
+			
+			<form:input path="food.image" placeholder="image/url" />
+			<form:errors path="food.image" />
 			
 			<input type="submit" value="Add Food" />
 			<input type="reset" value="Clear Form" />
