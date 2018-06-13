@@ -17,7 +17,7 @@
 			<a href="/admin">Home </a>
 			<a href="/admin/customers">Manage Customers </a>
 			<a href="/admin/food">Manage Food </a>
-			<a href="#">Placeholder </a>
+			<a href="/admin/orders">Manage Orders </a>
 			<c:choose>
 			    <c:when test="${sessionScope.currentUser!=null}">
 			        <a href="account">My Account</a>
