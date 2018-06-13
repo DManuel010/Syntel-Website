@@ -5,7 +5,7 @@
 	<div id="content">
 		<h1>Food Menu</h1>
 		
-		<form method="POST" modelAttribute="food">
+		<form method="POST" modelAttribute="food" action="admin/food/add">
 			<label for="addFood">Add Food</label>
 			
 			<form:input path="food.name" placeholder="Enter food name" />
@@ -27,7 +27,7 @@
 			<input type="reset" value="Clear Form" />
 		</form>
 		
-		<form method="POST" modelAttribute="food">
+		<form method="POST" modelAttribute="food" action="admin/food/delete">
 			<label for="deleteFood">Delete Food</label>
 			
 			<form:input path="food.foodId" placeholder="Enter Food ID #" />
