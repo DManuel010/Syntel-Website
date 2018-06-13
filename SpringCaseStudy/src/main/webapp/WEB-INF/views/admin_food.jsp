@@ -6,9 +6,10 @@
 		<h1>Food Menu</h1>
 		
 		<form action="/order/summary" method="POST">
-			<table>
+			<table cellpadding="10px">
 				<thead>
 					<tr>
+						<th>Food ID</th>
 						<th>Name</th>
 						<th>Group</th>
 						<th>Description</th>
@@ -20,6 +21,7 @@
 				<c:forEach items="${foodItems}" var="foodItem">
 				
 			    <tr> 
+			    	<td>${foodItem.foodId}</td>
 			        <td>${foodItem.name}</td>
 			        <td>${foodItem.foodGroup}</td>
 			        <td>${foodItem.description}</td>
