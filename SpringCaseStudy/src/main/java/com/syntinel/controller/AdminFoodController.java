@@ -18,7 +18,7 @@ public class AdminFoodController {
 	
 	@Autowired
 	FoodService foodService;
-	//a comment
+	
 	@RequestMapping(value="/food", method=RequestMethod.GET)
 	public String viewFood(Model model) {
 		//TODO: make this actually work, DOH!
