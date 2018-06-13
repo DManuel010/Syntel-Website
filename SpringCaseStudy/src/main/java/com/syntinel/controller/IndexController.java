@@ -12,10 +12,4 @@ public class IndexController
 		return "index";
 	}
 	
-	@RequestMapping("/error")
-	public String error() {
-		return "error";
-	}
-	
-	
 }
