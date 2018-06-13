@@ -103,7 +103,7 @@ public class Customer
 	public void setMobile_number(String mobile_number) 		 {this.mobile_number = mobile_number;}
 	public void setLast_login(String last_login) 			 {this.last_login = last_login;}
 	public void setInstructions(String instructions) 		 {this.instructions = instructions;}
-	private void setRegister_date(String register_date) 	 {this.register_date = register_date;}
+	public void setRegister_date(String register_date) 	 {this.register_date = register_date;}
 	public void setItems(List<Food> items) {this.items = items;}
 
 	@Override

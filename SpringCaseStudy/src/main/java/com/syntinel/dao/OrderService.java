@@ -5,7 +5,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -15,7 +14,6 @@ import org.springframework.stereotype.Service;
 import org.syntinel.mappers.OrderRowMapper;
 import org.syntinel.utilities.Utilities;
 
-import com.syntinel.model.Food;
 import com.syntinel.model.Order;
 
 @Service
