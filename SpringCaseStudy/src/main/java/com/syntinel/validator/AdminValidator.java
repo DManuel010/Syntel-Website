@@ -20,11 +20,14 @@ public class AdminValidator implements Validator
 	public void validate(Object target, Errors error) {
 		Employee employee = (Employee) target;
 		
-		if(employee.getEmail().isEmpty())
+		if(employee.getEmail().isEmpty()) {
 			error.rejectValue("email", "employee.email.empty");
+		}
 		
-		if(employee.getEmployeeId().isEmpty())
+		if(employee.getEmployeeId().isEmpty()) {
 			error.rejectValue("employeeId", "employee.employeeId.empty");
+		}
+
 		
 		//TODO: admin not existing needs fixing.
 		
@@ -36,5 +39,4 @@ public class AdminValidator implements Validator
 		
 		
 	}
-
 }
