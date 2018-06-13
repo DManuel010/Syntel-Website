@@ -8,14 +8,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.*;
+
 
 import org.springframework.web.bind.annotation.RestController;
+
+import com.syntinel.model.Food;
+
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -28,10 +27,10 @@ public class MenuRestController {
 	private JdbcTemplate jdbcTemplate;
 
 @RequestMapping("/menu")
-public @ResponseBody List listMenu() {
+public @ResponseBody List<Food> listMenu() {
 		
 		
-		List menu = new ArrayList();
+		List<Food> menu = new ArrayList<Food>();
 		
 		Connection con;
 		try {
@@ -42,8 +41,16 @@ public @ResponseBody List listMenu() {
 			
 			while(resultSet.next()) {
 				
-				menu.add(resultSet.getString(2));
-				menu.add(resultSet.getString(3));
+				Food item = new Food();
+				
+				item.setFoodId(resultSet.getInt(1));
+				item.setName(resultSet.getString(2));
+				item.setFoodGroup(resultSet.getString(3));
+				item.setPrice(resultSet.getDouble(4));
+				item.setDescription(resultSet.getString(5));
+				item.setStock(resultSet.getInt(6));
+				
+				menu.add(item);
 				
 				
 			}
