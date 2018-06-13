@@ -27,6 +27,17 @@ public class AdminController
 	@Autowired
 	EmployeeService employeeServ;
 	
+	// technically shouldn't be able to get here but adding it anyway for admin landing page
+	@RequestMapping(method=RequestMethod.GET)
+	public ModelAndView adminIndex(Model model) // should expect employee object from login in the session/model and be blocked by a session
+	{
+		//Employee employee = new Employee();
+		//model.addAttribute("employee", employee);
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("admin_index");
+		return modelAndView;
+	}
+
 	@Autowired
 	AdminValidator adminValidator;
 	
@@ -48,6 +59,11 @@ public class AdminController
 	public ModelAndView adminLogin(@ModelAttribute("employee") Employee employee, BindingResult result, Model model)
 	{
 		employee = employeeServ.getObject(employee);
+		
+		// need to do basic login validation here?
+	
+
+
 		adminValidator.validate(employee, result);
 		
 		if(result.hasErrors())
@@ -64,5 +80,5 @@ public class AdminController
 		
 		
 	}
-	
+
 }

@@ -22,6 +22,7 @@ public class AdminFoodController {
 	@RequestMapping(value="/food", method=RequestMethod.GET)
 	public String viewFood(Model model) {
 		//TODO: make this actually work, DOH!
+
 		Food food = new Food();
 		model.addAttribute("food", food);
 		return "admin_food";
