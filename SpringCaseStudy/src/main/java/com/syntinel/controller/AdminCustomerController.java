@@ -24,6 +24,7 @@ public class AdminCustomerController
 	@Autowired
 	CustomerService custService;
 	
+	// should be blocked by session (this is true for all admin pages)
 	@RequestMapping(value="/customers",method=RequestMethod.GET)
 	public ModelAndView getFoodItems()
 	{

@@ -15,9 +15,9 @@
 	<!-- navbar href paths should be "absolute" (forward slash in front of each link) -->
 		<div id="nav_container">
 			<a href="/admin">Home </a>
-			<a href="menu">Menu </a>
-			<a href="about">About </a>
-			<a href="contact">Contact </a>
+			<a href="/admin/customers">Manage Customers </a>
+			<a href="/admin/food">Manage Food </a>
+			<a href="#">Placeholder </a>
 			<c:choose>
 			    <c:when test="${sessionScope.currentUser!=null}">
 			        <a href="account">My Account</a>
