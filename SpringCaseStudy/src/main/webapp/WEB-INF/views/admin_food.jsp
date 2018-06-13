@@ -5,6 +5,31 @@
 	<div id="content">
 		<h1>Food Menu</h1>
 		
+		<form action="/order/summary" method="POST">
+			<table>
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Group</th>
+						<th>Description</th>
+						<th>Price</th>
+						<th>Stock</th>
+					</tr>
+				</thead>
+					
+				<c:forEach items="${foodItems}" var="foodItem">
+				
+			    <tr> 
+			        <td>${foodItem.name}</td>
+			        <td>${foodItem.foodGroup}</td>
+			        <td>${foodItem.description}</td>
+			        <td>${foodItem.price}</td>
+			        <td>${foodItem.stock}</td>
+			    </tr>
+				</c:forEach>
+			</table>
+			
+		
 		<form method="POST" modelAttribute="food" action="admin/food/add">
 			<label for="addFood">Add Food</label>
 			
