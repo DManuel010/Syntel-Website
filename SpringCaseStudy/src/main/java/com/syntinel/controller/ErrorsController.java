@@ -11,7 +11,7 @@ public class ErrorsController implements ErrorController{
 	
 	@RequestMapping(value=PATH)
 	public String error() {
-		return "error";
+		return "errorpage";
 	}
 
 	@Override
