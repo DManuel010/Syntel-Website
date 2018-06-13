@@ -20,7 +20,9 @@ public class ErrorsController implements ErrorController{
 		if(httpErrorCode==404) {
 			return "error404page";
 		}
-		
+		else if(httpErrorCode==405) {
+			return "index";
+		}
 		else {
 			return "errorpage";
 		}
