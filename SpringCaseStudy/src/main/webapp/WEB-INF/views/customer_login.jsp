@@ -7,13 +7,13 @@
 		<form method="POST" modelAttribute="customer" action="/customer/login">
 			<!-- Customer Email -->
 			<label for="customer_email">Email</label>
-			<form:input path="customer.email" placeholder="Enter your email address"/>
+			<form:input path="customer.email" placeholder="john@smith.com"/>
 			<form:errors path="customer.email"/>
 			<br/>
 			
 			<!-- Customer password -->
 			<label for="customer_password">Password</label>
-			<form:input path="customer.password" placeholder="Enter a password"/>
+			<form:input path="customer.password" type="password"/>
 			<form:errors path="customer.password"/>
 			<br/>
 			

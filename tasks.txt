@@ -17,38 +17,16 @@ Friday:
 
 
 Later:
-	add customer id to location table as foreign key
 	remove employee id from orders
 	
 	crud addresses
 	optional: add order status
 
-	admin:
-		crud items
-		crud stores
-		crud locations
-		crud orders
-		crud users
+	super admin
 
-	add regular expressions to the validators
 	optional: switch jdbc template
 
-	controller:
-		edit account
-		menu page
-		home page
-		order 
-		check out
-		order tracking
 
-
-	DAO:
-		edit account
-		menu page
-		home page
-		order 
-		check out
-		order tracking
 
 	view
 		edit account
@@ -62,3 +40,6 @@ Later:
 
 		handle exceptions like page not found, connection timed out
 		check if email already exists
+
+
+		add email validator to register

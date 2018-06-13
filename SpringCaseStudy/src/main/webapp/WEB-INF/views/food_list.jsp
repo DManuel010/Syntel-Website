@@ -45,7 +45,7 @@ function displayButton() {
 			        <td>${foodItem.foodGroup}</td>
 			        <td>${foodItem.description}</td>
 			        <td>${foodItem.price}</td>
-					<td><img src="${context}/static/images/food/${foodItem.image}" width="350"></td>
+					<td><img src="${context}/static/images/food/${foodItem.image}" width="150vw"></td>
 			        
 			    </tr>
 				</c:forEach>

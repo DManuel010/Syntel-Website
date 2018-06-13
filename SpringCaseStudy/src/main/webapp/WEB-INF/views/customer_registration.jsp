@@ -8,42 +8,42 @@
 	
 		<!-- Customer First Name -->
 		<label for="customer_first_name">First Name:</label>
-		<form:input path="customer.first_name" placeholder="Enter your first name"/>
+		<form:input path="customer.first_name" placeholder="John"/>
 		<form:errors path="customer.first_name" />
 		<br/>
 		<!-- Customer Last Name -->
 		<label for="customer_last_name">Last Name:</label>
-		<form:input path="customer.last_name" placeholder="Enter your last name"/>
+		<form:input path="customer.last_name" placeholder="Smith"/>
 		<form:errors path="customer.last_name"/>
 		<br/>
 		<!-- Customer Email -->
 		<label for="customer_email">Email:</label>
-		<form:input path="customer.email" placeholder="Enter your email address"/>
+		<form:input path="customer.email" placeholder="john@smith.com"/>
 		<form:errors path="customer.email"/>
 		<br/>
 		<!-- Customer password -->
 		<label for="customer_password">Password:</label>
-		<form:input path="customer.password" placeholder="Enter a password"/>
+		<form:input path="customer.password" type="password"/>
 		<form:errors path="customer.password"/>
 		<br/>
 		<!-- Customer confirm password -->
 		<label for="customer_last_name">Confirm Password:</label>
-		<form:input path="customer.confirm_password" placeholder="Confirm password"/>
+		<form:input path="customer.confirm_password" type="password"/>
 		<form:errors path="customer.confirm_password"/>
 		<br/>
 		<!-- Customer birthday -->
 		<label for="customer_dob">Birthday:</label>
-		<form:input path="customer.dob" placeholder="Enter your birthday"/>
+		<form:input path="customer.dob" placeholder="11-Nov-2011"/>
 		<form:errors path="customer.dob"/>
 		<br/>
 		<!-- Customer home phone -->
 		<label for="customer_home_number">Home Number:</label>
-		<form:input path="customer.home_number" placeholder="Enter your home number"/>
+		<form:input path="customer.home_number" placeholder="123-456-7890"/>
 		<form:errors path="customer.home_number"/>
 		<br/>
 		<!-- Customer mobile phone -->
 		<label for="customer_mobile_number">Mobile Number:</label>
-		<form:input path="customer.mobile_number" placeholder="Enter your mobile number"/>
+		<form:input path="customer.mobile_number" placeholder="123-456-7890"/>
 		<form:errors path="customer.mobile_number"/>
 		<br/>
 		<input type="submit" value="Register" />

@@ -31,13 +31,12 @@
 			
 			<label for="instructions">Instructions:</label>
 			<br>
-			<textarea name="instructions" rows="10" cols="20"></textarea>
+			<textarea name="instructions" rows="5" cols="60"></textarea>
 			<br>
 			<label for="expectedDate">Expected Date:</label>
 			<input name="expectedDate" type="text" />
 			<br>
 			<fieldset>
-					<legend>Payment</legend>
 					<label for="paymentType"></label>
 					<select name="paymentType">
 						<option value="0">Paypal</option>

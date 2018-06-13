@@ -41,6 +41,13 @@ li a {
     text-decoration: none;
 }
 
+A:hover { 
+	COLOR: white; TEXT-DECORATION: none; font-weight: none; 
+	font-weight: 900;
+	transition: 0.1s;
+	font-size: 7vh;
+	}
+
 
 nav a {
 	color: white;

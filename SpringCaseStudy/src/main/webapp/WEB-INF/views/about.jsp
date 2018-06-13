@@ -2,7 +2,8 @@
     pageEncoding="ISO-8859-1"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@include file="header.jsp" %>
-	<div id="content">
+	<div id="content" style="font-size:2.5vh; padding: 0 10vw;
+	">
 
 		<h1>About</h1>
 		<p>
