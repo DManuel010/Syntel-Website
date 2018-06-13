@@ -1,5 +1,10 @@
 package com.syntinel.dao;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 import javax.annotation.Resource;
 
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -31,5 +36,36 @@ public class EmployeeService implements ServiceInterface<Employee>{
 	public void delete(int employeeId) {
 		String sql = "DELETE FROM EMPLOYEE WHERE EMPLOYEEID=?";
 		jdbcTemplate.update(sql, employeeId);
+	}
+
+	public Employee getObject(Employee employee) 
+	{
+		try
+		{
+			Connection con = jdbcTemplate.getDataSource().getConnection();
+			PreparedStatement preparedStatement = con.prepareStatement("SELECT "
+					+ " FIRSTNAME, LASTNAME, HIREDATE, TITLE, PHONENUMBER,"
+					+ " WORKADDRID, HOMEADDRID, LASTLOGIN FROM CUSTOMER WHERE EMAIL = ? AND EMPLOYEEID = ?");
+			preparedStatement.setString(1, employee.getEmail());
+			preparedStatement.setInt(2, employee.getEmployeeId());
+			ResultSet resultSet = preparedStatement.executeQuery();
+			while(resultSet.next())
+			{
+				employee.setFirstName(resultSet.getString(1));
+				employee.setLastName(resultSet.getString(2));
+				employee.setHireDate(resultSet.getString(3));
+				employee.setTitle(resultSet.getString(4));
+				employee.setPhoneNumber(resultSet.getString(5));
+				employee.setWorkAddrId(resultSet.getInt(6));
+				employee.setHomeAddrId(resultSet.getInt(7));
+				employee.setLastLogin(resultSet.getString(8));
+			}
+			
+		} catch (SQLException e) 
+		{	
+			e.printStackTrace();
+		}
+		
+		return employee;
 	}
 }
