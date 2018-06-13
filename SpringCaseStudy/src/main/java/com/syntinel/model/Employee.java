@@ -1,10 +1,17 @@
 package com.syntinel.model;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+
 public class Employee {
 
-	private int employeeId;
+	@NotEmpty
+	private String employeeId;
 	private String firstName;
 	private String lastName;
+	
+	@Email
+	@NotEmpty
 	private String email;
 	private String hireDate;
 	private String title;
@@ -13,15 +20,16 @@ public class Employee {
 	private int homeAddrId;
 	private String lastLogin;
 	
-	public Employee() {
-		
+	public Employee() 
+	{
+		this.setTitle(null);
 	}
 
-	public int getEmployeeId() {
+	public String getEmployeeId() {
 		return employeeId;
 	}
 
-	public void setEmployeeId(int employeeId) {
+	public void setEmployeeId(String employeeId) {
 		this.employeeId = employeeId;
 	}
 
