@@ -45,13 +45,15 @@ function displayButton() {
 			        <td>${foodItem.foodGroup}</td>
 			        <td>${foodItem.description}</td>
 			        <td>${foodItem.price}</td>
+					<td><img src="${context}/static/images/food/${foodItem.image}" width="150vw"></td>
+			        
 			    </tr>
 				</c:forEach>
 			</table>
-			<c:if test="${sessionScope.customer != null}">
-				<input id="summary" type="submit" value="Checkout" style="display:none"/>
+			<c:if test="${sessionScope.customer != null && sessionScope.customer.id != 0}">
+				<input id="summary" type="submit" value="Checkout" class="btn btn-danger btn-lg btn-block" style="display:none"/>
+				<div id="spacer"></div>
 			</c:if>
 		</form>
 	</div>
-</body>
-</html>
+<%@include file="footer.jsp" %>

@@ -9,5 +9,4 @@
 		
 		<a href="/customer/dashboard">Go to dashboard</a>
 	</div>
-</body>
-</html>
+<%@include file="footer.jsp" %>
