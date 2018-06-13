@@ -1,5 +1,6 @@
 package com.syntinel.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.constraints.*;
@@ -49,6 +50,7 @@ public class Customer
 	//unrelated fields to Customer class
 	//but it is used to insert an order
 	private List<Food> items;
+	private ArrayList<String> itemCounts;
 	private double running_total;
 	private String instructions;
 	private Location location;
@@ -68,6 +70,7 @@ public class Customer
 	public void setRunning_total(double running_total) {this.running_total = running_total;}
 	public String getInstructions() {return instructions;}
 	public List<Food> getItems() {return items;}
+	public ArrayList<String> getItemCounts() {return itemCounts;}
 
 	
 	//Default constructor
@@ -105,7 +108,9 @@ public class Customer
 	public void setInstructions(String instructions) 		 {this.instructions = instructions;}
 	private void setRegister_date(String register_date) 	 {this.register_date = register_date;}
 	public void setItems(List<Food> items) {this.items = items;}
-
+	public void setItemCounts(ArrayList<String> itemCounts) {this.itemCounts = itemCounts;}
+	
+	
 	@Override
 	public String toString() {
 		return "Customer [id=" + id + ", first_name=" + first_name + ", last_name=" + last_name + ", email=" + email

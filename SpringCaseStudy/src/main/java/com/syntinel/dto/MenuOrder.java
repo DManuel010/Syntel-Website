@@ -17,6 +17,18 @@ public class MenuOrder {
 	public void setItemCounts(ArrayList<String> itemCounts) {
 		this.itemCounts = itemCounts;
 	}
+	
+	public ArrayList<String> getNonZeroItemCounts() {
+		
+		ArrayList<String> nonZeroItemCounts = new ArrayList<String>();
+		for (String count : itemCounts) {
+			if (!count.equals("0") ) {
+				nonZeroItemCounts.add(count);
+			}
+			
+		}
+		return nonZeroItemCounts;
+	}
 
 	@Override
 	public String toString() {

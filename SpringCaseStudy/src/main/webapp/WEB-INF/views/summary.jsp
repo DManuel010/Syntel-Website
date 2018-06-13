@@ -7,7 +7,7 @@
 		
 		<h1>In Checkout</h1>
 		
-		<form action="/location/delivery" method="POST">
+		<form action="/location/delivery" modelAttribute="itemCounts" method="POST">
 			<table>
 				<thead>
 					<tr>
@@ -18,16 +18,20 @@
 						<th>Qty</th>
 					</tr>
 				</thead>
-				<c:forEach items="${sessionScope.selectedItems}" var="selectedItem">
+				<c:forEach items="${sessionScope.selectedItems}" var="selectedItem" varStatus="i">
 					<tr>   
 				        <td>${selectedItem.name}</td>
 				        <td>${selectedItem.foodGroup}</td>
 				        <td>${selectedItem.description}</td>
 				        <td>${selectedItem.price}</td>
-				        <td><input id="number" type="number" min="1" maxlength="10" value="1"/></td>
+				        <!-- <td><form:input id="number" type="number" path="itemCounts[${i.index}]"
+				        min="1" maxlength="10" value="${itemCounts[i.index]}"/></td>-->
+				        <td>${itemCounts[i.index]}</td>
+				        
 			    	</tr>
 				</c:forEach>
 			</table>
+			
 			
 			<label for="instructions">Instructions:</label>
 			<br>

@@ -70,9 +70,11 @@ public class ItemController
 			@ModelAttribute ("menuOrder") MenuOrder menuOrder)
 	{
 		ModelAndView modelAndView = new ModelAndView();
-		
+				
 		customer.setItems(foodServ.getSelectedItems(menuOrder.getItemCounts()));
+		customer.setItemCounts(menuOrder.getNonZeroItemCounts());
 		modelAndView.addObject("selectedItems", customer.getItems());
+		modelAndView.addObject("itemCounts", customer.getItemCounts());
 		modelAndView.setViewName("summary");
 		return modelAndView;
 	}
@@ -116,10 +118,12 @@ public class ItemController
 		customer.setOrderId(orderServ.getLatestOrder(customer.getId()));
 		
 		//insert order ids and meal ids into foodorder
+		int index = 0;
 		for(Food item : customer.getItems())
 		{
 			foodOrder.setFoodId(item.getFoodId());
 			foodOrder.setOrderId(customer.getOrderId());
+			foodOrder.setQuantity(Integer.parseInt(customer.getItemCounts().get(index++)));
 			foodOrderServ.create(foodOrder);
 		}
 		
