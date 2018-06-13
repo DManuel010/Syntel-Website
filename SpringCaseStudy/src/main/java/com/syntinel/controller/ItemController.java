@@ -66,11 +66,12 @@ public class ItemController
 	}
 	
 	@RequestMapping(value="/summary", method=RequestMethod.POST)
-	public ModelAndView checkout(@SessionAttribute("customer") Customer customer)
+	public ModelAndView checkout(@SessionAttribute("customer") Customer customer,
+			@ModelAttribute ("menuOrder") MenuOrder menuOrder)
 	{
 		ModelAndView modelAndView = new ModelAndView();
 		
-		//customer.setItems(foodServ.getSelectedItems(foodItemChkbx));
+		customer.setItems(foodServ.getSelectedItems(menuOrder.getItemCounts()));
 		modelAndView.addObject("selectedItems", customer.getItems());
 		modelAndView.setViewName("summary");
 		return modelAndView;

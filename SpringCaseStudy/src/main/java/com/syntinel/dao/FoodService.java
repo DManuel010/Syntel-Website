@@ -66,17 +66,17 @@ public class FoodService implements ServiceInterface<Food>
 		return jdbcTemplate.query(sql, new FoodRowMapper());
 	}
 
-	public List<Food> getSelectedItems(ArrayList<Integer> ids)
+	public List<Food> getSelectedItems(ArrayList<String> ids)
 	{
 		List<Food> foodList = new ArrayList<Food>();
 		
-		for(Integer id : ids)
+		for(String id : ids)
 		{
 			try {
 				Connection con = jdbcTemplate.getDataSource().getConnection();
 				PreparedStatement preparedStatement = con.prepareStatement("SELECT FOODID, NAME, "
 						+ "FOODGROUP, PRICE, DESCRIPTION, IMAGE FROM FOOD WHERE FOODID = ?");
-				preparedStatement.setInt(1, id);
+				preparedStatement.setString(1, id);
 				
 				ResultSet result = preparedStatement.executeQuery();
 				while(result.next())
