@@ -2,3 +2,4 @@ venv/*
 *.pyc
 .project
 .settings/*
+/build/
