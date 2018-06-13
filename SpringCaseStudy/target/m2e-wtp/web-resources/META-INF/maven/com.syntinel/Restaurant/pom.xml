@@ -71,12 +71,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 			
-		<!-- 	
-			<plugin>
-  				<groupId>org.eclipse.jetty</groupId>
-  				<artifactId>jetty-maven-plugin</artifactId>
-  				<version>9.3.24-SNAPSHOT</version>
-			</plugin>  -->
+		
 		</plugins>
 	</build>
 </project>
