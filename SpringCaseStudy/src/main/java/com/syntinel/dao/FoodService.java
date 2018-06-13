@@ -32,13 +32,15 @@ public class FoodService implements ServiceInterface<Food>
 	public void create(Food food) {
 		try {
 			Connection con = jdbcTemplate.getDataSource().getConnection();
-			CallableStatement callableStatement = con.prepareCall("{call SP_INSERT_NEW_FOOD(?,?,?,?,?,?)}");
+			CallableStatement callableStatement = con.prepareCall("{call SP_INSERT_NEW_FOOD(?,?,?,"
+					+ "?,?,?,?)}");
 			callableStatement.setString(1, Utilities.createUniqueId());
 			callableStatement.setString(2, food.getName());
 			callableStatement.setString(3, food.getFoodGroup());
 			callableStatement.setDouble(4, food.getPrice());
 			callableStatement.setString(5, food.getDescription());
 			callableStatement.setInt(6, food.getStock());
+			callableStatement.setString(7, food.getImage());
 			callableStatement.execute();
 			
 		} catch (SQLException e) {
@@ -60,7 +62,7 @@ public class FoodService implements ServiceInterface<Food>
 	
 	public List<Food> viewAll() {
 		
-		String sql = "SELECT FOODID, NAME, FOODGROUP, PRICE, DESCRIPTION FROM FOOD";
+		String sql = "SELECT FOODID, NAME, FOODGROUP, PRICE, DESCRIPTION, IMAGE FROM FOOD";
 		return jdbcTemplate.query(sql, new FoodRowMapper());
 	}
 
@@ -73,7 +75,7 @@ public class FoodService implements ServiceInterface<Food>
 			try {
 				Connection con = jdbcTemplate.getDataSource().getConnection();
 				PreparedStatement preparedStatement = con.prepareStatement("SELECT FOODID, NAME, "
-						+ "FOODGROUP, PRICE, DESCRIPTION, STOCK FROM FOOD WHERE FOODID = ?");
+						+ "FOODGROUP, PRICE, DESCRIPTION, IMAGE FROM FOOD WHERE FOODID = ?");
 				preparedStatement.setString(1, id);
 				
 				ResultSet result = preparedStatement.executeQuery();
@@ -85,6 +87,7 @@ public class FoodService implements ServiceInterface<Food>
 					food.setFoodGroup(result.getString("FOODGROUP"));
 					food.setPrice(result.getDouble("PRICE"));
 					food.setDescription(result.getString("DESCRIPTION"));
+					food.setImage(result.getString("IMAGE"));
 					foodList.add(food);
 				}
 				

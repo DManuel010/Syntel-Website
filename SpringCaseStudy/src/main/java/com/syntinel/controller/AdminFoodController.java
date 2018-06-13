@@ -21,16 +21,11 @@ public class AdminFoodController {
 	
 	@Autowired
 	FoodService foodService;
-	
+	//a comment
 	@RequestMapping(value="/food", method=RequestMethod.GET)
 	public ModelAndView viewFood(Model model) {
 		//TODO: make this actually work, DOH!
-		/*
-		 * List<Food> foodItems = foodService.viewAll();
-		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.addObject("foodItems", foodItems);
-		return modelAndView;
-		*/
+
 		Food food = new Food();
 		model.addAttribute("food", food);
 		List<Food> foodItems = foodService.viewAll();

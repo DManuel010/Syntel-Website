@@ -1,25 +1,14 @@
 package com.syntinel.model;
 
-import javax.validation.constraints.NotEmpty;
-
 public class Food {
 
-	@NotEmpty
 	private int foodId;
-	
-	@NotEmpty
 	private String name;
-	
-	@NotEmpty
 	private String foodGroup;
-	
-	@NotEmpty
 	private double price;
-	
 	private String description;
-	
-	@NotEmpty
 	private int stock;
+	private String image;
 	
 	
 
@@ -75,11 +64,18 @@ public class Food {
 		this.stock = stock;
 	}
 
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
 	@Override
 	public String toString() {
 		return "Food [foodId=" + foodId + ", name=" + name + ", foodGroup=" + foodGroup + ", price=" + price
-				+ ", description=" + description + ", stock=" + stock + "]";
+				+ ", description=" + description + ", stock=" + stock + ", image=" + image + "]";
 	}
-	
 	
 }
