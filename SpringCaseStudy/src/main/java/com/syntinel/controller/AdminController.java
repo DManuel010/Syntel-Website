@@ -40,13 +40,5 @@ public class AdminController
 		modelAndView.setViewName("#");
 		return modelAndView;
 	}
-	
-	
 
-	
-	@RequestMapping(value="/registration", method=RequestMethod.GET)
-	public String loadCustomerForm(ModelMap model)
-	{
-		return "temp";
-	}
 }

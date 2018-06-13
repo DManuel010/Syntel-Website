@@ -33,19 +33,19 @@
 		<form method="POST" modelAttribute="food" action="admin/food/add">
 			<label for="addFood">Add Food</label>
 			
-			<form:input path="food.name" placeholder="Enter food name" />
+			<form:input path="food.name" placeholder="food name" />
 			<form:errors path="food.name" />
 			
-			<form:input path="food.foodGroup" placeholder="Enter food group" />
+			<form:input path="food.foodGroup" placeholder="food group" />
 			<form:errors path="food.foodGroup" />
 			
-			<form:input path="food.price" placeholder="Enter price" />
+			<form:input path="food.price" placeholder="price" />
 			<form:errors path="food.price" />
 			
-			<form:input path="food.description" placeholder="Enter description" />
+			<form:input path="food.description" placeholder="description" />
 			<form:errors path="food.description" />
 			
-			<form:input path="food.stock" placeholder="Enter quantity in stock" />
+			<form:input path="food.stock" placeholder="stock" />
 			<form:errors path="food.stock" />
 			
 			<input type="submit" value="Add Food" />
@@ -55,7 +55,7 @@
 		<form method="POST" modelAttribute="food" action="admin/food/delete">
 			<label for="deleteFood">Delete Food</label>
 			
-			<form:input path="food.foodId" placeholder="Enter Food ID #" />
+			<form:input path="food.foodId" placeholder="Food ID #" />
 			<form:errors path="food.foodId" />
 			
 			<input type="submit" value="Delete Food" />
