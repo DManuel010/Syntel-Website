@@ -34,12 +34,8 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Examples/Jar Files/jars/hamcrest-core-1.2.jar"/>
-	<classpathentry kind="lib" path="C:/Examples/Jar Files/jars/javaee.jar"/>
-	<classpathentry kind="lib" path="C:/Examples/Jar Files/jars/junit-4.11.jar"/>
-	<classpathentry kind="lib" path="C:/Examples/Jar Files/jars/mail.jar"/>
-	<classpathentry kind="lib" path="C:/Examples/Jar Files/jars/ojdbc6-11.2.0.3.jar"/>
-	<classpathentry kind="lib" path="C:/Examples/Jar Files/jars/ojdbc14.jar"/>
-	<classpathentry kind="lib" path="C:/Examples/Jar Files/jars/ojdbc14_g.jar"/>
+	<classpathentry kind="lib" path="C:/Users/syntel.PHX440G3-28160Z/Documents/workspace/Syntel-Website/jars/javaee.jar"/>
+	<classpathentry kind="lib" path="C:/Users/syntel.PHX440G3-28160Z/Documents/workspace/Syntel-Website/jars/mail.jar"/>
+	<classpathentry kind="lib" path="C:/Users/syntel.PHX440G3-28160Z/Documents/workspace/Syntel-Website/jars/ojdbc6-11.2.0.3.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
