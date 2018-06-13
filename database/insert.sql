@@ -46,11 +46,16 @@ insert into payment
 insert into employee
 	values (0,'Eric', 'Karnis', 'eric@karnis.com','07-jan-18','Œ?˜ä6',1234567890,0,0,'07-may-18');
 
+insert into employee
+	values(1114298631, 'Jessica', 'Jones','jessica@gmail.com','07-jan-18','admin',1234567890,0,0,'07-may-18');
+
 insert into orders
 	values (0,0,30.0,0,0,'07-jan-18','07-jan-18','07-jan-18','make it good ok');
 
 insert into foodorder
 	values(0,0,0,10);
+	
+
 
 
 disconnect;

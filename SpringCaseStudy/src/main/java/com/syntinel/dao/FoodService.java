@@ -74,7 +74,7 @@ public class FoodService implements ServiceInterface<Food>
 			try {
 				Connection con = jdbcTemplate.getDataSource().getConnection();
 				PreparedStatement preparedStatement = con.prepareStatement("SELECT FOODID, NAME, "
-						+ "FOODGROUP, PRICE, DESCRIPTION FROM FOOD WHERE FOODID = ?");
+						+ "FOODGROUP, PRICE, DESCRIPTION, STOCK FROM FOOD WHERE FOODID = ?");
 				preparedStatement.setString(1, id);
 				
 				ResultSet result = preparedStatement.executeQuery();

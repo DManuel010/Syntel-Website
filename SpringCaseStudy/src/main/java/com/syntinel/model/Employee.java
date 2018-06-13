@@ -8,7 +8,6 @@ public class Employee {
 	private String email;
 	private String hireDate;
 	private String title;
-	private int loginId;
 	private String phoneNumber;
 	private int workAddrId;
 	private int homeAddrId;
@@ -66,13 +65,6 @@ public class Employee {
 		this.title = title;
 	}
 
-	public int getLoginId() {
-		return loginId;
-	}
-
-	public void setLoginId(int loginId) {
-		this.loginId = loginId;
-	}
 
 	public String getPhoneNumber() {
 		return phoneNumber;
@@ -105,5 +97,14 @@ public class Employee {
 	public void setLastLogin(String lastLogin) {
 		this.lastLogin = lastLogin;
 	}
+
+	@Override
+	public String toString() {
+		return "Employee [employeeId=" + employeeId + ", firstName=" + firstName + ", lastName=" + lastName + ", email="
+				+ email + ", hireDate=" + hireDate + ", title=" + title + ", phoneNumber=" + phoneNumber
+				+ ", workAddrId=" + workAddrId + ", homeAddrId=" + homeAddrId + ", lastLogin=" + lastLogin + "]";
+	}
+	
+	
 	
 }
