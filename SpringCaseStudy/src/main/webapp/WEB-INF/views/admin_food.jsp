@@ -1,8 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@include file="header.jsp" %>
-	<div id="content">
+<%@include file="admin_header.jsp" %>
+<link type="text/css" rel="stylesheet" href="${context}/static/css/home.css">
+
+
 		<h1>Food Menu</h1>
 		
 		<form action="/order/summary" method="POST">
@@ -65,6 +67,6 @@
 			<input type="submit" value="Delete Food" />
 			<input type="reset" value="Clear Form" />
 		</form>
-		
-	</div>
-</html>
+
+
+<%@include file="footer.jsp" %>

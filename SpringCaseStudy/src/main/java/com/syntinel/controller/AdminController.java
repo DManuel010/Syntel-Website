@@ -59,8 +59,6 @@ public class AdminController
 		
 		// need to do basic login validation here?
 	
-
-
 		adminValidator.validate(employee, result);
 		
 		if(result.hasErrors())
