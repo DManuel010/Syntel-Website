@@ -1,0 +1,37 @@
+
+Team 1
+	Super admin
+		Chandler, Eric
+
+	Webservice
+		Shannon, Carlos
+
+	Test admin and super admin
+
+	Update css
+		Eric
+
+	Add quantity to orders
+		Chandler
+
+	Optional: add order status
+		find pending by delivery date not null
+		Chandler
+
+	check if email already exists
+		Eric
+
+	Make a controller and page for /error
+
+	
+	Team 2
+		Admin
+
+		Add account editing
+
+		Handle exceptions like page not found, connection timed out
+
+		Admin log in
+			David
+		Admin viewing orders
+			David
