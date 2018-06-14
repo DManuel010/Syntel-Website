@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@include file="admin_header.jsp" %>
+<%@include file="super_admin_header.jsp" %>
 <link type="text/css" rel="stylesheet" href="${context}/static/css/home.css">
 <style>
 <!--
@@ -43,7 +43,7 @@ table{
 			</table>
 			<br>
 		
-		<form method="POST" modelAttribute="employee" action="employee/add">
+		<form method="POST" modelAttribute="employee" action="employees/add">
 			<label for="addEmployee">Add Employee</label>
 			
 			<form:input path="employee.firstName" placeholder="first name" />
@@ -54,9 +54,6 @@ table{
 			
 			<form:input path="employee.email" placeholder="employee@email.com" />
 			<form:errors path="employee.email" />
-			
-			<form:input path="employee.hireDate" placeholder="DD-MMM-YY" />
-			<form:errors path="employee.hireDate" />
 			
 			<form:input path="employee.title" placeholder="employee title" />
 			<form:errors path="employee.title" />
@@ -77,7 +74,7 @@ table{
 			<input type="reset" value="Clear Form" />
 		</form>
 		
-		<form method="POST" modelAttribute="employee" action="employee/delete">
+		<form method="POST" modelAttribute="employee" action="employees/delete">
 			<label for="deleteFood">Delete Employee</label>
 			
 			<form:input path="employee.employeeId" placeholder="Employee Id #" />
@@ -86,5 +83,7 @@ table{
 			<input type="submit" value="Delete Employee" />
 			<input type="reset" value="Clear Form" />
 		</form>
+		
+		<p>${sessionscope.employee}</p>
 
 <%@include file="footer.jsp" %>

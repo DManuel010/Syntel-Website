@@ -17,6 +17,8 @@
 			</article>
 			
 		</section>
+		
+		<p>${sessionscope.employee}</p>
 
 <%@include file="footer.jsp" %>
 
