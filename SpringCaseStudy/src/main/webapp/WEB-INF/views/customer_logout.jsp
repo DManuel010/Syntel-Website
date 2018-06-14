@@ -10,7 +10,8 @@
 <body>
 
 <%
-	request.getSession().removeAttribute("customer");
+	//request.getSession().removeAttribute("customer");
+	request.getSession().invalidate();
 %>
 
 	<c:redirect url="/"/>

@@ -29,13 +29,11 @@ public class AdminValidator implements Validator
 		}
 
 		
-		//TODO: admin not existing needs fixing.
-		
-//		if(!employee.getEmail().isEmpty() && !employee.getEmployeeId().isEmpty())
-//		{
-//			 if(employee.getTitle().isEmpty())
-//				 error.rejectValue("employeeId", "employee.employeeId.wrong");
-//		}
+		if(!employee.getEmail().isEmpty() && !employee.getEmployeeId().isEmpty())
+		{
+			 if(employee.getTitle().equals("N"))
+				 error.rejectValue("employeeId", "employee.employeeId.wrong");
+		}
 		
 		
 	}

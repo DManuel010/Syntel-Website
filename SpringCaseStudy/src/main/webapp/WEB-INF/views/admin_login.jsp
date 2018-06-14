@@ -10,13 +10,13 @@
 
 	<!-- employee id -->
 	<label for="employee_employeeId">Employee ID:</label>
-	<form:input path="employee.employeeId" placeholder="Enter your ID"/>
+	<form:input class="form-control" path="employee.employeeId" placeholder="Enter your ID"/>
 	<form:errors path="employee.employeeId"/>
 	<br/>
 	
 	<!-- employee Email -->
 	<label for="employee_email">Email:</label>
-	<form:input path="employee.email" placeholder="Enter your email address"/>
+	<form:input class="form-control" path="employee.email" placeholder="Enter your email address"/>
 	<form:errors path="employee.email"/>
 	<br/>
 
