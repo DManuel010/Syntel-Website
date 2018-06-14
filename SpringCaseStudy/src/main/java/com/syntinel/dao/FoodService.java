@@ -137,7 +137,7 @@ public class FoodService implements ServiceInterface<Food>
 	 * Returns a list of all the active (menu displayed) food items
 	 */
 	public List<Food> viewAllActive() {
-		String sql = "SELECT * FROM Food WHERE active = 1";
+		String sql = "SELECT * FROM Food WHERE active = 1 ORDER BY FOODID ASC";
 		return jdbcTemplate.query(sql, new FoodRowMapper());
 	}
 	
