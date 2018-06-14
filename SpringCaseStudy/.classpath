@@ -34,15 +34,10 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/jars/asm-3.1.jar"/>
-	<classpathentry kind="lib" path="C:/jars/hamcrest-core-1.2.jar"/>
-	<classpathentry kind="lib" path="C:/jars/jersey-client-1.17.jar"/>
-	<classpathentry kind="lib" path="C:/jars/jersey-core-1.17.jar"/>
-	<classpathentry kind="lib" path="C:/jars/jersey-server-1.17.jar"/>
-	<classpathentry kind="lib" path="C:/jars/jersey-servlet-1.17.jar"/>
-	<classpathentry kind="lib" path="C:/jars/jsr311-api-1.1.1.jar"/>
-	<classpathentry kind="lib" path="C:/jars/junit-4.11.jar"/>
-	<classpathentry kind="lib" path="C:/jars/ojdbc6.jar"/>
-	<classpathentry kind="lib" path="C:/jars/ojdbc14.jar"/>
+
+	<classpathentry kind="lib" path="C:/Examples/Jar Files/javaee.jar"/>
+	<classpathentry kind="lib" path="C:/Examples/Jar Files/mail.jar"/>
+	<classpathentry kind="lib" path="C:/Examples/Jar Files/ojdbc6-11.2.0.3.jar"/>
+
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
