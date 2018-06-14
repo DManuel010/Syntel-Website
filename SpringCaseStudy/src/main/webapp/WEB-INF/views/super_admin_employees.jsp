@@ -55,7 +55,7 @@ table{
 			<form:input path="emp.email" placeholder="employee@email.com" />
 			<form:errors path="emp.email" />
 			
-			<form:input path="emp.title" placeholder="employee title" />
+			<form:input style="width:auto;font-weight:normal;text-align:inherit;" path="emp.title" placeholder="employee title" />
 			<form:errors path="emp.title" />
 			
 			<form:input path="emp.phoneNumber" placeholder="Phone Number (111-222-3333)" />
@@ -74,6 +74,8 @@ table{
 			<input type="reset" value="Clear Form" />
 		</form>
 		
+		<br>
+
 		<form method="POST" modelAttribute="emp" action="employees/delete">
 			<label for="deleteFood">Delete Employee</label>
 			

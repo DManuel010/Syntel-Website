@@ -28,6 +28,11 @@ public class FoodService implements ServiceInterface<Food>
 	
 	public FoodService() {}
 	
+	/**
+	 * Adds a food item to the database.
+	 * The id is automatically created by this method
+	 * @param food The food item you would like to add
+	 */
 	@Override
 	public void create(Food food) {
 		try {
@@ -49,7 +54,10 @@ public class FoodService implements ServiceInterface<Food>
 		
 	}
 	
-	
+	/**
+	 * Deletes the food item in the database with the given id
+	 * @param foodId Id of item to be deleted
+	 */
 	public void delete(int foodId) {
 		try {
 			Connection con = jdbcTemplate.getDataSource().getConnection();
@@ -89,6 +97,10 @@ public class FoodService implements ServiceInterface<Food>
 		
 	}
 	
+	/**
+	 * 
+	 * @return a list of all food items in the database given as food objects
+	 */
 	public List<Food> viewAll() {
 		String sql = "SELECT * FROM Food";
 		return jdbcTemplate.query(sql, new FoodRowMapper());
@@ -133,7 +145,7 @@ public class FoodService implements ServiceInterface<Food>
 	}	
 	
 	
-	/*
+	/**
 	 * Returns a list of all the active (menu displayed) food items
 	 */
 	public List<Food> viewAllActive() {
@@ -142,9 +154,10 @@ public class FoodService implements ServiceInterface<Food>
 	}
 	
 	
-	/*
+	/**
 	 * Toggles the "Active" flag for a given food item to "active" (1)
 	 * Used to mark a food item to be displayed on the customer menu
+	 * @param foodID Id of food to be activated
 	 */
 	public void activate(int foodID) {
 		String sql = "UPDATE Food SET active = 1 WHERE foodID = ?";
@@ -152,9 +165,10 @@ public class FoodService implements ServiceInterface<Food>
 	}
 	
 	
-	/*
+	/**
 	 * Toggles the "Active" flag for a given food item to "deactivate" (0)
 	 * Used to mark a food item to be hidden from the customer menu
+	 * @param foodID Id of food to be deactivated
 	 */
 	public void deactivate(int foodID) {
 		String sql = "UPDATE Food SET active = 0 WHERE foodID = ?";
