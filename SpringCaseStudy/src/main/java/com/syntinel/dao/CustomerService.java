@@ -11,7 +11,7 @@ import javax.annotation.Resource;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 import org.syntinel.mappers.CustomerRowMapper;
-import org.syntinel.mappers.FoodRowMapper;
+
 import org.syntinel.utilities.Utilities;
 
 import com.syntinel.model.Customer;

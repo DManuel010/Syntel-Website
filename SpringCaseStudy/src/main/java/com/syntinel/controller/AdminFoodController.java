@@ -21,11 +21,9 @@ public class AdminFoodController {
 	
 	@Autowired
 	FoodService foodService;
-	//a comment
+	
 	@RequestMapping(value="/food", method=RequestMethod.GET)
 	public ModelAndView viewFood(Model model) {
-		//TODO: make this actually work, DOH!
-
 		Food food = new Food();
 		model.addAttribute("food", food);
 		List<Food> foodItems = foodService.viewAll();
@@ -36,23 +34,37 @@ public class AdminFoodController {
 	}
 	
 	@RequestMapping(value="/food/add", method=RequestMethod.POST)
-	public ModelAndView addFood(@ModelAttribute("food") Food food) {
+	public ModelAndView addFood(@ModelAttribute("food") Food food, Model model) {
 		foodService.create(food);
+		model.addAttribute("food", food);
 		List<Food> foodItems = foodService.viewAll();
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("foodItems", foodItems);
-		modelAndView.setViewName("admin_food");
+		modelAndView.setViewName("redirect:/admin/food");
 		return modelAndView;
 	}
 	
-	@RequestMapping(value="/food/delete", method=RequestMethod.POST)
-	public ModelAndView deleteFood(@ModelAttribute("food") Food food) {
+	@RequestMapping(value="/food/deactivate", method=RequestMethod.POST)
+	public ModelAndView deactivateFood(@ModelAttribute("food") Food food, Model model) {
 		int foodID = food.getFoodId();
-		foodService.delete(foodID);
+		foodService.deactivate(foodID);
+		model.addAttribute("food", food);
 		List<Food> foodItems = foodService.viewAll();
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("foodItems", foodItems);
-		modelAndView.setViewName("admin_food");
+		modelAndView.setViewName("redirect:/admin/food");
+		return modelAndView;
+	}
+	
+	@RequestMapping(value="/food/activate", method=RequestMethod.POST)
+	public ModelAndView activateFood(@ModelAttribute("food") Food food, Model model) {
+		int foodID = food.getFoodId();
+		foodService.activate(foodID);
+		model.addAttribute("food", food);
+		List<Food> foodItems = foodService.viewAll();
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("foodItems", foodItems);
+		modelAndView.setViewName("redirect:/admin/food");
 		return modelAndView;
 	}
 }

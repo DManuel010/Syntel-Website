@@ -7,7 +7,7 @@ import org.springframework.jdbc.core.RowMapper;
 
 import com.syntinel.model.Food;
 
-public class FoodRowMapper  implements RowMapper<Food>{
+public class FoodRowMapper  implements RowMapper<Food> {
 
 	@Override
 	public Food mapRow(ResultSet rs, int index) throws SQLException {
@@ -17,7 +17,9 @@ public class FoodRowMapper  implements RowMapper<Food>{
 		food.setFoodGroup(rs.getString(3));
 		food.setPrice(rs.getDouble(4));
 		food.setDescription(rs.getString(5));
-		food.setImage(rs.getString(6));
+		food.setStock(rs.getInt(6));
+		food.setImage(rs.getString(7));
+		food.setActive(rs.getInt(8));
 		return food;
 	}
 

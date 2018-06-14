@@ -4,17 +4,14 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.List;
 
 import javax.annotation.Resource;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
-import org.syntinel.mappers.FoodRowMapper;
 import org.syntinel.utilities.Utilities;
 
 import com.syntinel.model.Employee;
-import com.syntinel.model.Food;
 
 @Service
 public class EmployeeService implements ServiceInterface<Employee>{
