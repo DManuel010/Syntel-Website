@@ -35,6 +35,11 @@ public class AdminFoodController {
 	
 	@RequestMapping(value="/food/add", method=RequestMethod.POST)
 	public ModelAndView addFood(@ModelAttribute("food") Food food, Model model) {
+		if(food.isExternalURL()) {
+			String foodURL = food.getImage();
+			foodURL = "&" + foodURL;
+			food.setImage(foodURL);
+		}
 		foodService.create(food);
 		model.addAttribute("food", food);
 		List<Food> foodItems = foodService.viewAll();
