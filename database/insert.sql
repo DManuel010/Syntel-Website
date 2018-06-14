@@ -1,5 +1,7 @@
-﻿insert into food 
-	values (0, 'Eggs', 'Breakfast', 3.0, '1000 things', 999, 'eggs.jpg', 1);
+insert into food
+	values (0,'Eggs', 'Breakfast',3.0, '1000 things', 999, 'eggs.jpg', 1);
+
+
 insert into food
 	values (1, 'Sandwich', 'Lunch', 6.0, 'bread and things', 999, 'sandwich.jpg', 1);
 insert into food 
@@ -49,7 +51,7 @@ insert into payment
 	values (2,'cash',25.0,'09-jan-18');
 
 insert into employee
-	values (0,'Eric', 'Karnis', 'eric@karnis.com','07-jan-18','Œ?˜ä6',1234567890,0,0,'07-may-18','e7bc34627e12ddb5f1167fda37fbc2fb');
+	values (0,'Eric', 'Karnis', 'eric@karnis.com','07-jan-18','superadmin',1234567890,0,0,'07-may-18','e7bc34627e12ddb5f1167fda37fbc2fb');
 
 insert into employee
 	values(1114298631, 'Jessica', 'Jones','jessica@gmail.com','07-jan-18','admin',1234567890,0,0,'07-may-18','e7bc34627e12ddb5f1167fda37fbc2fb');

@@ -5,9 +5,7 @@ import java.sql.SQLException;
 
 import org.springframework.jdbc.core.RowMapper;
 
-import com.syntinel.model.Customer;
 import com.syntinel.model.Employee;
-import com.syntinel.model.Location;
 
 public class EmployeeRowMapper implements RowMapper<Employee>{
 
@@ -24,10 +22,9 @@ public class EmployeeRowMapper implements RowMapper<Employee>{
 		employee.setWorkAddrId(rs.getInt(8));	
 		employee.setHomeAddrId(rs.getInt(9));		
 		employee.setLastLogin(rs.getString(10));
+		employee.setPassword(rs.getString(11));
 		
 		return employee;
-		
-		
 	}
 
 }
