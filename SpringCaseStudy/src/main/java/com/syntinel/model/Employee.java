@@ -19,7 +19,16 @@ public class Employee {
 	private int workAddrId;
 	private int homeAddrId;
 	private String lastLogin;
+	private String password;
 	
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
 	public Employee() 
 	{
 		this.setTitle(null);
@@ -110,9 +119,11 @@ public class Employee {
 	public String toString() {
 		return "Employee [employeeId=" + employeeId + ", firstName=" + firstName + ", lastName=" + lastName + ", email="
 				+ email + ", hireDate=" + hireDate + ", title=" + title + ", phoneNumber=" + phoneNumber
-				+ ", workAddrId=" + workAddrId + ", homeAddrId=" + homeAddrId + ", lastLogin=" + lastLogin + "]";
+				+ ", workAddrId=" + workAddrId + ", homeAddrId=" + homeAddrId + ", lastLogin=" + lastLogin
+				+ ", password=" + password + "]";
 	}
-	
+
+
 	
 	
 }

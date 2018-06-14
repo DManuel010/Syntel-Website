@@ -67,6 +67,39 @@ public class OrderCollectionService implements ServiceInterface<OrderCollection>
 		
 		return orderCollection;
 	}
+	
+	public List<OrderCollection> getOrderDetail(String orderid)
+	{
+		List<OrderCollection> orderCollection = new ArrayList<OrderCollection>();
+		try
+		{
+			Connection con = jdbcTemplate.getDataSource().getConnection();
+			PreparedStatement preparedStatement = con.prepareStatement("SELECT FO.ORDERID, F.NAME, F.DESCRIPTION, F.FOODGROUP, F.PRICE, O.NOTE, FO.QUANTITY " + 
+					"FROM FOODORDER FO JOIN FOOD F ON FO.FOODID = F.FOODID JOIN ORDERS O ON FO.ORDERID = O.ORDERID WHERE FO.ORDERID = ?");
+			preparedStatement.setString(1,orderid);
+			ResultSet result = preparedStatement.executeQuery();
+			while(result.next())
+			{
+				OrderCollection orders = new OrderCollection();
+				
+				orders.getOrder().setOrderId(result.getInt(1));
+				orders.getFood().setName(result.getString(2));
+				orders.getFood().setDescription(result.getString(3));
+				orders.getFood().setFoodGroup(result.getString(4));
+				orders.getFood().setPrice(result.getDouble(5));
+				orders.getCustomer().setInstructions(result.getString(6));
+				orders.getFoodOrder().setQuantity(result.getInt(7));
+				
+				orderCollection.add(orders);
+			}
+			
+		}catch(SQLException e)
+		{
+			e.printStackTrace();
+		}
+		
+		return orderCollection;
+	}
 
 }
 

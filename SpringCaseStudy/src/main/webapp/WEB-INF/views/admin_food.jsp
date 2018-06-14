@@ -3,10 +3,16 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@include file="admin_header.jsp" %>
 <link type="text/css" rel="stylesheet" href="${context}/static/css/home.css">
-
-
+<style>
+<!--
+table{
+   overflow-y:scroll;
+   height:300px;
+   display:block;
+}
+-->
+</style>
 		<h1>Food Menu</h1>
-		
 			<table cellpadding="10px">
 				<thead>
 					<tr>
@@ -16,6 +22,7 @@
 						<th>Description</th>
 						<th>Price</th>
 						<th>Stock</th>
+						<th>Active</th>
 					</tr>
 				</thead>
 					
@@ -28,10 +35,11 @@
 			        <td>${foodItem.description}</td>
 			        <td>${foodItem.price}</td>
 			        <td>${foodItem.stock}</td>
+			        <td>${foodItem.active}</td>
 			    </tr>
 				</c:forEach>
 			</table>
-			
+			<br>
 		
 		<form method="POST" modelAttribute="food" action="food/add">
 			<label for="addFood">Add Food</label>
@@ -51,19 +59,31 @@
 			<form:input path="food.stock" placeholder="stock" />
 			<form:errors path="food.stock" />
 			
+			<form:input path="food.image" placeholder="image/url" />
+			<form:errors path="food.image" />
+			
 			<input type="submit" value="Add Food" />
 			<input type="reset" value="Clear Form" />
 		</form>
 		
-		<form method="POST" modelAttribute="food" action="food/delete">
-			<label for="deleteFood">Delete Food</label>
+		<form method="POST" modelAttribute="food" action="food/activate">
+			<label for="activateFood">Activate Food</label>
 			
 			<form:input path="food.foodId" placeholder="Food ID #" />
 			<form:errors path="food.foodId" />
 			
-			<input type="submit" value="Delete Food" />
+			<input type="submit" value="Activate Food" />
 			<input type="reset" value="Clear Form" />
 		</form>
-
+		
+		<form method="POST" modelAttribute="food" action="food/deactivate">
+			<label for="deactivateFood">Deactivate Food</label>
+			
+			<form:input path="food.foodId" placeholder="Food ID #" />
+			<form:errors path="food.foodId" />
+			
+			<input type="submit" value="Deactivate Food" />
+			<input type="reset" value="Clear Form" />
+		</form>
 
 <%@include file="footer.jsp" %>
