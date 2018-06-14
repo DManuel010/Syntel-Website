@@ -35,11 +35,11 @@ END;
 -- INSERT NEW FOOD
 
 CREATE OR REPLACE PROCEDURE SP_INSERT_NEW_FOOD(foodid varchar2, foodname varchar2, 
-foodgroup varchar2, price number, description varchar2, stock number)
+foodgroup varchar2, price number, description varchar2, stock number, image varchar2, active int)
 AS
 BEGIN
 INSERT INTO FOOD
-VALUES (foodid, foodname, foodgroup, price, description, stock);
+VALUES (foodid, foodname, foodgroup, price, description, stock, image, active);
 END;
 
 -- DELETE FOOD

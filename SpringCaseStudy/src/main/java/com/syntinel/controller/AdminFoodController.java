@@ -24,12 +24,9 @@ public class AdminFoodController {
 	
 	@RequestMapping(value="/food", method=RequestMethod.GET)
 	public ModelAndView viewFood(Model model) {
-		//TODO: make this actually work, DOH!
-
 		Food food = new Food();
 		model.addAttribute("food", food);
 		List<Food> foodItems = foodService.viewAll();
-		System.out.println(foodItems);
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("foodItems", foodItems);
 		modelAndView.setViewName("admin_food");
@@ -45,7 +42,7 @@ public class AdminFoodController {
 	@RequestMapping(value="/food/delete", method=RequestMethod.POST)
 	public String deleteFood(@ModelAttribute("food") Food food) {
 		int foodID = food.getFoodId();
-		foodService.delete(foodID);
+		foodService.deactivate(foodID);
 		return "admin_food";
 	}
 }
