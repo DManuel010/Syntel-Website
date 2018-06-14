@@ -13,6 +13,7 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.stereotype.Service;
 import org.syntinel.mappers.FoodRowMapper;
 import org.syntinel.utilities.Utilities;
@@ -48,6 +49,7 @@ public class FoodService implements ServiceInterface<Food>
 		}
 		
 	}
+	
 	
 	public void delete(int foodId) {
 		try {
@@ -109,7 +111,7 @@ public class FoodService implements ServiceInterface<Food>
 	 * Returns a list of all the active (menu displayed) food items
 	 */
 	public List<Food> viewAllActive() {
-		String sql = "SELECT * FROM Food WHERE Active = 1";
+		String sql = "SELECT * FROM Food WHERE active = 1";
 		return jdbcTemplate.query(sql, new FoodRowMapper());
 	}
 	
