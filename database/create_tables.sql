@@ -21,7 +21,8 @@ CREATE TABLE Customer (
 	dateOfRegister TIMESTAMP NOT NULL,
 	lastLogin TIMESTAMP NOT NULL,
 	PASS VARCHAR2(4000),
-	MOBILE_NUMBER VARCHAR2(25)
+	MOBILE_NUMBER VARCHAR2(25),
+	constraint unique_email unique(email)
 );
 		
 CREATE TABLE Location (

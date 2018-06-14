@@ -24,17 +24,17 @@ public class AdminValidator implements Validator
 			error.rejectValue("email", "employee.email.empty");
 		}
 		
-		if(employee.getEmployeeId().isEmpty()) {
-			error.rejectValue("employeeId", "employee.employeeId.empty");
+		if(employee.getPassword().isEmpty()) {
+			error.rejectValue("password", "employee.password.empty");
 		}
 
 		
-		if(!employee.getEmail().isEmpty() && !employee.getEmployeeId().isEmpty())
+		if(!employee.getEmail().isEmpty() && !employee.getPassword().isEmpty())
 		{
 			 if(employee.getTitle().equals("N"))
-				 error.rejectValue("employeeId", "employee.employeeId.wrong");
+				 error.rejectValue("email", "employee.employeeId.wrong");
 		}
-		
+	
 		
 	}
 }
