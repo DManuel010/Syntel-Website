@@ -57,7 +57,7 @@ insert into employee
 	values(1114298631, 'Jessica', 'Jones','jessica@gmail.com','07-jan-18','admin',1234567890,0,0,'07-may-18','e7bc34627e12ddb5f1167fda37fbc2fb');
 
 insert into orders
-	values (0,0,30.0,0,0,'07-jan-18','07-jan-18','07-jan-18','make it good ok');
+	values (0,0,30.0,0,0,'07-jan-18','07-jan-18','07-jan-18','make it good ok', SYSTIMESTAMP);
 
 insert into foodorder
 	values(0,0,0,10);

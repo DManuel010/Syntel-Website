@@ -58,7 +58,7 @@ table{
 			<form:input style="width:auto;font-weight:normal;text-align:inherit;" path="emp.title" placeholder="employee title" />
 			<form:errors path="emp.title" />
 			
-			<form:input path="emp.phoneNumber" placeholder="111-222-3333" />
+			<form:input path="emp.phoneNumber" placeholder="Phone Number (111-222-3333)" />
 			<form:errors path="emp.phoneNumber" />
 			
 			<form:input path="emp.workAddrId" placeholder="# work address id" />

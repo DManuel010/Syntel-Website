@@ -69,6 +69,34 @@ public class FoodService implements ServiceInterface<Food>
 		}
 	}
 	
+	public Food fetchByID(int foodId) {
+		Food food = null;
+		try {
+			Connection con = jdbcTemplate.getDataSource().getConnection();
+			PreparedStatement preparedStatement = con.prepareStatement("SELECT * FROM FOOD"
+					+ " WHERE FOODID = ?");
+			preparedStatement.setInt(1, foodId);
+			ResultSet result = preparedStatement.executeQuery();
+			
+			result.next();
+			
+			food = new Food();
+			food.setFoodId(result.getInt("FOODID"));
+			food.setName(result.getString("NAME"));
+			food.setFoodGroup(result.getString("FOODGROUP"));
+			food.setPrice(result.getDouble("PRICE"));
+			food.setDescription(result.getString("DESCRIPTION"));
+			food.setStock(result.getInt("STOCK"));
+			food.setImage(result.getString("IMAGE"));
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return food;
+		
+	}
+	
 	/**
 	 * 
 	 * @return a list of all food items in the database given as food objects

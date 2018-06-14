@@ -10,6 +10,7 @@ public class Food {
 	private int stock;
 	private String image;
 	private int active;
+	private boolean externalURL = false;
 	
 	
 	public Food() {
@@ -80,9 +81,19 @@ public class Food {
 		this.active = active;
 	}
 
+	
+	public boolean isExternalURL() {
+		return externalURL;
+	}
+
+	public void setExternalURL(boolean externalURL) {
+		this.externalURL = externalURL;
+	}
+
 	@Override
 	public String toString() {
 		return "Food [foodId=" + foodId + ", name=" + name + ", foodGroup=" + foodGroup + ", price=" + price
-				+ ", description=" + description + ", stock=" + stock + ", image=" + image + ", active=" + active + "]";
+				+ ", description=" + description + ", stock=" + stock + ", image=" + image + ", active=" + active
+				+ ", externalURL=" + externalURL + "]";
 	}
 }

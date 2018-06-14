@@ -20,7 +20,7 @@
 						<label for="customer_password">Password</label>
 					</th>
 					<th>
-						<form:input  class="form-control" path="customer.password" type="password"/>
+						<form:input class="form-control" path="customer.password" type="password"/>
 						<form:errors path="customer.password"/>
 					</th>
 				</tr>
