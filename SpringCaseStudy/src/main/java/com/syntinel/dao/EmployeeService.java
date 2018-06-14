@@ -31,11 +31,11 @@ public class EmployeeService implements ServiceInterface<Employee>{
 	 */
 	@Override
 	public void create(Employee employee) {
-		String sql = "INSERT INTO EMPLOYEE VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+		String sql = "INSERT INTO Employee VALUES (?,?,?,?,TO_DATE(?,'dd-MM-yyyy'),?,?,?,?,TO_DATE(?,'dd-MM-yyyy'),?)";
 		jdbcTemplate.update(sql, new Object [] {Utilities.createUniqueId(), employee.getFirstName(),
-				employee.getLastName(), employee.getEmail(), employee.getHireDate(), employee.getTitle(),
+				employee.getLastName(), employee.getEmail(), Utilities.getToday(), employee.getTitle(),
 				employee.getPhoneNumber(), employee.getWorkAddrId(),
-				employee.getHomeAddrId(), employee.getLastLogin(), employee.getPassword()});
+				employee.getHomeAddrId(), Utilities.getToday(), employee.getPassword()});
 	}
 	
 	
