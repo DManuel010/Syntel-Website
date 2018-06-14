@@ -63,6 +63,8 @@ table{
 			<form:input class="form-control" path="food.image" placeholder="image/url" />
 			<form:errors path="food.image" />
 			
+			External URL: <form:checkbox path="food.externalURL" />
+			
 			<input class="btn btn-danger btn-lg" type="submit" value="Add Food" />
 			<input class="btn btn-danger btn-lg" type="reset" value="Clear Form" />
 		</form>
