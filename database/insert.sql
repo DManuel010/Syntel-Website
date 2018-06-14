@@ -1,4 +1,4 @@
-insert into food 
+﻿insert into food 
 	values (0, 'Eggs', 'Breakfast', 3.0, '1000 things', 999, 'eggs.jpg');
 insert into food 
 	values (1, 'Sandwich', 'Lunch', 6.0, 'bread and things', 999, 'sandwich.jpg');
@@ -6,9 +6,12 @@ insert into food
 	values (2, 'Steak', 'Dinner', 9.0, 'wow', 999, 'steak.jpg');
 insert into food 
 	values (3, 'Pan-Friend Chicken', 'Dinner', 50.0, 'a timeless classic', 999, 'pan-friendChicken.jpg');
+insert into food 
+	values (4, 'Cannoli', 'Lunch', 10.0, 'tighter than area 51s security', 999, 'cannoli.jpg');
 
 insert into customer
-	values (0,'Cire', 'Sinrak', 'e@k.com',1234567890,'07-feb-1994','01-jan-13 03:14:07','01-jan-13 03:14:07', 'e7bc34627e12ddb5f1167fda37fbc2fb',0123456789);
+	values (0,'Cire', 'Sinrak', 'e@k.com',1234567890,'07-feb-1994','01-jan-13 03:14:07','01-jan-13 03:14:07', 'pass',0123456789);
+
 
 insert into location 
 	values (0, 0, 'Canada', 'Ontario', 'Toronto', '1 Bloor', ' ', 'a1b2c3');
