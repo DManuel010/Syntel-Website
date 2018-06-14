@@ -83,7 +83,5 @@ table{
 			<input type="submit" value="Delete Employee" />
 			<input type="reset" value="Clear Form" />
 		</form>
-		
-		<p>${sessionscope.employee}</p>
 
 <%@include file="footer.jsp" %>
