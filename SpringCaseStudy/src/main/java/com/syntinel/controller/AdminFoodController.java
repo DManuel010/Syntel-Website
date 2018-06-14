@@ -29,7 +29,6 @@ public class AdminFoodController {
 		Food food = new Food();
 		model.addAttribute("food", food);
 		List<Food> foodItems = foodService.viewAll();
-		System.out.println(foodItems);
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("foodItems", foodItems);
 		modelAndView.setViewName("admin_food");
@@ -37,15 +36,23 @@ public class AdminFoodController {
 	}
 	
 	@RequestMapping(value="/food/add", method=RequestMethod.POST)
-	public String addFood(@ModelAttribute("food") Food food) {
+	public ModelAndView addFood(@ModelAttribute("food") Food food) {
 		foodService.create(food);
-		return "admin_food";
+		List<Food> foodItems = foodService.viewAll();
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("foodItems", foodItems);
+		modelAndView.setViewName("admin_food");
+		return modelAndView;
 	}
 	
 	@RequestMapping(value="/food/delete", method=RequestMethod.POST)
-	public String deleteFood(@ModelAttribute("food") Food food) {
+	public ModelAndView deleteFood(@ModelAttribute("food") Food food) {
 		int foodID = food.getFoodId();
 		foodService.delete(foodID);
-		return "admin_food";
+		List<Food> foodItems = foodService.viewAll();
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("foodItems", foodItems);
+		modelAndView.setViewName("admin_food");
+		return modelAndView;
 	}
 }

@@ -3,11 +3,16 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@include file="admin_header.jsp" %>
 <link type="text/css" rel="stylesheet" href="${context}/static/css/home.css">
-
-
+<style>
+<!--
+table{
+   overflow-y:scroll;
+   height:300px;
+   display:block;
+}
+-->
+</style>
 		<h1>Food Menu</h1>
-		
-		<form action="/order/summary" method="POST">
 			<table cellpadding="10px">
 				<thead>
 					<tr>
@@ -32,9 +37,9 @@
 			    </tr>
 				</c:forEach>
 			</table>
-			
+			<br>
 		
-		<form method="POST" modelAttribute="food" action="admin/food/add">
+		<form method="POST" modelAttribute="food" action="food/add">
 			<label for="addFood">Add Food</label>
 			
 			<form:input path="food.name" placeholder="food name" />
@@ -56,7 +61,7 @@
 			<input type="reset" value="Clear Form" />
 		</form>
 		
-		<form method="POST" modelAttribute="food" action="admin/food/delete">
+		<form method="POST" modelAttribute="food" action="food/delete">
 			<label for="deleteFood">Delete Food</label>
 			
 			<form:input path="food.foodId" placeholder="Food ID #" />
