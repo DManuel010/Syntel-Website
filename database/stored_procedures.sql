@@ -20,7 +20,7 @@ BEGIN
 INSERT INTO ORDERS
 VALUES (orderid, customerid, price, paymentid, deliveryaddrid, 
 TO_DATE(orderdate,'dd-MM-yyyy'), 
-expecteddate, deliverydate, note);
+expecteddate, deliverydate, note, SYSTIMESTAMP);
 END;
 
 -- DELETE ORDER

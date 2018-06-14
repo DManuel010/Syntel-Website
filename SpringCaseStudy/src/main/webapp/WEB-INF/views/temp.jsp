@@ -7,15 +7,46 @@
 		<br>
 		<h2>My current orders</h2>
 		
-		<table>
-		<tr>
-		<td>Food</td>
-		<td>Quantity</td>
-		<td>Cost</td>
-		<td>Expected Date</td>
-		<td>Order date</td>
-		<td>Status</td>
-		</tr>
+		<div style="overflow-x:auto;">
+			<table border="1">
+				<tr>
+					<td>Date</td>
+					<td>Expected Date</td>
+					<td>Items</td>
+					<td>Total Price</td>
+					<!-- <td>Status</td> -->
+				</tr>
+				
+				<c:forEach items="${orders}" var="order">
+					<tr>
+						<!--<td>${myOrders.name}</td>-->
+						<!-- <td>${myOrders.quantity}</td> -->
+						
+						<td>${order.orderDate}</td>
+						<td>${order.expectedDate}</td>
+						
+						<td>
+							<table cellpadding="0">
+								<c:forEach items="${order.foodOrders}" var="myFoodOrders">
+									<tr>
+										<td>${myFoodOrders.cost}</td>
+										<td>${myFoodOrders.name}</td>
+										<td>${myFoodOrders.quantity}</td>
+									</tr>
+								</c:forEach>
+							</table>
+						</td>
+
+						
+						<td>${order.cost}</td>
+						<!-- <td>TODO</td> -->
+						
+						<!-- <td>${myOrders.status}</td> -->
+					</tr>
+				</c:forEach>
+			
+			</table>
+		</div>
 		
 		<c:forEach items="${orders}" var="myOrders">
 		<tr>

@@ -106,8 +106,9 @@ public class ItemController
 		
 		//calculate total price
 		double runningTotal=0.0;
+		int j = 0;
 		for(Food item : customer.getItems())
-			runningTotal += item.getPrice();
+			runningTotal += (item.getPrice() * Double.parseDouble(customer.getItemCounts().get(j++)));
 		
 		//saving running total to customer
 		customer.setRunning_total(runningTotal);
