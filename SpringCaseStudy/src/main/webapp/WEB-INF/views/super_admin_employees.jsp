@@ -16,26 +16,28 @@ table{
 			<table cellpadding="10px">
 				<thead>
 					<tr>
-						<th>Food ID</th>
-						<th>Name</th>
-						<th>Group</th>
-						<th>Description</th>
-						<th>Price</th>
-						<th>Stock</th>
-						<th>Active</th>
+						<th>Employee ID</th>
+						<th>First Name</th>
+						<th>Last Name</th>
+						<th>Email</th>
+						<th>Hire Date</th>
+						<th>Title</th>
+						<th>Phone Number</th>
+						<th>Last Login</th>
 					</tr>
 				</thead>
 					
-				<c:forEach items="${foodItems}" var="foodItem">
+				<c:forEach items="${empItems}" var="foodItem">
 				
 			    <tr> 
-			    	<td>${foodItem.foodId}</td>
-			        <td>${foodItem.name}</td>
-			        <td>${foodItem.foodGroup}</td>
-			        <td>${foodItem.description}</td>
-			        <td>${foodItem.price}</td>
-			        <td>${foodItem.stock}</td>
-			        <td>${foodItem.active}</td>
+			    	<td>${empItems.employeeId}</td>
+			        <td>${empItems.firstName}</td>
+			        <td>${empItems.lastName}</td>
+			        <td>${empItems.email}</td>
+			        <td>${empItems.hireDate}</td>
+			        <td>${empItems.title}</td>
+			        <td>${empItems.phoneNumber}</td>
+			        <td>${empItems.lastLogin}</td>
 			    </tr>
 				</c:forEach>
 			</table>

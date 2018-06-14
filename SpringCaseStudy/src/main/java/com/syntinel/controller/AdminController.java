@@ -69,7 +69,12 @@ public class AdminController
 		{
 			ModelAndView modelAndView = new ModelAndView();
 			modelAndView.addObject("employee", employee);
-			modelAndView.setViewName("admin_index");
+			if(employee.getTitle().equals("admin"))
+				modelAndView.setViewName("admin_index");
+			else if(employee.getTitle().equals("superadmin")) 
+				modelAndView.setViewName("super_admin_employees");
+			else
+				modelAndView.setViewName("index");
 			return modelAndView;
 		}
 	}
