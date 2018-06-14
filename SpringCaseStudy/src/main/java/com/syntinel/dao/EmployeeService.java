@@ -35,7 +35,7 @@ public class EmployeeService implements ServiceInterface<Employee>{
 		jdbcTemplate.update(sql, new Object [] {Utilities.createUniqueId(), employee.getFirstName(),
 				employee.getLastName(), employee.getEmail(), Utilities.getToday(), employee.getTitle(),
 				employee.getPhoneNumber(), employee.getWorkAddrId(),
-				employee.getHomeAddrId(), Utilities.getToday(), employee.getPassword()});
+				employee.getHomeAddrId(), Utilities.getToday(), Utilities.encryptPassword(employee.getPassword())});
 	}
 	
 	

@@ -18,12 +18,12 @@
 </head>
 <body>
 	<nav>
-		<a href="${context}/admin" class="active">
+		<a href="${context}/superAdmin" class="active">
 			<img id="logo"src="${context}/static/images/global/logo.png" alt="logo">
 		</a>
 		<div id="nav_container">
 			<ul>
-				<li><a href="${context}/admin" class="active">Home</a></li>
+				<li><a href="${context}/superAdmin" class="active">Home</a></li>
 				<li><a href="${context}/superAdmin/employees">Employees</a></li>
 				<c:if test="${sessionScope.employee != null}">
 					<li><a href="${context}/customer/logout">Log Out</a></li> <!-- admin should probably have its own logout page/controller mapping but the functionality works the same  -->
