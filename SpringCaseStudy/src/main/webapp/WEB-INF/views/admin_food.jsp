@@ -3,10 +3,16 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@include file="admin_header.jsp" %>
 <link type="text/css" rel="stylesheet" href="${context}/static/css/home.css">
-
-
+<style>
+<!--
+table{
+   overflow-y:scroll;
+   height:300px;
+   display:block;
+}
+-->
+</style>
 		<h1>Food Menu</h1>
-		
 			<table cellpadding="10px">
 				<thead>
 					<tr>
@@ -31,7 +37,7 @@
 			    </tr>
 				</c:forEach>
 			</table>
-			
+			<br>
 		
 		<form method="POST" modelAttribute="food" action="food/add">
 			<label for="addFood">Add Food</label>
