@@ -17,6 +17,7 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="src" path="src/main/webapp"/>
 	<classpathentry kind="con" path="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER">
 		<attributes>
 			<attribute name="maven.pomderived" value="true"/>
@@ -33,8 +34,10 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
+
 	<classpathentry kind="lib" path="C:/Examples/Jar Files/javaee.jar"/>
 	<classpathentry kind="lib" path="C:/Examples/Jar Files/mail.jar"/>
 	<classpathentry kind="lib" path="C:/Examples/Jar Files/ojdbc6-11.2.0.3.jar"/>
+
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
