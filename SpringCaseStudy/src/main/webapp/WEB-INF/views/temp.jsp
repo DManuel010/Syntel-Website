@@ -14,7 +14,7 @@
 					<td>Expected Date</td>
 					<td>Items</td>
 					<td>Total Price</td>
-					<td>Status</td>
+					<!-- <td>Status</td> -->
 				</tr>
 				
 				<c:forEach items="${orders}" var="order">
@@ -39,7 +39,7 @@
 
 						
 						<td>${order.cost}</td>
-						<td>TODO</td>
+						<!-- <td>TODO</td> -->
 						
 						<!-- <td>${myOrders.status}</td> -->
 					</tr>
