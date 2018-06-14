@@ -34,8 +34,9 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/syntel.PHX440G3-28160Z/Documents/workspace/Syntel-Website/jars/javaee.jar"/>
-	<classpathentry kind="lib" path="C:/Users/syntel.PHX440G3-28160Z/Documents/workspace/Syntel-Website/jars/mail.jar"/>
-	<classpathentry kind="lib" path="C:/Users/syntel.PHX440G3-28160Z/Documents/workspace/Syntel-Website/jars/ojdbc6-11.2.0.3.jar"/>
+	<classpathentry kind="lib" path="C:/Jars/javaee.jar"/>
+	<classpathentry kind="lib" path="C:/Jars/mail.jar"/>
+	<classpathentry kind="lib" path="C:/Jars/ojdbc14_g.jar"/>
+	<classpathentry kind="lib" path="C:/Jars/ojdbc14.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
