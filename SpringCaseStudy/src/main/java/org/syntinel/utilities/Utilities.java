@@ -1,5 +1,7 @@
 package org.syntinel.utilities;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Properties;
@@ -18,7 +20,7 @@ import javax.mail.internet.MimeMessage;
 
 abstract public class Utilities 
 {
-	private final static String key = "saltandpepper";
+	private final static byte[] salt = {1,3,5,3,2,3,4};
 	private final static String username = "chollacasestudy@gmail.com";
 	private final static String password = "Chrysanth3mum";
 	private static Properties props = new Properties();
@@ -31,7 +33,6 @@ abstract public class Utilities
 		return today;
 	}
 	
-	//TODO: change to return an int instead of string
 	public final static String createUniqueId()
 	{
 		int randomID = (int) Math.round((Math.random() * System.nanoTime()));
@@ -41,21 +42,28 @@ abstract public class Utilities
 	
 	public final static String encryptPassword(String password)
 	{
-		String encrypted_password = null;
-		try
-		{
-			SecretKeySpec skeyspec = new SecretKeySpec(key.getBytes(), "Blowfish");
-			Cipher cipher = null;
-			cipher = Cipher.getInstance("Blowfish");
-			cipher.init(Cipher.ENCRYPT_MODE, skeyspec);
-			byte[] encrypted = cipher.doFinal(password.getBytes());
-			encrypted_password = new String(encrypted);
-		}catch(Exception e)
-		{
-			e.getMessage();
-		}
-		
-		return encrypted_password;
+		String generatedPassword = null;
+        try {
+            // Create MessageDigest instance for MD5
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            //Add password bytes to digest
+            md.update(salt);
+            //Get the hash's bytes
+            byte[] bytes = md.digest(password.getBytes());
+            //This bytes[] has bytes in decimal format;
+            //Convert it to hexadecimal format
+            StringBuilder sb = new StringBuilder();
+            for(int i=0; i< bytes.length ;i++)
+            {
+                sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
+            }
+            //Get complete hashed password in hex format
+            generatedPassword = sb.toString();
+        }
+        catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        return generatedPassword;
 	}
 	
 	public final static void sendMail(Customer customer)
