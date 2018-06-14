@@ -1,5 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@include file="admin_header.jsp" %>
+<%@include file="super_admin_header.jsp" %>
 <link type="text/css" rel="stylesheet" href="${context}/static/css/home.css">
 
 

@@ -20,7 +20,7 @@
 						<label for="customer_password">Password</label>
 					</th>
 					<th>
-						<form:input  class="form-control" path="customer.password" type="password"/>
+						<form:input class="form-control" path="customer.password" type="password"/>
 						<form:errors path="customer.password"/>
 					</th>
 				</tr>
@@ -28,5 +28,6 @@
 			<input class="btn btn-danger btn-lg btn-block" type="submit" value="Log In" />
 			<input class="btn btn-danger btn-lg btn-block" type="reset" value="Clear Form" />
 		</form>
+		<a href="/admin/login">Admin Login</a>
 	</div>
 <%@include file="footer.jsp" %>

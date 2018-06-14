@@ -3,8 +3,8 @@ package com.syntinel.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+//import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -14,10 +14,8 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.syntinel.dao.EmployeeService;
-import com.syntinel.model.Customer;
 import com.syntinel.model.Employee;
 import com.syntinel.validator.AdminValidator;
-import com.syntinel.validator.LoginValidator;
 
 @Controller
 @RequestMapping("/admin")
@@ -56,29 +54,30 @@ public class AdminController
 	}
 	
 	@RequestMapping(value="/login", method=RequestMethod.POST)
-	public ModelAndView adminLogin(@ModelAttribute("employee") Employee employee, BindingResult result, Model model)
-	{
+	public ModelAndView adminLogin(@ModelAttribute("employee") Employee employee, BindingResult result, Model model) {
 		employee = employeeServ.getObject(employee);
 		
 		// need to do basic login validation here?
 	
-
-
 		adminValidator.validate(employee, result);
 		
-		if(result.hasErrors())
-		{
+		if(result.hasErrors()) {
 			return new ModelAndView("admin_login");
 		}
-		else
-		{
+		else {
 			ModelAndView modelAndView = new ModelAndView();
 			modelAndView.addObject("employee", employee);
-			modelAndView.setViewName("admin_index");
+			
+			if(employee.getTitle().equals("admin")) {
+				modelAndView.setViewName("admin_index");
+			}
+			else if(employee.getTitle().equals("superadmin")) {
+				modelAndView.setViewName("super_admin_index");
+			}
+			else {
+				modelAndView.setViewName("index");
+			}
 			return modelAndView;
 		}
-		
-		
 	}
-
 }

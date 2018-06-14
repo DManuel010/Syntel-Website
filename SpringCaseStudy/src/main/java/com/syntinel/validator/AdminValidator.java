@@ -20,19 +20,21 @@ public class AdminValidator implements Validator
 	public void validate(Object target, Errors error) {
 		Employee employee = (Employee) target;
 		
-		if(employee.getEmail().isEmpty())
+		if(employee.getEmail().isEmpty()) {
 			error.rejectValue("email", "employee.email.empty");
-		
-		if(employee.getEmployeeId().isEmpty())
-			error.rejectValue("employeeId", "employee.employeeId.empty");
-		
-		if(!employee.getEmail().isEmpty() && !employee.getEmployeeId().isEmpty())
-		{
-		   if(employee.getTitle().isEmpty())
-				error.rejectValue("employeeId", "employee.employeeId.wrong");
 		}
 		
+		if(employee.getPassword().isEmpty()) {
+			error.rejectValue("password", "employee.password.empty");
+		}
+
+		
+		if(!employee.getEmail().isEmpty() && !employee.getPassword().isEmpty())
+		{
+			 if(employee.getTitle().equals("N"))
+				 error.rejectValue("email", "employee.employeeId.wrong");
+		}
+	
 		
 	}
-
 }

@@ -9,11 +9,11 @@ public class Food {
 	private String description;
 	private int stock;
 	private String image;
+	private int active;
 	
 	
-
 	public Food() {
-		
+		super();
 	}
 
 	public int getFoodId() {
@@ -72,10 +72,17 @@ public class Food {
 		this.image = image;
 	}
 
+	public int getActive() {
+		return active;
+	}
+
+	public void setActive(int active) {
+		this.active = active;
+	}
+
 	@Override
 	public String toString() {
 		return "Food [foodId=" + foodId + ", name=" + name + ", foodGroup=" + foodGroup + ", price=" + price
-				+ ", description=" + description + ", stock=" + stock + ", image=" + image + "]";
+				+ ", description=" + description + ", stock=" + stock + ", image=" + image + ", active=" + active + "]";
 	}
-	
 }

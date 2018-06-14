@@ -1,30 +1,30 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Admin Login</title>
-</head>
-<body>
-<h1>Admin Login</h1>
-<form method="POST" modelAttribute="employee" action="/admin/login">
+<%@include file="header.jsp" %>
 
-	<!-- employee id -->
-	<label for="employee_employeeId">Employee ID:</label>
-	<form:input path="employee.employeeId" placeholder="Enter your ID"/>
-	<form:errors path="employee.employeeId"/>
-	<br/>
-	
+<div id="content">
+	<h1>Admin Login</h1>
+	<form method="POST" modelAttribute="employee" action="/admin/login">
+
 	<!-- employee Email -->
 	<label for="employee_email">Email:</label>
-	<form:input path="employee.email" placeholder="Enter your email address"/>
+	<form:input class="form-control" path="employee.email" placeholder="Enter your email address"/>
 	<form:errors path="employee.email"/>
 	<br/>
-
-	<input type="submit" value="Log In" />
-	<input type="reset" value="Clear Form" />
+	
+	
+	<!-- employee id -->
+	<label for="employee_employeeId">Password:</label>
+	<form:input type="password" class="form-control" path="employee.password" placeholder="Enter your password"/>
+	<form:errors path="employee.password"/>
+	<br/>
+	
+	
+	<input class="btn btn-danger btn-lg btn-block" type="submit" value="Log In" />
+	<input class="btn btn-danger btn-lg btn-block" type="reset" value="Clear Form" />
 	</form>
-</body>
-</html>
+</div>
+
+	
+<%@include file="footer.jsp" %>

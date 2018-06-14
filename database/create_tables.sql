@@ -6,7 +6,9 @@ CREATE TABLE Food (
 		description VARCHAR(50),
 		stock INT NOT NULL,
 		image VARCHAR(300) NOT NULL,
-		CONSTRAINT UC_Food UNIQUE (name, foodGroup, price)
+		active INT NOT NULL,
+		CONSTRAINT UC_Food UNIQUE (name, foodGroup, price),
+		CONSTRAINT check_active CHECK (active IN (0, 1))
 );
 
 CREATE TABLE Customer (
@@ -19,7 +21,8 @@ CREATE TABLE Customer (
 	dateOfRegister TIMESTAMP NOT NULL,
 	lastLogin TIMESTAMP NOT NULL,
 	PASS VARCHAR2(4000),
-	MOBILE_NUMBER VARCHAR2(25)
+	MOBILE_NUMBER VARCHAR2(25),
+	constraint unique_email unique(email)
 );
 		
 CREATE TABLE Location (
@@ -71,7 +74,8 @@ CREATE TABLE Employee (
 	phoneNumber VARCHAR(25) NOT NULL,
 	workAddrID INT NOT NULL REFERENCES Location(locationID),
 	homeAddrID INT NOT NULL REFERENCES Location(locationID),
-	lastLogin DATE NOT NULL
+	lastLogin DATE NOT NULL,
+	password VARCHAR2(4000)
 );
 
 CREATE TABLE Orders (
