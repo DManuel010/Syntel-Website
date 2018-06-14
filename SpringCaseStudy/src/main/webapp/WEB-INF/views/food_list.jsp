@@ -24,7 +24,7 @@ function displayButton() {
 		<h1>Menu</h1>
 		
 		<form:form action="/order/summary" modelAttribute="menuOrder" method="POST">
-			<table>
+			<table style="text-align:center;">
 				<thead>
 					<tr>
 						<c:choose>
@@ -38,10 +38,10 @@ function displayButton() {
 						    </c:otherwise>
 						</c:choose>
 						
-						<th>Name</th>
-						<th>Group</th>
-						<th>Description</th>
-						<th>Price</th>
+						<th><h3>Name</h3></th>
+						<th><h3>Group</h3></th>
+						<th><h3>Description</h3></th>
+						<th><h3>Price</h3></th>
 					</tr>
 				</thead>
 					

@@ -10,7 +10,7 @@
 		
 		<section>
 			<article>
-				<h3>Menu</h3>
+				<h2>Menu</h2>
 				<table>
 					<thead>
 						<tr>
@@ -33,7 +33,7 @@
 			</article>
 			
 			<article>
-				<h3>About</h3>
+				<h2>About</h2>
 				<p>
 					We have more than 20 years of experience in making delicious traditional dishes, with recipes from the North and the South of India. Our hard work has paid off by winning the recognition of LA Times & Daily News as the best Indian restaurant in Southern California, and being critically acclaimed by AAA Magazine, LA Times and Daily News.
 				</p>

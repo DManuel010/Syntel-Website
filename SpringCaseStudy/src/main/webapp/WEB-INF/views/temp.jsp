@@ -29,16 +29,16 @@
 							<table cellpadding="0">
 								<c:forEach items="${order.foodOrders}" var="myFoodOrders">
 									<tr>
-										<td>${myFoodOrders.cost}</td>
+										<td>$${myFoodOrders.cost}</td>
 										<td>${myFoodOrders.name}</td>
-										<td>${myFoodOrders.quantity}</td>
+										<td>x${myFoodOrders.quantity}</td>
 									</tr>
 								</c:forEach>
 							</table>
 						</td>
 
 						
-						<td>${order.cost}</td>
+						<td>$${order.cost}</td>
 						<!-- <td>TODO</td> -->
 						
 						<!-- <td>${myOrders.status}</td> -->
@@ -47,20 +47,6 @@
 			
 			</table>
 		</div>
-		
-		<c:forEach items="${orders}" var="myOrders">
-		<tr>
-		<td>${myOrders.name}</td>
-		<td>${myOrders.quantity}</td>
-		<td>$${myOrders.cost}</td>
-		<td>${myOrders.expecteddate}</td>
-		<td>${myOrders.orderdate}</td>
-		<td>${myOrders.status}</td>
-		</tr>
-		</c:forEach>
-		
-		</table>
-		
 		
 	</div>
 <%@include file="footer.jsp" %>
