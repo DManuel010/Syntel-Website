@@ -69,6 +69,8 @@ table{
 			<input class="btn btn-danger btn-lg" type="reset" value="Clear Form" />
 		</form>
 		
+		<br>
+		
 		<form method="POST" modelAttribute="food" action="food/activate">
 			<label for="activateFood">Activate Food</label>
 			
@@ -78,6 +80,8 @@ table{
 			<input class="btn btn-danger btn-lg" type="submit" value="Activate Food" />
 			<input class="btn btn-danger btn-lg" type="reset" value="Clear Form" />
 		</form>
+		
+		<br>
 		
 		<form method="POST" modelAttribute="food" action="food/deactivate">
 			<label for="deactivateFood">Deactivate Food</label>

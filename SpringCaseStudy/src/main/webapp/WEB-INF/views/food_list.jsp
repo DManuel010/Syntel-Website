@@ -53,7 +53,7 @@ function displayButton() {
 			    		<c:if test="${sessionScope.customer != null && sessionScope.customer.id != 0}">
 			    		<form:input path="itemCounts[${i.index}]" onClick="displayButton()" class="numCount" 
 			    		style="width: 3em" type="number" max="10" min='0' value='0'/>
-                        <form:errors path="itemCounts[${i.index}]" cssClass="error"/></td>
+                        <form:errors path="itemCounts[${i.index}]" cssClass="error"/>
                         </c:if>
 			    		
 			    	</td>   

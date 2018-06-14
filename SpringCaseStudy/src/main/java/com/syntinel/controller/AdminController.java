@@ -68,12 +68,14 @@ public class AdminController
 			ModelAndView modelAndView = new ModelAndView();
 			modelAndView.addObject("employee", employee);
 			
+			//Directs to different pages based on the employees title
 			if(employee.getTitle().equals("admin")) {
 				modelAndView.setViewName("admin_index");
 			}
 			else if(employee.getTitle().equals("superadmin")) {
 				modelAndView.setViewName("super_admin_index");
 			}
+			//If they are not an admin or superadmin they are returned to the default page
 			else {
 				modelAndView.setViewName("index");
 			}
