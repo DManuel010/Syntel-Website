@@ -53,7 +53,7 @@ public class RegistrationController
 		else
 		{
 			customerServ.create(customer);
-			//Utilities.sendMail(customer);
+			Utilities.sendMail(customer);
 			return "redirect:login";
 		}
 	}

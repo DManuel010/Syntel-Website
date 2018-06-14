@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
 <%@include file="header.jsp" %>
 <script>
 function displayButton() {
@@ -59,10 +60,17 @@ function displayButton() {
 			        <td>${foodItem.name}</td>
 			        <td>${foodItem.foodGroup}</td>
 			        <td>${foodItem.description}</td>
-			        <td>$${foodItem.price}</td>
-					<td><img src="${context}/static/images/food/${foodItem.image}" width="150vw"></td>
-			        
+			        <td>${foodItem.price}</td>
+			        <c:choose>
+			        	<c:when test="${fn:substring(foodItem.image, 0, 1) == '&'}">
+			        		<td><img src="${fn:substring(foodItem.image, 1, fn:length(foodItem.image))}" width="150vw"></td>
+			        	</c:when>
+			        	<c:otherwise>
+							<td><img src="${context}/static/images/food/${foodItem.image}" width="150vw"></td>
+			        	</c:otherwise>
+			        </c:choose>
 			    </tr>
+			    
 				</c:forEach>
 			</table>
 			<c:if test="${sessionScope.customer != null && sessionScope.customer.id != 0}">

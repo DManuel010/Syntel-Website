@@ -3,8 +3,6 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page import="com.syntinel.model.Customer" %>
 
-
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -34,5 +32,9 @@
 			<div id="spacer"></div>
 		</div>
 	</nav>
+
+		<c:if test="${sessionScope.employee == null}">
+			<c:redirect url="/"/>
+		</c:if>
 	<div id="main_container">
 	
