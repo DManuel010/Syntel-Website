@@ -46,7 +46,7 @@ public class AdminFoodController {
 	}
 	
 	@RequestMapping(value="/food/delete", method=RequestMethod.POST)
-	public String deleteFood(@ModelAttribute("food") Food food) {
+	public ModelAndView deleteFood(@ModelAttribute("food") Food food) {
 		int foodID = food.getFoodId();
 		foodService.delete(foodID);
 		List<Food> foodItems = foodService.viewAll();
