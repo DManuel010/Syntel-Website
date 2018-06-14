@@ -11,9 +11,9 @@
 
 		
 		<section>
-			<article>
+			<article><!--
 				<h4>Welcome, ${sessionScope.employee.firstName}</h4>
-				<p>Your last login was: ${sessionScope.employee.lastLogin}</p>
+				<p>Your last login was: ${sessionScope.employee.lastLogin}</p>-->
 			</article>
 			
 		</section>

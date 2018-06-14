@@ -47,6 +47,7 @@
 			
 			</table>
 		</div>
-		
+		<div id="spacer"></div>
 	</div>
+	
 <%@include file="footer.jsp" %>
