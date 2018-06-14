@@ -22,7 +22,7 @@
 			<c:forEach items="${orders}" var="order">
 			 <tr>
 				<td>
-				<a href="<c:url value="/admin/orders/detail">
+				<a href="<c:url value="/admin/orders/detail/">
 					<c:param name="orderid" value="${order.getOrder().getOrderId()}" />
 				</c:url>">${order.getOrder().getOrderId()}</a>
 			</td>
@@ -37,8 +37,6 @@
 			</c:forEach>
 			<tbody>
 			</tbody>
-		
-		
 		</table>
 
 <%@include file="footer.jsp" %>

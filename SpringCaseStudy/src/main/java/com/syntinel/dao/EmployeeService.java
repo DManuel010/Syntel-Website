@@ -50,7 +50,7 @@ public class EmployeeService implements ServiceInterface<Employee>{
 			PreparedStatement preparedStatement = con.prepareStatement("SELECT FIRSTNAME, LASTNAME, HIREDATE, TITLE,"
 					+ " PHONENUMBER, WORKADDRID, HOMEADDRID, LASTLOGIN FROM EMPLOYEE WHERE EMAIL = ? AND PASSWORD = ?");
 			preparedStatement.setString(1, employee.getEmail());
-			preparedStatement.setString(2, employee.getPassword());
+			preparedStatement.setString(2, Utilities.encryptPassword(employee.getPassword()));
 			ResultSet resultSet = preparedStatement.executeQuery();
 			while(resultSet.next())
 			{

@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -33,13 +34,18 @@ public class AdminOrderController
 		modelAndView.setViewName("admin_orders");
 		return modelAndView;
 	}
-	@RequestMapping(value="/orders/detail/{orderid}", method=RequestMethod.GET)
-	public ModelAndView viewDetail(@PathVariable String orderid)
+	@RequestMapping(value="/orders/detail", method=RequestMethod.GET)
+	public ModelAndView viewDetail(@RequestParam String orderid)
 	{
-		
+		List<OrderCollection> details = new ArrayList<OrderCollection>();
 		ModelAndView modelAndView = new ModelAndView();
-		//modelAndView.addObject("order_detail",orders_detail);
-		modelAndView.setViewName("#");
+		
+		details = orderCollectionServ.getOrderDetail(orderid);
+		
+		modelAndView.addObject("orderid", orderid);
+		modelAndView.addObject("instructions", details.get(0).getCustomer().getInstructions());
+		modelAndView.addObject("details",details);
+		modelAndView.setViewName("admin_order_details");
 		return modelAndView;
 	}
 	
