@@ -71,8 +71,10 @@ public class ItemController
 			@ModelAttribute ("menuOrder") MenuOrder menuOrder)
 	{
 		ModelAndView modelAndView = new ModelAndView();
+		
+		
 				
-		customer.setItems(foodServ.getSelectedItems(menuOrder.getItemCounts()));
+		customer.setItems(foodServ.getSelectedItems(menuOrder.getItemCounts(), foodServ.viewAllActive()));
 		customer.setItemCounts(menuOrder.getNonZeroItemCounts());
 		modelAndView.addObject("selectedItems", customer.getItems());
 		modelAndView.addObject("itemCounts", customer.getItemCounts());

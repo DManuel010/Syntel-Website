@@ -95,9 +95,11 @@ public class FoodService implements ServiceInterface<Food>
 	}
 
 	
-	public List<Food> getSelectedItems(ArrayList<String> counts)
+	public List<Food> getSelectedItems(ArrayList<String> counts, List<Food> foodItems)
 	{
 		List<Food> foodList = new ArrayList<Food>();
+		
+		
 		
 		//for(String id : ids)
 		for (int i = 0; i < counts.size(); ++i)
@@ -108,7 +110,7 @@ public class FoodService implements ServiceInterface<Food>
 					Connection con = jdbcTemplate.getDataSource().getConnection();
 					PreparedStatement preparedStatement = con.prepareStatement("SELECT FOODID, NAME, "
 							+ "FOODGROUP, PRICE, DESCRIPTION, IMAGE FROM FOOD WHERE FOODID = ?");
-					preparedStatement.setInt(1, i);
+					preparedStatement.setInt(1, foodItems.get(i).getFoodId());
 					
 					ResultSet result = preparedStatement.executeQuery();
 					while(result.next())
