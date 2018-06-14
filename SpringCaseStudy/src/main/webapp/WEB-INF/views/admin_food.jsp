@@ -22,6 +22,7 @@ table{
 						<th>Description</th>
 						<th>Price</th>
 						<th>Stock</th>
+						<th>Active</th>
 					</tr>
 				</thead>
 					
@@ -34,6 +35,7 @@ table{
 			        <td>${foodItem.description}</td>
 			        <td>${foodItem.price}</td>
 			        <td>${foodItem.stock}</td>
+			        <td>${foodItem.active}</td>
 			    </tr>
 				</c:forEach>
 			</table>
@@ -64,15 +66,24 @@ table{
 			<input type="reset" value="Clear Form" />
 		</form>
 		
-		<form method="POST" modelAttribute="food" action="food/delete">
-			<label for="deleteFood">Delete Food</label>
+		<form method="POST" modelAttribute="food" action="food/activate">
+			<label for="activateFood">Activate Food</label>
 			
 			<form:input path="food.foodId" placeholder="Food ID #" />
 			<form:errors path="food.foodId" />
 			
-			<input type="submit" value="Delete Food" />
+			<input type="submit" value="Activate Food" />
 			<input type="reset" value="Clear Form" />
 		</form>
-
+		
+		<form method="POST" modelAttribute="food" action="food/deactivate">
+			<label for="deactivateFood">Deactivate Food</label>
+			
+			<form:input path="food.foodId" placeholder="Food ID #" />
+			<form:errors path="food.foodId" />
+			
+			<input type="submit" value="Deactivate Food" />
+			<input type="reset" value="Clear Form" />
+		</form>
 
 <%@include file="footer.jsp" %>

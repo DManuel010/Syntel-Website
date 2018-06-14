@@ -34,15 +34,37 @@ public class AdminFoodController {
 	}
 	
 	@RequestMapping(value="/food/add", method=RequestMethod.POST)
-	public String addFood(@ModelAttribute("food") Food food) {
+	public ModelAndView addFood(@ModelAttribute("food") Food food, Model model) {
 		foodService.create(food);
-		return "admin_food";
+		model.addAttribute("food", food);
+		List<Food> foodItems = foodService.viewAll();
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("foodItems", foodItems);
+		modelAndView.setViewName("redirect:/admin/food");
+		return modelAndView;
 	}
 	
-	@RequestMapping(value="/food/delete", method=RequestMethod.POST)
-	public String deleteFood(@ModelAttribute("food") Food food) {
+	@RequestMapping(value="/food/deactivate", method=RequestMethod.POST)
+	public ModelAndView deactivateFood(@ModelAttribute("food") Food food, Model model) {
 		int foodID = food.getFoodId();
 		foodService.deactivate(foodID);
-		return "admin_food";
+		model.addAttribute("food", food);
+		List<Food> foodItems = foodService.viewAll();
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("foodItems", foodItems);
+		modelAndView.setViewName("redirect:/admin/food");
+		return modelAndView;
+	}
+	
+	@RequestMapping(value="/food/activate", method=RequestMethod.POST)
+	public ModelAndView activateFood(@ModelAttribute("food") Food food, Model model) {
+		int foodID = food.getFoodId();
+		foodService.activate(foodID);
+		model.addAttribute("food", food);
+		List<Food> foodItems = foodService.viewAll();
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("foodItems", foodItems);
+		modelAndView.setViewName("redirect:/admin/food");
+		return modelAndView;
 	}
 }
