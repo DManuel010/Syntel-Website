@@ -32,8 +32,7 @@ public class FoodService implements ServiceInterface<Food>
 	public void create(Food food) {
 		try {
 			Connection con = jdbcTemplate.getDataSource().getConnection();
-			CallableStatement callableStatement = con.prepareCall("{call SP_INSERT_NEW_FOOD(?,?,?,"
-					+ "?,?,?,?)}");
+			CallableStatement callableStatement = con.prepareCall("{call SP_INSERT_NEW_FOOD(?,?,?,?,?,?,?,?)}");
 			callableStatement.setString(1, Utilities.createUniqueId());
 			callableStatement.setString(2, food.getName());
 			callableStatement.setString(3, food.getFoodGroup());
@@ -41,6 +40,7 @@ public class FoodService implements ServiceInterface<Food>
 			callableStatement.setString(5, food.getDescription());
 			callableStatement.setInt(6, food.getStock());
 			callableStatement.setString(7, food.getImage());
+			callableStatement.setInt(8, 1);
 			callableStatement.execute();
 			
 		} catch (SQLException e) {
@@ -60,18 +60,17 @@ public class FoodService implements ServiceInterface<Food>
 		}
 	}
 	
+	
 	public List<Food> viewAll() {
-		
-		String sql = "SELECT FOODID, NAME, FOODGROUP, PRICE, DESCRIPTION, IMAGE FROM FOOD";
+		String sql = "SELECT * FROM Food";
 		return jdbcTemplate.query(sql, new FoodRowMapper());
 	}
 
-	public List<Food> getSelectedItems(String[] ids)
-	{
+	
+	public List<Food> getSelectedItems(String[] ids) {
 		List<Food> foodList = new ArrayList<Food>();
 		
-		for(String id : ids)
-		{
+		for(String id : ids) {
 			try {
 				Connection con = jdbcTemplate.getDataSource().getConnection();
 				PreparedStatement preparedStatement = con.prepareStatement("SELECT FOODID, NAME, "
@@ -79,8 +78,7 @@ public class FoodService implements ServiceInterface<Food>
 				preparedStatement.setString(1, id);
 				
 				ResultSet result = preparedStatement.executeQuery();
-				while(result.next())
-				{
+				while(result.next()) {
 					Food food = new Food();
 					food.setFoodId(result.getInt("FOODID"));
 					food.setName(result.getString("NAME"));
@@ -91,8 +89,7 @@ public class FoodService implements ServiceInterface<Food>
 					foodList.add(food);
 				}
 				
-			}catch(SQLException e)
-			{
+			} catch(SQLException e) {
 				e.printStackTrace();
 			}
 		}
@@ -100,5 +97,32 @@ public class FoodService implements ServiceInterface<Food>
 		return foodList;
 	}	
 	
-
+	
+	/*
+	 * Returns a list of all the active (menu displayed) food items
+	 */
+	public List<Food> viewAllActive() {
+		String sql = "SELECT * FROM Food WHERE Active = 1";
+		return jdbcTemplate.query(sql, new FoodRowMapper());
+	}
+	
+	
+	/*
+	 * Toggles the "Active" flag for a given food item to "active" (1)
+	 * Used to mark a food item to be displayed on the customer menu
+	 */
+	public void activate(int foodID) {
+		String sql = "UPDATE Food SET active = 1 WHERE foodID = ?";
+		jdbcTemplate.update(sql, foodID);
+	}
+	
+	
+	/*
+	 * Toggles the "Active" flag for a given food item to "deactivate" (0)
+	 * Used to mark a food item to be hidden from the customer menu
+	 */
+	public void deactivate(int foodID) {
+		String sql = "UPDATE Food SET active = 0 WHERE foodID = ?";
+		jdbcTemplate.update(sql, foodID);
+	}
 }
