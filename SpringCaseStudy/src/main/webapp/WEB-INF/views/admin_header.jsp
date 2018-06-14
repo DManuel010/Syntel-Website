@@ -18,7 +18,7 @@
 </head>
 <body>
 	<nav>
-		<a href="${context}/" class="active">
+		<a href="${context}/admin" class="active">
 			<img id="logo"src="${context}/static/images/global/logo.png" alt="logo">
 		</a>
 		<div id="nav_container">
