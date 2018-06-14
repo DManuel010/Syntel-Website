@@ -8,7 +8,8 @@
 <title>Manage Orders</title>
 </head>
 <body>
-<c:out value="${sessionScope.orders}"></c:out>
+
+<h1>View Orders</h1>
 	<table>
 		<thead>
 		<tr>
@@ -24,7 +25,12 @@
 		</thead>
 		<c:forEach items="${orders}" var="order">
 		 <tr>
-			<td>${order.getOrder().getOrderId()}</td>
+		 	
+			<td>
+				<a href="<c:url value="/admin/orders/detail">
+					<c:param name="orderid" value="${order.getOrder().getOrderId()}" />
+				</c:url>">${order.getOrder().getOrderId()}</a>
+			</td>
 			<td>${order.getOrder().getCost()}</td>
 			<td>${order.getOrder().getExpectedDate()}</td>
 			<td>${order.getOrder().getDeliveryDate()}</td>
@@ -36,8 +42,6 @@
 		</c:forEach>
 		<tbody>
 		</tbody>
-	
-	
 	</table>
 </body>
 </html>
