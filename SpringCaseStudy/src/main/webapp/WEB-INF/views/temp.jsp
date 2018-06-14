@@ -21,7 +21,7 @@
 		<tr>
 		<td>${myOrders.name}</td>
 		<td>${myOrders.quantity}</td>
-		<td>${myOrders.cost}</td>
+		<td>$${myOrders.cost}</td>
 		<td>${myOrders.expecteddate}</td>
 		<td>${myOrders.orderdate}</td>
 		<td>${myOrders.status}</td>
