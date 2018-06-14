@@ -1,12 +1,12 @@
 #jumbotron{
 	background-size: 100%;
 	width: 100%;
-	height: 40vh;
+	height: 50vh;
 }
 
 #title_container{
     background: rgba(204, 204, 204, 0.8);
-	height: 15vh;
+	height: 12vh;
 	display:flex;
 }
 #title{

@@ -10,14 +10,33 @@
 		
 		<section>
 			<article>
-				<h3>Menu</h3>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+				<h2>Menu</h2>
+				<table>
+					<thead>
+						<tr>
+							<th>Name</th>
+							<th>Group</th>
+							<th>Description</th>
+							<th>Price</th>
+						</tr>
+					</thead>
+						
+					<c:forEach items="${foodItems}" var="foodItem" varStatus="i">
+					    <tr>  
+					        <td>${foodItem.name}</td>
+					        <td>${foodItem.foodGroup}</td>
+					        <td>${foodItem.description}</td>
+					        <td>$${foodItem.price}</td>
+					    </tr>
+					</c:forEach>
+				</table>
 			</article>
 			
 			<article>
-				<h3>About</h3>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-			</article>
+				<h2>About</h2>
+				<p>
+					We have more than 20 years of experience in making delicious traditional dishes, with recipes from the North and the South of India. Our hard work has paid off by winning the recognition of LA Times & Daily News as the best Indian restaurant in Southern California, and being critically acclaimed by AAA Magazine, LA Times and Daily News.
+				</p>
 		</section>
 
 <%@include file="footer.jsp" %>

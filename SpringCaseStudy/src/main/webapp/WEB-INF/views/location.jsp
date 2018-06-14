@@ -18,12 +18,12 @@
 			<form:errors path="location.state"/>
 			<br/>
 		
-		<label for="location_city">Cit</label>
+		<label for="location_city">City</label>
 			<form:input class="form-control" path="location.city" placeholder="Enter your city"/>
 			<form:errors path="location.city"/>
 			<br/>
 			
-		<label for="location_street_number">Address:</label>
+		<label for="location_street_number">Address</label>
 			<form:input class="form-control" path="location.street_number" placeholder="Enter your address"/>
 			<form:errors path="location.street_number"/>
 			<br/>
