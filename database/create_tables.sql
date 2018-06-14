@@ -6,7 +6,9 @@ CREATE TABLE Food (
 		description VARCHAR(50),
 		stock INT NOT NULL,
 		image VARCHAR(300) NOT NULL,
-		CONSTRAINT UC_Food UNIQUE (name, foodGroup, price)
+		active INT NOT NULL,
+		CONSTRAINT UC_Food UNIQUE (name, foodGroup, price),
+		CONSTRAINT check_active CHECK (active IN (0, 1))
 );
 
 CREATE TABLE Customer (

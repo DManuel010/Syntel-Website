@@ -8,3 +8,7 @@ SpringCaseStudy/.classpath
 SpringCaseStudy/src/main/resources/application.properties
 SpringCaseStudy/target/m2e-wtp/web-resources/META-INF/maven/com.syntinel/Restaurant/pom.properties
 SpringCaseStudy/target/m2e-wtp/web-resources/META-INF/maven/com.syntinel/Restaurant/pom.properties
+*.properties
+.classpath
+SpringCaseStudy/target/m2e-wtp/web-resources/META-INF/MANIFEST.MF
+SpringCaseStudy/target/m2e-wtp/web-resources/META-INF/maven/com.syntinel/Restaurant/pom.properties
