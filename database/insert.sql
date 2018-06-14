@@ -1,5 +1,7 @@
-﻿insert into food 
-	values (0, 'Eggs', 'Breakfast', 3.0, '1000 things', 999, 'eggs.jpg', 1);
+insert into food
+	values (0,'Eggs', 'Breakfast',3.0, '1000 things', 999, 'eggs.jpg', 1);
+
+
 insert into food
 	values (1, 'Sandwich', 'Lunch', 6.0, 'bread and things', 999, 'sandwich.jpg', 1);
 insert into food 
