@@ -26,6 +26,9 @@ public class CustomerService implements ServiceInterface<Customer>
 	public CustomerService() {}
 	
 	
+	/**
+	 * Adds a customer into the database
+	 */
 	@Override
 	public void create(Customer customer) 
 	{
