@@ -25,6 +25,10 @@ public class EmployeeService implements ServiceInterface<Employee>{
 		super();
 	}
 	
+	
+	/*
+	 * Add new employee object
+	 */
 	@Override
 	public void create(Employee employee) {
 		String sql = "INSERT INTO EMPLOYEE VALUES (?,?,?,?,?,?,?,?,?,?,?)";
@@ -35,17 +39,27 @@ public class EmployeeService implements ServiceInterface<Employee>{
 	}
 	
 	
+	/*
+	 * Get list of all existing employees
+	 */
 	public List<Employee> viewAll() {
 		String sql = "SELECT * FROM Employee";
 		return jdbcTemplate.query(sql, new EmployeeRowMapper());
 	}
 	
 	
+	/*
+	 * Delete existing employee by employee id
+	 */
 	public void delete(String employeeId) {
 		String sql = "DELETE FROM Employee WHERE employeeID = ?";
 		jdbcTemplate.update(sql, employeeId);
 	}
 
+	
+	/*
+	 * Return specific employee object
+	 */
 	public Employee getObject(Employee employee) 
 	{
 		employee.setTitle("N");
@@ -57,8 +71,8 @@ public class EmployeeService implements ServiceInterface<Employee>{
 			preparedStatement.setString(1, employee.getEmail());
 			preparedStatement.setString(2, Utilities.encryptPassword(employee.getPassword()));
 			ResultSet resultSet = preparedStatement.executeQuery();
-			while(resultSet.next())
-			{
+			
+			while(resultSet.next()) {
 				employee.setFirstName(resultSet.getString(1));
 				employee.setLastName(resultSet.getString(2));
 				employee.setHireDate(resultSet.getString(3));
@@ -69,8 +83,7 @@ public class EmployeeService implements ServiceInterface<Employee>{
 				employee.setLastLogin(resultSet.getString(8));
 			}
 			
-		} catch (SQLException e) 
-		{	
+		} catch (SQLException e) {	
 			e.printStackTrace();
 		}
 		

@@ -12,7 +12,7 @@ table{
 }
 -->
 </style>
-		<h1>Food Menu</h1>
+		<h1>Employees</h1>
 			<table cellpadding="10px">
 				<thead>
 					<tr>
@@ -27,64 +27,63 @@ table{
 					</tr>
 				</thead>
 					
-				<c:forEach items="${empItems}" var="foodItem">
+				<c:forEach items="${employees}" var="employee">
 				
 			    <tr> 
-			    	<td>${empItems.employeeId}</td>
-			        <td>${empItems.firstName}</td>
-			        <td>${empItems.lastName}</td>
-			        <td>${empItems.email}</td>
-			        <td>${empItems.hireDate}</td>
-			        <td>${empItems.title}</td>
-			        <td>${empItems.phoneNumber}</td>
-			        <td>${empItems.lastLogin}</td>
+			    	<td>${employee.employeeId}</td>
+			        <td>${employee.firstName}</td>
+			        <td>${employee.lastName}</td>
+			        <td>${employee.email}</td>
+			        <td>${employee.hireDate}</td>
+			        <td>${employee.title}</td>
+			        <td>${employee.phoneNumber}</td>
+			        <td>${employee.lastLogin}</td>
 			    </tr>
 				</c:forEach>
 			</table>
 			<br>
 		
-		<form method="POST" modelAttribute="food" action="food/add">
-			<label for="addFood">Add Food</label>
+		<form method="POST" modelAttribute="employee" action="employee/add">
+			<label for="addEmployee">Add Employee</label>
 			
-			<form:input path="food.name" placeholder="food name" />
-			<form:errors path="food.name" />
+			<form:input path="employee.firstName" placeholder="first name" />
+			<form:errors path="employee.firstName" />
 			
-			<form:input path="food.foodGroup" placeholder="food group" />
-			<form:errors path="food.foodGroup" />
+			<form:input path="employee.lastName" placeholder="last name" />
+			<form:errors path="employee.lastName" />
 			
-			<form:input path="food.price" placeholder="price" />
-			<form:errors path="food.price" />
+			<form:input path="employee.email" placeholder="employee@email.com" />
+			<form:errors path="employee.email" />
 			
-			<form:input path="food.description" placeholder="description" />
-			<form:errors path="food.description" />
+			<form:input path="employee.hireDate" placeholder="DD-MMM-YY" />
+			<form:errors path="employee.hireDate" />
 			
-			<form:input path="food.stock" placeholder="stock" />
-			<form:errors path="food.stock" />
+			<form:input path="employee.title" placeholder="employee title" />
+			<form:errors path="employee.title" />
 			
-			<form:input path="food.image" placeholder="image/url" />
-			<form:errors path="food.image" />
+			<form:input path="employee.phoneNumber" placeholder="111-222-3333" />
+			<form:errors path="employee.phoneNumber" />
 			
-			<input type="submit" value="Add Food" />
+			<form:input path="employee.workAddrId" placeholder="# work address id" />
+			<form:errors path="employee.workAddrId" />
+			
+			<form:input path="employee.homeAddrId" placeholder="# home address id" />
+			<form:errors path="employee.homeAddrId" />
+			
+			<form:input path="employee.password" placeholder="password" />
+			<form:errors path="employee.password" />
+			
+			<input type="submit" value="Add Employee" />
 			<input type="reset" value="Clear Form" />
 		</form>
 		
-		<form method="POST" modelAttribute="food" action="food/activate">
-			<label for="activateFood">Activate Food</label>
+		<form method="POST" modelAttribute="employee" action="employee/delete">
+			<label for="deleteFood">Delete Employee</label>
 			
-			<form:input path="food.foodId" placeholder="Food ID #" />
-			<form:errors path="food.foodId" />
+			<form:input path="employee.employeeId" placeholder="Employee Id #" />
+			<form:errors path="employee.employeeId" />
 			
-			<input type="submit" value="Activate Food" />
-			<input type="reset" value="Clear Form" />
-		</form>
-		
-		<form method="POST" modelAttribute="food" action="food/deactivate">
-			<label for="deactivateFood">Deactivate Food</label>
-			
-			<form:input path="food.foodId" placeholder="Food ID #" />
-			<form:errors path="food.foodId" />
-			
-			<input type="submit" value="Deactivate Food" />
+			<input type="submit" value="Delete Employee" />
 			<input type="reset" value="Clear Form" />
 		</form>
 
