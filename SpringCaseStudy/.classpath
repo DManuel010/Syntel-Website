@@ -34,10 +34,8 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-
-	<classpathentry kind="lib" path="C:/Examples/Jar Files/javaee.jar"/>
-	<classpathentry kind="lib" path="C:/Examples/Jar Files/mail.jar"/>
-	<classpathentry kind="lib" path="C:/Examples/Jar Files/ojdbc6-11.2.0.3.jar"/>
-
+	<classpathentry kind="lib" path="C:/jars/javaee.jar"/>
+	<classpathentry kind="lib" path="C:/jars/mail.jar"/>
+	<classpathentry kind="lib" path="C:/jars/ojdbc6-11.2.0.3.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
