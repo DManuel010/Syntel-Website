@@ -18,7 +18,7 @@
 </head>
 <body>
 	<nav>
-		<a href="${context}/" class="active">
+		<a href="${context}/admin" class="active">
 			<img id="logo"src="${context}/static/images/global/logo.png" alt="logo">
 		</a>
 		<div id="nav_container">
@@ -27,6 +27,9 @@
 				<li><a href="${context}/admin/food">Menu</a></li>
 				<li><a href="${context}/admin/customers">Customers</a></li>
 				<li><a href="${context}/#">Orders</a></li>
+				<c:if test="${sessionScope.employee != null}">
+					<li><a href="${context}/customer/logout">Log Out</a></li> <!-- admin should probably have its own logout page/controller mapping but the functionality works the same  -->
+				</c:if>
 			</ul>
 			<div id="spacer"></div>
 		</div>

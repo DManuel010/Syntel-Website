@@ -66,37 +66,41 @@ public class FoodService implements ServiceInterface<Food>
 		return jdbcTemplate.query(sql, new FoodRowMapper());
 	}
 
-	public List<Food> getSelectedItems(String[] ids)
+	public List<Food> getSelectedItems(ArrayList<String> counts)
 	{
 		List<Food> foodList = new ArrayList<Food>();
 		
-		for(String id : ids)
-		{
-			try {
-				Connection con = jdbcTemplate.getDataSource().getConnection();
-				PreparedStatement preparedStatement = con.prepareStatement("SELECT FOODID, NAME, "
-						+ "FOODGROUP, PRICE, DESCRIPTION, IMAGE FROM FOOD WHERE FOODID = ?");
-				preparedStatement.setString(1, id);
-				
-				ResultSet result = preparedStatement.executeQuery();
-				while(result.next())
-				{
-					Food food = new Food();
-					food.setFoodId(result.getInt("FOODID"));
-					food.setName(result.getString("NAME"));
-					food.setFoodGroup(result.getString("FOODGROUP"));
-					food.setPrice(result.getDouble("PRICE"));
-					food.setDescription(result.getString("DESCRIPTION"));
-					food.setImage(result.getString("IMAGE"));
-					foodList.add(food);
-				}
-				
-			}catch(SQLException e)
+		//for(String id : ids)
+		for (int i = 0; i < counts.size(); ++i)
+		{			
+			if (!counts.get(i).equals("0"))
 			{
-				e.printStackTrace();
+				try {
+					Connection con = jdbcTemplate.getDataSource().getConnection();
+					PreparedStatement preparedStatement = con.prepareStatement("SELECT FOODID, NAME, "
+							+ "FOODGROUP, PRICE, DESCRIPTION, IMAGE FROM FOOD WHERE FOODID = ?");
+					preparedStatement.setInt(1, i);
+					
+					ResultSet result = preparedStatement.executeQuery();
+					while(result.next())
+					{
+						Food food = new Food();
+						food.setFoodId(result.getInt("FOODID"));
+						food.setName(result.getString("NAME"));
+						food.setFoodGroup(result.getString("FOODGROUP"));
+						food.setPrice(result.getDouble("PRICE"));
+						food.setDescription(result.getString("DESCRIPTION"));
+						food.setImage(result.getString("IMAGE"));
+						foodList.add(food);
+					}
+					
+				}catch(SQLException e)
+				{
+					e.printStackTrace();
+				}
 			}
 		}
-		
+				
 		return foodList;
 	}	
 	

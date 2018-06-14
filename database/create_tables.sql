@@ -73,7 +73,8 @@ CREATE TABLE Employee (
 	phoneNumber VARCHAR(25) NOT NULL,
 	workAddrID INT NOT NULL REFERENCES Location(locationID),
 	homeAddrID INT NOT NULL REFERENCES Location(locationID),
-	lastLogin DATE NOT NULL
+	lastLogin DATE NOT NULL,
+	password VARCHAR2(4000)
 );
 
 CREATE TABLE Orders (

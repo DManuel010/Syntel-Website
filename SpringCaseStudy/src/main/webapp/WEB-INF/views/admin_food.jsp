@@ -13,9 +13,7 @@ table{
 -->
 </style>
 		<h1>Food Menu</h1>
-		
-		<form action="/order/summary" method="POST">
-			<table>
+			<table cellpadding="10px">
 				<thead>
 					<tr>
 						<th>Food ID</th>
@@ -41,7 +39,7 @@ table{
 			</table>
 			<br>
 		
-		<form method="POST" modelAttribute="food" action="admin/food/add">
+		<form method="POST" modelAttribute="food" action="food/add">
 			<label for="addFood">Add Food</label>
 			
 			<form:input path="food.name" placeholder="food name" />
@@ -63,7 +61,7 @@ table{
 			<input type="reset" value="Clear Form" />
 		</form>
 		
-		<form method="POST" modelAttribute="food" action="admin/food/delete">
+		<form method="POST" modelAttribute="food" action="food/delete">
 			<label for="deleteFood">Delete Food</label>
 			
 			<form:input path="food.foodId" placeholder="Food ID #" />
