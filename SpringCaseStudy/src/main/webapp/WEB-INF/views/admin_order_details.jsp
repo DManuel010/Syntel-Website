@@ -1,20 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Order Detail</title>
-</head>
-<body>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@include file="admin_header.jsp" %>
+<link type="text/css" rel="stylesheet" href="${context}/static/css/home.css">
+
+
 		<h1>Order Details</h1>
 		
-		<div>
-			<p><b>Order ID:</b>${orderid}</p>
-		</div>
 		
 		<table>
+
 			<thead>
 			<tr>
 				<th>Order ID:</th>
@@ -28,6 +23,7 @@
 			<tbody>
 			<c:forEach items="${details}" var="detail">
 			 <tr>
+			 	<td>${orderid}</td>
 			 	<td>${detail.getFood().getName()}</td>
 			 	<td>${detail.getFood().getDescription()}</td>
 			 	<td>${detail.getFood().getFoodGroup()}</td>
@@ -39,7 +35,7 @@
 		</table>
 		
 		<div>
-		<p><b>Instructions</b>${instructions}</p>
+		<p><b>Instructions: </b>${instructions}</p>
 		</div>
-</body>
-</html>
+
+<%@include file="footer.jsp" %>
