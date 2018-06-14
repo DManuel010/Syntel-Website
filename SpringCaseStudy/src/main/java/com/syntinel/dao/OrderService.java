@@ -116,7 +116,10 @@ public class OrderService implements ServiceInterface<Order>{
 					foodOrder.setName(food.getName());
 					foodOrder.setCost(food.getPrice());
 					foodOrders.add(foodOrder);
+					
+					System.out.println("ORDER: " + order.getOrderId() + "  ITEM: " + food.getName());
 				}
+				
 				order.setFoodOrders(foodOrders);
 				orders.add(order);
 			}
@@ -138,7 +141,7 @@ public class OrderService implements ServiceInterface<Order>{
 		{
 			Connection con = jdbcTemplate.getDataSource().getConnection();
 			PreparedStatement preparedStatement = con.prepareStatement("SELECT TEMP.ORDERID FROM (SELECT O.*, ROW_NUMBER() " + 
-					"OVER (ORDER BY O.ORDERID DESC) R FROM ORDERS O) TEMP WHERE R=1 AND CUSTOMERID = ?");
+					"OVER (ORDER BY O.TIMEADDED DESC) R FROM ORDERS O) TEMP WHERE R=1 AND CUSTOMERID = ?");
 			preparedStatement.setInt(1, id);
 			ResultSet result = preparedStatement.executeQuery();
 			while(result.next())

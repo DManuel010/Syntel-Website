@@ -83,7 +83,8 @@ CREATE TABLE Orders (
 	orderDate DATE NOT NULL,
 	expectedDate DATE NOT NULL,
 	deliveryDate DATE,
-	note VARCHAR(250)
+	note VARCHAR(250),
+	timeAdded TIMESTAMP DEFAULT SYSTIMESTAMP
 );
 
 CREATE TABLE FoodOrder (

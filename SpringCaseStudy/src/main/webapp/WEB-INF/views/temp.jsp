@@ -8,7 +8,7 @@
 		<h2>My current orders</h2>
 		
 		<div style="overflow-x:auto;">
-			<table>
+			<table border="1">
 				<tr>
 					<td>Date</td>
 					<td>Expected Date</td>
@@ -26,7 +26,7 @@
 						<td>${order.expectedDate}</td>
 						
 						<td>
-							<table>
+							<table cellpadding="0">
 								<c:forEach items="${order.foodOrders}" var="myFoodOrders">
 									<tr>
 										<td>${myFoodOrders.cost}</td>

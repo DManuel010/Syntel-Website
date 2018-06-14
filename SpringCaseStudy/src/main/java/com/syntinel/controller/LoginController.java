@@ -60,7 +60,6 @@ public class LoginController
 	public ModelAndView customerDashboard(@SessionAttribute("customer") Customer customer)
 	{
 		 List<Order> orders = orderServ.getCustomersOrders(customer.getId());
-		 System.out.println("PRINT THIS LINE: " + orders);
 		 ModelAndView modelAndView = new ModelAndView();
 		 modelAndView.addObject("orders", orders);
 		 modelAndView.setViewName("temp");
