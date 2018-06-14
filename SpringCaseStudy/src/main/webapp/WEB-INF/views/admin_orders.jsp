@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@include file="admin_header.jsp" %>
 <link type="text/css" rel="stylesheet" href="${context}/static/css/home.css">
@@ -20,7 +21,11 @@
 			</thead>
 			<c:forEach items="${orders}" var="order">
 			 <tr>
-				<td>${order.getOrder().getOrderId()}</td>
+				<td>
+				<a href="<c:url value="/admin/orders/detail/">
+					<c:param name="orderid" value="${order.getOrder().getOrderId()}" />
+				</c:url>">${order.getOrder().getOrderId()}</a>
+			</td>
 				<td>${order.getOrder().getCost()}</td>
 				<td>${order.getOrder().getExpectedDate()}</td>
 				<td>${order.getOrder().getDeliveryDate()}</td>
@@ -32,8 +37,7 @@
 			</c:forEach>
 			<tbody>
 			</tbody>
-		
-		
 		</table>
 
 <%@include file="footer.jsp" %>
+

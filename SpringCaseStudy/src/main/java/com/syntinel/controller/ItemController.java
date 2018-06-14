@@ -54,7 +54,7 @@ public class ItemController
 	@RequestMapping(value="/food",method=RequestMethod.GET)
 	public ModelAndView getFoodItems(@ModelAttribute ("menuOrder") MenuOrder menuOrder)
 	{
-		List<Food> foodItems = foodServ.viewAll();
+		List<Food> foodItems = foodServ.viewAllActive();
 		
 		//MenuOrder menuOrder = new MenuOrder();
 		//model.addAttribute("menuOrder", menuOrder);

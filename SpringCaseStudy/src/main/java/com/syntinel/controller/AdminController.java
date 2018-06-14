@@ -54,8 +54,7 @@ public class AdminController
 	}
 	
 	@RequestMapping(value="/login", method=RequestMethod.POST)
-	public ModelAndView adminLogin(@ModelAttribute("employee") Employee employee, BindingResult result, Model model)
-	{
+	public ModelAndView adminLogin(@ModelAttribute("employee") Employee employee, BindingResult result, Model model) {
 		employee = employeeServ.getObject(employee);
 		
 		// need to do basic login validation here?
@@ -73,8 +72,5 @@ public class AdminController
 			modelAndView.setViewName("admin_index");
 			return modelAndView;
 		}
-		
-		
 	}
-
 }
