@@ -6,8 +6,6 @@ import java.sql.SQLException;
 import org.springframework.jdbc.core.RowMapper;
 
 import com.syntinel.model.Customer;
-import com.syntinel.model.Employee;
-import com.syntinel.model.Location;
 
 public class CustomerRowMapper implements RowMapper<Customer>{
 
