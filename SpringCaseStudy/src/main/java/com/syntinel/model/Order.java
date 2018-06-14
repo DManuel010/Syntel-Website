@@ -1,5 +1,7 @@
 package com.syntinel.model;
 
+import java.util.ArrayList;
+
 import org.springframework.stereotype.Component;
 
 @Component
@@ -15,6 +17,9 @@ public class Order {
 	private String expectedDate;
 	private String deliveryDate;
 	private String note;
+	
+	//new property by chandler. Sorry if it sucks
+	public ArrayList<FoodOrder> foodOrders;
 	
 	public Order() {
 		
@@ -100,6 +105,14 @@ public class Order {
 
 	public void setNote(String note) {
 		this.note = note;
+	}
+	
+	public ArrayList<FoodOrder> getFoodOrders() {
+		return foodOrders;
+	}
+
+	public void setFoodOrders(ArrayList<FoodOrder> foodOrders) {
+		this.foodOrders = foodOrders;
 	}
 
 	@Override
