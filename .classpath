@@ -2,8 +2,8 @@
 <classpath>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="src" path="java"/>
-	<classpathentry kind="lib" path="C:/Users/syntel.PHX440G3-28160Z/Documents/workspace/Syntel-Website/jars/javaee.jar"/>
-	<classpathentry kind="lib" path="C:/Users/syntel.PHX440G3-28160Z/Documents/workspace/Syntel-Website/jars/mail.jar"/>
-	<classpathentry kind="lib" path="C:/Users/syntel.PHX440G3-28160Z/Documents/workspace/Syntel-Website/jars/ojdbc6-11.2.0.3.jar"/>
+	<classpathentry kind="lib" path="C:/jars/javaee.jar"/>
+	<classpathentry kind="lib" path="C:/jars/mail.jar"/>
+	<classpathentry kind="lib" path="C:/jars/ojdbc6-11.2.0.3.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
