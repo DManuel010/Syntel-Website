@@ -26,8 +26,10 @@ public class EmployeeService implements ServiceInterface<Employee>{
 	}
 	
 	
-	/*
-	 * Add new employee object
+	/**
+	 * Adds an employee to the database.
+	 * The id is automatically created by this method
+	 * @param employee employee you to add to the database
 	 */
 	@Override
 	public void create(Employee employee) {
@@ -39,7 +41,7 @@ public class EmployeeService implements ServiceInterface<Employee>{
 	}
 	
 	
-	/*
+	/**
 	 * Get list of all existing employees
 	 */
 	public List<Employee> viewAll() {
@@ -48,7 +50,7 @@ public class EmployeeService implements ServiceInterface<Employee>{
 	}
 	
 	
-	/*
+	/**
 	 * Delete existing employee by employee id
 	 */
 	public void delete(String employeeId) {
@@ -57,7 +59,7 @@ public class EmployeeService implements ServiceInterface<Employee>{
 	}
 
 	
-	/*
+	/**
 	 * Return specific employee object
 	 */
 	public Employee getObject(Employee employee) 
