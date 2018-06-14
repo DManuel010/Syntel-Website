@@ -4,11 +4,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 import javax.annotation.Resource;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
+import org.syntinel.mappers.EmployeeRowMapper;
 import org.syntinel.utilities.Utilities;
 
 import com.syntinel.model.Employee;
@@ -20,21 +22,27 @@ public class EmployeeService implements ServiceInterface<Employee>{
 	private JdbcTemplate jdbcTemplate;
 	
 	public EmployeeService() {
-		
+		super();
 	}
 	
 	@Override
 	public void create(Employee employee) {
-		String sql = "INSERT INTO EMPLOYEE VALUES (?,?,?,?,?,?,?,?,?,?)";
+		String sql = "INSERT INTO EMPLOYEE VALUES (?,?,?,?,?,?,?,?,?,?,?)";
 		jdbcTemplate.update(sql, new Object [] {Utilities.createUniqueId(), employee.getFirstName(),
 				employee.getLastName(), employee.getEmail(), employee.getHireDate(), employee.getTitle(),
 				employee.getPhoneNumber(), employee.getWorkAddrId(),
-				employee.getHomeAddrId(), employee.getLastLogin()});
-		}
+				employee.getHomeAddrId(), employee.getLastLogin(), employee.getPassword()});
+	}
 	
 	
-	public void delete(int employeeId) {
-		String sql = "DELETE FROM EMPLOYEE WHERE EMPLOYEEID=?";
+	public List<Employee> viewAll() {
+		String sql = "SELECT * FROM Employee";
+		return jdbcTemplate.query(sql, new EmployeeRowMapper());
+	}
+	
+	
+	public void delete(String employeeId) {
+		String sql = "DELETE FROM Employee WHERE employeeID = ?";
 		jdbcTemplate.update(sql, employeeId);
 	}
 

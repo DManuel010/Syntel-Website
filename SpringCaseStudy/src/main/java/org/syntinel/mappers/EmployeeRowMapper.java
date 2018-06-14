@@ -22,6 +22,7 @@ public class EmployeeRowMapper implements RowMapper<Employee>{
 		employee.setWorkAddrId(rs.getInt(8));	
 		employee.setHomeAddrId(rs.getInt(9));		
 		employee.setLastLogin(rs.getString(10));
+		employee.setPassword(rs.getString(11));
 		
 		return employee;
 	}
