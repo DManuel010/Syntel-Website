@@ -61,20 +61,22 @@ public class AdminController
 	
 		adminValidator.validate(employee, result);
 		
-		if(result.hasErrors())
-		{
+		if(result.hasErrors()) {
 			return new ModelAndView("admin_login");
 		}
-		else
-		{
+		else {
 			ModelAndView modelAndView = new ModelAndView();
 			modelAndView.addObject("employee", employee);
-			if(employee.getTitle().equals("admin"))
+			
+			if(employee.getTitle().equals("admin")) {
 				modelAndView.setViewName("admin_index");
-			else if(employee.getTitle().equals("superadmin")) 
-				modelAndView.setViewName("super_admin_employees");
-			else
+			}
+			else if(employee.getTitle().equals("superadmin")) {
+				modelAndView.setViewName("super_admin_index");
+			}
+			else {
 				modelAndView.setViewName("index");
+			}
 			return modelAndView;
 		}
 	}

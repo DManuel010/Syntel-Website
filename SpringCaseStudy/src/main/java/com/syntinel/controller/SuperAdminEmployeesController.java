@@ -23,7 +23,7 @@ public class SuperAdminEmployeesController {
 	EmployeeService employeeService;
 	
 	@RequestMapping(value="/employees", method=RequestMethod.GET)
-	public ModelAndView viewFood(Model model) {
+	public ModelAndView viewEmployees(Model model) {
 		Employee employee = new Employee();
 		model.addAttribute("employee", employee);
 		List<Employee> employees = employeeService.viewAll();
