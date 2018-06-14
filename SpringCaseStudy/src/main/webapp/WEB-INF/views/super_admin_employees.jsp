@@ -43,42 +43,42 @@ table{
 			</table>
 			<br>
 		
-		<form method="POST" modelAttribute="employee" action="employees/add">
+		<form method="POST" modelAttribute="emp" action="employees/add">
 			<label for="addEmployee">Add Employee</label>
 			
-			<form:input path="employee.firstName" placeholder="first name" />
-			<form:errors path="employee.firstName" />
+			<form:input path="emp.firstName" placeholder="first name" />
+			<form:errors path="emp.firstName" />
 			
-			<form:input path="employee.lastName" placeholder="last name" />
-			<form:errors path="employee.lastName" />
+			<form:input path="emp.lastName" placeholder="last name" />
+			<form:errors path="emp.lastName" />
 			
-			<form:input path="employee.email" placeholder="employee@email.com" />
-			<form:errors path="employee.email" />
+			<form:input path="emp.email" placeholder="employee@email.com" />
+			<form:errors path="emp.email" />
 			
-			<form:input path="employee.title" placeholder="employee title" />
-			<form:errors path="employee.title" />
+			<form:input path="emp.title" placeholder="employee title" />
+			<form:errors path="emp.title" />
 			
-			<form:input path="employee.phoneNumber" placeholder="111-222-3333" />
-			<form:errors path="employee.phoneNumber" />
+			<form:input path="emp.phoneNumber" placeholder="111-222-3333" />
+			<form:errors path="emp.phoneNumber" />
 			
-			<form:input path="employee.workAddrId" placeholder="# work address id" />
-			<form:errors path="employee.workAddrId" />
+			<form:input path="emp.workAddrId" placeholder="# work address id" />
+			<form:errors path="emp.workAddrId" />
 			
-			<form:input path="employee.homeAddrId" placeholder="# home address id" />
-			<form:errors path="employee.homeAddrId" />
+			<form:input path="emp.homeAddrId" placeholder="# home address id" />
+			<form:errors path="emp.homeAddrId" />
 			
-			<form:input path="employee.password" placeholder="password" />
-			<form:errors path="employee.password" />
+			<form:input path="emp.password" placeholder="password" />
+			<form:errors path="emp.password" />
 			
 			<input type="submit" value="Add Employee" />
 			<input type="reset" value="Clear Form" />
 		</form>
 		
-		<form method="POST" modelAttribute="employee" action="employees/delete">
+		<form method="POST" modelAttribute="emp" action="employees/delete">
 			<label for="deleteFood">Delete Employee</label>
 			
-			<form:input path="employee.employeeId" placeholder="Employee Id #" />
-			<form:errors path="employee.employeeId" />
+			<form:input path="emp.employeeId" placeholder="Employee Id #" />
+			<form:errors path="emp.employeeId" />
 			
 			<input type="submit" value="Delete Employee" />
 			<input type="reset" value="Clear Form" />

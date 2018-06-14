@@ -22,10 +22,20 @@ public class SuperAdminEmployeesController {
 	@Autowired
 	EmployeeService employeeService;
 	
+	@RequestMapping(method=RequestMethod.GET)
+	public ModelAndView superAdminIndex(Model model) // should expect employee object from login in the session/model and be blocked by a session
+	{
+		//Employee employee = new Employee();
+		//model.addAttribute("employee", employee);
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("super_admin_index");
+		return modelAndView;
+	}
+	
 	@RequestMapping(value="/employees", method=RequestMethod.GET)
 	public ModelAndView viewEmployees(Model model) {
 		Employee employee = new Employee();
-		model.addAttribute("employee", employee);
+		model.addAttribute("emp", employee);
 		List<Employee> employees = employeeService.viewAll();
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("employees", employees);
@@ -34,9 +44,9 @@ public class SuperAdminEmployeesController {
 	}
 	
 	@RequestMapping(value="/employees/add", method=RequestMethod.POST)
-	public ModelAndView addEmployee(@ModelAttribute("employee") Employee employee, Model model) {
+	public ModelAndView addEmployee(@ModelAttribute("emp") Employee employee, Model model) {
 		employeeService.create(employee);
-		model.addAttribute("employee", employee);
+		model.addAttribute("emp", employee);
 		List<Employee> employees = employeeService.viewAll();
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("employees", employees);
@@ -45,10 +55,10 @@ public class SuperAdminEmployeesController {
 	}
 	
 	@RequestMapping(value="/employees/delete", method=RequestMethod.POST)
-	public ModelAndView deleteEmployee(@ModelAttribute("employee") Employee employee, Model model) {
+	public ModelAndView deleteEmployee(@ModelAttribute("emp") Employee employee, Model model) {
 		String employeeID = employee.getEmployeeId();
 		employeeService.delete(employeeID);
-		model.addAttribute("employee", employee);
+		model.addAttribute("emp", employee);
 		List<Employee> employees = employeeService.viewAll();
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("employees", employees);
