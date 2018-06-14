@@ -43,6 +43,7 @@ public class EmployeeService implements ServiceInterface<Employee>{
 
 	public Employee getObject(Employee employee) 
 	{
+		employee.setTitle("N");
 		try
 		{
 			Connection con = jdbcTemplate.getDataSource().getConnection();
