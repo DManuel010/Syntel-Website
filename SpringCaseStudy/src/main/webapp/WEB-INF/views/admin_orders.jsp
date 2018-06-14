@@ -3,8 +3,7 @@
 
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@include file="admin_header.jsp" %>
-<link type="text/css" rel="stylesheet" href="${context}/static/css/home.css">
-
+	<div id="content">
 	<h1>Orders</h1>
 		<table>
 			<thead>
@@ -38,6 +37,6 @@
 			<tbody>
 			</tbody>
 		</table>
-
+	</div>
 <%@include file="footer.jsp" %>
 

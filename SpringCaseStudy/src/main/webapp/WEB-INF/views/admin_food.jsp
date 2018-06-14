@@ -2,7 +2,6 @@
     pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@include file="admin_header.jsp" %>
-<link type="text/css" rel="stylesheet" href="${context}/static/css/home.css">
 <style>
 <!--
 table{
@@ -10,8 +9,10 @@ table{
    height:300px;
    display:block;
 }
+
 -->
 </style>
+	<div id="content">
 		<h1>Food Menu</h1>
 			<table cellpadding="10px">
 				<thead>
@@ -44,46 +45,47 @@ table{
 		<form method="POST" modelAttribute="food" action="food/add">
 			<label for="addFood">Add Food</label>
 			
-			<form:input path="food.name" placeholder="food name" />
+			<form:input class="form-control" path="food.name" placeholder="food name" />
 			<form:errors path="food.name" />
 			
-			<form:input path="food.foodGroup" placeholder="food group" />
+			<form:input class="form-control" path="food.foodGroup" placeholder="food group" />
 			<form:errors path="food.foodGroup" />
 			
-			<form:input path="food.price" placeholder="price" />
+			<form:input class="form-control" path="food.price" placeholder="price" />
 			<form:errors path="food.price" />
 			
-			<form:input path="food.description" placeholder="description" />
+			<form:input class="form-control" path="food.description" placeholder="description" />
 			<form:errors path="food.description" />
 			
-			<form:input path="food.stock" placeholder="stock" />
+			<form:input class="form-control" path="food.stock" placeholder="stock" />
 			<form:errors path="food.stock" />
 			
-			<form:input path="food.image" placeholder="image/url" />
+			<form:input class="form-control" path="food.image" placeholder="image/url" />
 			<form:errors path="food.image" />
 			
-			<input type="submit" value="Add Food" />
-			<input type="reset" value="Clear Form" />
+			<input class="btn btn-danger btn-lg" type="submit" value="Add Food" />
+			<input class="btn btn-danger btn-lg" type="reset" value="Clear Form" />
 		</form>
 		
 		<form method="POST" modelAttribute="food" action="food/activate">
 			<label for="activateFood">Activate Food</label>
 			
-			<form:input path="food.foodId" placeholder="Food ID #" />
+			<form:input class="form-control" path="food.foodId" placeholder="Food ID #" />
 			<form:errors path="food.foodId" />
 			
-			<input type="submit" value="Activate Food" />
-			<input type="reset" value="Clear Form" />
+			<input class="btn btn-danger btn-lg" type="submit" value="Activate Food" />
+			<input class="btn btn-danger btn-lg" type="reset" value="Clear Form" />
 		</form>
 		
 		<form method="POST" modelAttribute="food" action="food/deactivate">
 			<label for="deactivateFood">Deactivate Food</label>
 			
-			<form:input path="food.foodId" placeholder="Food ID #" />
+			<form:input class="form-control" path="food.foodId" placeholder="Food ID #" />
 			<form:errors path="food.foodId" />
 			
-			<input type="submit" value="Deactivate Food" />
-			<input type="reset" value="Clear Form" />
+			<input class="btn btn-danger btn-lg" type="submit" value="Deactivate Food" />
+			<input class="btn btn-danger btn-lg" type="reset" value="Clear Form" />
 		</form>
-
+	</div>
+	<div id=spacer"></div>
 <%@include file="footer.jsp" %>
